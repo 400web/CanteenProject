@@ -9,9 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="食堂点评Web">
+    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="登录界面">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/usst.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/usst1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/usst2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +23,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="杨秀卓 &lt;114325425+usstyxz@users.noreply.github.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/cp/Application.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -28,13 +40,11 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2ZLNK9CFcgBeD57RdJX8Y6xv9jb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,43 +53,26 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/webpro/canteenproject/src/main/java/com/cp",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/IntelliJ IDEA/project/CanteenProject/src/main/webapp/WEB-INF",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\webpro\canteenproject\src\main\java\com\cp" />
-      <recent name="D:\webpro\canteenproject\src\main\resources" />
+      <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp\WEB-INF" />
+      <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-      <recent name="com.cp" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="canteenproject" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cp.Application" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.cp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
     <configuration name="Tomcat 10.1.13" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="canteenproject:war exploded">
@@ -207,7 +200,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Tomcat Server.index.jsp" />
       </list>
     </recent_temporary>
@@ -220,24 +212,79 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702197333787</updated>
-      <workItem from="1702197334805" duration="1415000" />
+      <workItem from="1702197334805" duration="1000" />
+      <workItem from="1702200166301" duration="357000" />
+      <workItem from="1702202073129" duration="927000" />
+      <workItem from="1702205390034" duration="218000" />
+      <workItem from="1702205608488" duration="408000" />
     </task>
-    <task id="LOCAL-00001" summary="食堂点评Web">
+    <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
-      <created>1702197695050</created>
+      <created>1702201147711</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1702197695050</updated>
+      <updated>1702201147711</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="登录界面">
+      <option name="closed" value="true" />
+      <created>1702201205092</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702201205092</updated>
+    </task>
+    <task id="LOCAL-00003" summary="登录界面">
+      <option name="closed" value="true" />
+      <created>1702201260993</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702201260993</updated>
+    </task>
+    <task id="LOCAL-00004" summary="登录界面">
+      <option name="closed" value="true" />
+      <created>1702201280668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702201280668</updated>
+    </task>
+    <task id="LOCAL-00005" summary="登录界面">
+      <option name="closed" value="true" />
+      <created>1702201427658</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702201427658</updated>
+    </task>
+    <task id="LOCAL-00006" summary="登录界面">
+      <option name="closed" value="true" />
+      <created>1702201507971</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702201507971</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="食堂点评Web" />
-    <option name="LAST_COMMIT_MESSAGE" value="食堂点评Web" />
+    <MESSAGE value="登录界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="登录界面" />
   </component>
 </project>
