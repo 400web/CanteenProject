@@ -16,6 +16,10 @@
 
 </head>
 
+<script>
+
+</script>
+
 <body>
 <section>
     <!--背景色-->
@@ -28,7 +32,7 @@
         <div class="container">
             <div class="form">
                 <h2>USST食堂注册系统</h2>
-                <form action="/qfshop_war_exploded/user?method=login" method="post">
+                <form action="registerServlet" method="post">
                     <div class="inputBox">
                         <input type="text" placeholder="用户名" name="username">
                     </div>

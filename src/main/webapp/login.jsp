@@ -28,7 +28,7 @@
         <div class="container">
             <div class="form">
                 <h2>USST食堂系统</h2>
-                <form action="/qfshop_war_exploded/user?method=login" method="post">
+                <form action="loginServlet" method="post">
                     <div class="inputBox">
                         <input type="text" placeholder="手机号" name="phoneNumber" required>
                     </div>
