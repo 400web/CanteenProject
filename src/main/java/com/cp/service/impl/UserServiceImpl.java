@@ -29,7 +29,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public User login(String phoneNumber, String password) {
         LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>()
-                .select(User::getId, User::getUsername, User::getRole)
                 .eq(User::getPhoneNumber, phoneNumber)
                 .eq(User::getPassword, password);
         return getOne(wrapper);
