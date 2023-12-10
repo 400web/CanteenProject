@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background-image: url(usst2.jpg);
+    background-size: cover; /* 调整背景图片的大小以覆盖整个元素 */
+    background-position: center; /* 将背景图片定位到元素中央 */
+    background-repeat: no-repeat; /* 禁止背景图片重复 */
+}
+
+/*背景颜色·*/
+section .color {
+    position: absolute;
+    filter: blur(200px);
+}
+
+
+
+.container {
+    position: relative;
+    width: 400px;
+    min-height: 300px;
+    background: linear-gradient(to bottom, #fce4e4, #651616);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(70, 16, 52, 0.92);
+    border: 1px solid rgba(175, 175, 175, 0.92);
+    border-right: 1px solid rgba(175, 175, 175, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+
+.form h2 {
+    position: relative;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.form .inputBox {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form .inputBox input {
+    width: 100%;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 16px;
+    letter-spacing: 1px;
+    color:#fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}

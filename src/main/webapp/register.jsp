@@ -1,19 +1,19 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: dfydn92
+  Date: 2023/12/10
+  Time: 19:05
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-wideh,initial-scale">
-    <link rel="stylesheet" href=css/login.css>
+    <link rel="stylesheet" href=css/register.css>
     <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
-    <title>USST食堂登录系统</title>
-    <script type="text/javascript">
-        $(function () {
-            $("#pagecode").click(function () {
-                $("#pagecode").attr("src","/qfshop_war_exploded/code?method=createCode&t="+Math.random());
-            });
-        })
-    </script>
+    <title>USST食堂注册系统</title>
+
 </head>
 
 <body>
@@ -27,25 +27,25 @@
         <!--登录框-->
         <div class="container">
             <div class="form">
-                <h2>USST食堂系统</h2>
+                <h2>USST食堂注册系统</h2>
                 <form action="/qfshop_war_exploded/user?method=login" method="post">
                     <div class="inputBox">
-                        <input type="text" placeholder="手机号" name="phoneNumber" required>
+                        <input type="text" placeholder="用户名" name="username">
                     </div>
                     <div class="inputBox">
-                        <input type="password" placeholder="密码" name="password" required>
+                        <input type="text" placeholder="手机号" name="phoneNumber">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="密码" name="password">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="重复密码" name="password1">
                     </div>
 
-                    <div >
-                        <input type="checkbox" id="autoLogin" name="auto" />记住密码
-                        <span id="autoLoginMsg" ></span>
-                    </div>
                     <div class="inputBox">
-                        <input type="submit" value="登录">
+                        <input type="submit" value="注册">
                     </div>
-                    <p class="forget">没有账户？
-                        <a href="register.jsp">点击注册</a>
-                    </p>
+
                     <span style="text-align: center">${msg}</span>
                 </form>
 
@@ -56,4 +56,3 @@
 </body>
 
 </html>
-
