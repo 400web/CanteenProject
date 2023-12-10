@@ -1,4 +1,4 @@
-package servlet;
+package com.cp.servlet;
 
 import com.cp.domain.User;
 import com.cp.service.UserService;
@@ -36,7 +36,7 @@ public class loginServlet extends HttpServlet {
         }
         HttpSession session = request.getSession();
         session.setAttribute("User",user);
-
+        //注册成功跳转食堂界面
         //request.getRequestDispatcher("success.jsp").forward(request,response);
     }
 }
