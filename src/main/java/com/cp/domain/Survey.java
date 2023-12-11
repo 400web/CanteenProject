@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ import java.util.List;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class Survey {
     private String surveyId; // 问卷id
     private String surveyContent; // 问卷内容

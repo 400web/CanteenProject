@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 /**
  * 菜品评价表类
@@ -11,8 +10,8 @@ import org.springframework.stereotype.Component;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class DishReview {
+    private long id;
     private String evaluatorId; // 评价人id
     private String dishId; // 菜品id
     private double evaluationScore; // 评价分
