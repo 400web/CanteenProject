@@ -1,9 +1,8 @@
 package com.cp.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.cp.domain.User;
 
-public interface UserService extends IService<User> {
+public interface UserService{
     /**
      * 用户注册
      * 获取用户名，密码，手机号

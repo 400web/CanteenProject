@@ -1,9 +1,10 @@
 package com.cp.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cp.domain.User;
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Param;
 
-@Component
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper {
+    User login(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
+
+    User getOne(@Param("id") String id);
 }
