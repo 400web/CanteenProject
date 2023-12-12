@@ -10,12 +10,10 @@ public interface UserService{
      * 通过用户手机号查询获取数据库里相应手机号的用户对象
      * 如果dao层返回User对象，则说明该手机号已有人使用，返回null
      *
-     * @param username    用户名
-     * @param password    密码
-     * @param phoneNumber 手机号
+     * @param user 注册用户
      * @return {@code 0} 成功注册用户 {@code 1} 用户名已被使用 {@code 2} 手机号已被使用
      */
-    int register(String username, String password, String phoneNumber);
+    int register(User user);
 
     /**
      * 用户登录

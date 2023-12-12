@@ -7,15 +7,23 @@ import com.cp.service.UserService;
 import com.cp.utils.MybatisUtils;
 
 public class UserServiceImpl implements UserService {
+    UserMapper userMapper = MybatisUtils.getMapper(UserMapper.class);
 
-    public int register(String username, String password, String phoneNumber) {
+    public int register(User user) {
+        if (userMapper.selectByUsername(user.getUsername()) != null) {
+            return 1;
+        }
+        if (userMapper.selectByPhoneNumber(user.getPhoneNumber()) != null) {
+            return 2;
+        }
+        userMapper.addUser(user);
+        MybatisUtils.commit();
         return 0;
     }
 
     @Override
     public User login(String phoneNumber, String password) {
-        UserMapper userMapper = MybatisUtils.getMapper(UserMapper.class);
-        return userMapper.login(phoneNumber,password);
+        return userMapper.login(phoneNumber, password);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.cp.servlet;
 
 
+import com.cp.domain.User;
 import com.cp.service.UserService;
 import com.cp.service.impl.UserServiceImpl;
 import jakarta.servlet.*;
@@ -14,6 +15,7 @@ import java.io.PrintWriter;
 public class registerServlet extends HttpServlet {
 
     public UserService userService = new UserServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,24 +29,24 @@ public class registerServlet extends HttpServlet {
         String username = request.getParameter("username");
         String phoneNumber = request.getParameter("phoneNumber");
         String password = request.getParameter("password");
+        User user = new User(null, username, phoneNumber, password, null);
+        int verify = userService.register(user);
 
-        int verify =userService.register(username,password,phoneNumber);
-
-        if(verify==0){
+        if (verify == 0) {
             String msg = "注册成功";
-            request.setAttribute("msg",msg);
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-        if(verify==1){
+        if (verify == 1) {
             String msg = "用户名已被使用";
-            request.setAttribute("msg",msg);
-            request.getRequestDispatcher("register.jsp").forward(request,response);
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
-        if(verify==2){
+        if (verify == 2) {
             String msg = "手机号已被使用";
-            request.setAttribute("msg",msg);
-            request.getRequestDispatcher("register.jsp").forward(request,response);
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
 
