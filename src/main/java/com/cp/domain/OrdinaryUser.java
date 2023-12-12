@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 /**
  * 普通用户类
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class OrdinaryUser {
     private String userId;// 用户ID
     private int loginTimes;// 登录次数

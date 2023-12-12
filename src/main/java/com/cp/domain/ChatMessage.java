@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 /**
  * 聊天信息表类
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class ChatMessage {
     private String senderId; // 发送人id
     private String receiverId; // 接收人id

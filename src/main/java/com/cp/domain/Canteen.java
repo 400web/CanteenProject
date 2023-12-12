@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 /**
  * 食堂类，存储食堂信息
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class Canteen {
     private String canteenId;// 食堂ID
     private String canteenName;// 食堂名称

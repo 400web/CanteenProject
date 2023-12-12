@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 /**
  * 投诉类，存储投诉相关信息。
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class Complaint {
     private String complainantId; // 投诉人ID
     private String canteenId; // 食堂ID

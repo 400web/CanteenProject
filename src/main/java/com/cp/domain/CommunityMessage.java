@@ -1,7 +1,6 @@
 package com.cp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 /**
  * 社区信息类，存储社区发布的信息。
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Component;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Component
 public class CommunityMessage {
     private String communityMessageId;// 社区信息ID
     private String publisherId; // 发布人ID
