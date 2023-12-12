@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+section {
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#comment-section {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #555;
+}
+#scrollable-menu {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px; /* 设置水平间距 */
+    overflow-y: auto; /* 添加垂直滚动 */
+    max-height: 500px; /* 设置最大高度，以容纳两行菜品 */
+}
+
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* 设置列之间的间距 */
+}
+
+.menu-column {
+    flex: 0 0 30%; /* 设置每列宽度为48% */
+}
+
+.menu-item {
+    width: 60%; /* 设置菜品项宽度 */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* 防止图片溢出 */
+    margin-bottom: 20px; /* 设置垂直间距 */
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0; /* 设置图片上边缘圆角 */
+}
+
+.menu-item-details {
+    padding: 10px;
+}
+
+/* 其他样式保持不变 */
+
+
