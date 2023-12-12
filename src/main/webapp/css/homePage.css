@@ -1,0 +1,69 @@
+
+    /* 自定义样式 */
+   .
+
+body {
+    background-color: #f0f0f0;
+}
+.navbar {
+    background-color: #343a40;
+    border-bottom: 1px solid #dee2e6;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #ffffff;
+}
+.nav-link {
+    color: #ffffff;
+}
+.carousel-item img {
+    height: calc(100vh / 4); /* 占据屏幕的四分之一 */
+    object-fit: cover;
+}
+.canteen-card {
+    text-align: center;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.canteen-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.canteen-card img:hover {
+    transform: scale(1.05);
+}
+.canteen-card h4 {
+    margin-top: 15px;
+    color: #333333;
+}
+.pagination {
+    margin-top: 30px;
+}
+/* 新增样式 */
+.section-divider {
+    border-top: 4px solid #343a40;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+}
+.section-title {
+    background-color: #ffffff;
+    color: #333333;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
