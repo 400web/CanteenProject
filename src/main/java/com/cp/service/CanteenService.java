@@ -2,6 +2,8 @@ package com.cp.service;
 
 import com.cp.domain.Canteen;
 
+import java.util.List;
+
 
 public interface CanteenService{
     /**
@@ -43,5 +45,6 @@ public interface CanteenService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteCanteen(String canteenId);
+    List<Canteen> getListByPage(int currPage, int pageSize);
 
 }
