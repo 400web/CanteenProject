@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.CanteenMapper">
+
+    <select id="selectById" resultType="canteen">
+        select * from canteen where id = #{id}
+    </select>
+    <select id="selectByName" resultType="Canteen" parameterType="String">
+        SELECT * FROM canteen WHERE name = #{name}
+    </select>
+    <select id="selectList" resultType="canteen">
+        select * from canteen
+    </select>
+    <select id="selectListByPage" parameterType="map" resultType="canteen">
+        select * from canteen
+    </select>
+
+    <insert id="addCanteen" parameterType="Canteen" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO canteen (name, location, introduction, opening_time, closing_time, rating) VALUES (#{name}, #{location}, #{introduction}, #{openingTime}, #{closingTime}, #{rating})
+    </insert>
+
+    <update id="updateCanteen" parameterType="Canteen">
+        UPDATE canteen SET name = #{name}, location = #{location}, introduction=#{introduction},opening_time=#{openingTime},closing_time=#{closingTime},rating=#{rating} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteCanteen" parameterType="String">
+        DELETE FROM canteen WHERE id = #{canteenId}
+    </delete>
+</mapper>
