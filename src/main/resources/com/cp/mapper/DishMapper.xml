@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.DishMapper">
+    <select id="selectById" parameterType="string" resultType="dish">
+        SELECT * FROM dish WHERE id = #{dishId}
+    </select>
+
+    <select id="selectListByCanteenId" parameterType="string" resultType="dish">
+        SELECT * FROM dish WHERE canteen_id = #{canteenId}
+    </select>
+
+    <select id="selectListByCuisine" parameterType="string" resultType="dish">
+        SELECT * FROM dish WHERE cuisine = #{cuisine}
+    </select>
+
+    <select id="selectListByPrice" parameterType="map" resultType="dish">
+        SELECT * FROM dish WHERE price BETWEEN #{minPrice} AND #{maxPrice}
+    </select>
+
+    <select id="selectList" resultType="dish">
+        SELECT * FROM dish
+    </select>
+    <select id="selectListByPage" resultType="dish">
+        SELECT * FROM dish
+    </select>
+
+    <insert id="addDish" parameterType="dish">
+        INSERT INTO dish (canteen_id, name, image, introduction, price, cuisine, score, weight)
+        VALUES (#{canteenId}, #{name}, #{image}, #{introduction}, #{price}, #{cuisine}, #{score}, #{weight})
+    </insert>
+
+    <update id="updateDish" parameterType="dish">
+        UPDATE dish SET name = #{name}, image = #{image}, introduction = #{introduction},
+                        price = #{price}, cuisine = #{cuisine}, score = #{score}, weight = #{weight}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteDish" parameterType="string">
+        DELETE FROM dish WHERE id = #{id}
+    </delete>
+
+</mapper>

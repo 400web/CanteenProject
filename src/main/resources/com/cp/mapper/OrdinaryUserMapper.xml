@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cp.mapper.OrdinaryUserMapper">
+
+    <resultMap id="ordinaryUserResultMap" type="OrdinaryUser">
+        <id property="id" column="user_id" />
+        <result property="loginTimes" column="login_times" />
+        <result property="evaluationTimes" column="evaluation_times" />
+        <result property="communityInteractionTimes" column="community_interaction_times" />
+        <result property="level" column="level" />
+    </resultMap>
+
+    <select id="selectById" resultMap="ordinaryUserResultMap" parameterType="String">
+        SELECT id, login_times, evaluation_times, community_interaction_times, level
+        FROM ordinary_user
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="ordinaryUserResultMap">
+        SELECT id, login_times, evaluation_times, community_interaction_times, level
+        FROM ordinary_user
+    </select>
+
+    <insert id="addOrdinaryUser" parameterType="OrdinaryUser">
+        INSERT INTO ordinary_user (id, login_times, evaluation_times, community_interaction_times, level)
+        VALUES (#{userId}, #{loginTimes}, #{evaluationTimes}, #{communityInteractionTimes}, #{level})
+    </insert>
+
+    <update id="updateOrdinaryUser" parameterType="OrdinaryUser">
+        UPDATE ordinary_user
+        SET login_times = #{loginTimes},
+        evaluation_times = #{evaluationTimes},
+        community_interaction_times = #{communityInteractionTimes},
+        level = #{level}
+        WHERE id = #{userId}
+    </update>
+
+    <delete id="deleteOrdinaryUser" parameterType="String">
+        DELETE FROM ordinary_user
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

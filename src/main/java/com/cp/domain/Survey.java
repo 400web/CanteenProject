@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Survey {
-    private String surveyId; // 问卷id
+    private String id; // 问卷id
     private String surveyContent; // 问卷内容
     private String publisherId; // 发布人id
     private String publishTime; // 发布时间

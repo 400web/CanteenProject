@@ -11,7 +11,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class CommunityMessage {
-    private String communityMessageId;// 社区信息ID
+    private String id;// 社区信息ID
     private String publisherId; // 发布人ID
     private String publishTime; // 发布时间
     private String content; // 内容

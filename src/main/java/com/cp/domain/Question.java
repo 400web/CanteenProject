@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Question {
-    private String questionId; // 题目id
+    private String id; // 题目id
     private String surveyId; // 问卷id
     private String questionContent; // 题目内容
     private List<Option> optionList;// 选项列表

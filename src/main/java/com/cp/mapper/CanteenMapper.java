@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
-public interface CanteenMapper{
+public interface CanteenMapper {
     /**
      * 通过食堂ID获取食堂对象
      *
@@ -46,6 +46,8 @@ public interface CanteenMapper{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteCanteen(@Param("id") String id);
+
     List<Canteen> selectList();
-    List<Canteen> selectListByPage(Map<String,Object> data);
+
+    List<Canteen> selectListByPage(Map<String, Object> data);
 }

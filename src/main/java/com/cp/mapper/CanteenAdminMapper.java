@@ -1,4 +1,16 @@
 package com.cp.mapper;
 
+import com.cp.domain.Canteen;
+import com.cp.domain.CanteenAdmin;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 public interface CanteenAdminMapper{
+    CanteenAdmin selectById(@Param("id") String id);
+    List<Canteen> selectListByCanteenId(@Param("canteenId") String canteenId);
+    List<Canteen> selectList();
+    boolean addCanteenAdmin(CanteenAdmin admin);
+    boolean updateCanteenAdmin(CanteenAdmin admin);
+    boolean deleteCanteenAdmin(@Param("id") String id);
 }

@@ -6,6 +6,12 @@
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
         insert into user(username,password,phone_number,role) values (#{username},#{password},#{phoneNumber},#{role});
     </insert>
+    <update id="updateUser">
+        update user set username=#{username} ,phone_number=#{phoneNumber},password=#{password},role=#{role} where id=#{id}
+    </update>
+    <delete id="deleteUser">
+        delete from user where id = #{id}
+    </delete>
     <select id="login" resultType="user">
         select * from user where phone_number = #{phoneNumber} and password = #{password}
     </select>
@@ -17,5 +23,11 @@
     </select>
     <select id="selectByUsername" resultType="user">
         select * from user where username = #{username}
+    </select>
+    <select id="selectList" resultType="user">
+        select * from user
+    </select>
+    <select id="selectListByPage" resultType="user">
+        select * from user
     </select>
 </mapper>
