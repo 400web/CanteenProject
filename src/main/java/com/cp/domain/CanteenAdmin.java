@@ -11,6 +11,6 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class CanteenAdmin {
-    private String userId;
+    private String id;
     private String canteenId;
 }

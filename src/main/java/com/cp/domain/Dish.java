@@ -11,13 +11,13 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Dish {
-    private String dishId; // 菜品ID
+    private String id; // 菜品ID
     private String canteenId; // 食堂ID
-    private String dishName; // 菜品名称
+    private String name; // 菜品名称
     private String image; // 图片
     private String introduction; // 简介
     private double price; // 价格
     private String cuisine; // 菜系
-    private double evaluationScore; // 评价分值
-    private int evaluationWeight; // 评价权重
+    private double score; // 评价分值
+    private int weight; // 评价权重
 }

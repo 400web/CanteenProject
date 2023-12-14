@@ -11,7 +11,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class DishReview {
-    private long id;
+    private String id;
     private String evaluatorId; // 评价人id
     private String dishId; // 菜品id
     private double evaluationScore; // 评价分

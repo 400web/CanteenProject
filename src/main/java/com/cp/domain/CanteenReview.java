@@ -11,6 +11,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class CanteenReview {
+    private String id;//信息id
     private String evaluatorId; // 评价人id
     private String canteenId; // 食堂id
     private double evaluationScore; // 评价分值

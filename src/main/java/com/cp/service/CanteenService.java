@@ -5,7 +5,7 @@ import com.cp.domain.Canteen;
 import java.util.List;
 
 
-public interface CanteenService{
+public interface CanteenService {
     /**
      * 通过食堂ID获取食堂对象
      *
@@ -45,6 +45,9 @@ public interface CanteenService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteCanteen(String canteenId);
+
+    List<Canteen> getList();
+
     List<Canteen> getListByPage(int currPage, int pageSize);
 
 }

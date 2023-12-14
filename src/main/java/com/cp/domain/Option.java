@@ -11,9 +11,8 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Option {
-    private String optionId; // 选项id
+    private String id; // 选项id
     private String questionId; // 题目id
     private String optionContent; // 选项内容
     private int selectionCount; // 选择人数
-
 }

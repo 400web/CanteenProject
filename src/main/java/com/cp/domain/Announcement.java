@@ -11,6 +11,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Announcement {
+    private String id;//公告ID
     private String publisherId; // 发布人ID
     private String title; // 标题
     private String publishTime; // 发布时间

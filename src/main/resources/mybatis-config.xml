@@ -7,6 +7,11 @@
         <package name="com.cp.mapper"/>
         <package name="com.cp.domain"/>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.cp.interceptor.MyPageInterceptor">
+            <property name="dbType" value="mysql"/>
+        </plugin>
+    </plugins>
     <!-- 数据库环境配置 -->
     <environments default="development">
         <environment id="development">
@@ -26,3 +31,4 @@
         <package name="com.cp.mapper"/>
     </mappers>
 </configuration>
+

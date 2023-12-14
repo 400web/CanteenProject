@@ -1,6 +1,7 @@
 package com.cp.service;
 
 import com.cp.domain.Dish;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -37,4 +38,9 @@ public interface DishService{
      * @return 菜品列表，若不存在返回空列表
      */
     List<Dish> getDishByPrice(String minPrice, String maxPrice);
+    List<Dish> getList();
+    List<Dish> getListByPage(int currPage, int pageSize);
+    boolean addDish(Dish dish);
+    boolean updateDish(Dish dish);
+    boolean deleteDish(@Param("id") String id);
 }

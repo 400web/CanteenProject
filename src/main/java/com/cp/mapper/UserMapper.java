@@ -3,12 +3,25 @@ package com.cp.mapper;
 import com.cp.domain.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+import java.util.Map;
+
 public interface UserMapper {
-    void addUser(User user);
+    boolean addUser(User user);
+
     User login(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
 
     User selectById(@Param("id") String id);
 
     User selectByPhoneNumber(@Param("phoneNumber") String phoneNumber);
+
     User selectByUsername(@Param("username") String username);
+
+    List<User> selectList();
+
+    List<User> selectListByPage(Map<String,Object> data);
+
+    boolean deleteUser(@Param("id") String id);
+
+    boolean updateUser(User user);
 }
