@@ -19,11 +19,5 @@ public class Canteen {
     //private String closingTime;// 食堂关门时间
     private String activity;//食堂活动公告
     private int rating;// 食堂等级分
-    public Canteen(String name,String introduction,String businessTime,String activity){
-        this.activity=activity;
-        this.businessTime=businessTime;
-        this.name=name;
-        this.introduction=introduction;
-    }
 }
 
