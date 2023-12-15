@@ -34,4 +34,6 @@ public interface UserService{
      * @return {@code true} 如果成功删除用户账号信息，否则 {@code false}
      */
     boolean deleteUserAccount(String id);
+    boolean addUser(User user);
+    boolean updateUser(User user);
 }

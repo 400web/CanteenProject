@@ -30,21 +30,21 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public List<Survey> getAllSurveys() {
-        return null;
+        return surveyMapper.selectList();
     }
 
     @Override
     public boolean addSurvey(Survey survey) {
-        return false;
+        return surveyMapper.addSurvey(survey);
     }
 
     @Override
     public boolean updateSurvey(Survey survey) {
-        return false;
+        return surveyMapper.updateSurvey(survey);
     }
 
     @Override
     public boolean deleteSurvey(String surveyId) {
-        return false;
+        return surveyMapper.deleteSurvey(surveyId);
     }
 }

@@ -2,34 +2,36 @@ package com.cp.service.impl;
 
 
 import com.cp.domain.Announcement;
+import com.cp.mapper.AnnouncementMapper;
 import com.cp.service.AnnouncementService;
+import com.cp.utils.MybatisUtils;
 
 import java.util.List;
 
 public class AnnouncementServiceImpl implements AnnouncementService {
+    AnnouncementMapper announcementMapper= MybatisUtils.getMapper(AnnouncementMapper.class);
     @Override
     public Announcement getAnnouncementById(String announcementId) {
-
-        return null;
+        return announcementMapper.selectById(announcementId);
     }
 
     @Override
     public List<Announcement> getAllAnnouncements() {
-        return null;
+        return announcementMapper.selectList();
     }
 
     @Override
     public boolean addAnnouncement(Announcement announcement) {
-        return false;
+        return announcementMapper.addAnnouncement(announcement);
     }
 
     @Override
     public boolean updateAnnouncement(Announcement announcement) {
-        return false;
+        return announcementMapper.updateAnnouncement(announcement);
     }
 
     @Override
     public boolean deleteAnnouncement(String announcementId) {
-        return false;
+        return announcementMapper.deleteAnnouncement(announcementId);
     }
 }

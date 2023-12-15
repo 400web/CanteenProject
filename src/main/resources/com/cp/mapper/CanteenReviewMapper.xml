@@ -24,10 +24,10 @@
         WHERE canteen_id = #{canteenId}
     </select>
 
-    <select id="selectByEvaluatorId" resultMap="canteenReviewResultMap" parameterType="String">
+    <select id="selectListById" resultMap="canteenReviewResultMap" parameterType="String">
         SELECT id, evaluator_id, canteen_id, evaluation_score, weight
         FROM canteen_review
-        WHERE evaluator_id = #{evaluatorId}
+        WHERE evaluator_id = #{evaluatorId} AND canteen_id = #{canteenId}
     </select>
 
     <insert id="addCanteenReview" parameterType="CanteenReview">

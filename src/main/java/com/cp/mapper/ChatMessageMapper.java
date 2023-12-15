@@ -9,7 +9,7 @@ public interface ChatMessageMapper{
     ChatMessage selectById(String id);
     ChatMessage selectList();
     List<ChatMessage> selectListById(@Param("senderId") String senderId, @Param("receiverId") String receiverId);
-    ChatMessage addChatMessage(ChatMessage chatMessage);
-    ChatMessage updateChatMessage(ChatMessage ChatMessage);
-    ChatMessage deleteChatMessage(@Param("id") String id);
+    boolean addChatMessage(ChatMessage chatMessage);
+    boolean updateChatMessage(ChatMessage ChatMessage);
+    boolean deleteChatMessage(@Param("id") String id);
 }
