@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.ComplaintMapper">
+
+    <resultMap id="complaintResultMap" type="Complaint">
+        <id property="id" column="id" />
+        <result property="complainantId" column="complainant_id" />
+        <result property="canteenId" column="canteen_id" />
+        <result property="complainTime" column="complain_time" />
+        <result property="complaintInfo" column="complaint_info" />
+        <result property="feedback" column="feedback" />
+        <result property="responseInfo" column="response_info" />
+    </resultMap>
+
+    <select id="selectById" resultMap="complaintResultMap" parameterType="String">
+        SELECT id, complainant_id, canteen_id, complain_time, complaint_info, feedback, response_info
+        FROM complaint
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="complaintResultMap">
+        SELECT id, complainant_id, canteen_id, complain_time, complaint_info, feedback, response_info
+        FROM complaint
+    </select>
+
+    <select id="selectByComplainantId" resultMap="complaintResultMap" parameterType="String">
+        SELECT id, complainant_id, canteen_id, complain_time, complaint_info, feedback, response_info
+        FROM complaint
+        WHERE complainant_id = #{complainantId}
+    </select>
+
+    <select id="selectByCanteenId" resultMap="complaintResultMap" parameterType="String">
+        SELECT id, complainant_id, canteen_id, complain_time, complaint_info, feedback, response_info
+        FROM complaint
+        WHERE canteen_id = #{canteenId}
+    </select>
+
+    <insert id="addComplaint" parameterType="Complaint">
+        INSERT INTO complaint (id, complainant_id, canteen_id, complain_time, complaint_info, feedback, response_info)
+        VALUES (#{id}, #{complainantId}, #{canteenId}, #{complainTime}, #{complaintInfo}, #{feedback}, #{responseInfo})
+    </insert>
+
+    <update id="updateComplaint" parameterType="Complaint">
+        UPDATE complaint
+        SET complainant_id = #{complainantId},
+        canteen_id = #{canteenId},
+        complain_time = #{complainTime},
+        complaint_info = #{complaintInfo},
+        feedback = #{feedback},
+        response_info = #{responseInfo}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteComplaint" parameterType="String">
+        DELETE FROM complaint
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

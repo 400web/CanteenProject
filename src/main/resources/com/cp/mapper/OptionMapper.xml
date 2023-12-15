@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.OptionMapper">
+
+    <resultMap id="optionResultMap" type="Option">
+        <id property="id" column="id" />
+        <result property="questionId" column="question_id" />
+        <result property="optionContent" column="option_content" />
+        <result property="selectionCount" column="selection_count" />
+    </resultMap>
+
+    <select id="selectById" resultMap="optionResultMap" parameterType="String">
+        SELECT id, question_id, option_content, selection_count
+        FROM option
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="optionResultMap">
+        SELECT id, question_id, option_content, selection_count
+        FROM option
+    </select>
+
+    <select id="selectByQuestionId" resultMap="optionResultMap" parameterType="String">
+        SELECT id, question_id, option_content, selection_count
+        FROM option
+        WHERE question_id = #{questionId}
+    </select>
+
+    <insert id="addOption" parameterType="Option">
+        INSERT INTO option (id, question_id, option_content, selection_count)
+        VALUES (#{id}, #{questionId}, #{optionContent}, #{selectionCount})
+    </insert>
+
+    <update id="updateOption" parameterType="Option">
+        UPDATE option
+        SET question_id = #{questionId},
+        option_content = #{optionContent},
+        selection_count = #{selectionCount}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteOption" parameterType="String">
+        DELETE FROM option
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

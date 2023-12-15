@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.DishReviewMapper">
+
+    <resultMap id="dishReviewResultMap" type="DishReview">
+        <id property="id" column="id" />
+        <result property="evaluatorId" column="evaluator_id" />
+        <result property="dishId" column="dish_id" />
+        <result property="evaluationScore" column="evaluation_score" />
+        <result property="weight" column="weight" />
+    </resultMap>
+
+    <select id="selectById" resultMap="dishReviewResultMap" parameterType="String">
+        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        FROM dish_review
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="dishReviewResultMap">
+        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        FROM dish_review
+    </select>
+
+    <select id="selectByDishId" resultMap="dishReviewResultMap" parameterType="String">
+        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        FROM dish_review
+        WHERE dish_id = #{DishId}
+    </select>
+
+    <select id="selectByEvaluatorId" resultMap="dishReviewResultMap" parameterType="String">
+        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        FROM dish_review
+        WHERE evaluator_id = #{evaluatorId}
+    </select>
+
+    <insert id="addDishReview" parameterType="DishReview">
+        INSERT INTO dish_review (id, evaluator_id, dish_id, evaluation_score, weight)
+        VALUES (#{id}, #{evaluatorId}, #{dishId}, #{evaluationScore}, #{weight})
+    </insert>
+
+    <update id="updateDishReview" parameterType="DishReview">
+        UPDATE dish_review
+        SET evaluator_id = #{evaluatorId},
+            dish_id = #{dishId},
+            evaluation_score = #{evaluationScore},
+            weight = #{weight}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteDishReview" parameterType="String">
+        DELETE FROM dish_review
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

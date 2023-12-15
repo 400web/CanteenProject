@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.AnnouncementMapper">
+
+    <resultMap id="announcementResultMap" type="Announcement">
+        <id property="id" column="id" />
+        <result property="publisherId" column="publisher_id" />
+        <result property="title" column="title" />
+        <result property="publishTime" column="publish_time" />
+        <result property="content" column="content" />
+    </resultMap>
+
+    <select id="selectById" resultMap="announcementResultMap" parameterType="String">
+        SELECT id, publisher_id, title, publish_time, content
+        FROM announcement
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByPublisherId" resultMap="announcementResultMap" parameterType="String">
+        SELECT id, publisher_id, title, publish_time, content
+        FROM announcement
+        WHERE publisher_id = #{publisherId}
+    </select>
+
+    <insert id="addAnnouncement" parameterType="Announcement">
+        INSERT INTO announcement (id, publisher_id, title, publish_time, content)
+        VALUES (#{id}, #{publisherId}, #{title}, #{publishTime}, #{content})
+    </insert>
+
+    <update id="updateAnnouncement" parameterType="Announcement">
+        UPDATE announcement
+        SET publisher_id = #{publisherId},
+        title = #{title},
+        publish_time = #{publishTime},
+        content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteAnnouncement" parameterType="String">
+        DELETE FROM announcement
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

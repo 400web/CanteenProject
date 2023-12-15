@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.SurveyMapper">
+
+    <resultMap id="surveyResultMap" type="Survey">
+        <id property="id" column="id" />
+        <result property="surveyContent" column="survey_content" />
+        <result property="publisherId" column="publisher_id" />
+        <result property="publishTime" column="publish_time" />
+    </resultMap>
+
+    <select id="selectById" resultMap="surveyResultMap" parameterType="String">
+        SELECT id, survey_content, publisher_id, publish_time
+        FROM survey
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByPublisherId" resultMap="surveyResultMap" parameterType="String">
+        SELECT id, survey_content, publisher_id, publish_time
+        FROM survey
+        WHERE publisher_id = #{publisherId}
+    </select>
+
+    <select id="selectList" resultMap="surveyResultMap">
+        SELECT id, survey_content, publisher_id, publish_time
+        FROM survey
+    </select>
+
+    <insert id="addSurvey" parameterType="Survey">
+        INSERT INTO survey (id, survey_content, publisher_id, publish_time)
+        VALUES (#{id}, #{surveyContent}, #{publisherId}, #{publishTime})
+    </insert>
+
+    <update id="updateSurvey" parameterType="Survey">
+        UPDATE survey
+        SET survey_content = #{surveyContent},
+            publisher_id = #{publisherId},
+            publish_time = #{publishTime}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteSurvey" parameterType="String">
+        DELETE FROM survey
+        WHERE id = #{id}
+    </delete>
+</mapper>
