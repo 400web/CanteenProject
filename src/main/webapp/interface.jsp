@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.cp.GetCanteen" %>
 <%@ page import="com.cp.domain.Canteen" %>
+<%@ page import="com.cp.service.impl.DishServiceImpl" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,24 +11,25 @@
     <title>食堂界面</title>
 </head>
 <body>
-<%GetCanteen getCanteen=new GetCanteen();
-Canteen canteen=getCanteen.getCanteenByName("第一食堂");
-String name=canteen.getName();
-String businessTime=canteen.getBusinessTime();
-String activity=canteen.getActivity();
-String introduction=canteen.getIntroduction();
-%>
+<%--<%GetCanteen getCanteen=new GetCanteen();--%>
+<%--Canteen canteen=getCanteen.getCanteenByName("第一食堂");--%>
+<%--String name=canteen.getName();--%>
+<%--String businessTime=canteen.getBusinessTime();--%>
+<%--String activity=canteen.getActivity();--%>
+<%--String introduction=canteen.getIntroduction();--%>
+<%--%>--%>
+<%--<c: set var="name" value="${DishServiceImpl.getDishById("null")}"></c:>--%>
 <header>
     <div class="canteen-info">
-        <h1><%=name%></h1>
-        <p>运营时间: <%=businessTime%></p>
+        <h1></h1>
+        <p>运营时间: </p>
     </div>
-    <p><%=introduction%></p>
+    <p></p>
 </header>
 
 <section id="announcements">
     <h2>活动公告</h2>
-    <p><%=activity%></p>
+    <p></p>
 </section>
 
 <!-- 在菜品栏中添加图片、菜名、菜系和价格 -->
