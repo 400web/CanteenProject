@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.ChatMessageMapper">
+
+    <resultMap id="chatMessageResultMap" type="ChatMessage">
+        <id property="id" column="id" />
+        <result property="senderId" column="sender_id" />
+        <result property="receiverId" column="receiver_id" />
+        <result property="sendTime" column="send_time" />
+        <result property="messageContent" column="message_content" />
+    </resultMap>
+
+    <select id="selectById" resultMap="chatMessageResultMap" parameterType="String">
+        SELECT id, sender_id, receiver_id, send_time, message_content
+        FROM chat_message
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="chatMessageResultMap">
+        SELECT id, sender_id, receiver_id, send_time, message_content
+        FROM chat_message
+    </select>
+
+    <select id="selectListById" resultMap="chatMessageResultMap" parameterType="map">
+        SELECT id, sender_id, receiver_id, send_time, message_content
+        FROM chat_message
+        WHERE sender_id = #{senderId} AND receiver_id = #{receiverId}
+    </select>
+
+    <insert id="addChatMessage" parameterType="ChatMessage">
+        INSERT INTO chat_message (id, sender_id, receiver_id, send_time, message_content)
+        VALUES (#{id}, #{senderId}, #{receiverId}, #{sendTime}, #{messageContent})
+    </insert>
+
+    <update id="updateChatMessage" parameterType="ChatMessage">
+        UPDATE chat_message
+        SET sender_id = #{senderId},
+        receiver_id = #{receiverId},
+        send_time = #{sendTime},
+        message_content = #{messageContent}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteChatMessage" parameterType="String">
+        DELETE FROM chat_message
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

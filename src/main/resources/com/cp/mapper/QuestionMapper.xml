@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.QuestionMapper">
+
+    <resultMap id="questionResultMap" type="Question">
+        <id property="id" column="id" />
+        <result property="surveyId" column="survey_id" />
+        <result property="questionContent" column="question_content" />
+    </resultMap>
+
+    <select id="selectById" resultMap="questionResultMap" parameterType="String">
+        SELECT id, survey_id, question_content
+        FROM question
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectList" resultMap="questionResultMap">
+        SELECT id, survey_id, question_content
+        FROM question
+    </select>
+
+    <select id="selectBySurveyId" resultMap="questionResultMap" parameterType="String">
+        SELECT id, survey_id, question_content
+        FROM question
+        WHERE survey_id = #{SurveyId}
+    </select>
+
+    <insert id="addQuestion" parameterType="Question">
+        INSERT INTO question (id, survey_id, question_content)
+        VALUES (#{id}, #{surveyId}, #{questionContent})
+    </insert>
+
+    <update id="updateQuestion" parameterType="Question">
+        UPDATE question
+        SET survey_id = #{surveyId},
+        question_content = #{questionContent}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteQuestion" parameterType="String">
+        DELETE FROM question
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

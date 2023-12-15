@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cp.mapper.CommunityMessageMapper">
+
+    <resultMap id="communityMessageResultMap" type="CommunityMessage">
+        <id property="id" column="id" />
+        <result property="publisherId" column="publisher_id" />
+        <result property="publishTime" column="publish_time" />
+        <result property="content" column="content" />
+        <result property="likes" column="likes" />
+        <result property="comments" column="comments" />
+        <result property="replyMessageId" column="reply_message_id" />
+    </resultMap>
+
+    <select id="selectById" resultMap="communityMessageResultMap" parameterType="String">
+        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        FROM community_message
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectPublisherId" resultMap="communityMessageResultMap" parameterType="String">
+        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        FROM community_message
+        WHERE publisher_id = #{publisherId}
+    </select>
+
+    <select id="selectByContent" resultMap="communityMessageResultMap" parameterType="String">
+        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        FROM community_message
+        WHERE content = #{Content}
+    </select>
+
+    <select id="selectByReplyMessageId" resultMap="communityMessageResultMap" parameterType="String">
+        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        FROM community_message
+        WHERE reply_message_id = #{replyMessageId}
+    </select>
+
+    <select id="selectList" resultMap="communityMessageResultMap">
+        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        FROM community_message
+    </select>
+
+    <insert id="addCommunityMessage" parameterType="CommunityMessage">
+        INSERT INTO community_message (id, publisher_id, publish_time, content, likes, comments, reply_message_id)
+        VALUES (#{id}, #{publisherId}, #{publishTime}, #{content}, #{likes}, #{comments}, #{replyMessageId})
+    </insert>
+
+    <update id="updateCommunityMessage" parameterType="CommunityMessage">
+        UPDATE community_message
+        SET publisher_id = #{publisherId},
+        publish_time = #{publishTime},
+        content = #{content},
+        likes = #{likes},
+        comments = #{comments},
+        reply_message_id = #{replyMessageId}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteCommunityMessage" parameterType="String">
+        DELETE FROM community_message
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
