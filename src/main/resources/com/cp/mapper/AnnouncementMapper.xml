@@ -23,6 +23,10 @@
         FROM announcement
         WHERE publisher_id = #{publisherId}
     </select>
+    <select id="selectList" resultMap="announcementResultMap">
+        SELECT id, publisher_id, title, publish_time, content
+        FROM announcement
+    </select>
 
     <insert id="addAnnouncement" parameterType="Announcement">
         INSERT INTO announcement (id, publisher_id, title, publish_time, content)

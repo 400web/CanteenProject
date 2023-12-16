@@ -1,10 +1,17 @@
 package com.cp.service;
 
 import com.cp.domain.CanteenReview;
+import com.cp.mapper.CanteenReviewMapper;
 
 import java.util.List;
 
 public interface CanteenReviewService{
+    /**
+     * ID获取评价
+     * @param id 评价ID
+     * @return 评价
+     */
+    CanteenReview getCanteenReviewById(String id);
     /**
      * 获取指定食堂的所有评价
      *
@@ -25,9 +32,8 @@ public interface CanteenReviewService{
     /**
      * 删除指定用户对食堂的评价
      *
-     * @param userId    用户ID
-     * @param canteenId 食堂ID
+     * @param id  ID
      * @return 删除成功返回true，失败返回false
      */
-    boolean deleteCanteenReview(String userId, String canteenId);
+    boolean deleteCanteenReview(String id);
 }

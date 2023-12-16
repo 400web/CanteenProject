@@ -9,7 +9,7 @@ public interface DishReviewMapper{
     DishReview selectById(@Param("id") String id);
     List<DishReview> selectList();
     List<DishReview> selectByDishId(@Param("DishId") String DishId);
-    List<DishReview> selectByEvaluatorId(@Param("evaluatorId") String evaluatorId);
+    List<DishReview> selectByEvaluatorIdDishId(@Param("evaluatorId") String evaluatorId,@Param("dishId") String dishId);
     boolean addDishReview(DishReview dishReview);
     boolean updateDishReview(DishReview dishReview);
     boolean deleteDishReview(@Param("id") String id);

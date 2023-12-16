@@ -29,10 +29,10 @@
         WHERE dish_id = #{DishId}
     </select>
 
-    <select id="selectByEvaluatorId" resultMap="dishReviewResultMap" parameterType="String">
+    <select id="selectByEvaluatorIdDishId" resultMap="dishReviewResultMap" parameterType="String">
         SELECT id, evaluator_id, dish_id, evaluation_score, weight
         FROM dish_review
-        WHERE evaluator_id = #{evaluatorId}
+        WHERE evaluator_id = #{evaluatorId} AND dish_id = #{dishId}
     </select>
 
     <insert id="addDishReview" parameterType="DishReview">

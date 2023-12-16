@@ -29,4 +29,5 @@ public interface ChatMessageService {
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteChatMessage(String messageId);
+    boolean updateChatMessage(ChatMessage ChatMessage);
 }

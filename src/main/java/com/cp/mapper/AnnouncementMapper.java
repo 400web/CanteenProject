@@ -8,6 +8,7 @@ import java.util.List;
 public interface AnnouncementMapper {
     Announcement selectById(@Param("id") String id);
     List<Announcement> selectByPublisherId(@Param("publisherId") String publisherId);
+    List<Announcement> selectList();
     boolean addAnnouncement(Announcement announcement);
     boolean updateAnnouncement(Announcement announcement);
     boolean deleteAnnouncement(@Param("id") String id);
