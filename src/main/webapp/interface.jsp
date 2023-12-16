@@ -1,7 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.cp.service.impl.CanteenServiceImpl" %>
 <%@ page import="com.cp.domain.Canteen" %>
 <%@ page import="com.cp.service.impl.DishServiceImpl" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.cp.domain.Dish" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.cp.service.DishService" %>
+<%@ page import="com.cp.service.impl.CanteenReviewServiceImpl" %>
+<%@ page import="com.cp.domain.CanteenReview" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,137 +17,93 @@
     <title>食堂界面</title>
 </head>
 <body>
-<%--<%GetCanteen getCanteen=new GetCanteen();--%>
-<%--Canteen canteen=getCanteen.getCanteenByName("第一食堂");--%>
-<%--String name=canteen.getName();--%>
-<%--String businessTime=canteen.getBusinessTime();--%>
-<%--String activity=canteen.getActivity();--%>
-<%--String introduction=canteen.getIntroduction();--%>
-<%--%>--%>
-<%--<c: set var="name" value="${DishServiceImpl.getDishById("null")}"></c:>--%>
+<% String id=(String) session.getAttribute("canteenId");
+    CanteenServiceImpl canteenService=new CanteenServiceImpl();
+    Canteen canteen=canteenService.getCanteenById(id);
+    String name=canteen.getName();
+    String openTime=canteen.getOpenTime();
+    String closeTime=canteen.getCloseTime();
+    String introduction=canteen.getIntroduction();
+    String activity=canteen.getActivity();
+    session.setAttribute("canteen",canteen);
+    session.setAttribute("name",name);
+    session.setAttribute("openTime",openTime);
+    session.setAttribute("closeTime",closeTime);
+    session.setAttribute("introduction",introduction);
+    session.setAttribute("activity",activity);
+%>
 <header>
     <div class="canteen-info">
-        <h1></h1>
-        <p>运营时间: </p>
+        <h1>${name}</h1>
+        <p>: 开始营业时间：${openTime} 结束营业时间:${closeTime}</p>
     </div>
-    <p></p>
+    <p>${introduction}}</p>
 </header>
-
 <section id="announcements">
     <h2>活动公告</h2>
-    <p></p>
+    <p>${activity}</p>
 </section>
 
 <!-- 在菜品栏中添加图片、菜名、菜系和价格 -->
-<%--<section id="menu">--%>
-<%--    <h2>菜品栏</h2>--%>
-<%--    <div id="scrollable-menu" class="menu-container">--%>
-<%--        <div class="menu-column">--%>
-<%--            <div class="menu-item">--%>
-<%--                <img src="css/usst.jpg" alt="菜品1">--%>
-<%--                <div class="menu-item-details">--%>
-<%--                    <h3></h3>--%>
-<%--                    <p>菜系: 川菜</p>--%>
-<%--                    <p>价格: ¥20.00</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+<%
+    DishServiceImpl dishService=new DishServiceImpl();
+    List<Dish> dishList=dishService.getDishesByCanteenId(id);
+    session.setAttribute("dishList",dishList);
+%>
 
-<%--            <div class="menu-item">--%>
-<%--                <img src="css/usst1.jpg" alt="菜品2">--%>
-<%--                <div class="menu-item-details">--%>
-<%--                    <h3>菜品2</h3>--%>
-<%--                    <p>菜系: 粤菜</p>--%>
-<%--                    <p>价格: ¥25.00</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="menu-item">--%>
-<%--                <img src="css/usst1.jpg" alt="菜品2">--%>
-<%--                <div class="menu-item-details">--%>
-<%--                    <h3>菜品2</h3>--%>
-<%--                    <p>菜系: 粤菜</p>--%>
-<%--                    <p>价格: ¥25.00</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="menu-item">--%>
-<%--                <img src="css/usst1.jpg" alt="菜品2">--%>
-<%--                <div class="menu-item-details">--%>
-<%--                    <h3>菜品2</h3>--%>
-<%--                    <p>菜系: 粤菜</p>--%>
-<%--                    <p>价格: ¥25.00</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="menu-item">--%>
-<%--                <img src="css/usst1.jpg" alt="菜品2">--%>
-<%--                <div class="menu-item-details">--%>
-<%--                    <h3>菜品2</h3>--%>
-<%--                    <p>菜系: 粤菜</p>--%>
-<%--                    <p>价格: ¥25.00</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="menu-item">--%>
-<%--                <img src="css/usst1.jpg" alt="菜品2">--%>
-<%--                <div class="menu-item-details">--%>
-<%--                    <h3>菜品2</h3>--%>
-<%--                    <p>菜系: 粤菜</p>--%>
-<%--                    <p>价格: ¥25.00</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <!-- 添加更多菜品 -->--%>
-<%--        </div>--%>
 <section id="menu">
     <h2>菜品栏</h2>
     <div id="scrollable-menu" class="menu-container">
-        <div class="menu-column">
-            <div class="menu-item">
-                <img src="css/usst.jpg" alt="菜品1">
+            <div class="menu-item" >
+                <c:forEach var="dish" items="${dishList}">
+                    <img src="${dish.image}" alt="${dish.name}">
                 <div class="menu-item-details">
                     <h3></h3>
-                    <p>菜系: 川菜</p>
-                    <p>价格: ¥20.00</p>
+                    <p>菜系: ${dish.cuisine}</p>
+                    <p>价格: ${dish.price}</p>
                 </div>
+                </c:forEach>>
             </div>
-        </div>
-        <div class="menu-column">
-            <div class="menu-item">
-                <c:forEach var="dish" items = "">
 
-                </c:forEach>
-                <img src="css/usst.jpg" alt="菜品1">
-                <div class="menu-item-details">
-                    <h3></h3>
-                    <p>菜系: 川菜</p>
-                    <p>价格: ¥20.00</p>
-                </div>
-            </div>
-            </div>
-        <div class="menu-column">
-            <!-- 第二列菜品 -->
-            <div class="menu-item">
-                <img src="css/usst.jpg" alt="菜品1">
-                <div class="menu-item-details">
-                    <h3>菜品1</h3>
-                    <p>菜系: 粤菜</p>
-                    <p>价格: ¥20.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-item">
-                <img src="css/usst1.jpg" alt="菜品2">
-                <div class="menu-item-details">
-                    <h3>菜品2</h3>
-                    <p>菜系: 上海菜</p>
-                    <p>价格: ¥25.00</p>
-                </div>
-            </div>
+<%--            <div class="menu-item">--%>
+<%--                <img src="css/usst1.jpg" class="menu-item img" alt="菜品2">--%>
+<%--                <div class="menu-item-details">--%>
+<%--                    <h3>菜品2</h3>--%>
+<%--                    <p>菜系: 粤菜</p>--%>
+<%--                    <p>价格: ¥25.00</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="menu-item">--%>
+<%--                <img src="css/usst1.jpg" class="menu-item img" alt="菜品2">--%>
+<%--                <div class="menu-item-details">--%>
+<%--                    <h3>菜品2</h3>--%>
+<%--                    <p>菜系: 粤菜</p>--%>
+<%--                    <p>价格: ¥25.00</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--    <div class="menu-item">--%>
+<%--        <img src="css/usst1.jpg" alt="菜品2">--%>
+<%--        <div class="menu-item-details">--%>
+<%--            <h3>菜品2</h3>--%>
+<%--            <p>菜系: 粤菜</p>--%>
+<%--            <p>价格: ¥25.00</p>--%>
+<%--        </div>--%>
+<%--    </div>--%>
     </div>
 </section>
+<%CanteenReviewServiceImpl canteenReviewService=new CanteenReviewServiceImpl();
+List<CanteenReview> camteenReviewList= canteenReviewService.getReviewsByCanteenId(id);
+session.setAttribute("canteenReviewList",camteenReviewList);
+%>
 <section id="comments">
     <h2>评论区</h2>
+<%--    <c:forEach var="review" items="${canteenReviewList}">--%>
     <div id="comment-section">
-        <div class="comment">评论1</div>
-        <div class="comment">评论2</div>
+        <div class="comment">${canteenReviewList[0].evaluatorId}+${canteenReviewList[0].id}</div>
+        <div class="comment">${canteenReviewList[1].evaluatorId}+${canteenReviewList[1].id}</div>
         <a href="comments.jsp">查看更多评论</a>
     </div>
+<%--    </c:forEach>--%>
 </section>
 <%--<script src="script.js"></script>--%>
 </body>
