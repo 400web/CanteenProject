@@ -21,6 +21,9 @@
     <p>${canteen.activity}</p>
 </section>
 
+
+
+
 <!-- 在菜品栏中添加图片、菜名、菜系和价格 -->
 <section id="menu">
     <h2>菜品栏</h2>
