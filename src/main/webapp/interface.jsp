@@ -30,9 +30,9 @@
     <div id="scrollable-menu" class="menu-container">
             <div class="menu-item" >
                 <c:forEach var="dish" items="${dishList}">
-                   <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt="${dish.name}"></a>
+                   <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt=""></a>
                 <div class="menu-item-details">
-                    <h3></h3>
+                    <h3>菜名：${dish.name}</h3>
                     <p>菜系: ${dish.cuisine}</p>
                     <p>价格: ${dish.price}</p>
                 </div>

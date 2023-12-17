@@ -26,11 +26,8 @@ public class dishReviewServlet extends HttpServlet {
         Dish dish=dishService.getDishById(dishId);
         DishReviewService dishReviewService=new DishReviewServiceImpl();
         DishReview dishReview=dishReviewService.getDishReviewById(dishId);
-
-        String dishName=dish.getName();
-        String dishImag=dish.getImage();
-        String dishIntroduction=dish.getIntroduction();
-        Double dishScore=dish.getScore();
-
+        request.setAttribute("dish",dish);
+        request.setAttribute("dishReview",dishReview);
+        request.getRequestDispatcher("dishReview.jsp").forward(request,response);
     }
 }
