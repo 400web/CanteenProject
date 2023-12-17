@@ -15,7 +15,7 @@
 </head>
 <body>
 <!-- 导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)">
     <a class="navbar-brand" href="#">系统管理员</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
