@@ -36,4 +36,5 @@ public interface DishReviewService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteDishReview(String id);
+    boolean addDishReview(DishReview dishReview);
 }

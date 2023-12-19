@@ -29,4 +29,9 @@ public class DishReviewServiceImpl implements DishReviewService {
     public boolean deleteDishReview(String id) {
         return dishReviewMapper.deleteDishReview(id);
     }
+
+    @Override
+    public boolean addDishReview(DishReview dishReview) {
+        return dishReviewMapper.addDishReview(dishReview);
+    }
 }
