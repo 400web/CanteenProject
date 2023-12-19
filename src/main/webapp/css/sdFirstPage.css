@@ -3,7 +3,7 @@ body {
     background-color: #f0f0f0;
 }
 .navbar {
-    background-color: #343a40;
+    background: linear-gradient(to bottom, #fce4e4, #651616);
     border-bottom: 1px solid #dee2e6;
 }
 .navbar-brand {
@@ -64,3 +64,4 @@ body {
     transform: translate(-50%, -50%);
     z-index: 1;
 }
+
