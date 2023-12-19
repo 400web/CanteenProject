@@ -93,13 +93,12 @@
             <span class="comment-time">${dishReview.comment}</span>
         </div>
     </div>
-    <label for="username" class="form-label">用户名：</label>
-    <input type="text" id="username" name="username" class="form-control" required>
+<%--    <label for="username" class="form-label">用户名：</label>--%>
+<%--    <input type="text" id="username" name="username" class="form-control" required>--%>
     <label for="comment-content" class="form-label">评论内容：</label>
     <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
     <button id="submit-comment" class="btn btn-success" onclick="submit(${dish.id})">发表评论</button>
     <!-- 添加更多评论 -->
-
 </div>
 </body>
 </html>
