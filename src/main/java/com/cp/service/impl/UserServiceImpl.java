@@ -17,7 +17,6 @@ public class UserServiceImpl implements UserService {
             return 2;
         }
         userMapper.addUser(user);
-        MybatisUtils.commit();
         return 0;
     }
 

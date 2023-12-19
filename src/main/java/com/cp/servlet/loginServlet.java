@@ -1,7 +1,9 @@
 package com.cp.servlet;
 
 import com.cp.domain.User;
+import com.cp.service.CanteenService;
 import com.cp.service.UserService;
+import com.cp.service.impl.CanteenServiceImpl;
 import com.cp.service.impl.UserServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,7 +14,8 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "loginServlet", value = "/loginServlet")
 public class loginServlet extends HttpServlet {
-    UserService userService=new UserServiceImpl();
+    UserService userService = new UserServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
@@ -25,16 +28,21 @@ public class loginServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String password = request.getParameter("password");
 
-        User user =userService.login(phoneNumber,password);
-        if(user==null){
+        User user = userService.login(phoneNumber, password);
+        if (user == null) {
             String msg = "电话或密码错误";
-            request.setAttribute("msg",msg);
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            request.setAttribute("msg", msg);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
         HttpSession session = request.getSession();
-        session.setAttribute("User",user);
-        //注册成功跳转食堂界面
-        //request.getRequestDispatcher("success.jsp").forward(request,response);
+        session.setAttribute("User", user);
+        if (user.getRole().equals("管理员")) {
+            CanteenService canteenService = new CanteenServiceImpl();
+            request.setAttribute("canteenList", canteenService.getList());
+            request.getRequestDispatcher("sdFirstPage.jsp").forward(request, response);
+            return;
+        }
+        request.getRequestDispatcher("homePage.jsp").forward(request, response);
     }
 }

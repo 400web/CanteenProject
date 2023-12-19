@@ -7,55 +7,66 @@
     <resultMap id="communityMessageResultMap" type="CommunityMessage">
         <id property="id" column="id" />
         <result property="publisherId" column="publisher_id" />
+        <result property="name" column="name"/>
         <result property="publishTime" column="publish_time" />
         <result property="content" column="content" />
         <result property="likes" column="likes" />
         <result property="comments" column="comments" />
+        <result property="hot" column="hot"/>
         <result property="replyMessageId" column="reply_message_id" />
+        <result property="parentId" column="parent_id"/>
     </resultMap>
 
     <select id="selectById" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE id = #{id}
     </select>
 
     <select id="selectPublisherId" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE publisher_id = #{publisherId}
     </select>
 
     <select id="selectByContent" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE content = #{Content}
     </select>
 
-    <select id="selectByReplyMessageId" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+    <select id="selectByReplyId" resultMap="communityMessageResultMap" parameterType="String">
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE reply_message_id = #{replyMessageId}
     </select>
 
     <select id="selectList" resultMap="communityMessageResultMap">
-        SELECT id, publisher_id, publish_time, content, likes, comments, reply_message_id
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
     </select>
+    <select id="selectByParentId" resultMap="communityMessageResultMap">
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
+        FROM community_message
+        WHERE parent_id = #{parentId}
+    </select>
 
-    <insert id="addCommunityMessage" parameterType="CommunityMessage">
-        INSERT INTO community_message (id, publisher_id, publish_time, content, likes, comments, reply_message_id)
-        VALUES (#{id}, #{publisherId}, #{publishTime}, #{content}, #{likes}, #{comments}, #{replyMessageId})
+    <insert id="addCommunityMessage" parameterType="CommunityMessage" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO community_message (id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id)
+        VALUES (#{id}, #{publisherId},#{name} ,#{publishTime}, #{content}, #{likes}, #{comments},#{hot} ,#{replyMessageId},#{parentId})
     </insert>
 
     <update id="updateCommunityMessage" parameterType="CommunityMessage">
         UPDATE community_message
         SET publisher_id = #{publisherId},
+        name = #{name},
         publish_time = #{publishTime},
         content = #{content},
         likes = #{likes},
         comments = #{comments},
-        reply_message_id = #{replyMessageId}
+        hot = #{hot},
+        reply_message_id = #{replyMessageId},
+        parent_id = #{parentId}
         WHERE id = #{id}
     </update>
 
