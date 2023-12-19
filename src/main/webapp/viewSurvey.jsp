@@ -1,5 +1,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%--
   Created by IntelliJ IDEA.
   User: dfydn92
@@ -12,7 +14,7 @@
 <html>
 <head>
     <title>问卷列表</title>
-    <link rel="stylesheet" href="css/questionnaire.css">
+    <link rel="stylesheet" href="css/viewSurvey.css">
     <link rel="stylesheet" href=css/homePage.css>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -42,7 +44,7 @@
                 <a class="nav-link" href="#community">社区</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>
+                <a class="nav-link" href="questionnaireServlet">问卷</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#account-management">账号管理</a>
@@ -55,24 +57,35 @@
 <!-- 分隔线与标题 -->
 <div class="container" >
     <div class="section-divider" style="color: red">
-        <div class="section-title" style="color: #051b11"> ${survey.surveyContent}</div>
+        <div class="section-title" style="color: #051b11"> 调查问卷</div>
     </div>
 </div>
 
-<div class="question-container">
+
     <h2>${survey.surveyContent}</h2>
-    <p>发布时间：${survey.publishTime}</p>
+    <p class="publish-date">发布时间：${survey.publishTime}</p>
 
-    <c:forEach var="question" items="${survey.questionList}">
-        <div class="question-title">${question.questionContent}</div>
-        <c:forEach var="option" items="${question.optionList}">
-            <div class="option">
-                <span class="option-text">${option.optionContent}</span>
-            </div>
-        </c:forEach>
-    </c:forEach>
+<form action="submitSurveyServlet?id=${survey.id}" method="get">
+    <c:forEach var="question" items="${survey.questionList}" varStatus="qStatus">
+        <div class="question1">
+<div class="question">
+    <div class="question-title">${qStatus.index + 1}. ${question.questionContent}</div>
+
 </div>
-
+      <c:forEach var="option" items="${question.optionList}" varStatus="status">
+          <div class="option">
+              <label>
+                  <input type="radio" name="question${question.id}" value="${option.id}">
+                      ${fn:toUpperCase(fn:substring('ABCD', status.index, status.index + 1))}. ${option.optionContent}
+              </label>
+          </div>
+       </c:forEach>
+        </div>
+    </c:forEach>
+        <div class="submit-button-container">
+            <button type="submit" class="submit-button">提交</button>
+        </div>
+</form>
 </body>
 </html>
 
