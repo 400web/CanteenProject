@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,39 +19,42 @@
 <div id="comments-section">
     <div class="comment">
         <div class="comment-header">
-            <span class="user-name">用户1</span>
-            <span class="comment-time">发表于：2023-01-01 12:00</span>
+            <c:forEach var="canteenReview" items="${canteenReviewList}">
+            <span class="user-name">${canteenReview.username}</span>
+            <span class="comment-time">发表于：${canteenReview.time}</span>
+
         </div>
         <div class="comment-content">
-            这是第一条评论的内容。别人给这条评论的回复将会在点击"显示回复"时展示。
-            <button class="reply-button" onclick="toggleReplies(this)">显示回复</button>
-            <div class="replies hidden">
-                <div class="reply">
-                    <span class="user-name">用户2</span>
-                    <span class="comment-time">回复于：2023-01-01 12:05</span>
-                    <div class="reply-content">这是对第一条评论的回复。</div>
-                </div>
-                <!-- 可添加更多回复 -->
-            </div>
-        </div>
+            <span>${canteenReview.review}</span>
+<%--            这是第一条评论的内容。别人给这条评论的回复将会在点击"显示回复"时展示。--%>
+<%--            <button class="reply-button" onclick="toggleReplies(this)">显示回复</button>--%>
+<%--            <div class="replies hidden">--%>
+<%--                <div class="reply">--%>
+<%--                    <span class="user-name">用户2</span>--%>
+<%--                    <span class="comment-time">回复于：2023-01-01 12:05</span>--%>
+<%--                    <div class="reply-content">这是对第一条评论的回复。</div>--%>
+<%--                </div>--%>
+<%--                <!-- 可添加更多回复 -->--%>
+<%--            </div>--%>
+<%--        </div>--%>
+            </c:forEach>
     </div>
 
     <!-- 添加更多评论 -->
 
 </div>
 
-<div id="comment-form">
-    <h3>发表评论</h3>
-    <form action="#" method="post">
-        <label for="user-name">用户名：</label>
-        <input type="text" id="user-name" name="user-name" required>
-        <label for="comment-content">评论内容：</label>
-        <textarea id="comment-content" name="comment-content" required></textarea>
-        <button type="submit">发表评论</button>
-    </form>
-</div>
+<%--<div id="comment-form">--%>
+<%--    <h3>发表评论</h3>--%>
+<%--    <form action="" method="post">--%>
+<%--        <label for="comment-content">评论内容：</label>--%>
+<%--        <textarea id="comment-content" name="comment-content" required></textarea>--%>
+<%--        <button type="submit">发表评论</button>--%>
+<%--    </form>--%>
+<%--</div>--%>
 
-<script src="javascript/comment-script.js"></script>
+<%--<script src="javascript/comment-script.js"></script>--%>
+</div>
 </body>
 </html>
 

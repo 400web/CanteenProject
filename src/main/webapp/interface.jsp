@@ -5,17 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/interfaceStyles.css">
     <title>食堂界面</title>
 </head>
 <body>
-<header>
-    <div class="canteen-info">
-        <h1>${canteen.name}</h1>
-        <p>: 开始营业时间：${canteen.openingTime} 结束营业时间:${canteen.closeingTime}</p>
-    </div>
-    <p>${canteen.introduction}}</p>
-</header>
+<%--<header>--%>
+<%--    <div class="canteen-info">--%>
+<%--        <h1>${canteen.name}</h1>--%>
+<%--        <p>开始营业时间：${canteen.openingTime} 结束营业时间:${canteen.closeingTime}</p>--%>
+<%--    </div>--%>
+<%--    <p>${canteen.introduction}</p>--%>
+<%--</header>--%>
+<section id="announcements">
+    <h2>食堂简介</h2>
+    <p>${canteen.introduction}</p>
+</section>
 <section id="announcements">
     <h2>活动公告</h2>
     <p>${canteen.activity}</p>
@@ -46,7 +50,7 @@
     <div id="comment-section">
         <div class="comment">${canteenReviewList[0].evaluatorId}:${canteenReviewList[0].id}</div>
         <div class="comment">${canteenReviewList[1].evaluatorId}:${canteenReviewList[1].id}</div>
-        <a href="comments.jsp">查看更多食堂评论</a>
+        <a href="comments.jsp？canteenReviewList=${canteenReviewList}">查看更多食堂评论</a>
     </div>
 </section>
 

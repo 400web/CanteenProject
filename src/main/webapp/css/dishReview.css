@@ -1,0 +1,64 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.dish-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.dish-image {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.dish-info {
+    margin-top: 10px;
+}
+
+.dish-info h2 {
+    margin: 0;
+    color: #333;
+}
+
+.dish-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.review-section {
+    margin-top: 20px;
+}
+
+.user-review {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.user-review h3 {
+    margin: 0;
+    color: #333;
+}
+
+.user-review p {
+    margin: 5px 0;
+    color: #666;
+}
