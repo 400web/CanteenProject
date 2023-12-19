@@ -11,6 +11,8 @@ public interface CommunityMessageService{
      * @return 社区消息列表
      */
     List<CommunityMessage> getCommunityMessages();
+    List<CommunityMessage> getListByReplyId(String replyId);
+    List<CommunityMessage> getListByParentId(String parentId);
 
     /**
      * 根据消息ID获取社区消息
@@ -35,4 +37,5 @@ public interface CommunityMessageService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteCommunityMessage(String messageId);
+    boolean updateCommunityMessage(CommunityMessage communityMessage);
 }

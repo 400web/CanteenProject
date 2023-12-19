@@ -15,6 +15,16 @@ public class CommunityMessageServiceImpl implements CommunityMessageService {
     }
 
     @Override
+    public List<CommunityMessage> getListByReplyId(String replyId) {
+        return communityMessageMapper.selectByReplyId(replyId);
+    }
+
+    @Override
+    public List<CommunityMessage> getListByParentId(String parentId) {
+        return communityMessageMapper.selectByParentId(parentId);
+    }
+
+    @Override
     public CommunityMessage getCommunityMessageById(String messageId) {
         return communityMessageMapper.selectById(messageId);
     }
@@ -27,5 +37,10 @@ public class CommunityMessageServiceImpl implements CommunityMessageService {
     @Override
     public boolean deleteCommunityMessage(String messageId) {
         return communityMessageMapper.deleteCommunityMessage(messageId);
+    }
+
+    @Override
+    public boolean updateCommunityMessage(CommunityMessage communityMessage) {
+        return communityMessageMapper.updateCommunityMessage(communityMessage);
     }
 }

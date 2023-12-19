@@ -21,18 +21,18 @@
             <span class="user-name">用户1</span>
             <span class="comment-time">发表于：2023-01-01 12:00</span>
         </div>
-<%--        <div class="comment-content">--%>
-<%--            这是第一条评论的内容。别人给这条评论的回复将会在点击"显示回复"时展示。--%>
-<%--            <button class="reply-button" onclick="toggleReplies(this)">显示回复</button>--%>
-<%--            <div class="replies hidden">--%>
-<%--                <div class="reply">--%>
-<%--                    <span class="user-name">用户2</span>--%>
-<%--                    <span class="comment-time">回复于：2023-01-01 12:05</span>--%>
-<%--                    <div class="reply-content">这是对第一条评论的回复。</div>--%>
-<%--                </div>--%>
-<%--                <!-- 可添加更多回复 -->--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <div class="comment-content">
+            这是第一条评论的内容。别人给这条评论的回复将会在点击"显示回复"时展示。
+            <button class="reply-button" onclick="toggleReplies(this)">显示回复</button>
+            <div class="replies hidden">
+                <div class="reply">
+                    <span class="user-name">用户2</span>
+                    <span class="comment-time">回复于：2023-01-01 12:05</span>
+                    <div class="reply-content">这是对第一条评论的回复。</div>
+                </div>
+                <!-- 可添加更多回复 -->
+            </div>
+        </div>
     </div>
 
     <!-- 添加更多评论 -->

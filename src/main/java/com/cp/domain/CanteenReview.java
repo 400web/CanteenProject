@@ -16,6 +16,4 @@ public class CanteenReview {
     private String canteenId; // 食堂id
     private double evaluationScore; // 评价分值
     private double weight; // 权重
-
-
 }

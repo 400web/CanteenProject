@@ -12,15 +12,8 @@
     <meta charset="UTF-8">
     <title>学生页面</title>
     <link rel="stylesheet" href=css/homePage.css>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入 Bootstrap 样式表 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- 引入 Bootstrap 的 JavaScript 和 Popper.js（注意顺序） -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <!-- 导航栏 -->
@@ -29,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#home">首页</a>
+                <a class="nav-link" href="#" onclick="switchContent('content1');">首页</a>
             </li>
             <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,6 +38,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#community">社区</a>
+            </li>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>--%>
+<%--            </li>--%>
+            <li class="nav-item">
+                <a class="nav-link" href="questionnaireServlet">问卷</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#account-management">账号管理</a>
@@ -99,9 +98,23 @@
     </div>
 </section>
 
-<%--//嵌套主界面的jsp--%>
-<jsp:include page="interface.jsp" />
 
+<%--//嵌套主界面的jsp--%>
+<div id="content1" style="display: block;">
+    <%-- 内嵌JSP页面1的内容 --%>
+    <jsp:include page="interface.jsp"/>
+</div>
+<div id="content2" style="display: none;">
+    <%-- 内嵌JSP页面2的内容 --%>
+    <jsp:include page="questionnaire.jsp"/>
+</div>
+<%--<jsp:include page="questionnaire.jsp"/>--%>
+
+<script>
+    function switchContent(contentId) {
+    document.getElementById("content1").style.display = (contentId === "content1") ? "block" : "none";
+    document.getElementById("content2").style.display = (contentId === "content2") ? "block" : "none";
+}</script>
 
 
     <!-- 分页栏 -->

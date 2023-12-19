@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#home">首页</a>
+                <a class="nav-link" href="sdFirstPage.jsp">首页</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#complaints">投诉信息</a>
@@ -29,7 +29,7 @@
                 <a class="nav-link" href="#community">社区</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#account-management">账号管理</a>
+                <a class="nav-link" href="account-management.jsp">账号管理</a>
             </li>
         </ul>
     </div>
@@ -40,13 +40,13 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="image1.jpg" class="d-block w-100" alt="...">
+                <img src="css/usst.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="image2.jpg" class="d-block w-100" alt="...">
+                <img src="css/usst1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="image3.jpg" class="d-block w-100" alt="...">
+                <img src="css/usst3.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
     </div>
@@ -63,32 +63,46 @@
 <section class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 canteen-card">
-            <img src="canteen1.jpg" alt="食堂1">
-            <h4>食堂名称1</h4>
+            <a class="nav-link" href="canteen_detail.jsp?id=1">
+                <img src="canteen1.jpg" alt="食堂1">
+                <h4>食堂名称1</h4>
+            </a>
         </div>
         <div class="col-md-3 canteen-card">
-            <img src="canteen2.jpg" alt="食堂2">
-            <h4>食堂名称2</h4>
+            <a class="nav-link" href="canteen_detail.jsp?id=2">
+                <img src="canteen2.jpg" alt="食堂2">
+                <h4>食堂名称2</h4>
+            </a>
+
         </div>
-        <div class="col-md-3 canteen-card">
-            <img src="canteen3.jpg" alt="食堂3">
-            <h4>食堂名称3</h4>
+        <div  class="col-md-3 canteen-card">
+            <a class="nav-link" href="canteen_detail.jsp?id=3">
+                <img src="canteen3.jpg" alt="食堂3">
+                <h4>食堂名称3</h4>
+            </a>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-3 canteen-card">
-            <img src="canteen4.jpg" alt="食堂4">
-            <h4>食堂名称4</h4>
+            <a class="nav-link" href="canteen_detail.jsp?id=4">
+                <img src="canteen4.jpg" alt="食堂4">
+                <h4>食堂名称4</h4>
+            </a>
         </div>
         <div class="col-md-3 canteen-card">
-            <img src="canteen5.jpg" alt="食堂5">
-            <h4>食堂名称5</h4>
+            <a class="nav-link" href="canteen_detail.jsp?id=5">
+                <img src="canteen5.jpg" alt="食堂5">
+                <h4>食堂名称5</h4>
+            </a>
         </div>
         <div class="col-md-3 canteen-card">
-            <img src="canteen6.jpg" alt="食堂6">
-            <h4>食堂名称6</h4>
+            <a class="nav-link" href="canteen_detail.jsp?id=6">
+                <img src="canteen6.jpg" alt="食堂6">
+                <h4>食堂名称6</h4>
+            </a>
         </div>
     </div>
+</section>
 
     <!-- 分页栏 -->
     <nav aria-label="Page navigation example" class="col-md-12">
@@ -104,9 +118,6 @@
             </li>
         </ul>
     </nav>
-
-
-</section>
 <!-- 引入Bootstrap的JavaScript库 -->
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
