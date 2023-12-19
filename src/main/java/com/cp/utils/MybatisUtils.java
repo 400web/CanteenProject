@@ -27,7 +27,7 @@ public class MybatisUtils {
     private static SqlSession openSession(){
         SqlSession session = tl.get();
         if(session == null){
-            session = factory.openSession();
+            session = factory.openSession(true);
             tl.set(session);
         }
         return session;
