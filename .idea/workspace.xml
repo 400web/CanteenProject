@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="食堂管理员界面">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/comments.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/comments-styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/interface.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/javascript/comment-script.js" afterDir="false" />
+    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="食堂">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bb0dc4ed-e987-4228-9085-6d0eaa0caf5e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bb0dc4ed-e987-4228-9085-6d0eaa0caf5e/storage_v2/_src_/schema/canteen.qlrTIA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Class" />
+        <option value="Servlet" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -69,6 +69,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -79,7 +82,11 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\11930\Desktop\CanteenProject2\src\main\webapp\WEB-INF\lib" />
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.cp" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
@@ -233,7 +240,22 @@
       <workItem from="1702208744996" duration="48000" />
       <workItem from="1702208857644" duration="3580000" />
       <workItem from="1702287601559" duration="1227000" />
-      <workItem from="1702393790663" duration="8032000" />
+      <workItem from="1702393790663" duration="8271000" />
+      <workItem from="1702471675739" duration="7710000" />
+      <workItem from="1702533415714" duration="484000" />
+      <workItem from="1702561346125" duration="2441000" />
+      <workItem from="1702564539117" duration="2391000" />
+      <workItem from="1702568928158" duration="4795000" />
+      <workItem from="1702606289791" duration="2638000" />
+      <workItem from="1702609043543" duration="133000" />
+      <workItem from="1702610239963" duration="1263000" />
+      <workItem from="1702612528563" duration="3410000" />
+      <workItem from="1702617628031" duration="15000" />
+      <workItem from="1702725486278" duration="1384000" />
+      <workItem from="1702727394757" duration="2809000" />
+      <workItem from="1702730237569" duration="10132000" />
+      <workItem from="1702824873955" duration="6016000" />
+      <workItem from="1702887997292" duration="2561000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -307,7 +329,95 @@
       <option name="project" value="LOCAL" />
       <updated>1702396492639</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="食堂管理员界面">
+      <option name="closed" value="true" />
+      <created>1702402678491</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702402678491</updated>
+    </task>
+    <task id="LOCAL-00011" summary="食堂界面">
+      <option name="closed" value="true" />
+      <created>1702568476625</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1702568476625</updated>
+    </task>
+    <task id="LOCAL-00012" summary="食堂界面">
+      <option name="closed" value="true" />
+      <created>1702572540661</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1702572540661</updated>
+    </task>
+    <task id="LOCAL-00013" summary="食堂界面">
+      <option name="closed" value="true" />
+      <created>1702608788457</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1702608788457</updated>
+    </task>
+    <task id="LOCAL-00014" summary="食堂界面">
+      <option name="closed" value="true" />
+      <created>1702608833491</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1702608833491</updated>
+    </task>
+    <task id="LOCAL-00015" summary="食堂">
+      <option name="closed" value="true" />
+      <created>1702613335073</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1702613335073</updated>
+    </task>
+    <task id="LOCAL-00016" summary="食堂">
+      <option name="closed" value="true" />
+      <created>1702740145762</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1702740145763</updated>
+    </task>
+    <task id="LOCAL-00017" summary="食堂">
+      <option name="closed" value="true" />
+      <created>1702824964611</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1702824964611</updated>
+    </task>
+    <task id="LOCAL-00018" summary="食堂">
+      <option name="closed" value="true" />
+      <created>1702828982353</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1702828982353</updated>
+    </task>
+    <task id="LOCAL-00019" summary="食堂">
+      <option name="closed" value="true" />
+      <created>1702830770227</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1702830770227</updated>
+    </task>
+    <task id="LOCAL-00020" summary="食堂">
+      <option name="closed" value="true" />
+      <created>1702831995409</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1702831995409</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,6 +437,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="登录界面" />
     <MESSAGE value="食堂管理员界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="食堂管理员界面" />
+    <MESSAGE value="食堂界面" />
+    <MESSAGE value="食堂" />
+    <option name="LAST_COMMIT_MESSAGE" value="食堂" />
   </component>
 </project>
