@@ -36,11 +36,12 @@
                     食堂
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#canteen1">食堂1</a>
-                    <a class="dropdown-item" href="#canteen2">食堂2</a>
-                    <a class="dropdown-item" href="#canteen3">食堂3</a>
+                    <a class="dropdown-item" href="#canteen1" data-canteen="1">食堂1</a>
+                    <a class="dropdown-item" href="#canteen2" data-canteen="2">食堂2</a>
+                    <a class="dropdown-item" href="#canteen3" data-canteen="3">食堂3</a>
                     <!-- 添加更多食堂选项 -->
                 </div>
+
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#community">社区</a>
@@ -52,60 +53,56 @@
     </div>
 </nav>
 
+
+<!-- 分隔线与标题 -->
+<div class="container" >
+    <div class="section-divider" style="color: red">
+        <div class="section-title" style="color: #051b11">食堂菜品</div>
+    </div>
+</div>
+<script>
+    // 获取所有具有data-canteen属性的链接元素
+    const canteenLinks = document.querySelectorAll('[data-canteen]');
+
+    // 获取用于显示食堂的元素
+    const canteenTitle = document.querySelector('.section-title');
+
+    // 添加点击事件处理程序以更新食堂菜品位置的文本
+    canteenLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault(); // 防止链接跳转
+
+            // 获取所选食堂的值
+            const selectedCanteen = this.getAttribute('data-canteen');
+
+            // 更新食堂菜品位置的文本
+            canteenTitle.textContent = "第" + selectedCanteen + "食堂";
+        });
+    });
+</script>
+
+
 <!-- 轮播图 -->
 <section id="home" class="container-fluid">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="image1.jpg" class="d-block w-100" alt="...">
+                <img src="css/usst.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="image2.jpg" class="d-block w-100" alt="...">
+                <img src="css/usst1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="image3.jpg" class="d-block w-100" alt="...">
+                <img src="css/usst2.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
     </div>
 </section>
 
-<!-- 分隔线与标题 -->
-<div class="container">
-    <div class="section-divider">
-        <div class="section-title">食堂菜品</div>
-    </div>
-</div>
+<%--//嵌套主界面的jsp--%>
+<jsp:include page="interface.jsp" />
 
 
-<section class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-3 canteen-card">
-            <img src="canteen1.jpg" alt="食堂1">
-            <h4>食堂名称1</h4>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <img src="canteen2.jpg" alt="食堂2">
-            <h4>食堂名称2</h4>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <img src="canteen3.jpg" alt="食堂3">
-            <h4>食堂名称3</h4>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-3 canteen-card">
-            <img src="canteen4.jpg" alt="食堂4">
-            <h4>食堂名称4</h4>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <img src="canteen5.jpg" alt="食堂5">
-            <h4>食堂名称5</h4>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <img src="canteen6.jpg" alt="食堂6">
-            <h4>食堂名称6</h4>
-        </div>
-    </div>
 
     <!-- 分页栏 -->
     <nav aria-label="Page navigation example" class="col-md-12">

@@ -21,15 +21,18 @@
     <p>${canteen.activity}</p>
 </section>
 
+
+
+
 <!-- 在菜品栏中添加图片、菜名、菜系和价格 -->
 <section id="menu">
     <h2>菜品栏</h2>
     <div id="scrollable-menu" class="menu-container">
             <div class="menu-item" >
                 <c:forEach var="dish" items="${dishList}">
-                   <img src="${dish.image}" alt="${dish.name}">
+                   <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt=""></a>
                 <div class="menu-item-details">
-                    <h3></h3>
+                    <h3>菜名：${dish.name}</h3>
                     <p>菜系: ${dish.cuisine}</p>
                     <p>价格: ${dish.price}</p>
                 </div>
@@ -41,8 +44,8 @@
     <h2>评论区</h2>
 <%--    <c:forEach var="review" items="${canteenReviewList}">--%>
     <div id="comment-section">
-        <div class="comment">${canteenReviewList[0].evaluatorId}+:+${canteenReviewList[0].id}</div>
-        <div class="comment">${canteenReviewList[1].evaluatorId}+${canteenReviewList[1].id}</div>
+        <div class="comment">${canteenReviewList[0].evaluatorId}:${canteenReviewList[0].id}</div>
+        <div class="comment">${canteenReviewList[1].evaluatorId}:${canteenReviewList[1].id}</div>
         <a href="comments.jsp">查看更多食堂评论</a>
     </div>
 </section>
