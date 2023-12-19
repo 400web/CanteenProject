@@ -30,4 +30,9 @@ public class CanteenReviewServiceImpl implements CanteenReviewService {
         return canteenReviewMapper.deleteCanteenReview(id);
     }
 
+    @Override
+    public boolean addCanteenReview(CanteenReview canteenReview) {
+        return canteenReviewMapper.addCanteenReview(canteenReview);
+    }
+
 }

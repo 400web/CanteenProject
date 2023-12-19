@@ -36,4 +36,5 @@ public interface CanteenReviewService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteCanteenReview(String id);
+    boolean addCanteenReview(CanteenReview canteenReview);
 }
