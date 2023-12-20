@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 11930
@@ -7,12 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/comments-styles.css">
+    <link rel="stylesheet" href="css/comments.css">
     <title>评论页面</title>
 </head>
 <script>
@@ -82,28 +80,30 @@
     }
 </script>
 <body>
-<div id="comments-section">
-    <div class="comment">
-        <c:forEach var="canteenReview" items="${canteenReviewList}">
-        <div class="comment-header">
-            <span class="user-name">${canteenReview.name}</span>
-            <span class="comment-time">发表于：${canteenReview.time}</span>
-            <span class="comment">${canteenReview.comment}</span>
-        </div>
-        </c:forEach>
-    </div>
-
-    <!-- 添加更多评论 -->
-
+<div>
+    <h1>
+        食堂评论区
+    </h1>
 </div>
-
-<label for="username" class="form-label">用户名：</label>
-<input type="text" id="username" name="username" class="form-control" required>
-<label for="comment-content" class="form-label">评论内容：</label>
-<textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
-<button id="submit-comment" class="btn btn-success" onclick="submit(${dish.id})">发表评论</button>
-
-<script src="javascript/comment-script.js"></script>
+<div class="container">
+    <div class="comment-section">
+        <c:forEach var="canteenReveiw" items="${canteenReviewList}">
+            <div class="user-comment">
+                <h3>${canteenReveiw.name}</h3>
+                <p>${canteenReveiw.comment}</p>
+            </div>
+        </c:forEach>
+        <!-- 可以继续添加更多评论 -->
+    </div>
+    <%--    <label for="username" class="form-label">用户名：</label>--%>
+    <%--    <input type="text" id="username" name="username" class="form-control" required>--%>
+    <div class="add-comment">
+        <%--    <label for="comment-content" class="form-label">评论内容：</label>--%>
+        <textarea class="comment-textarea" placeholder="输入你的评论"></textarea>
+        <button class="comment-button" onclick="submit(${dish.id})">发表评论</button>
+        <!-- 添加更多评论 -->
+    </div>
+</div>
 </body>
 </html>
 

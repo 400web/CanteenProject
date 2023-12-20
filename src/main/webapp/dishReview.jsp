@@ -9,6 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link rel="stylesheet" href="css/dishReview.css">
     <title>菜品评价界面</title>
 </head>
 <script>
@@ -88,6 +89,7 @@
 <%--    </div>--%>
 <%--</div>--%>
 <div class="container">
+
     <div class="dish-card">
         <img class="dish-image" src="${dish.image}" alt="菜品图片">
         <div class="dish-details">
@@ -116,10 +118,12 @@
     </div>
 <%--    <label for="username" class="form-label">用户名：</label>--%>
 <%--    <input type="text" id="username" name="username" class="form-control" required>--%>
-    <label for="comment-content" class="form-label">评论内容：</label>
-    <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
-    <button id="submit-comment" class="btn btn-success" onclick="submit(${dish.id})">发表评论</button>
+    <div class="add-comment">
+<%--    <label for="comment-content" class="form-label">评论内容：</label>--%>
+    <textarea class="comment-textarea" placeholder="输入你的评论"></textarea>
+    <button class="comment-button" onclick="submit(${dish.id})">发表评论</button>
     <!-- 添加更多评论 -->
+    </div>
 </div>
 </body>
 </html>
