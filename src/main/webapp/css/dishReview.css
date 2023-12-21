@@ -102,3 +102,29 @@ section {
     border-radius: 4px;
     cursor: pointer;
 }
+/*ul, li {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+/*li {*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*.rating {*/
+/*    width: 130px;*/
+/*    height: 26px;*/
+/*    margin: 100px auto;*/
+/*}*/
+
+/*.rating-item {*/
+/*    float: left;*/
+/*    width: 26px;*/
+/*    height: 26px;*/
+/*    background: url("usst.jpg") no-repeat;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.fa-star.selected {*/
+/*    color: gold;  !* 或者你想要的亮的颜色 *!*/
+/*}*/
+

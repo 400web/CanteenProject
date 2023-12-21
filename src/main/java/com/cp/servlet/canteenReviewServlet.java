@@ -14,11 +14,6 @@ import java.util.List;
 public class canteenReviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String canteenId=request.getParameter("canteenId");
         CanteenReviewService canteenReviewService=new CanteenReviewServiceImpl();
         List<CanteenReview> canteenReviewList=canteenReviewService.getReviewsByCanteenId(canteenId);
@@ -26,6 +21,11 @@ public class canteenReviewServlet extends HttpServlet {
         request.setAttribute("canteenId",canteenId);
         RequestDispatcher dispatcher= request.getRequestDispatcher("comments.jsp");
         dispatcher.forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }
