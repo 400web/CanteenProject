@@ -19,10 +19,13 @@ public class canteenReviewServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String canteenId=request.getParameter("canteenId");
-            CanteenReviewService canteenReviewService=new CanteenReviewServiceImpl();
-            List<CanteenReview> canteenReviewList=canteenReviewService.getReviewsByCanteenId(canteenId);
-            request.setAttribute("canteenReviewList",canteenReviewList);
-            request.getRequestDispatcher("comments.jsp").forward(request,response);
+        String canteenId=request.getParameter("canteenId");
+        CanteenReviewService canteenReviewService=new CanteenReviewServiceImpl();
+        List<CanteenReview> canteenReviewList=canteenReviewService.getReviewsByCanteenId(canteenId);
+        request.setAttribute("canteenReviewList",canteenReviewList);
+        request.setAttribute("canteenId",canteenId);
+        RequestDispatcher dispatcher= request.getRequestDispatcher("comments.jsp");
+        dispatcher.forward(request,response);
+
     }
 }

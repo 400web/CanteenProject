@@ -100,7 +100,7 @@
     <div class="add-comment">
         <%--    <label for="comment-content" class="form-label">评论内容：</label>--%>
         <textarea class="comment-textarea" placeholder="输入你的评论"></textarea>
-        <button class="comment-button" onclick="submit(${dish.id})">发表评论</button>
+        <button class="comment-button" onclick="submit(${canteenid})">发表评论</button>
         <!-- 添加更多评论 -->
     </div>
 </div>
