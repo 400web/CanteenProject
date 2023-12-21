@@ -23,6 +23,6 @@ public class canteenReviewServlet extends HttpServlet {
             CanteenReviewService canteenReviewService=new CanteenReviewServiceImpl();
             List<CanteenReview> canteenReviewList=canteenReviewService.getReviewsByCanteenId(canteenId);
             request.setAttribute("canteenReviewList",canteenReviewList);
-            request.getRequestDispatcher("canteenReview.jsp").forward(request,response);
+            request.getRequestDispatcher("comments.jsp").forward(request,response);
     }
 }
