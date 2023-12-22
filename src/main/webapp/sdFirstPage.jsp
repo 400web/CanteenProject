@@ -15,6 +15,45 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .add-button {
+            width: 300px;
+            height: 300px;
+            border: 1px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .add-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-line, .vertical-line {
+            position: absolute;
+            background-color: #ccc;
+            z-index: 1;
+        }
+
+        .horizontal-line {
+            width: 80px;
+            height: 2px;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .vertical-line {
+            width: 1px;
+            height: 80px;
+            top: 50%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
 <body>
 <!-- 导航栏 -->
