@@ -14,6 +14,7 @@ public class Dish {
     private String id; // 菜品ID
     private String canteenId; // 食堂ID
     private String name; // 菜品名称
+    private String canteenName;//食堂名称
     private String image; // 图片
     private String introduction; // 简介
     private double price; // 价格
