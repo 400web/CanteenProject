@@ -133,7 +133,7 @@
     </nav>
 
 
-</section>
+
 <!-- 引入Bootstrap的JavaScript库 -->
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
