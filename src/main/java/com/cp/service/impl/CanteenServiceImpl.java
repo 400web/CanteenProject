@@ -24,6 +24,11 @@ public class CanteenServiceImpl  implements CanteenService {
     }
 
     @Override
+    public List<Canteen> getListLikeName(String name) {
+        return canteenMapper.selectListLikeName(name);
+    }
+
+    @Override
     public boolean addCanteen(Canteen canteen) {
         return canteenMapper.addCanteen(canteen);
     }

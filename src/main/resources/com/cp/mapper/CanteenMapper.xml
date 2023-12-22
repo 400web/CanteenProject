@@ -33,6 +33,9 @@
     <select id="selectListByPage" resultMap="canteenResultMap" parameterType="map">
         SELECT id, name, image, location, introduction, opening_time, closing_time, activity, rating FROM canteen
     </select>
+    <select id="selectListLikeName" resultMap="canteenResultMap">
+        SELECT id, name, image, location, introduction, opening_time, closing_time, activity, rating FROM canteen WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
 
     <insert id="addCanteen" parameterType="Canteen" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO canteen (name, image, location, introduction, opening_time, closing_time, activity, rating)

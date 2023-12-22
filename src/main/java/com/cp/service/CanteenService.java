@@ -22,6 +22,8 @@ public interface CanteenService {
      */
     Canteen getCanteenByName(String canteenName);
 
+    List<Canteen> getListLikeName(String name);
+
     /**
      * 向数据库中添加食堂
      *
