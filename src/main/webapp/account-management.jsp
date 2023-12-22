@@ -296,29 +296,31 @@
 </script>
 
 <script>
-    // 监听修改按钮点击事件
-    document.getElementById('modifyBtn').addEventListener('click', function() {
-        // 获取当前账号信息并填充到模态框中
-        var username = document.getElementById('username').textContent;
-        var phone = document.getElementById('phone').textContent;
+    document.addEventListener('DOMContentLoaded', function() {
+        // 监听修改按钮点击事件
+        document.getElementById('modifyBtn').addEventListener('click', function() {
+            // 获取当前账号信息并填充到模态框中
+            let username = document.getElementById('username').textContent;
+            let phone = document.getElementById('phone').textContent;
 
-        document.getElementById('newUsername').value = username;
-        document.getElementById('newPhone').value = phone;
-    });
+            document.getElementById('newUsername').value = username;
+            document.getElementById('newPhone').value = phone;
+        });
 
-    // 监听保存更改按钮点击事件
-    document.getElementById('saveChanges').addEventListener('click', function() {
-        // 获取修改后的信息并更新到页面中
-        var newUsername = document.getElementById('newUsername').value;
-        var newPassword = document.getElementById('newPassword').value;
-        var newPhone = document.getElementById('newPhone').value;
+        // 监听保存更改按钮点击事件
+        document.getElementById('saveChanges').addEventListener('click', function() {
+            // 获取修改后的信息并更新到页面中
+            let newUsername = document.getElementById('newUsername').value;
+            let newPassword = document.getElementById('newPassword').value;
+            let newPhone = document.getElementById('newPhone').value;
 
-        document.getElementById('username').textContent = newUsername;
-        document.getElementById('password').textContent = newPassword ? '********' : '';
-        document.getElementById('phone').textContent = newPhone;
+            document.getElementById('username').textContent = newUsername;
+            document.getElementById('password').textContent = newPassword ? '********' : '';
+            document.getElementById('phone').textContent = newPhone;
 
-        // 关闭模态框
-        $('#modifyModal').modal('hide');
+            // 关闭模态框
+            $('#modifyModal').modal('hide');
+        });
     });
 </script>
 </body>

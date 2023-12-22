@@ -1,0 +1,93 @@
+ /* 自定义样式 */
+body {
+    background-color: #f0f0f0;
+}
+.navbar {
+    background: linear-gradient(to bottom, #fce4e4, #651616);
+    border-bottom: 1px solid #dee2e6;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #ffffff;
+}
+.nav-link {
+    color: #ffffff;
+}
+.carousel-item img {
+    height: calc(100vh / 4); /* 占据屏幕的四分之一 */
+    object-fit: cover;
+}
+.section-divider {
+    border-top: 4px solid #343a40;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+}
+.section-title {
+    background-color: #ffffff;
+    color: #333333;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+/* 自定义样式 */
+.container {
+    text-align: center;
+}
+
+.table-wrapper {
+    width: 50%; /* 表格占 50% 栅格 */
+    margin: 0 auto; /* 居中 */
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+    font-size: 20px; /* 增大字体 */
+}
+
+.table th {
+    width: 30%; /* 占1/5 */
+    padding: 15px; /* 增大单元格上下边距 */
+}
+
+.table td {
+    width: 70%; /* 占4/5 */
+    padding: 15px; /* 增大单元格上下边距 */
+}
+
+.btn-group {
+    margin-top: 10px; /* 增大按钮上边距 */
+    text-align: center;
+}
+
+.btn {
+    margin: 50px; /* 增加按钮间距 */
+}
+.card {
+    border: 2px solid #ccc; /* 添加框 */
+    padding: 10px; /* 内边距 */
+    margin-bottom: 20px; /* 底部外边距 */
+}
+.modal-header {
+    background-color: #0d6efd; /* 设置模态框头部背景颜色 */
+    color: white; /* 设置模态框头部文字颜色 */
+}
+
+.modal-footer {
+    justify-content: space-between; /* 调整按钮位置 */
+}
+
+/* 设置模态框居中 */
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
