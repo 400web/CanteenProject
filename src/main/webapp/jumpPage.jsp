@@ -1,25 +1,39 @@
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%--
   Created by IntelliJ IDEA.
   User: dfydn92
-  Date: 2023/12/19
-  Time: 21:00
+  Date: 2023/12/22
+  Time: 20:34
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>问卷列表</title>
-    <link rel="stylesheet" href="css/viewSurvey.css">
-    <link rel="stylesheet" href=css/homePage.css>
+    <link rel="stylesheet" href=css/jumpPage.css>
+    <!-- 引入 Bootstrap 样式表 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>带有倒计时的自动跳转页面</title>
+    <script type="text/javascript">
+        // 设置倒计时的总时间（以秒为单位）
+        var count = 5;
+
+        // 更新页面上显示的倒计时
+        function updateCountdown() {
+            var countdownElement = document.getElementById('countdown');
+            countdownElement.innerHTML = count + '秒后跳转到首页';
+            count--;
+
+            // 当倒计时结束时，跳转到指定的URL
+            if (count < 0) {
+                window.location = 'homePage.jsp'; // 替换为你的目标URL
+            }
+        }
+
+        // 每秒调用一次updateCountdown函数
+        setInterval(updateCountdown, 1000);
+    </script>
+
 </head>
 <body>
-
 <!-- 导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)"  >
     <a class="navbar-brand" href="#">USST食堂系统首页</a>
@@ -43,6 +57,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#community">社区</a>
             </li>
+            <%--            <li class="nav-item">--%>
+            <%--                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>--%>
+            <%--            </li>--%>
             <li class="nav-item">
                 <a class="nav-link" href="questionnaireServlet">问卷</a>
             </li>
@@ -57,36 +74,27 @@
 <!-- 分隔线与标题 -->
 <div class="container" >
     <div class="section-divider" style="color: red">
-        <div class="section-title" style="color: #051b11"> 调查问卷</div>
+        <div class="section-title" style="color: #051b11">//////</div>
     </div>
 </div>
 
-
-    <h2>${survey.surveyContent}</h2>
-    <p class="publish-date">发布时间：${survey.publishTime}</p>
-
-<form action="submitSurveyServlet?id=${survey.id}" method="get">
-    <c:forEach var="question" items="${survey.questionList}" varStatus="qStatus">
-        <div class="question1">
-<div class="question">
-    <div class="question-title">${qStatus.index + 1}. ${question.questionContent}</div>
+<div class="page-container">
+    <div class="container1">
+        <div class="content1">
+            <span class="red-text">${sessionScope.rebackMessage}</span>
+            <h4>页面将在 <span id="countdown">5秒后跳转到首页</span></h4>
+            <button class="back-button" onclick="goBack()">返回</button>
+        </div>
+</div>
 
 </div>
-      <c:forEach var="option" items="${question.optionList}" varStatus="status">
-          <div class="option">
-              <label>
-                  <input type="radio" name="question${question.id}" value="${option.id}">
-                      ${fn:toUpperCase(fn:substring('ABCD', status.index, status.index + 1))}. ${option.optionContent}
-              </label>
-          </div>
-       </c:forEach>
-        </div>
-    </c:forEach>
-        <div class="submit-button-container">
-            <button type="submit" class="submit-button">提交</button>
-        </div>
-</form>
 </body>
+<script>
+    // JavaScript函数用于返回上一页
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>
-
 

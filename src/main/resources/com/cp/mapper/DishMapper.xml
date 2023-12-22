@@ -3,27 +3,62 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cp.mapper.DishMapper">
-    <select id="selectById" parameterType="string" resultType="dish">
-        SELECT * FROM dish WHERE id = #{dishId}
+    <resultMap id="dishResultMap" type="Dish">
+        <id property="id" column="id" />
+        <result property="canteenId" column="canteen_id" />
+        <result property="name" column="name" />
+        <result property="image" column="image" />
+        <result property="introduction" column="introduction" />
+        <result property="price" column="price" />
+        <result property="cuisine" column="cuisine" />
+        <result property="score" column="score" />
+        <result property="weight" column="weight" />
+    </resultMap>
+    <select id="selectById" parameterType="string" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE id = #{dishId}
     </select>
 
-    <select id="selectListByCanteenId" parameterType="string" resultType="dish">
-        SELECT * FROM dish WHERE canteen_id = #{canteenId}
+    <select id="selectListByCanteenId" parameterType="string" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE canteen_id = #{canteenId}
     </select>
 
-    <select id="selectListByCuisine" parameterType="string" resultType="dish">
-        SELECT * FROM dish WHERE cuisine = #{cuisine}
+    <select id="selectListByCuisine" parameterType="string" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE cuisine = #{cuisine}
     </select>
 
-    <select id="selectListByPrice" parameterType="map" resultType="dish">
-        SELECT * FROM dish WHERE price BETWEEN #{minPrice} AND #{maxPrice}
+    <select id="selectListByPrice" parameterType="map" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE price BETWEEN #{minPrice} AND #{maxPrice}
     </select>
 
-    <select id="selectList" resultType="dish">
-        SELECT * FROM dish
+    <select id="selectList" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish
     </select>
-    <select id="selectListByPage" resultType="dish">
-        SELECT * FROM dish
+    <select id="selectListByPage" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish
+    </select>
+
+    <select id="selectDishesDynamic" resultMap="dishResultMap" parameterType="map">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish
+        <where>
+            <if test="dishName != null">
+                AND name LIKE CONCAT('%', #{dishName}, '%')
+            </if>
+            <if test="canteenId != null">
+                AND canteen_id = #{canteenId}
+            </if>
+            <if test="cuisine != null">
+                AND cuisine = #{cuisine}
+            </if>
+            <if test="minPrice != null and maxPrice != null">
+                AND price BETWEEN #{minPrice} AND #{maxPrice}
+            </if>
+            <!-- 添加其他条件 -->
+
+            <!-- 如果没有任何条件，则查询所有菜品 -->
+            <if test="dishId == null and canteenId == null and cuisine == null and (minPrice == null or maxPrice == null)">
+                AND 1=1
+            </if>
+        </where>
     </select>
 
     <insert id="addDish" parameterType="dish">

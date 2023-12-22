@@ -11,23 +11,24 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "dishReviewServlet", value = "/dishReviewServlet")
 public class dishReviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dishId=request.getParameter("id");
         DishService dishService=new DishServiceImpl();
         Dish dish=dishService.getDishById(dishId);
         DishReviewService dishReviewService=new DishReviewServiceImpl();
-        DishReview dishReview=dishReviewService.getDishReviewById(dishId);
+        List<DishReview> dishReviewList=dishReviewService.getReviewsByDishId(dishId);
         request.setAttribute("dish",dish);
-        request.setAttribute("dishReview",dishReview);
+        request.setAttribute("dishReviewList",dishReviewList);
         request.getRequestDispatcher("dishReview.jsp").forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

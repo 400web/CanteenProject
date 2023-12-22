@@ -4,6 +4,29 @@
     box-sizing: border-box;
 }
 
+.question {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(222, 166, 166);
+    margin-bottom: 20px; /* 间隔 */
+    padding: 15px;
+    border-radius: 10px; /* 圆角边框 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #493939; /* 文本颜色 */
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
 .question-container {
     width: 80%;
     margin: 20px auto;
@@ -18,19 +41,56 @@
 
 .question-title {
     font-size: 25px;
-    color: #d25252;
+    color: #523535;
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
 
 .option {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
+    width: 80%;
+    margin: 10px auto;
+    background-color: #f5d6d6;
+    margin-bottom: 10px ;
+    padding-left: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #493939;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+.option label {
+    display: block; /* 让每个选项在新的一行显示 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
 }
 
+.option input[type="radio"] {
+    margin-right: 10px; /* 单选按钮和文本之间的间距 */
+}
+.option-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.option-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #e2e2e2;
+}
 .option-row {
     display: flex;
     justify-content: space-between;
@@ -40,6 +100,56 @@
 .option-text {
     font-size: 16px;
     color: #333;
+    letter-spacing: 1px;
 }
 
-/* 适当调整其他元素样式 */
+h2 {
+    font-family: Arial, sans-serif;
+    font-size: 30px; /* 增加字体大小 */
+    color: #2a3f5d; /* 深蓝色 */
+    text-align: center; /* 居中标题 */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.publish-date {
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* 调整字体大小 */
+    color: #6c757d; /* 灰色调 */
+    text-align: center; /* 居中发布时间 */
+    margin-bottom: 20px;
+    background-color: #e9ecef; /* 轻微灰色背景 */
+    border-radius: 5px;
+    padding: 5px 0; /* 增加内边距 */
+    display: inline-block; /* 使其变为行内块级元素 */
+    margin: 10px auto; /* 上下外边距 */
+}
+
+
+.question1 {
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    margin-bottom: 30px; /* 下外边距 */
+    padding: 20px; /* 内边距 */
+    border-radius: 10px; /* 圆角边框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 边框 */
+}
+
+.submit-button-container {
+    text-align: center; /* 居中按钮 */
+    margin-top: 20px; /* 顶部间距 */
+}
+
+.submit-button {
+    padding: 10px 20px; /* 按钮内边距 */
+    background-color: #4CAF50; /* 绿色背景 */
+    color: white; /* 白色文字 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角边框 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+    font-size: 16px; /* 字体大小 */
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* 鼠标悬停时的背景颜色 */
+}

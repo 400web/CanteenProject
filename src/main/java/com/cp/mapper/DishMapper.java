@@ -41,6 +41,7 @@ public interface DishMapper{
     List<Dish> selectListByPrice(@Param("minPrice") String minPrice, @Param("maxPrice") String maxPrice);
     List<Dish> selectList();
     List<Dish> selectListByPage(Map<String,Object> data);
+    List<Dish> selectDishesDynamic(Map<String, Object> map);
     boolean addDish(Dish dish);
     boolean updateDish(Dish dish);
     boolean deleteDish(@Param("id") String id);

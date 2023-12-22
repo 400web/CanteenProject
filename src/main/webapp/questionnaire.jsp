@@ -40,9 +40,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#community">社区</a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>
+                <a class="nav-link" href="questionnaireServlet">问卷</a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#account-management">账号管理</a>
             </li>

@@ -11,6 +11,7 @@ public interface CommunityMessageMapper {
     List<CommunityMessage> selectPublisherId(@Param("publisherId") String publisherId);
 
     List<CommunityMessage> selectByContent(@Param("Content") String Content);
+    List<CommunityMessage> selectListByName(@Param("name") String name);
 
     List<CommunityMessage> selectByReplyId(@Param("replyMessageId") String replyMessageId);
 

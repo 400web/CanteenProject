@@ -7,43 +7,55 @@
     <resultMap id="dishReviewResultMap" type="DishReview">
         <id property="id" column="id" />
         <result property="evaluatorId" column="evaluator_id" />
+        <result property="name" column="name" />
         <result property="dishId" column="dish_id" />
+        <result property="time" column="time" />
+        <result property="comment" column="comment" />
         <result property="evaluationScore" column="evaluation_score" />
         <result property="weight" column="weight" />
     </resultMap>
 
     <select id="selectById" resultMap="dishReviewResultMap" parameterType="String">
-        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, dish_id, time, comment, evaluation_score, weight
         FROM dish_review
         WHERE id = #{id}
     </select>
 
     <select id="selectList" resultMap="dishReviewResultMap">
-        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, dish_id, time, comment, evaluation_score, weight
         FROM dish_review
     </select>
 
     <select id="selectByDishId" resultMap="dishReviewResultMap" parameterType="String">
-        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, dish_id, time, comment, evaluation_score, weight
         FROM dish_review
         WHERE dish_id = #{DishId}
     </select>
 
     <select id="selectByEvaluatorIdDishId" resultMap="dishReviewResultMap" parameterType="String">
-        SELECT id, evaluator_id, dish_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, dish_id, time, comment, evaluation_score, weight
         FROM dish_review
         WHERE evaluator_id = #{evaluatorId} AND dish_id = #{dishId}
     </select>
 
+    <select id="selectListByName" resultMap="dishReviewResultMap">
+        SELECT id, evaluator_id, name, dish_id, time, comment, evaluation_score, weight
+        FROM dish_review
+        WHERE name = #{name}
+    </select>
+
     <insert id="addDishReview" parameterType="DishReview">
-        INSERT INTO dish_review (id, evaluator_id, dish_id, evaluation_score, weight)
-        VALUES (#{id}, #{evaluatorId}, #{dishId}, #{evaluationScore}, #{weight})
+        INSERT INTO dish_review (id, evaluator_id, name, dish_id, time, comment, evaluation_score, weight)
+        VALUES (#{id}, #{evaluatorId}, #{name}, #{dishId}, #{time}, #{comment}, #{evaluationScore}, #{weight})
     </insert>
 
     <update id="updateDishReview" parameterType="DishReview">
         UPDATE dish_review
         SET evaluator_id = #{evaluatorId},
+            name = #{name},
             dish_id = #{dishId},
+            time = #{time},
+            comment = #{comment},
             evaluation_score = #{evaluationScore},
             weight = #{weight}
         WHERE id = #{id}

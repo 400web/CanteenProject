@@ -13,6 +13,7 @@ import lombok.*;
 public class Canteen {
     private String id;// 食堂ID
     private String name;// 食堂名称
+    private String image;//图片URL
     private String location;// 食堂位置
     private String introduction;// 食堂简介
     private String openingTime;// 食堂开门时间

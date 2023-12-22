@@ -13,6 +13,7 @@ public interface CommunityMessageService{
     List<CommunityMessage> getCommunityMessages();
     List<CommunityMessage> getListByReplyId(String replyId);
     List<CommunityMessage> getListByParentId(String parentId);
+    List<CommunityMessage> getListByName(String name);
 
     /**
      * 根据消息ID获取社区消息
