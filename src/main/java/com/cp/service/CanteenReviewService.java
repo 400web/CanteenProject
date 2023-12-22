@@ -28,6 +28,7 @@ public interface CanteenReviewService{
      * @return 用户食堂的评价列表，若不存在返回空列表
      */
     List<CanteenReview> getReviewByUserIdAndCanteenId(String userId, String canteenId);
+    List<CanteenReview> getReviewByName(String name);
 
     /**
      * 删除指定用户对食堂的评价

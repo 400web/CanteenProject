@@ -25,6 +25,11 @@ public class CommunityMessageServiceImpl implements CommunityMessageService {
     }
 
     @Override
+    public List<CommunityMessage> getListByName(String name) {
+        return communityMessageMapper.selectListByName(name);
+    }
+
+    @Override
     public CommunityMessage getCommunityMessageById(String messageId) {
         return communityMessageMapper.selectById(messageId);
     }

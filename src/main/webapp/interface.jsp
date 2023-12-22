@@ -50,9 +50,8 @@
     <div id="comment-section">
         <div class="comment">${canteenReviewList[0].evaluatorId}:${canteenReviewList[0].id}</div>
         <div class="comment">${canteenReviewList[1].evaluatorId}:${canteenReviewList[1].id}</div>
-        <a href="comments.jsp？canteenReviewList=${canteenReviewList}">查看更多食堂评论</a>
+        <a href="canteenReviewServlet?canteenId=${canteen.id}">查看更多食堂评论</a>
     </div>
 </section>
-
 </body>
 </html>

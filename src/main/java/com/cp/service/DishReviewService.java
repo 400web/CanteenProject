@@ -28,6 +28,7 @@ public interface DishReviewService{
      * @return 菜品用户的评价列表，若不存在返回空列表
      */
     List<DishReview> getReviewListById(String userId, String dishId);
+    List<DishReview> getReviewListByName(String name);
 
     /**
      * 删除评价

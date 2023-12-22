@@ -50,6 +50,11 @@
         FROM community_message
         WHERE parent_id = #{parentId}
     </select>
+    <select id="selectListByName" resultMap="communityMessageResultMap">
+        SELECT id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id
+        FROM community_message
+        WHERE name = #{name}
+    </select>
 
     <insert id="addCommunityMessage" parameterType="CommunityMessage" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO community_message (id, publisher_id, name, publish_time, content, likes, comments, hot,reply_message_id, parent_id)

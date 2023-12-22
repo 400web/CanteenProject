@@ -17,11 +17,6 @@ import java.util.List;
 public class dishReviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String dishId=request.getParameter("id");
         DishService dishService=new DishServiceImpl();
         Dish dish=dishService.getDishById(dishId);
@@ -30,5 +25,10 @@ public class dishReviewServlet extends HttpServlet {
         request.setAttribute("dish",dish);
         request.setAttribute("dishReviewList",dishReviewList);
         request.getRequestDispatcher("dishReview.jsp").forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

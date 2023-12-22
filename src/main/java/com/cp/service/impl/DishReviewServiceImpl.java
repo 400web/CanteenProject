@@ -26,6 +26,11 @@ public class DishReviewServiceImpl implements DishReviewService {
     }
 
     @Override
+    public List<DishReview> getReviewListByName(String name) {
+        return dishReviewMapper.selectListByName(name);
+    }
+
+    @Override
     public boolean deleteDishReview(String id) {
         return dishReviewMapper.deleteDishReview(id);
     }

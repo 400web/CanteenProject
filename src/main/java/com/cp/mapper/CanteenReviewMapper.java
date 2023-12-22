@@ -9,6 +9,7 @@ public interface CanteenReviewMapper {
     CanteenReview selectById(@Param("id") String id);
     List<CanteenReview> selectByCanteenId(@Param("canteenId") String canteenId);
     List<CanteenReview> selectListById(@Param("evaluatorId") String evaluatorId,@Param("canteenId") String canteenId);
+    List<CanteenReview> selectListByName(@Param("name") String name);
     boolean addCanteenReview(CanteenReview canteenReview);
     boolean updateCanteenReview(CanteenReview canteenReview);
     boolean deleteCanteenReview(@Param("id") String id);
