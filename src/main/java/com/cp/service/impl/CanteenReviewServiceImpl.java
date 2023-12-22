@@ -26,6 +26,11 @@ public class CanteenReviewServiceImpl implements CanteenReviewService {
     }
 
     @Override
+    public List<CanteenReview> getReviewByName(String name) {
+        return canteenReviewMapper.selectListByName(name);
+    }
+
+    @Override
     public boolean deleteCanteenReview(String id) {
         return canteenReviewMapper.deleteCanteenReview(id);
     }
