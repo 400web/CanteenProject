@@ -11,6 +11,15 @@
 <head>
     <link rel="stylesheet" href="css/dishReview.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .flex-container {
+            display: flex;
+        }
+
+         .flex-container h3 {
+            margin-right: 20px; /* 可以根据需要设置间距 */
+        }
+    </style>
     <title>菜品评价界面</title>
 </head>
 <script>
@@ -112,8 +121,8 @@
         <h3>用户评论</h3>
         <c:forEach var="dishReview" items="${dishReviewList}">
             <div class="user-comment">
-                <h3>${dishReview.name}发表于：${dishReview.time}</h3>
-                <p>${dishReview.comment}</p>
+                <a href="userCommentsListServlet"><h3 class="flex-container">${dishReview.name}</h3></a>
+                <p>发表于：${dishReview.time} ${dishReview.comment}</p>
                 <p class="comment-text" style="display: none">这是一条评论，得分：${dishReview.score}</p>
                 <p class="comment-stars"></p>
 <%--                <p>${dishReview.score}</p>--%>
