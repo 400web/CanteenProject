@@ -17,10 +17,14 @@ import java.io.IOException;
 public class submitSurveyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("rebackMessage","问卷提交成功");
+        request.getRequestDispatcher("jumpPage.jsp").forward(request,response);
+
         String surveyId = request.getParameter("id");
         SurveyService surveyService=new SurveyServiceImpl();
         OptionService optionService = new OptionServiceImpl();
         Survey survey = surveyService.getSurveyById(surveyId);
+
 
         for (Question question : survey.getQuestionList()) {
             String selectedOptionId = request.getParameter("question" + question.getId());
@@ -34,6 +38,8 @@ public class submitSurveyServlet extends HttpServlet {
                 }
                 if (selectedOption != null) {
                     optionService.updateOption(selectedOption);
+                    request.setAttribute("rebackMessage","问卷提交成功");
+                    request.getRequestDispatcher("jumpPage.jsp").forward(request,response);
                 }
             }
         }
