@@ -40,7 +40,7 @@ public class loginServlet extends HttpServlet {
         if (user.getRole().equals("管理员")) {
             CanteenService canteenService = new CanteenServiceImpl();
             request.setAttribute("canteenList", canteenService.getList());
-            request.getRequestDispatcher("sdFirstPage.jsp").forward(request, response);
+            request.getRequestDispatcher("SdFirstPageServlet").forward(request, response);
             return;
         }
         request.getRequestDispatcher("homePage.jsp").forward(request, response);
