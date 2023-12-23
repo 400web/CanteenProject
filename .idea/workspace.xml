@@ -9,16 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="食堂管理员">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/javascript/canteenDetail.js" afterDir="false" />
+    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/domain/Canteen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/domain/Canteen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/SdFirstPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/SdFirstPageServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/loginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/loginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/sdFirstPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/sdFirstPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +39,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Servlet" />
         <option value="Jsp File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Servlet" />
       </list>
     </option>
   </component>
@@ -44,6 +53,20 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;wanwubujijiayi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="be1e4195-5d4f-4ef8-abba-3e2bfc15f29f" />
+        <option name="url" value="git@github.com:400web/CanteenProject.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/cp/Application.java" root0="SKIP_HIGHLIGHTING" />
@@ -105,6 +128,9 @@
       <method v="2" />
     </configuration>
     <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="jumpPage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/jumpPage.jsp">
       <method v="2" />
     </configuration>
     <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
@@ -202,6 +228,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.jumpPage.jsp" />
       <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       <item itemvalue="JavaScript Debug.account-management.jsp" />
       <item itemvalue="JavaScript Debug.login.jsp" />
@@ -212,6 +239,7 @@
       <list>
         <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
         <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
+        <item itemvalue="JavaScript Debug.jumpPage.jsp" />
         <item itemvalue="JavaScript Debug.account-management.jsp" />
         <item itemvalue="JavaScript Debug.login.jsp" />
       </list>
@@ -242,6 +270,9 @@
       <workItem from="1703141715025" duration="32000" />
       <workItem from="1703141850963" duration="43000" />
       <workItem from="1703223212433" duration="19328000" />
+      <workItem from="1703262557220" duration="3502000" />
+      <workItem from="1703318159777" duration="6932000" />
+      <workItem from="1703325109753" duration="11788000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -339,7 +370,31 @@
       <option name="project" value="LOCAL" />
       <updated>1703001818422</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703262655190</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703262655190</updated>
+    </task>
+    <task id="LOCAL-00014" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703262660993</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1703262660993</updated>
+    </task>
+    <task id="LOCAL-00015" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703264142627</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1703264142627</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +416,7 @@
     <MESSAGE value="食堂管理员界面" />
     <MESSAGE value="食堂管理员账号管理" />
     <MESSAGE value="食堂管理员" />
-    <option name="LAST_COMMIT_MESSAGE" value="食堂管理员" />
+    <MESSAGE value="系统管理员" />
+    <option name="LAST_COMMIT_MESSAGE" value="系统管理员" />
   </component>
 </project>
