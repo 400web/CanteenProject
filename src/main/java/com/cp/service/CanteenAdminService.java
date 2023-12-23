@@ -15,6 +15,7 @@ public interface CanteenAdminService{
      */
     Canteen getCanteenByAdminId(String adminId);
     List<User> getCanteenAdminByCanteenId(String canteenId);
+    List<CanteenAdmin> getList();
 
     /**
      * 添加食堂管理员与食堂的关联信息到数据库
