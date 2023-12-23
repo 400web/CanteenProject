@@ -9,6 +9,7 @@ import java.util.List;
 public interface CanteenAdminMapper{
     CanteenAdmin selectCanteenByAdminId(@Param("id") String id);
     List<CanteenAdmin> selectListByCanteenId(@Param("canteenId") String canteenId);
+    List<String> selectUserIdsByCanteenId(@Param("canteenId") String canteenId);
     List<Canteen> selectList();
     boolean addCanteenAdmin(CanteenAdmin admin);
     boolean updateCanteenAdmin(CanteenAdmin admin);

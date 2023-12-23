@@ -6,23 +6,27 @@ import com.cp.domain.CanteenAdmin;
 import com.cp.domain.User;
 import com.cp.mapper.CanteenAdminMapper;
 import com.cp.mapper.CanteenMapper;
+import com.cp.mapper.UserMapper;
 import com.cp.service.CanteenAdminService;
 import com.cp.utils.MybatisUtils;
 
 import java.util.List;
 
 public class CanteenAdminServiceImpl implements CanteenAdminService {
-    CanteenMapper canteenMapper= MybatisUtils.getMapper(CanteenMapper.class);
-    CanteenAdminMapper canteenAdminMapper=MybatisUtils.getMapper(CanteenAdminMapper.class);
+    CanteenMapper canteenMapper = MybatisUtils.getMapper(CanteenMapper.class);
+    CanteenAdminMapper canteenAdminMapper = MybatisUtils.getMapper(CanteenAdminMapper.class);
+    UserMapper userMapper = MybatisUtils.getMapper(UserMapper.class);
+
     @Override
     public Canteen getCanteenByAdminId(String adminId) {
-        String id= canteenAdminMapper.selectCanteenByAdminId(adminId).getCanteenId();
+        String id = canteenAdminMapper.selectCanteenByAdminId(adminId).getCanteenId();
         return canteenMapper.selectById(id);
     }
 
     @Override
     public List<User> getCanteenAdminByCanteenId(String canteenId) {
-        return null;
+        List<String> ids = canteenAdminMapper.selectUserIdsByCanteenId(canteenId);
+        return userMapper.selectByIds(ids);
     }
 
     @Override
