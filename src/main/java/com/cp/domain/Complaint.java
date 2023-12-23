@@ -14,7 +14,7 @@ public class Complaint {
     private String id;//投诉ID
     private String complainantId; // 投诉人ID
     private String name;//投诉人姓名
-    private String canteenId; // 食堂ID
+    private String canteenName; // 食堂名称
     private String complainTime; // 投诉时间
     private String complaintInfo; // 投诉信息
     private String feedback; // 投诉反馈
