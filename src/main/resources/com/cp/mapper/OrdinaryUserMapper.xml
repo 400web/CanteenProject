@@ -6,11 +6,11 @@
 <mapper namespace="com.cp.mapper.OrdinaryUserMapper">
 
     <resultMap id="ordinaryUserResultMap" type="OrdinaryUser">
-        <id property="id" column="user_id" />
-        <result property="loginTimes" column="login_times" />
-        <result property="evaluationTimes" column="evaluation_times" />
-        <result property="communityInteractionTimes" column="community_interaction_times" />
-        <result property="level" column="level" />
+        <id property="id" column="user_id"/>
+        <result property="loginTimes" column="login_times"/>
+        <result property="evaluationTimes" column="evaluation_times"/>
+        <result property="communityInteractionTimes" column="community_interaction_times"/>
+        <result property="level" column="level"/>
     </resultMap>
 
     <select id="selectById" resultMap="ordinaryUserResultMap" parameterType="String">
@@ -31,15 +31,20 @@
 
     <update id="updateOrdinaryUser" parameterType="OrdinaryUser">
         UPDATE ordinary_user
-        SET login_times = #{loginTimes},
-        evaluation_times = #{evaluationTimes},
-        community_interaction_times = #{communityInteractionTimes},
-        level = #{level}
+        <set>
+            <if test="loginTimes != null">login_times = #{loginTimes},</if>
+            <if test="evaluationTimes != null">evaluation_times = #{evaluationTimes},</if>
+            <if test="communityInteractionTimes != null">community_interaction_times = #{communityInteractionTimes},
+            </if>
+            <if test="level != null">level = #{level}</if>
+        </set>
         WHERE id = #{userId}
     </update>
 
+
     <delete id="deleteOrdinaryUser" parameterType="String">
-        DELETE FROM ordinary_user
+        DELETE
+        FROM ordinary_user
         WHERE id = #{id}
     </delete>
 

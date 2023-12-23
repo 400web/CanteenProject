@@ -9,7 +9,7 @@
         <result property="canteenId" column="canteen_id" />
     </resultMap>
 
-    <select id="selectById" resultMap="canteenAdminResultMap" parameterType="String">
+    <select id="selectCanteenByAdminId" resultMap="canteenAdminResultMap" parameterType="String">
         SELECT id, canteen_id
         FROM canteen_admin
         WHERE id = #{id}

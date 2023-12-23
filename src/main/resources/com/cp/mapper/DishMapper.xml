@@ -66,11 +66,20 @@
         VALUES (#{canteenId}, #{name}, #{image}, #{introduction}, #{price}, #{cuisine}, #{score}, #{weight})
     </insert>
 
-    <update id="updateDish" parameterType="dish">
-        UPDATE dish SET name = #{name}, image = #{image}, introduction = #{introduction},
-                        price = #{price}, cuisine = #{cuisine}, score = #{score}, weight = #{weight}
+    <update id="updateDish" parameterType="Dish">
+        UPDATE dish
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="introduction != null">introduction = #{introduction},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="cuisine != null">cuisine = #{cuisine},</if>
+            <if test="score != null">score = #{score},</if>
+            <if test="weight != null">weight = #{weight},</if>
+        </set>
         WHERE id = #{id}
     </update>
+
 
     <delete id="deleteDish" parameterType="string">
         DELETE FROM dish WHERE id = #{id}

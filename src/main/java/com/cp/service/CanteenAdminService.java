@@ -1,6 +1,10 @@
 package com.cp.service;
 
 import com.cp.domain.Canteen;
+import com.cp.domain.CanteenAdmin;
+import com.cp.domain.User;
+
+import java.util.List;
 
 public interface CanteenAdminService{
     /**
@@ -10,6 +14,7 @@ public interface CanteenAdminService{
      * @return 食堂信息对象，若不存在返回null
      */
     Canteen getCanteenByAdminId(String adminId);
+    List<User> getCanteenAdminByCanteenId(String canteenId);
 
     /**
      * 添加食堂管理员与食堂的关联信息到数据库
