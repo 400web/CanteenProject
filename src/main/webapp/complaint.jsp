@@ -74,7 +74,7 @@
 <div class="complaint-form">
     <h2>食堂投诉</h2>
     <p>请填写以下表单，我们会尽快处理您的投诉。</p>
-    <form action="complaintDealServlet" method="post"  onsubmit="return handleFormSubmission()">
+    <form action="complaintDealServlet" method="post">
         <div class="form-group">
             <label for="username">用户名：</label>
             <input type="text" id="username" name="username" value="${username}" readonly>
@@ -90,21 +90,6 @@
         <button type="submit">提交投诉</button>
     </form>
 </div>
-<script>
-    // 处理表单提交
-    function handleFormSubmission() {
-        // 获取投诉内容
-        var complaintContent = document.getElementById("complaint").value;
-        // 检查投诉内容是否为空
-        if (complaintContent.trim() === "") {
-            // 如果为空，弹出提示信息
-            alert("请输入投诉内容后才能提交。");
-            return false; // 阻止表单正常提交
-        }
-        window.location.href = "success_page.html";
-        return false; // 阻止表单正常提交
-    }
-</script>
 </body>
 </html>
 
