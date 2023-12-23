@@ -23,6 +23,8 @@ public interface CanteenMapper {
      */
     Canteen selectByName(@Param("name") String name);
 
+    List<Canteen> selectListLikeName(@Param("name") String name);
+
     /**
      * 向数据库中添加食堂
      *

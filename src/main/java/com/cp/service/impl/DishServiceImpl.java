@@ -45,6 +45,28 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+    public List<Dish> getDishesDynamic(String dishName, String canteenId, String cuisine, String minPrice, String maxPrice) {
+        Map<String, Object> paramMap = new HashMap<>();
+        // 添加不为 null 的条件到 Map
+        if (dishName != null && !dishName.isEmpty()) {
+            paramMap.put("dishName", dishName);
+        }
+        if (canteenId != null && !canteenId.isEmpty()) {
+            paramMap.put("canteenId", canteenId);
+        }
+        if (cuisine != null && !cuisine.isEmpty()) {
+            paramMap.put("cuisine", cuisine);
+        }
+        if (minPrice != null && !minPrice.isEmpty()) {
+            paramMap.put("minPrice", Double.parseDouble(minPrice));
+        }
+        if (maxPrice != null && !maxPrice.isEmpty()) {
+            paramMap.put("maxPrice", Double.parseDouble(maxPrice));
+        }
+        return dishMapper.selectDishesDynamic(paramMap);
+    }
+
+    @Override
     public boolean addDish(Dish dish) {
         return dishMapper.addDish(dish);
     }
