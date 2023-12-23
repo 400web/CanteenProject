@@ -51,11 +51,13 @@
         list.forEach(message => {
             let name = message.name;
             let content = message.content;
+            let title = message.title;
             if (nameReg) {
                 name = name.replace(nameReg, (nameKey) => '<em>' + nameKey + '</em>');
             }
             if (postReg) {
                 content = content.replace(postReg, (postKey) => '<em>' + postKey + '</em>');
+                title = title.replace(postReg, (postKey) => '<em>' + postKey + '</em>');
             }
             // 创建贴子元素
             const postDiv = document.createElement('div');
@@ -67,22 +69,35 @@
             link.classList.add('text-decoration-none');
             const cardBodyDiv = document.createElement('div');
             cardBodyDiv.classList.add('card-body');
-            const title = document.createElement('h5');
-            title.classList.add('card-title');
-            title.innerHTML = name;
+            const rowDiv = document.createElement('div');
+            rowDiv.classList.add('row');
+            const leftColDiv = document.createElement('div');
+            leftColDiv.classList.add('col-8');
+            const rightColDiv = document.createElement('div');
+            rightColDiv.classList.add('col-4', 'text-end');
+            const messageTitle = document.createElement('h5');
+            messageTitle.classList.add('card-title', 'fw-bold');
+            messageTitle.innerHTML = title;
+            const username = document.createElement('p');
+            username.classList.add('card-text', 'fw-bold');
+            username.innerHTML = name;
+            const contentPreview = document.createElement('p');
+            contentPreview.classList.add('card-text');
+            contentPreview.innerHTML = content.length > 30 ? content.substring(0, 30) : content;
             const publishTime = document.createElement('p');
             publishTime.classList.add('card-text');
             publishTime.innerHTML = message.publishTime;
-            const contentPreview = document.createElement('p');
-            contentPreview.classList.add('card-text');
-            contentPreview.innerHTML = content.length > 40 ? content.substring(0, 40) : content;
             const likeAndComment = document.createElement('p');
             likeAndComment.classList.add('card-text');
-            likeAndComment.innerHTML = '点赞数: ' + message.likes + ' | 评论数: ' + message.comments;
-            cardBodyDiv.appendChild(title);
-            cardBodyDiv.appendChild(publishTime);
-            cardBodyDiv.appendChild(contentPreview);
-            cardBodyDiv.appendChild(likeAndComment);
+            likeAndComment.innerHTML = '点赞: ' + message.likes + ' | 评论: ' + message.comments;
+            leftColDiv.appendChild(messageTitle);
+            leftColDiv.appendChild(username);
+            leftColDiv.appendChild(contentPreview);
+            rightColDiv.appendChild(publishTime);
+            rightColDiv.appendChild(likeAndComment);
+            rowDiv.appendChild(leftColDiv);
+            rowDiv.appendChild(rightColDiv);
+            cardBodyDiv.appendChild(rowDiv);
             link.appendChild(cardBodyDiv);
             cardDiv.appendChild(link);
             postDiv.appendChild(cardDiv);
@@ -122,11 +137,13 @@
                 data.forEach(message => {
                         let name = message.name;
                         let content = message.content;
+                        let title = message.title;
                         if (nameReg) {
                             name = name.replace(nameReg, (nameKey) => '<em>' + nameKey + '</em>');
                         }
                         if (postReg) {
                             content = content.replace(postReg, (postKey) => '<em>' + postKey + '</em>');
+                            title = title.replace(postReg, (postKey) => '<em>' + postKey + '</em>');
                         }
                         // 创建贴子元素
                         const postDiv = document.createElement('div');
@@ -138,22 +155,35 @@
                         link.classList.add('text-decoration-none');
                         const cardBodyDiv = document.createElement('div');
                         cardBodyDiv.classList.add('card-body');
-                        const title = document.createElement('h5');
-                        title.classList.add('card-title');
-                        title.innerHTML = name;
+                        const rowDiv = document.createElement('div');
+                        rowDiv.classList.add('row');
+                        const leftColDiv = document.createElement('div');
+                        leftColDiv.classList.add('col-8');
+                        const rightColDiv = document.createElement('div');
+                        rightColDiv.classList.add('col-4', 'text-end');
+                        const messageTitle = document.createElement('h5');
+                        messageTitle.classList.add('card-title', 'fw-bold');
+                        messageTitle.innerHTML = title;
+                        const username = document.createElement('p');
+                        username.classList.add('card-text', 'fw-bold');
+                        username.innerHTML = name;
+                        const contentPreview = document.createElement('p');
+                        contentPreview.classList.add('card-text');
+                        contentPreview.innerHTML = content.length > 30 ? content.substring(0, 30) : content;
                         const publishTime = document.createElement('p');
                         publishTime.classList.add('card-text');
                         publishTime.innerHTML = message.publishTime;
-                        const contentPreview = document.createElement('p');
-                        contentPreview.classList.add('card-text');
-                        contentPreview.innerHTML = content.length > 40 ? content.substring(0, 40) : content;
                         const likeAndComment = document.createElement('p');
                         likeAndComment.classList.add('card-text');
-                        likeAndComment.innerHTML = '点赞数: ' + message.likes + ' | 评论数: ' + message.comments;
-                        cardBodyDiv.appendChild(title);
-                        cardBodyDiv.appendChild(publishTime);
-                        cardBodyDiv.appendChild(contentPreview);
-                        cardBodyDiv.appendChild(likeAndComment);
+                        likeAndComment.innerHTML = '点赞: ' + message.likes + ' | 评论: ' + message.comments;
+                        leftColDiv.appendChild(messageTitle);
+                        leftColDiv.appendChild(username);
+                        leftColDiv.appendChild(contentPreview);
+                        rightColDiv.appendChild(publishTime);
+                        rightColDiv.appendChild(likeAndComment);
+                        rowDiv.appendChild(leftColDiv);
+                        rowDiv.appendChild(rightColDiv);
+                        cardBodyDiv.appendChild(rowDiv);
                         link.appendChild(cardBodyDiv);
                         cardDiv.appendChild(link);
                         postDiv.appendChild(cardDiv);
@@ -170,7 +200,7 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-8">
-                <label for="postSearch" class="form-label">输入贴子内容:</label>
+                <label for="postSearch" class="form-label">输入贴子标题或内容:</label>
                 <input type="text" name="postSearch" id="postSearch" class="form-control">
             </div>
             <div class="col-md-2">
@@ -202,12 +232,19 @@
             <div class="col-md-6 mb-3">
                 <div class="card bg-light border rounded">
                     <a href="replyCommentServlet?id=${message.id}" class="text-decoration-none">
-                        <div class="card-body">
-                            <h5 class="card-title">${message.name}</h5>
-                            <p class="card-text">${message.publishTime}</p>
-                            <p class="card-text">${fn:length(message.content) > 40 ? fn:substring(message.content, 0, 40) : message.content}</p>
-                            <p class="card-text">点赞数: ${message.likes} | 评论数: ${message.comments}</p>
-                        </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h5 class="card-title fw-bold">${message.title}</h5>
+                                        <p class="card-text fw-bold">${message.name}</p>
+                                        <p class="card-text">${fn:length(message.content) > 30 ? fn:substring(message.content, 0, 30) : message.content}</p>
+                                    </div>
+                                    <div class="col-4 text-end">
+                                        <p class="card-text">${message.publishTime}</p>
+                                        <p class="card-text">点赞: ${message.likes} | 评论: ${message.comments}</p>
+                                    </div>
+                                </div>
+                            </div>
                     </a>
                 </div>
             </div>

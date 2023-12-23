@@ -14,7 +14,7 @@ public interface CommunityMessageService{
     List<CommunityMessage> getListByReplyId(String replyId);
     List<CommunityMessage> getListByParentId(String parentId);
     List<CommunityMessage> getListByName(String name);
-    List<CommunityMessage> getCommunityMessagesDynamic(String name,String content);
+    List<CommunityMessage> getCommunityMessagesDynamic(String name,String title,String content);
 
     /**
      * 根据消息ID获取社区消息
