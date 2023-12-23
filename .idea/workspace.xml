@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="canteenproject:war exploded" />
+      <artifact name="canteenproject:war" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,23 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteCanteenServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/domain/Canteen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/domain/Canteen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CanteenAdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CanteenAdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/SdFirstPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/SdFirstPageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/loginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/loginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CanteenMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CanteenMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.esm.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" afterDir="false" />
     </list>
@@ -123,14 +115,11 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.sdFirstPage.jsp">
+  <component name="RunManager" selected="JavaScript Debug.account-management.jsp">
     <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
       <method v="2" />
     </configuration>
     <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="jumpPage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/jumpPage.jsp">
       <method v="2" />
     </configuration>
     <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
@@ -228,20 +217,18 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.jumpPage.jsp" />
+      <item itemvalue="JavaScript Debug.login.jsp" />
       <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       <item itemvalue="JavaScript Debug.account-management.jsp" />
-      <item itemvalue="JavaScript Debug.login.jsp" />
       <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.13" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
-        <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
-        <item itemvalue="JavaScript Debug.jumpPage.jsp" />
         <item itemvalue="JavaScript Debug.account-management.jsp" />
         <item itemvalue="JavaScript Debug.login.jsp" />
+        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
+        <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -272,7 +259,7 @@
       <workItem from="1703223212433" duration="19328000" />
       <workItem from="1703262557220" duration="3502000" />
       <workItem from="1703318159777" duration="6932000" />
-      <workItem from="1703325109753" duration="11788000" />
+      <workItem from="1703325109753" duration="22631000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -394,7 +381,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703264142627</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703341112030</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1703341112030</updated>
+    </task>
+    <task id="LOCAL-00017" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703341139802</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1703341139802</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

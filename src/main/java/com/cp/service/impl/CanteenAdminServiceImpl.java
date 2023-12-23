@@ -22,7 +22,7 @@ public class CanteenAdminServiceImpl implements CanteenAdminService {
 
     @Override
     public List<User> getCanteenAdminByCanteenId(String canteenId) {
-        return canteenAdminMapper.selectListByCanteenId(canteenId);
+        return null;
     }
 
     @Override

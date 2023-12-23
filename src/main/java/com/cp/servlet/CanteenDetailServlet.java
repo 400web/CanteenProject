@@ -17,9 +17,10 @@ import java.nio.file.Paths;
 public class CanteenDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         CanteenService canteenService = new CanteenServiceImpl();
         String id = request.getParameter("id");
-        request.getSession().setAttribute("id", id);
+        session.setAttribute("id", id);
         Canteen canteen = canteenService.getCanteenById(id);
         request.setAttribute("canteen", canteen);
         request.getRequestDispatcher("canteenDetail.jsp").forward(request, response);
@@ -57,7 +58,8 @@ public class CanteenDetailServlet extends HttpServlet {
         }
         // 文件已保存到指定文件夹
         // 可以在此处添加代码来处理保存成功后的逻辑
-        String id = (String)request.getSession().getAttribute("id");
+        HttpSession session = request.getSession();
+        String id = (String) session.getAttribute("id");
         String name = request.getParameter("newNameInput");
         String location = request.getParameter("newLocationInput");
         String introduction = request.getParameter("newDescriptionInput");
@@ -65,7 +67,6 @@ public class CanteenDetailServlet extends HttpServlet {
         String[] openingHoursParts = openingHours.split("-");
         String openingTime = openingHoursParts[0];
         String closingTime = openingHoursParts[1];
-        //Canteen canteen = new Canteen(id, name, "css/"+fileName, location, introduction, openingTime, closingTime, null, null);
         Canteen canteen = new Canteen();
         canteen.setId(id);
         canteen.setName(name);

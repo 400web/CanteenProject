@@ -124,6 +124,147 @@
         .btn-margin {
             margin-right: 5px;
         }
+        /* 自定义样式 */
+        .container {
+            text-align: center;
+        }
+
+        .table-wrapper {
+            width: 50%; /* 表格占 50% 栅格 */
+            margin: 0 auto; /* 居中 */
+        }
+
+        .myTable {
+            width: 100%;
+            text-align: center;
+            font-size: 20px; /* 增大字体 */
+        }
+
+        .myTable th {
+            width: 30%; /* 占1/5 */
+            padding: 15px; /* 增大单元格上下边距 */
+        }
+
+        .myTable td {
+            width: 70%; /* 占4/5 */
+            padding: 15px; /* 增大单元格上下边距 */
+        }
+        /* 用户管理部分整体样式 */
+        .account-section {
+            margin-bottom: 30px;
+        }
+
+        /* 用户管理标题样式 */
+        .account-section .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .account-section h2 {
+            color: #333;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* 搜索框样式 */
+        .input-group {
+            display: flex;
+            align-items: center;
+            width: 300px; /* 调整搜索框宽度 */
+        }
+
+        .input-group-append {
+            margin-left: -1px;
+        }
+
+        .form-control {
+            border-radius: 20px;
+        }
+
+        #searchButton {
+            border-radius: 20px;
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* 添加用户按钮样式 */
+        #addUserButton {
+            display: block;
+            margin: 0 auto;
+            border-radius: 20px;
+            background-color: #28a745;
+            color: white;
+            width: 150px;
+            padding: 8px 0;
+            font-size: 16px;
+        }
+        /* 输入框和下拉选择框的样式 */
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 0.3rem;
+        }
+
+        /* 按钮样式 */
+        .btn-secondary,
+        .btn-primary {
+            border-radius: 0.3rem;
+        }
+
+        /* 设置模态框的宽度 */
+        .modal-dialog {
+            max-width: 600px;
+        }
+
+        /* 调整关闭按钮位置 */
+        .modal-header .close {
+            margin-top: -2rem;
+        }
+
+        /* 标题样式 */
+        .modal-title {
+            font-weight: bold;
+        }
+
+        /* 调整底部按钮的间距 */
+        .modal-footer .btn {
+            margin-right: 0.5rem;
+        }
+
+        /* 按钮布局 */
+        .modal-footer {
+            justify-content: center;
+        }
+
+        /* 调整按钮颜色和背景 */
+        .btn-secondary {
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            color: #fff;
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
     </style>
 </head>
 
@@ -143,7 +284,7 @@
                 <a class="nav-link" href="#community">社区</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="account-management.jsp">账号管理</a>
+                <a class="nav-link" href="AccountManagementServlet">账号管理</a>
             </li>
         </ul>
     </div>
@@ -166,13 +307,13 @@
             <!-- 我的账号部分 -->
             <section id="myAccount" class="account-section active">
                 <!-- 表格 -->
-                <div class="container mt-4">
+                <div class="container mt-4 table-wrapper">
                     <h2>我的账号</h2>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered myTable">
                         <tbody>
                         <tr>
                             <th scope="row">用户名</th>
-                            <td><span id="username">JohnDoe</span></td>
+                            <td><span id="username">${requestScope.user.username}</span></td>
                         </tr>
                         <tr>
                             <th scope="row">密码</th>
@@ -180,7 +321,7 @@
                         </tr>
                         <tr>
                             <th scope="row">手机号</th>
-                            <td><span id="phone">123-456-7890</span></td>
+                            <td><span id="phone">${requestScope.user.phoneNumber}</span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -201,24 +342,24 @@
                         </div>
                         <div class="modal-body">
                             <!-- 修改账号信息的表单 -->
-                            <form id="modifyForm">
+                            <form id="modifyForm" action="AccountManagementServlet" method="post">
                                 <div class="form-group">
                                     <label for="newUsername">新用户名</label>
-                                    <input type="text" class="form-control" id="newUsername">
+                                    <input type="text" class="form-control" id="newUsername" name="newUsername">
                                 </div>
                                 <div class="form-group">
                                     <label for="newPassword">新密码</label>
-                                    <input type="password" class="form-control" id="newPassword">
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword">
                                 </div>
                                 <div class="form-group">
                                     <label for="newPhone">新手机号</label>
-                                    <input type="text" class="form-control" id="newPhone">
+                                    <input type="text" class="form-control" id="newPhone" name="newPhone">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                    <button type="submit" class="btn btn-primary" id="saveChanges">保存更改</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary" id="saveChanges">保存更改</button>
                         </div>
                     </div>
                 </div>
@@ -226,13 +367,14 @@
 
             <!-- 用户管理部分 -->
             <section id="userManagement" class="account-section">
-                <h2 class="mb-4">用户管理</h2>
-
-                <!-- 搜索框 -->
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="输入用户名进行搜索" id="searchInput">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="searchButton">搜索</button>
+                <div class="header">
+                    <h2>用户管理</h2>
+                    <!-- 搜索框 -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="输入用户名进行搜索" id="searchInput">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="searchButton">搜索</button>
+                        </div>
                     </div>
                 </div>
 
@@ -241,6 +383,7 @@
                     <thead>
                     <tr>
                         <th>用户名</th>
+                        <th>密码</th>
                         <th>手机号</th>
                         <th>身份</th>
                         <th>操作</th>
@@ -250,6 +393,7 @@
                     <!-- 这里是动态添加的用户列表 -->
                     <tr>
                         <td>用户1</td>
+                        <td>*******</td>
                         <td>123-456-7890</td>
                         <td>管理员</td>
                         <td>
@@ -261,6 +405,7 @@
                     </tr>
                     <tr>
                         <td>用户2</td>
+                        <td>*******</td>
                         <td>987-654-3210</td>
                         <td>普通用户</td>
                         <td>
@@ -273,10 +418,61 @@
                     <!-- ... 可以根据实际情况添加更多用户信息 -->
                     </tbody>
                 </table>
-
                 <!-- 添加用户按钮 -->
-                <button class="btn btn-success" id="addUserButton">添加用户</button>
+                <button class="btn btn-success" id="addUserButton" data-toggle="modal" data-target="#addUserModal">添加用户</button>
             </section>
+        </div>
+    </div>
+</div>
+<!-- 添加按钮模态框 -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">添加用户</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 用户名输入框 -->
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control" id="addUsername">
+                </div>
+                <!-- 密码输入框 -->
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="addPassword">
+                </div>
+                <!-- 手机号输入框 -->
+                <div class="form-group">
+                    <label for="phone">手机号</label>
+                    <input type="text" class="form-control" id="addPhone">
+                </div>
+                <!-- 身份选择框 -->
+                <div class="form-group">
+                    <label for="identity">身份</label>
+                    <select class="form-control" id="identity">
+                        <option value="普通用户">普通用户</option>
+                        <option value="食堂管理员">食堂管理员</option>
+                    </select>
+                </div>
+                <!-- 食堂选择框 -->
+                <div class="form-group" id="canteenSelect" style="display: none;">
+                    <label for="canteen">管理的食堂</label>
+                    <select class="form-control" id="canteen">
+                        <!-- 这里是动态添加的食堂选项 -->
+                        <option value="食堂1">食堂1</option>
+                        <option value="食堂2">食堂2</option>
+                        <!-- ... 可根据实际情况添加更多选项 -->
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
         </div>
     </div>
 </div>
@@ -321,6 +517,24 @@
             // 关闭模态框
             $('#modifyModal').modal('hide');
         });
+    });
+</script>
+<script>
+    // 获取身份选择框和食堂选择框
+    let identitySelect = document.getElementById('identity');
+    let canteenSelect = document.getElementById('canteenSelect');
+
+    // 添加事件监听器
+    identitySelect.addEventListener('change', function() {
+        // 获取当前所选身份
+        var selectedIdentity = identitySelect.value;
+
+        // 如果选择了食堂管理员，则显示食堂选择框，否则隐藏
+        if (selectedIdentity === '食堂管理员') {
+            canteenSelect.style.display = 'block';
+        } else {
+            canteenSelect.style.display = 'none';
+        }
     });
 </script>
 </body>
