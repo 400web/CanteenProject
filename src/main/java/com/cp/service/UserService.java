@@ -2,6 +2,8 @@ package com.cp.service;
 
 import com.cp.domain.User;
 
+import java.util.List;
+
 public interface UserService{
     /**
      * 用户注册
@@ -34,6 +36,8 @@ public interface UserService{
      * @return {@code true} 如果成功删除用户账号信息，否则 {@code false}
      */
     boolean deleteUserAccount(String id);
+    List<User> getList();
+    List<User> getListByIds(List<String> ids);
     boolean addUser(User user);
     boolean updateUserRole(User user,String canteenId);
     boolean updateUser(User user);

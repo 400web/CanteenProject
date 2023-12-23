@@ -7,6 +7,7 @@
     <resultMap id="canteenAdminResultMap" type="CanteenAdmin">
         <id property="id" column="user_id" />
         <result property="canteenId" column="canteen_id" />
+        <result property="canteenName" column="canteenName" />
     </resultMap>
 
     <select id="selectCanteenByAdminId" resultMap="canteenAdminResultMap" parameterType="String">
@@ -28,8 +29,9 @@
     </select>
 
     <select id="selectList" resultMap="canteenAdminResultMap">
-        SELECT id, canteen_id
+        SELECT canteen_admin.id, canteen_admin.canteen_id, canteen.name AS canteenName
         FROM canteen_admin
+        INNER JOIN canteen ON canteen_admin.canteen_id = canteen.id
     </select>
 
     <insert id="addCanteenAdmin" parameterType="CanteenAdmin">

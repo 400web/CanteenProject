@@ -30,6 +30,11 @@ public class CanteenAdminServiceImpl implements CanteenAdminService {
     }
 
     @Override
+    public List<CanteenAdmin> getList() {
+        return canteenAdminMapper.selectList();
+    }
+
+    @Override
     public boolean addCanteenAdminRelation(String adminId, String canteenId) {
         return false;
     }

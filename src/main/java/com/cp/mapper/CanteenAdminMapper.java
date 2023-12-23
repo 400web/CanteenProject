@@ -10,7 +10,7 @@ public interface CanteenAdminMapper{
     CanteenAdmin selectCanteenByAdminId(@Param("id") String id);
     List<CanteenAdmin> selectListByCanteenId(@Param("canteenId") String canteenId);
     List<String> selectUserIdsByCanteenId(@Param("canteenId") String canteenId);
-    List<Canteen> selectList();
+    List<CanteenAdmin> selectList();
     boolean addCanteenAdmin(CanteenAdmin admin);
     boolean updateCanteenAdmin(CanteenAdmin admin);
     boolean deleteCanteenAdmin(@Param("id") String id);

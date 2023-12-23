@@ -13,6 +13,8 @@ import com.cp.service.SystemAdminService;
 import com.cp.service.UserService;
 import com.cp.utils.MybatisUtils;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
     UserMapper userMapper = MybatisUtils.getMapper(UserMapper.class);
     SystemAdminMapper systemAdminMapper = MybatisUtils.getMapper(SystemAdminMapper.class);
@@ -41,6 +43,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getList() {
+        return userMapper.selectList();
+    }
+
+    @Override
+    public List<User> getListByIds(List<String> ids) {
+        return userMapper.selectByIds(ids);
+    }
+
+    @Override
     public boolean addUser(User user) {
         if (!userMapper.addUser(user)) return false;
         ordinaryUserMapper.addOrdinaryUser(new OrdinaryUser(user.getId(), 0, 0, 0, 1));
@@ -50,7 +62,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean updateUserRole(User user, String canteenId) {
         if (user.getRole().equals("食堂管理员")) {
-            canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId));
+            canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId,null));
         }
         if (user.getRole().equals("普通用户")) {
             canteenAdminMapper.deleteCanteenAdmin(user.getId());
