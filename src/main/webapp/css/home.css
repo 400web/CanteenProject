@@ -269,3 +269,40 @@ body {
 .menu-item-details {
     padding: 10px;
 }
+
+.section-divider1 {
+    background-color: rgba(255, 255, 255, 0.5); /* 半透明的白色背景 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    width: 100%; /* 使长度更长 */
+    display: flex;
+    justify-content: center; /* 水平居中内部元素 */
+    padding: 10px; /* 内边距 */
+    border-radius: 10px; /* 圆角 */
+}
+
+.section-title1 {
+    color: #960404; /* 文字颜色 */
+    font-size: 24px; /* 文字大小 */
+}
+
+.outer-container {
+    display: flex; /* 启用Flexbox */
+    margin-top: 20px; /* 顶部外边距 */
+    margin-bottom: 20px; /* 底部外边距 */
+}
+
+.container3 {
+    flex: 1; /* 每个子元素平均分配空间 */
+    width: 50%; /* 或者显式设置宽度为50% */
+
+
+    align-items: center; /* 水平居中 */
+    justify-content: flex-start; /* 从顶部开始布局 */
+    max-width: 2000px; /* 根据需要调整 */
+    margin: 0 auto; /* 水平居中整个容器 */
+    padding: 20px; /* 内边距 */
+    border: 2px solid #ddd; /* 边框样式 */
+    border-radius: 10px; /* 圆角 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    max-height: 100%; /* 容器最大高度 */
+}

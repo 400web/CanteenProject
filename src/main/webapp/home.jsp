@@ -277,10 +277,29 @@
     </div>
 </div>
 
-<div class="container2">
+<div class="outer-container">
+<div class="container3">
     <div class="container" >
         <div class="section-divider" style="color: red">
-            <div class="section-title" style="color: #960404; font-size: 24px;">菜品推荐榜</div>
+            <div class="section-title1" style="color: #960404; font-size: 24px;">特价促销榜</div>
+        </div>
+    </div>
+
+</div>
+<div class="container3">
+    <div class="container" >
+        <div class="section-divider" style="color: red">
+            <div class="section-title1" style="color: #960404; font-size: 24px;">最新投票调查</div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="container2">
+    <div class="container" >
+        <div class="section-divider1" style="color: red">
+            <div class="section-title1" style="color: #960404; font-size: 24px;">菜品推荐榜</div>
         </div>
     </div>
 
