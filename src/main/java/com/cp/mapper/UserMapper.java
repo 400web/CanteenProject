@@ -12,6 +12,7 @@ public interface UserMapper {
     User login(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
 
     User selectById(@Param("id") String id);
+    List<User> selectByIds(List<String> ids);
 
     User selectByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 

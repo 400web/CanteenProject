@@ -35,7 +35,13 @@ public class complaintDealServlet extends HttpServlet {
         userComplaint.setFeedback(feedback);
         userComplaint.setCanteenName(canteenName);
         userComplaint.setComplainTime(time);
+        userComplaint.setId(null);
+        userComplaint.setResponseInfo(null);
+        userComplaint.setComplainantId(null);
         ComplaintService complaintService=new ComplaintServiceImpl();
         complaintService.addComplaint(userComplaint);
+        String rebackMessage = "投诉成功";
+        request.setAttribute("rebackMessage",rebackMessage);
+        request.getRequestDispatcher("jumpPage.jsp").forward(request,response);
     }
 }

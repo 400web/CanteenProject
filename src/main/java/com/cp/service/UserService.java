@@ -35,5 +35,6 @@ public interface UserService{
      */
     boolean deleteUserAccount(String id);
     boolean addUser(User user);
+    boolean updateUserRole(User user,String canteenId);
     boolean updateUser(User user);
 }

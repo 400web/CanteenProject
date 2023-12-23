@@ -7,12 +7,15 @@
 
     <!-- 根据 ID 查询系统管理员 -->
     <select id="selectById" resultType="SystemAdmin" parameterType="java.lang.String">
-        SELECT * FROM system_admin WHERE id = #{id}
+        SELECT *
+        FROM system_admin
+        WHERE id = #{id}
     </select>
 
     <!-- 查询系统管理员列表 -->
     <select id="selectList" resultType="SystemAdmin">
-        SELECT * FROM system_admin
+        SELECT *
+        FROM system_admin
     </select>
 
     <!-- 添加系统管理员 -->
@@ -22,6 +25,8 @@
 
     <!-- 删除系统管理员 -->
     <delete id="deleteSystemAdmin" parameterType="String">
-        DELETE FROM system_admin WHERE id = #{id}
+        DELETE
+        FROM system_admin
+        WHERE id = #{id}
     </delete>
 </mapper>

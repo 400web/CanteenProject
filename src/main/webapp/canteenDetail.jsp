@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="sdFirstPage.jsp">首页</a>
+                <a class="nav-link" href="SdFirstPageServlet">首页</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#complaints">投诉信息</a>
@@ -57,14 +57,14 @@
 <!-- 分隔线与标题 -->
 <div class="container">
     <div class="section-divider">
-        <div class="section-title">A食堂信息管理</div>
+        <div class="section-title">${requestScope.canteen.name}</div>
     </div>
 </div>
 
 <div class="container mt-4">
     <!-- 图片展示 -->
     <div class="card" style="max-width: 400px; margin: 0 auto;">
-        <img id="mainImage" src="path_to_your_image.jpg" alt="Your Image" class="img-fluid">
+        <img id="mainImage" src="${requestScope.canteen.image}" alt="Your Image" class="img-fluid">
     </div>
 
     <!-- 表格布局 -->
@@ -73,19 +73,19 @@
             <tbody>
             <tr>
                 <th>名称</th>
-                <td id="nameCell">具体内容1</td>
+                <td id="nameCell">${requestScope.canteen.name}</td>
             </tr>
             <tr>
                 <th>位置</th>
-                <td id="locationCell">具体内容2</td>
+                <td id="locationCell">${requestScope.canteen.location}</td>
             </tr>
             <tr>
                 <th>简介</th>
-                <td id="descriptionCell">具体内容3</td>
+                <td id="descriptionCell">${requestScope.canteen.introduction}</td>
             </tr>
             <tr>
                 <th>营业时间</th>
-                <td id="openingHoursCell">具体内容4</td>
+                <td id="openingHoursCell">${requestScope.canteen.openingTime}-${requestScope.canteen.closingTime}</td>
             </tr>
             <tr>
                 <th>管理员用户名</th>
@@ -117,35 +117,35 @@
             </div>
             <div class="modal-body">
                 <p class="text-muted">修改食堂管理员请在用户管理界面进行</p>
-                <form id="editForm">
+                <form id="editForm" action="CanteenDetailServlet" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="newNameInput">新名称</label>
-                        <input type="text" class="form-control" id="newNameInput">
+                        <input type="text" class="form-control" id="newNameInput" name="newNameInput">
                     </div>
                     <div class="form-group">
                         <label for="newLocationInput">新位置</label>
-                        <input type="text" class="form-control" id="newLocationInput">
+                        <input type="text" class="form-control" id="newLocationInput" name="newLocationInput">
                     </div>
                     <div class="form-group">
                         <label for="newDescriptionInput">新简介</label>
-                        <input type="text" class="form-control" id="newDescriptionInput">
+                        <input type="text" class="form-control" id="newDescriptionInput" name="newDescriptionInput">
                     </div>
                     <div class="form-group">
                         <label for="newOpeningHoursInput">新营业时间</label>
-                        <input type="text" class="form-control" id="newOpeningHoursInput">
+                        <input type="text" class="form-control" id="newOpeningHoursInput" name="newOpeningHoursInput">
                     </div>
                     <div class="form-group">
                         <label for="newCanteenImage">新食堂照片</label>
-                        <input type="file" class="form-control-file" id="newCanteenImage">
+                        <input type="file" class="form-control-file" id="newCanteenImage" name="newCanteenImage">
+                    </div>
+                    <div class="card mb-3" style="max-width: 400px; margin: 0 auto;">
+                        <img id="previewImage" src="${requestScope.canteen.image}" alt="Your Image" class="card-img-top">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" id="saveChanges">保存更改</button>
                     </div>
                 </form>
-                <div class="card mb-3" style="max-width: 400px; margin: 0 auto;">
-                    <img id="previewImage" src="path_to_your_image.jpg" alt="Your Image" class="card-img-top">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="saveChanges">保存更改</button>
             </div>
         </div>
     </div>
