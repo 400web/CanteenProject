@@ -9,15 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="更新CSS">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="社区贴子页面实现检索实现">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CommunityMessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CommunityMessageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/CommunityMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/CommunityMessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CommunityMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CommunityMessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/replyCommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/replyCommentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/domain/Canteen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/domain/Canteen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/domain/CommunityMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/domain/CommunityMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/domain/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/domain/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/PostServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/PostServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CommunityMessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CommunityMessageMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/community.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/community.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/forum.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/forum.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +27,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Servlet" />
         <option value="HTML File" />
         <option value="Jsp File" />
         <option value="servlet" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,6 +91,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\11930\Desktop\CanteenProject2\src\main\webapp\WEB-INF\lib" />
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.cp.domain" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.cp" />
@@ -285,7 +288,8 @@
       <workItem from="1703222427631" duration="5458000" />
       <workItem from="1703228689672" duration="30000" />
       <workItem from="1703243743057" duration="20748000" />
-      <workItem from="1703310597781" duration="8489000" />
+      <workItem from="1703310597781" duration="14979000" />
+      <workItem from="1703325595910" duration="4723000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -511,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703265382006</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="社区贴子页面实现检索实现">
+      <option name="closed" value="true" />
+      <created>1703319230188</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1703319230188</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,6 +553,7 @@
     <MESSAGE value="食堂检索页面和功能实现" />
     <MESSAGE value="gson依赖，websocket依赖" />
     <MESSAGE value="更新CSS" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新CSS" />
+    <MESSAGE value="社区贴子页面实现检索实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="社区贴子页面实现检索实现" />
   </component>
 </project>
