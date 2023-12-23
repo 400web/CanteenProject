@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Canteen implements Comparable<Canteen>{
+public class Canteen {
     private String id;// 食堂ID
     private String name;// 食堂名称
     private String image;//图片URL
@@ -19,11 +19,6 @@ public class Canteen implements Comparable<Canteen>{
     private String openingTime;// 食堂开门时间
     private String closingTime;// 食堂关门时间
     private String activity;//食堂活动公告
-    private double rating;// 食堂等级分
-
-    @Override
-    public int compareTo(Canteen o) {
-        return Double.compare(o.getRating(), this.rating);
-    }
+    private Double rating;// 食堂等级分
 }
 
