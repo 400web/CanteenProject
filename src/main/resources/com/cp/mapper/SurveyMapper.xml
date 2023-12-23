@@ -5,10 +5,10 @@
 <mapper namespace="com.cp.mapper.SurveyMapper">
 
     <resultMap id="surveyResultMap" type="Survey">
-        <id property="id" column="id" />
-        <result property="surveyContent" column="survey_content" />
-        <result property="publisherId" column="publisher_id" />
-        <result property="publishTime" column="publish_time" />
+        <id property="id" column="id"/>
+        <result property="surveyContent" column="survey_content"/>
+        <result property="publisherId" column="publisher_id"/>
+        <result property="publishTime" column="publish_time"/>
     </resultMap>
 
     <select id="selectById" resultMap="surveyResultMap" parameterType="String">
@@ -35,14 +35,17 @@
 
     <update id="updateSurvey" parameterType="Survey">
         UPDATE survey
-        SET survey_content = #{surveyContent},
-            publisher_id = #{publisherId},
-            publish_time = #{publishTime}
+        SET
+        <if test="surveyContent != null">survey_content = #{surveyContent},</if>
+        <if test="publisherId != null">publisher_id = #{publisherId},</if>
+        <if test="publishTime != null">publish_time = #{publishTime}</if>
         WHERE id = #{id}
     </update>
 
+
     <delete id="deleteSurvey" parameterType="String">
-        DELETE FROM survey
+        DELETE
+        FROM survey
         WHERE id = #{id}
     </delete>
 </mapper>

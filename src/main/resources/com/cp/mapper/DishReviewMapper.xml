@@ -51,15 +51,18 @@
 
     <update id="updateDishReview" parameterType="DishReview">
         UPDATE dish_review
-        SET evaluator_id = #{evaluatorId},
-            name = #{name},
-            dish_id = #{dishId},
-            time = #{time},
-            comment = #{comment},
-            evaluation_score = #{evaluationScore},
-            weight = #{weight}
+        <set>
+            <if test="evaluatorId != null">evaluator_id = #{evaluatorId},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="dishId != null">dish_id = #{dishId},</if>
+            <if test="time != null">time = #{time},</if>
+            <if test="comment != null">comment = #{comment},</if>
+            <if test="evaluationScore != null">evaluation_score = #{evaluationScore},</if>
+            <if test="weight != null">weight = #{weight},</if>
+        </set>
         WHERE id = #{id}
     </update>
+
 
     <delete id="deleteDishReview" parameterType="String">
         DELETE FROM dish_review

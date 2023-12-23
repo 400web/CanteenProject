@@ -5,10 +5,10 @@
 <mapper namespace="com.cp.mapper.OptionMapper">
 
     <resultMap id="optionResultMap" type="Option">
-        <id property="id" column="id" />
-        <result property="questionId" column="question_id" />
-        <result property="optionContent" column="option_content" />
-        <result property="selectionCount" column="selection_count" />
+        <id property="id" column="id"/>
+        <result property="questionId" column="question_id"/>
+        <result property="optionContent" column="option_content"/>
+        <result property="selectionCount" column="selection_count"/>
     </resultMap>
 
     <select id="selectById" resultMap="optionResultMap" parameterType="String">
@@ -35,14 +35,18 @@
 
     <update id="updateOption" parameterType="Option">
         UPDATE option
-        SET question_id = #{questionId},
-        option_content = #{optionContent},
-        selection_count = #{selectionCount}
+        <set>
+            <if test="questionId != null">question_id = #{questionId},</if>
+            <if test="optionContent != null">option_content = #{optionContent},</if>
+            <if test="selectionCount != null">selection_count = #{selectionCount},</if>
+        </set>
         WHERE id = #{id}
     </update>
 
+
     <delete id="deleteOption" parameterType="String">
-        DELETE FROM option
+        DELETE
+        FROM option
         WHERE id = #{id}
     </delete>
 

@@ -36,12 +36,15 @@
 
     <update id="updateChatMessage" parameterType="ChatMessage">
         UPDATE chat_message
-        SET sender_id = #{senderId},
-        receiver_id = #{receiverId},
-        send_time = #{sendTime},
-        message_content = #{messageContent}
+        <set>
+            <if test="senderId != null">sender_id = #{senderId},</if>
+            <if test="receiverId != null">receiver_id = #{receiverId},</if>
+            <if test="sendTime != null">send_time = #{sendTime},</if>
+            <if test="messageContent != null">message_content = #{messageContent},</if>
+        </set>
         WHERE id = #{id}
     </update>
+
 
     <delete id="deleteChatMessage" parameterType="String">
         DELETE FROM chat_message

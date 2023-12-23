@@ -43,10 +43,20 @@
     </insert>
 
     <update id="updateCanteen" parameterType="Canteen">
-        UPDATE canteen SET name = #{name}, image = #{image}, location = #{location}, introduction = #{introduction},
-                           opening_time = #{openingTime}, closing_time = #{closingTime}, activity = #{activity}, rating = #{rating}
+        UPDATE canteen
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="introduction != null">introduction = #{introduction},</if>
+            <if test="openingTime != null">opening_time = #{openingTime},</if>
+            <if test="closingTime != null">closing_time = #{closingTime},</if>
+            <if test="activity != null">activity = #{activity},</if>
+            <if test="rating != null">rating = #{rating},</if>
+        </set>
         WHERE id = #{id}
     </update>
+
 
     <delete id="deleteCanteen" parameterType="String">
         DELETE FROM canteen WHERE id = #{canteenId}

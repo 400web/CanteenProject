@@ -44,14 +44,17 @@
 
     <update id="updateComplaint" parameterType="Complaint">
         UPDATE complaint
-        SET complainant_id = #{complainantId},
-        canteen_id = #{canteenId},
-        complain_time = #{complainTime},
-        complaint_info = #{complaintInfo},
-        feedback = #{feedback},
-        response_info = #{responseInfo}
+        <set>
+            <if test="complainantId != null">complainant_id = #{complainantId},</if>
+            <if test="canteenId != null">canteen_id = #{canteenId},</if>
+            <if test="complainTime != null">complain_time = #{complainTime},</if>
+            <if test="complaintInfo != null">complaint_info = #{complaintInfo},</if>
+            <if test="feedback != null">feedback = #{feedback},</if>
+            <if test="responseInfo != null">response_info = #{responseInfo},</if>
+        </set>
         WHERE id = #{id}
     </update>
+
 
     <delete id="deleteComplaint" parameterType="String">
         DELETE FROM complaint
