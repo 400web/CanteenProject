@@ -21,6 +21,12 @@
         WHERE canteen_id = #{canteenId}
     </select>
 
+    <select id="selectUserIdsByCanteenId" resultType="java.lang.String">
+        SELECT id
+        FROM canteen_admin
+        WHERE canteen_id = #{canteenId}
+    </select>
+
     <select id="selectList" resultMap="canteenAdminResultMap">
         SELECT id, canteen_id
         FROM canteen_admin
@@ -41,5 +47,4 @@
         DELETE FROM canteen_admin
         WHERE id = #{id}
     </select>
-
 </mapper>
