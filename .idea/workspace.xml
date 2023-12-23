@@ -9,19 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="更新社区评论属性并且修改mapper">
-      <change afterPath="$PROJECT_DIR$/src/test/java/PageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="更新CSS">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/domain/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/domain/Dish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/mapper/DishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/mapper/DishMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/DishService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/DishServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CanteenMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CanteenMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/DishMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/DishMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/jakarta.servlet.jsp.jstl-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CommunityMessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CommunityMessageMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/CommunityMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/CommunityMessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CommunityMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CommunityMessageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/replyCommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/replyCommentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CommunityMessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CommunityMessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/community.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/community.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +29,9 @@
       <list>
         <option value="Class" />
         <option value="Servlet" />
+        <option value="HTML File" />
         <option value="Jsp File" />
         <option value="servlet" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -101,7 +97,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
+    <configuration name="canteenSearch.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/canteenproject_war_exploded/canteenSearch.jsp">
+      <method v="2" />
+    </configuration>
     <configuration name="dishSearch.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/canteenproject_war_exploded/dishSearch.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="test2.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/canteenproject_war_exploded/test2.html">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.13" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false">
@@ -230,12 +232,16 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.canteenSearch.jsp" />
       <item itemvalue="JavaScript Debug.dishSearch.jsp" />
+      <item itemvalue="JavaScript Debug.test2.html" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.13" />
       <item itemvalue="Tomcat Server.index.jsp" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.test2.html" />
+        <item itemvalue="JavaScript Debug.canteenSearch.jsp" />
         <item itemvalue="JavaScript Debug.dishSearch.jsp" />
         <item itemvalue="Tomcat Server.index.jsp" />
       </list>
@@ -278,7 +284,8 @@
       <workItem from="1702887997292" duration="2561000" />
       <workItem from="1703222427631" duration="5458000" />
       <workItem from="1703228689672" duration="30000" />
-      <workItem from="1703243743057" duration="12302000" />
+      <workItem from="1703243743057" duration="20748000" />
+      <workItem from="1703310597781" duration="8489000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -456,7 +463,55 @@
       <option name="project" value="LOCAL" />
       <updated>1703225267510</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="更新食堂和菜品属性并且修改mapper">
+      <option name="closed" value="true" />
+      <created>1703257243275</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1703257243275</updated>
+    </task>
+    <task id="LOCAL-00024" summary="配置文件">
+      <option name="closed" value="true" />
+      <created>1703257381068</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1703257381068</updated>
+    </task>
+    <task id="LOCAL-00025" summary="菜品检索页面和功能实现">
+      <option name="closed" value="true" />
+      <created>1703259209746</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1703259209747</updated>
+    </task>
+    <task id="LOCAL-00026" summary="食堂检索页面和功能实现">
+      <option name="closed" value="true" />
+      <created>1703261472377</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1703261472377</updated>
+    </task>
+    <task id="LOCAL-00027" summary="gson依赖，websocket依赖">
+      <option name="closed" value="true" />
+      <created>1703263854678</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1703263854678</updated>
+    </task>
+    <task id="LOCAL-00028" summary="更新CSS">
+      <option name="closed" value="true" />
+      <created>1703265382006</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1703265382006</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,6 +535,12 @@
     <MESSAGE value="食堂" />
     <MESSAGE value="更新食堂评论和菜品评论属性并且修改mapper" />
     <MESSAGE value="更新社区评论属性并且修改mapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新社区评论属性并且修改mapper" />
+    <MESSAGE value="更新食堂和菜品属性并且修改mapper" />
+    <MESSAGE value="配置文件" />
+    <MESSAGE value="菜品检索页面和功能实现" />
+    <MESSAGE value="食堂检索页面和功能实现" />
+    <MESSAGE value="gson依赖，websocket依赖" />
+    <MESSAGE value="更新CSS" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新CSS" />
   </component>
 </project>

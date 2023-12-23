@@ -14,11 +14,6 @@ import java.util.List;
 public class replyCommentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         CommunityMessageService communityMessageService = new CommunityMessageServiceImpl();
         CommunityMessage communityMessage=communityMessageService.getCommunityMessageById(id);
@@ -36,5 +31,10 @@ public class replyCommentServlet extends HttpServlet {
         request.setAttribute("parentMessage",communityMessage);
         request.setAttribute("replyList", replyList);
         request.getRequestDispatcher("community.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }
