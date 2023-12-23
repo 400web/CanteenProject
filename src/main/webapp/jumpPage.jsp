@@ -81,7 +81,7 @@
 <div class="page-container">
     <div class="container1">
         <div class="content1">
-            <span class="red-text">${sessionScope.rebackMessage}</span>
+            <span class="red-text">${rebackMessage}</span>
             <h4>页面将在 <span id="countdown">5秒后跳转到首页</span></h4>
             <button class="back-button" onclick="goBack()">返回</button>
         </div>

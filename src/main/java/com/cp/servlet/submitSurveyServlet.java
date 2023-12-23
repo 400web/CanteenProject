@@ -17,8 +17,8 @@ import java.io.IOException;
 public class submitSurveyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("rebackMessage","问卷提交成功");
-        request.getRequestDispatcher("jumpPage.jsp").forward(request,response);
+//        request.setAttribute("rebackMessage","问卷提交成功");
+//        request.getRequestDispatcher("jumpPage.jsp").forward(request,response);
 
         String surveyId = request.getParameter("id");
         SurveyService surveyService=new SurveyServiceImpl();
