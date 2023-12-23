@@ -1,0 +1,271 @@
+/* 自定义样式 */
+body {
+    background-color: #f0f0f0;
+}
+.navbar {
+    background-color: #343a40;
+    border-bottom: 1px solid #dee2e6;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #ffffff;
+}
+.nav-link {
+    color: #ffffff;
+}
+.carousel-item img {
+    height: calc(100vh / 4); /* 占据屏幕的四分之一 */
+    object-fit: cover;
+}
+.canteen-card {
+    text-align: center;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.canteen-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.canteen-card img:hover {
+    transform: scale(1.05);
+}
+.canteen-card h4 {
+    margin-top: 15px;
+    color: #333333;
+}
+.pagination {
+    margin-top: 30px;
+}
+/* 新增样式 */
+.section-divider {
+    border-top: 4px solid #720d09;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+}
+.section-title {
+    background-color: #ffffff;
+    color: #333333;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.carousel {
+    width: 70%; /* 设置轮播图的宽度 */
+    margin: 0 auto; /* 可选，用于居中轮播图 */
+}
+.carousel-item {
+    /*width: 800px; !* 调整为所需的宽度 *!*/
+    height: 400px; /* 调整为所需的高度 */
+}
+
+.carousel-item img {
+    width: 100%; /* 图片宽度占满容器 */
+    height: auto; /* 高度自动调整 */
+    object-fit: cover; /* 图片尽可能填满容器，可能会被裁剪 */
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 0; /* 将文字放置在顶部 */
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    color: white; /* 白色文字 */
+    padding: 10px; /* 调整内边距 */
+    margin: 0; /* 移除外边距 */
+}
+.carousel-caption {
+    max-width: 80%; /* 限制最大宽度 */
+    max-height: 20%; /* 限制最大高度 */
+}
+.carousel-caption h5, .carousel-caption p {
+    text-align: center; /* 文本居中对齐 */
+    margin: 0; /* 移除外边距 */
+}
+.carousel-caption {
+    background: rgba(255, 255, 255, 0.5); /* 半透明白色背景 */
+    backdrop-filter: blur(10px); /* 应用模糊效果 */
+    color: black; /* 文本颜色，根据需要调整 */
+    padding: 10px; /* 内边距，根据需要调整 */
+    border-radius: 15px; /* 圆角的大小 */
+}
+.carousel-caption p {
+    position: absolute; /* 使用绝对定位 */
+    bottom: 10px; /* 距底部的距离 */
+    right: 10px; /* 距右侧的距离 */
+    margin: 0; /* 移除默认外边距 */
+}
+
+
+.community-hot-topics {
+    border: 1px solid #ddd; /* 边框 */
+    padding: 10px; /* 内边距 */
+    border-radius: 10px; /* 圆角 */
+    width: 30%; /* 宽度占页面的1/2 */
+
+}
+
+
+.community-hot-topics ul {
+    list-style: none; /* 去除默认列表样式 */
+    padding: 0; /* 去除默认内边距 */
+}
+
+.community-hot-topics li {
+    display: flex; /* 使用弹性布局 */
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 5px; /* 间距 */
+}
+
+.topic {
+    flex: 1; /* 使话题占据可用空间 */
+    margin-right: 10px; /* 与热度条的间距 */
+}
+
+.heat-bar {
+    height: 10px; /* 热度条高度 */
+    background-color: #f90; /* 热度条颜色 */
+    border-radius: 5px; /* 圆角 */
+}
+
+
+.canteen-rankings {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30%;
+
+}
+
+.canteen-rankings ul {
+    list-style: none;
+    padding: 0;
+}
+
+.canteen-rankings li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.canteen-rankings .topic {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.canteen-rankings .heat-bar {
+    height: 10px;
+    background-color: #f90;
+    border-radius: 5px;
+}
+
+
+.container1 {
+    display: flex; /* 启用弹性布局 */
+    justify-content: space-around; /* 三个元素之间保持均匀的空间 */
+    align-items: flex-start; /* 顶部对齐 */
+    flex-wrap: wrap; /* 允许元素换行 */
+    margin: 40px auto 0; /* 水平居中 */
+    max-width: 1200px; /* 容器的最大宽度 */
+    padding: 20px; /* 容器内边距 */
+
+    border: 2px solid #ddd; /* 类似于.community-hot-topics，但边框稍粗 */
+    border-radius: 10px; /* 圆角 */
+}
+
+.community-hot-topics,
+.canteen-rankings,
+.dish-rankings {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30%; /* 调整宽度以适应三个元素 */
+    margin-bottom: 20px; /* 下边距 */
+    margin-left: 10px; /* 添加左边距 */
+    margin-right: 10px; /* 添加右边距 */
+}
+
+
+.dish-rankings ul {
+    list-style: none; /* 去除默认列表样式 */
+    padding: 0; /* 去除默认内边距 */
+}
+
+.dish-rankings li {
+    display: flex; /* 使用弹性布局 */
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 5px; /* 间距 */
+}
+
+.dish-rankings .topic {
+    flex: 1; /* 使话题占据可用空间 */
+    margin-right: 10px; /* 与热度条的间距 */
+}
+
+.dish-rankings .heat-bar {
+    height: 10px; /* 热度条高度 */
+    background-color: #f90; /* 热度条颜色 */
+    border-radius: 5px; /* 圆角 */
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column; /* 如果需要，可设置为行方向 */
+    align-items: center; /* 水平居中 */
+    justify-content: flex-start; /* 从顶部开始布局 */
+    max-width: 2000px; /* 根据需要调整 */
+    margin: 0 auto; /* 水平居中整个容器 */
+    padding: 20px; /* 内边距 */
+    border: 2px solid #ddd; /* 边框样式 */
+    border-radius: 10px; /* 圆角 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    max-height: 100%; /* 容器最大高度 */
+}
+
+#scrollable-menu {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px; /* 设置水平间距 */
+    overflow-y: auto; /* 添加垂直滚动 */
+    max-height: 500px; /* 设置最大高度，以容纳两行菜品 */
+}
+
+.menu-container {
+    display: flex;
+}
+
+.menu-item {
+    flex: 0 0 23%; /* 设置每行最多三个菜品 */
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.menu-item img {
+    width: 30%;
+    height: auto;
+    border-radius: 8px 8px 0 0; /* 设置图片上边缘圆角 */
+}
+
+.menu-item-details {
+    padding: 10px;
+}
