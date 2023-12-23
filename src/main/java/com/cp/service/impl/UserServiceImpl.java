@@ -13,6 +13,8 @@ import com.cp.service.SystemAdminService;
 import com.cp.service.UserService;
 import com.cp.utils.MybatisUtils;
 
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
     UserMapper userMapper = MybatisUtils.getMapper(UserMapper.class);
     SystemAdminMapper systemAdminMapper = MybatisUtils.getMapper(SystemAdminMapper.class);
@@ -38,6 +40,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteUserAccount(String id) {
         return false;
+    }
+
+    @Override
+    public List<User> getList() {
+        return userMapper.selectList();
+    }
+
+    @Override
+    public List<User> getListByIds(List<String> ids) {
+        return userMapper.selectByIds(ids);
     }
 
     @Override
