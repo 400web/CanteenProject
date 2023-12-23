@@ -209,7 +209,7 @@
     <label for="comment-content" class="form-label">评论内容：</label>
     <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
     <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
-    <button id="deselect" class="btn btn-close" onclick="deselect()">取消选择回复</button>
+    <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
 </div>
 
 <!-- 引入Bootstrap的JavaScript文件，以便使用Bootstrap的交互功能 -->

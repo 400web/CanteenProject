@@ -46,5 +46,14 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.title-style{
+    /*color:#0a53be;*/
+    text-align: left;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
 
 

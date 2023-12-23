@@ -53,5 +53,8 @@
         <a href="canteenReviewServlet?canteenId=${canteen.id}">查看更多食堂评论</a>
     </div>
 </section>
+<section>
+    <a href="complaintServlet?canteenName=${canteen.name}"><div class="menu-item-details">对食堂不满意？点击此处进行投诉</div></a>
+</section>
 </body>
 </html>

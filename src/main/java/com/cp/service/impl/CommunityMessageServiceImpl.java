@@ -5,10 +5,13 @@ import com.cp.mapper.CommunityMessageMapper;
 import com.cp.service.CommunityMessageService;
 import com.cp.utils.MybatisUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CommunityMessageServiceImpl implements CommunityMessageService {
-    CommunityMessageMapper communityMessageMapper= MybatisUtils.getMapper(CommunityMessageMapper.class);
+    CommunityMessageMapper communityMessageMapper = MybatisUtils.getMapper(CommunityMessageMapper.class);
+
     @Override
     public List<CommunityMessage> getCommunityMessages() {
         return communityMessageMapper.selectList();
@@ -27,6 +30,18 @@ public class CommunityMessageServiceImpl implements CommunityMessageService {
     @Override
     public List<CommunityMessage> getListByName(String name) {
         return communityMessageMapper.selectListByName(name);
+    }
+
+    @Override
+    public List<CommunityMessage> getCommunityMessagesDynamic(String name, String content) {
+        Map<String, Object> paramMap = new HashMap<>();
+        if (name != null && !name.isEmpty()) {
+            paramMap.put("name", name);
+        }
+        if (content != null && !content.isEmpty()) {
+            paramMap.put("content", content);
+        }
+        return communityMessageMapper.selectCommunityMessagesDynamic(paramMap);
     }
 
     @Override

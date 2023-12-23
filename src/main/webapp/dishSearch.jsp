@@ -16,7 +16,7 @@
 
 </head>
 <style>
-    em{
+    em {
         color: #f40;
         font-style: normal;
         font-weight: bold;
@@ -54,14 +54,14 @@
                 tableBody.innerHTML = '';
                 console.log(data);
                 let reg;
-                const key=document.getElementById("dishName").value;
-                if(key){
-                    reg=new RegExp(key,'gi');
+                const key = document.getElementById("dishName").value;
+                if (key) {
+                    reg = new RegExp(key, 'gi');
                 }
                 data.forEach(dish => {
-                    let name=dish.name;
-                    if(reg){
-                        name = name.replace(reg,(key) => '<em>'+key+'</em>');
+                    let name = dish.name;
+                    if (reg) {
+                        name = name.replace(reg, (key) => '<em>' + key + '</em>');
                         console.log(key);
                     }
                     const tableBody = document.getElementById('dishTableBody');
@@ -85,7 +85,7 @@
 </script>
 <div class="container mt-4">
     <div class="row mb-3">
-        <div class="col-md-4">
+        <div class="col-md-2">
             <label for="canteen" class="form-label">食堂名称：</label>
             <select name="canteen" id="canteen" class="form-select">
                 <option value="">不选择</option> <!-- 默认选项 -->
@@ -94,7 +94,7 @@
                 </c:forEach>
             </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             <label for="cuisine" class="form-label">菜系：</label>
             <select name="cuisine" id="cuisine" class="form-select">
                 <option value="">不选择</option> <!-- 默认选项 -->
@@ -102,25 +102,22 @@
                 <option value="湘菜">湘菜</option>
             </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-1">
             <label for="minPrice" class="form-label">最小价格：</label>
             <input type="number" name="minPrice" id="minPrice" class="form-control">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-1">
             <label for="maxPrice" class="form-label">最大价格：</label>
             <input type="number" name="maxPrice" id="maxPrice" class="form-control">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="dishName" class="form-label">菜品名字：</label>
             <input type="text" name="dishName" id="dishName" class="form-control">
         </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-12">
+        <div class="col-md-1 d-flex align-items-end">
             <button type="submit" class="btn btn-primary" onclick="searchDishes()">检索</button>
         </div>
     </div>
-
     <table class="table">
         <thead>
         <tr>
