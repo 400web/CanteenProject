@@ -527,7 +527,7 @@
     // 添加事件监听器
     identitySelect.addEventListener('change', function() {
         // 获取当前所选身份
-        var selectedIdentity = identitySelect.value;
+        let selectedIdentity = identitySelect.value;
 
         // 如果选择了食堂管理员，则显示食堂选择框，否则隐藏
         if (selectedIdentity === '食堂管理员') {
