@@ -76,4 +76,16 @@
         SELECT id, username, password, phone_number, role
         FROM user
     </select>
+    <select id="selectDishesDynamic" resultMap="userResultMap">
+        SELECT  id, username, password, phone_number, role
+        FROM user
+        <where>
+            <if test="name != null">
+                AND username LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="name = null">
+                AND 1=1
+            </if>
+        </where>
+    </select>
 </mapper>
