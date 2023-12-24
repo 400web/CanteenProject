@@ -10,6 +10,7 @@
         <result property="name" column="name"/>
         <result property="publishTime" column="publish_time" />
         <result property="publishTimestamp" column="publish_timestamp"/>
+        <result property="title" column="title"/>
         <result property="content" column="content" />
         <result property="likes" column="likes" />
         <result property="comments" column="comments" />
@@ -19,30 +20,30 @@
     </resultMap>
 
     <select id="selectById" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE id = #{id}
     </select>
 
     <select id="selectPublisherId" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE publisher_id = #{publisherId}
     </select>
 
     <select id="selectByContent" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE content = #{Content}
     </select>
 
     <select id="selectByReplyId" resultMap="communityMessageResultMap" parameterType="String">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE reply_message_id = #{replyMessageId}
     </select>
     <select id="selectCommunityMessagesDynamic" resultMap="communityMessageResultMap" parameterType="map">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         <where>
             reply_message_id = 1
@@ -51,32 +52,32 @@
             </if>
             <if test="content != null">
                 AND content LIKE CONCAT('%', #{content}, '%')
+                OR title LIKE CONCAT('%', #{title}, '%')
             </if>
-
-            <if test="name == null and content == null">
+            <if test="name == null and content == null and title == null">
                 AND 1=1
             </if>
         </where>
     </select>
 
     <select id="selectList" resultMap="communityMessageResultMap">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
     </select>
     <select id="selectByParentId" resultMap="communityMessageResultMap">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE parent_id = #{parentId}
     </select>
     <select id="selectListByName" resultMap="communityMessageResultMap">
-        SELECT id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id
+        SELECT id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id
         FROM community_message
         WHERE name = #{name}
     </select>
 
     <insert id="addCommunityMessage" parameterType="CommunityMessage" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO community_message (id, publisher_id, name, publish_time, publish_timestamp, content, likes, comments, hot,reply_message_id, parent_id)
-        VALUES (#{id}, #{publisherId},#{name} ,#{publishTime},#{publishTimestamp} ,#{content}, #{likes}, #{comments},#{hot} ,#{replyMessageId},#{parentId})
+        INSERT INTO community_message (id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id)
+        VALUES (#{id}, #{publisherId},#{name} ,#{publishTime},#{publishTimestamp} ,#{title},#{content}, #{likes}, #{comments},#{hot} ,#{replyMessageId},#{parentId})
     </insert>
 
     <update id="updateCommunityMessage" parameterType="CommunityMessage">
@@ -86,6 +87,7 @@
             <if test="name != null">name = #{name},</if>
             <if test="publishTime != null">publish_time = #{publishTime},</if>
             <if test="publishTimestamp != null">publish_timestamp = #{publishTimestamp},</if>
+            <if test="title != null">title = #{title},</if>
             <if test="content != null">content = #{content},</if>
             <if test="likes != null">likes = #{likes},</if>
             <if test="comments != null">comments = #{comments},</if>

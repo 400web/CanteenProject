@@ -20,6 +20,7 @@ public class CommunityMessage{
     private String name;//发布人名字
     private String publishTime; // 发布时间
     private long publishTimestamp;//发布时间戳
+    private String title;//标题
     private String content; // 内容
     private int likes; // 点赞数
     private int comments; // 评论数

@@ -23,7 +23,7 @@ public class SubmitCommunityServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CommunityMessageService cms=new CommunityMessageServiceImpl();
+        CommunityMessageService cms = new CommunityMessageServiceImpl();
         // 从请求中获取JSON格式的数据
         BufferedReader reader = request.getReader();
         StringBuilder sb = new StringBuilder();
@@ -35,7 +35,7 @@ public class SubmitCommunityServlet extends HttpServlet {
 
         // 输出请求体内容（用于检查）
         System.out.println("收到的请求数据：" + requestBody);
-        Gson gson=new Gson();
+        Gson gson = new Gson();
         // 解析 JSON 数据
         JsonObject jsonObject = gson.fromJson(requestBody, JsonObject.class);
 
@@ -45,18 +45,18 @@ public class SubmitCommunityServlet extends HttpServlet {
         String replyId = jsonObject.get("replyId").getAsString();
         String replyName = jsonObject.get("replyName").getAsString();
         String parentId = jsonObject.get("parentId").getAsString();
-        long time=System.currentTimeMillis();
+        long time = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = sdf.format(time);
-        CommunityMessage message=new CommunityMessage(null,"12",username,formattedDate,time,commentContent,0,0,100,replyId,parentId,null,null);
+        CommunityMessage message = new CommunityMessage(null, "12", username, formattedDate, time, null, commentContent, 0, 0, 100, replyId, parentId, null, null);
         cms.addCommunityMessage(message);
-        if(!replyId.equals(parentId)){
-            CommunityMessage parentMessage=cms.getCommunityMessageById(parentId);
-            parentMessage.setComments(parentMessage.getComments()+1);
+        if (!replyId.equals(parentId)) {
+            CommunityMessage parentMessage = cms.getCommunityMessageById(parentId);
+            parentMessage.setComments(parentMessage.getComments() + 1);
             cms.updateCommunityMessage(parentMessage);
         }
-        CommunityMessage replyMessage=cms.getCommunityMessageById(replyId);
-        replyMessage.setComments(replyMessage.getComments()+1);
+        CommunityMessage replyMessage = cms.getCommunityMessageById(replyId);
+        replyMessage.setComments(replyMessage.getComments() + 1);
         cms.updateCommunityMessage(replyMessage);
         message.setReplyName(replyName);
         String jsonResponse = gson.toJson(message);

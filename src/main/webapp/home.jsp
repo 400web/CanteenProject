@@ -132,21 +132,23 @@
 
 <script>
     const topics = [
-        '话题 A',
-        '话题 B',
-        '话题 C'
-        // 更多话题
+        <c:forEach var="topic" items="${topics}" varStatus="status">
+        {
+            name: '<c:out value="${topic.name}"/>',
+            url: '<c:out value="${topic.url}"/>'
+        }<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
     ];
 
     const topicList = document.querySelector('.community-hot-topics ul');
     let topicHeat = 90; // 起始热度值
     const topicDecrement = 15; // 每个话题之间的热度递减量
 
-    topics.slice(0, 5).forEach(topicName => {
+    topics.slice(0,5).forEach(topic => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
-        <span class="topic">${topicName}</span>
-        <span class="heat-bar" style="width: ${topicHeat}%;"></span>
+            <a href="${topic.url}" class="topic">${topic.name}</a>
+            <span class="heat-bar" style="width: ${topicHeat}%;"></span>
         `;
         topicList.appendChild(listItem);
 
@@ -158,21 +160,23 @@
 
 <script>
     const canteens = [
-        '食堂 A',
-        '食堂 B',
-        '食堂 C'
-        // 更多食堂
+        <c:forEach var="canteen" items="${canteens}" varStatus="status">
+        {
+            name: '<c:out value="${canteen.name}"/>',
+            url: '<c:out value="${canteen.url}"/>'
+        }<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
     ];
 
     const canteenList = document.querySelector('.canteen-rankings ul');
     let canteenRank = 90; // 起始排名值
     const canteenDecrement = 15; // 每个食堂之间的排名递减量
 
-    canteens.slice(0, 5).forEach(canteenName => {
+    canteens.slice(0,5).forEach(canteen => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
-        <span class="topic">${canteenName}</span>
-        <span class="heat-bar" style="width: ${canteenRank}%;"></span>
+            <a href="${canteen.url}" class="topic">${canteen.name}</a>
+            <span class="heat-bar" style="width: ${canteenRank}%;"></span>
         `;
         canteenList.appendChild(listItem);
 
@@ -183,10 +187,12 @@
 
 <script>
     const dishes = [
-        { name: '菜品 A', popularity: 95 },
-        { name: '菜品 B', popularity: 90 },
-        { name: '菜品 C', popularity: 85 }
-        // 更多菜品
+        {<c:forEach var="dish" items="${dishesFromBackend}" varStatus="status">
+        {
+            name: '<c:out value="${dish.name}"/>',
+            url: '<c:out value="${dish.url}"/>'
+        }<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
     ];
 
     const dishList = document.querySelector('.dish-rankings ul');
@@ -197,7 +203,7 @@
     dishesFromBackend.slice(0, 5).forEach(dishName => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
-        <span class="topic">${dishName}</span>
+        <a href="${dish.url}" class="topic">${dish.name}</a>
         <span class="heat-bar" style="width: ${startingPopularity}%;"></span>
         `;
         dishList.appendChild(listItem);
@@ -206,6 +212,50 @@
     });
 </script>
 
+<script>
+    const lowPriceDishes = [
+        <c:forEach var="dish" items="${dishes}" varStatus="status">
+        {
+            id : '',
+            name: '<c:out value="${dish.name}"/>',
+            promotionPrice: '<c:out value="${dish.promotionPrice}"/>'
+        }<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
+    ];
+
+    const lowPriceDishList = document.querySelector('.container3 .low-price-dish-list');
+
+    lowPriceDishes.forEach(dish => {
+        const listItem = document.createElement('li');
+        listItem.style.display = 'flex';
+        listItem.style.justifyContent = 'space-between';
+        listItem.innerHTML = `
+            <span>${dish.name}</span>
+            <span>${dish.promotionPrice}</span>
+        `;
+        lowPriceDishList.appendChild(listItem);
+    });
+</script>
+
+
+<script>
+    const surveys = [
+        <c:forEach var="survey" items="${surveys}" varStatus="status">
+        {
+            name: '<c:out value="${survey.name}"/>',
+            url: '<c:out value="${survey.url}"/>'
+        }<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
+    ];
+
+    const surveyList = document.querySelector('.container3 .survey-list');
+
+    surveys.forEach(survey => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${survey.url}">${survey.name}</a>`;
+        surveyList.appendChild(listItem);
+    });
+</script>
 
 <div class="container1">
     <div class="container" >
@@ -221,15 +271,15 @@
 <%--ABC是示例效果，真实数据从script里面找传来--%>
                 <li>
                     <span class="topic">话题 A</span>
-                    <span class="heat-bar" style="width: 80%;"></span>
+                    <span class="heat-bar" style="width: 50%;"></span>
                 </li>
                 <li>
                     <span class="topic">话题 B</span>
-                    <span class="heat-bar" style="width: 70%;"></span>
+                    <span class="heat-bar" style="width: 40%;"></span>
                 </li>
                 <li>
                     <span class="topic">话题 C</span>
-                    <span class="heat-bar" style="width: 60%;"></span>
+                    <span class="heat-bar" style="width: 30%;"></span>
                 </li>
                 <!-- 更多话题 -->
             </ul>
@@ -282,6 +332,8 @@
     <div class="container" >
         <div class="section-divider" style="color: red">
             <div class="section-title1" style="color: #960404; font-size: 24px;">特价促销榜</div>
+            <!-- 动态生成的菜品列表将放在这里 -->
+            <ul class="dish-list"></ul>
         </div>
     </div>
 
@@ -290,6 +342,8 @@
     <div class="container" >
         <div class="section-divider" style="color: red">
             <div class="section-title1" style="color: #960404; font-size: 24px;">最新投票调查</div>
+            <!-- 动态生成的问卷列表将放在这里 -->
+            <ul class="survey-list"></ul>
         </div>
     </div>
 
@@ -360,8 +414,8 @@
 </nav>
 
 
-<!-- 引入Bootstrap的JavaScript库 -->
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 
