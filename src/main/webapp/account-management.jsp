@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 86189
@@ -10,262 +11,7 @@
 <head>
     <title>账号管理</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f0f0f0;
-        }
-        .navbar {
-            background: linear-gradient(to bottom, #fce4e4, #651616);
-            border-bottom: 1px solid #dee2e6;
-        }
-        .navbar-brand {
-            font-weight: bold;
-            color: #ffffff;
-        }
-        .nav-link {
-            color: #ffffff;
-        }
-        /* 添加自定义的样式 */
-        .account-wrapper {
-            display: flex;
-            height: 100vh; /* 100%视窗高度 */
-            padding: 20px 0; /* 上下留白为 20px，左右留白为 0 */
-        }
-
-        .nav-column {
-            flex: 0 0 auto;
-            width: max-content;
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-right: 20px; /* 右边留白 */
-        }
-
-        .content-column {
-            flex: 1;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9; /* 背景色 */
-        }
-
-        .account-nav {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .account-nav li {
-            margin-bottom: 10px;
-        }
-
-        .account-nav li a {
-            text-decoration: none;
-            color: black;
-            display: block;
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .account-nav li a:hover {
-            color: blue;
-            background-color: #e0e0e0;
-        }
-
-        .account-section {
-            display: none;
-            padding: 20px;
-        }
-
-        .account-section.active {
-            display: block;
-        }
-
-        .account-list h2 {
-            margin-bottom: 20px;
-        }
-
-        .account-list ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .account-list ul li {
-            margin-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            border-radius: 5px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        .btn-success {
-            background-color: #28a745;
-            border-color: #28a745;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-            border-color: #218838;
-        }
-        .btn-margin {
-            margin-right: 5px;
-        }
-        /* 自定义样式 */
-        .container {
-            text-align: center;
-        }
-
-        .table-wrapper {
-            width: 50%; /* 表格占 50% 栅格 */
-            margin: 0 auto; /* 居中 */
-        }
-
-        .myTable {
-            width: 100%;
-            text-align: center;
-            font-size: 20px; /* 增大字体 */
-        }
-
-        .myTable th {
-            width: 30%; /* 占1/5 */
-            padding: 15px; /* 增大单元格上下边距 */
-        }
-
-        .myTable td {
-            width: 70%; /* 占4/5 */
-            padding: 15px; /* 增大单元格上下边距 */
-        }
-        /* 用户管理部分整体样式 */
-        .account-section {
-            margin-bottom: 30px;
-        }
-
-        /* 用户管理标题样式 */
-        .account-section .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .account-section h2 {
-            color: #333;
-            font-size: 24px;
-            margin: 0;
-        }
-
-        /* 搜索框样式 */
-        .input-group {
-            display: flex;
-            align-items: center;
-            width: 300px; /* 调整搜索框宽度 */
-        }
-
-        .input-group-append {
-            margin-left: -1px;
-        }
-
-        .form-control {
-            border-radius: 20px;
-        }
-
-        #searchButton {
-            border-radius: 20px;
-            background-color: #007bff;
-            color: white;
-        }
-
-        /* 添加用户按钮样式 */
-        #addUserButton {
-            display: block;
-            margin: 0 auto;
-            border-radius: 20px;
-            background-color: #28a745;
-            color: white;
-            width: 150px;
-            padding: 8px 0;
-            font-size: 16px;
-        }
-        /* 输入框和下拉选择框的样式 */
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .form-control {
-            border-radius: 0.3rem;
-        }
-
-        /* 按钮样式 */
-        .btn-secondary,
-        .btn-primary {
-            border-radius: 0.3rem;
-        }
-
-        /* 设置模态框的宽度 */
-        .modal-dialog {
-            max-width: 600px;
-        }
-
-        /* 调整关闭按钮位置 */
-        .modal-header .close {
-            margin-top: -2rem;
-        }
-
-        /* 标题样式 */
-        .modal-title {
-            font-weight: bold;
-        }
-
-        /* 调整底部按钮的间距 */
-        .modal-footer .btn {
-            margin-right: 0.5rem;
-        }
-
-        /* 按钮布局 */
-        .modal-footer {
-            justify-content: center;
-        }
-
-        /* 调整按钮颜色和背景 */
-        .btn-secondary {
-            color: #fff;
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-        .btn-secondary:hover {
-            color: #fff;
-            background-color: #5a6268;
-            border-color: #545b62;
-        }
-
-        .btn-primary {
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            color: #fff;
-            background-color: #0069d9;
-            border-color: #0062cc;
-        }
-    </style>
+    <link href="css/account-management.css" rel="stylesheet">
 </head>
 
 <body>
@@ -289,7 +35,6 @@
         </ul>
     </div>
 </nav>
-
 
 <!-- 我的账号和用户管理部分 -->
 <div class="container-fluid mt-4">
@@ -389,33 +134,78 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody id="userList">
-                    <!-- 这里是动态添加的用户列表 -->
-                    <tr>
-                        <td>用户1</td>
-                        <td>*******</td>
-                        <td>123-456-7890</td>
-                        <td>管理员</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-info btn-sm btn-margin">编辑</button>
-                                <button class="btn btn-danger btn-sm">删除</button>
+                    <tbody>
+                    <!-- 使用 JSTL 遍历 userMap 输出表格内容 -->
+                    <c:forEach var="entry" items="${requestScope.userMap}">
+                        <c:set var="user" value="${entry.value}" />
+                        <tr>
+                            <!-- 显示用户信息，包括其他列 -->
+                            <td id="username_${user.id}">${user.username}</td>
+                            <td id="password_${user.id}">*******</td> <!-- 这里用*代替密码 -->
+                            <td id="phoneNumber_${user.id}">${user.phoneNumber}</td>
+                            <td id="role_${user.id}">${user.role}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <!-- 编辑按钮，点击时弹出模态框 -->
+                                    <button class="btn btn-info btn-sm btn-margin" data-toggle="modal" data-target="#editModal${user.id}" onclick="fillEditModal('${user.id}')">编辑</button>
+                                    <button class="btn btn-danger btn-sm">删除</button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- 模态框 -->
+                        <div class="modal fade" id="editModal${user.id}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel${entry.key}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel${entry.key}">编辑用户信息</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- 用户信息表单 -->
+                                        <div class="modal-body">
+                                            <!-- 用户信息表单 -->
+                                            <input type="hidden" id="editUserId">
+                                            <div class="form-group">
+                                                <label for="editUsername_${user.id}">用户名</label>
+                                                <input type="text" class="form-control" id="editUsername_${user.id}" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editPassword_${user.id}">密码</label>
+                                                <input type="password" class="form-control" id="editPassword_${user.id}" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editPhone_${user.id}">手机号</label>
+                                                <input type="text" class="form-control" id="editPhone_${user.id}" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editRole_${user.id}">身份</label>
+                                                <select class="form-control" id="editRole_${user.id}">
+                                                    <option value="普通用户">普通用户</option>
+                                                    <option value="食堂管理员">食堂管理员</option>
+                                                </select>
+                                            </div>
+                                            <!-- 如果是食堂管理员，则显示管理的食堂 -->
+                                            <div class="form-group" id="editCanteenSection_${user.id}" style="display: none;">
+                                                <label for="CanteenSection_${user.id}">管理的食堂:${canteenAdminMap.get(user.id)}</label>
+                                                <select class="form-control" id="CanteenSection_${user.id}">
+                                                    <c:forEach var="canteens" items="${requestScope.canteens}">
+                                                        <option value="${canteens.name}">${canteens.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>用户2</td>
-                        <td>*******</td>
-                        <td>987-654-3210</td>
-                        <td>普通用户</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-info btn-sm btn-margin">编辑</button>
-                                <button class="btn btn-danger btn-sm">删除</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- ... 可以根据实际情况添加更多用户信息 -->
+                        </div>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <!-- 添加用户按钮 -->
@@ -462,10 +252,9 @@
                 <div class="form-group" id="canteenSelect" style="display: none;">
                     <label for="canteen">管理的食堂</label>
                     <select class="form-control" id="canteen">
-                        <!-- 这里是动态添加的食堂选项 -->
-                        <option value="食堂1">食堂1</option>
-                        <option value="食堂2">食堂2</option>
-                        <!-- ... 可根据实际情况添加更多选项 -->
+                        <c:forEach var="canteens" items="${requestScope.canteens}">
+                            <option value="${canteens.name}">${canteens.name}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
@@ -484,7 +273,7 @@
     // JavaScript 代码来处理点击切换
     $(document).ready(function() {
         $('.account-link').click(function() {
-            var target = $(this).attr('href');
+            let target = $(this).attr('href');
             $('.account-section').removeClass('active');
             $(target).addClass('active');
         });
@@ -536,6 +325,72 @@
             canteenSelect.style.display = 'none';
         }
     });
+</script>
+<script>
+    function fillEditModal(userId) {
+        // 获取表格中的信息
+        let editUsername = document.getElementById('username_' + userId).textContent;
+        let editPhoneNumber = document.getElementById('phoneNumber_' + userId).textContent;
+        let editRole = document.getElementById('role_' + userId).textContent;
+
+        // 获取模态框中的表单元素
+        let modalUsername = document.getElementById('editUsername_' + userId);
+        let modalPassword = document.getElementById('editPassword_' + userId);
+        let modalPhoneNumber = document.getElementById('editPhone_' + userId);
+        let modalRole = document.getElementById('editRole_' + userId);
+        let modalCanteenSection = document.getElementById('editCanteenSection_' + userId);
+
+        // 填充模态框中的表单元素值
+        modalUsername.value = editUsername;
+        modalPassword.value = '*******'; // 这里用*代替密码
+        modalPhoneNumber.value = editPhoneNumber;
+        modalRole.value = editRole;
+        // 添加事件监听器
+        modalRole.addEventListener('change', function() {
+            // 获取当前所选身份
+            let selectedIdentity = modalRole.value;
+
+            // 如果选择了食堂管理员，则显示食堂选择框，否则隐藏
+            if (selectedIdentity === '食堂管理员') {
+                modalCanteenSection.style.display = 'block';
+            } else {
+                modalCanteenSection.style.display = 'none';
+            }
+        });
+
+        // 将表单字段设置为可编辑状态
+        document.getElementById('editUsername_' + userId).readOnly = false;
+        document.getElementById('editPassword_' + userId).readOnly = false;
+        document.getElementById('editPhone_' + userId).readOnly = false;
+        document.getElementById('editRole_' + userId).readOnly = false;
+        document.getElementById('editCanteen_' + userId).readOnly = false; // 如果需要食堂信息的话
+    }
+</script>
+<script>
+    function saveUserData(userId) {
+        let username = document.getElementById('username' + userId).value;
+        let password = document.getElementById('password' + userId).value;
+        let phone = document.getElementById('phone' + userId).value;
+        let role = document.getElementById('role' + userId).value;
+        let canteen = document.getElementById('canteen' + userId).value; // 如果需要食堂信息的话
+
+        // 构建表单数据对象
+        let formData = new FormData();
+        formData.append('userId', userId);
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('phone', phone);
+        formData.append('role', role);
+        formData.append('canteen', canteen); // 如果需要食堂信息的话
+
+        // 使用 AJAX 发送表单数据到 Servlet
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'YourServletURL', true);
+        xhr.onload = function () {
+            // 处理响应，如果需要的话
+        };
+        xhr.send(formData);
+    }
 </script>
 </body>
 </html>
