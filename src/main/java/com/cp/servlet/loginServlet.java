@@ -43,6 +43,6 @@ public class loginServlet extends HttpServlet {
             request.getRequestDispatcher("SdFirstPageServlet").forward(request, response);
             return;
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        request.getRequestDispatcher("homeServlet").forward(request, response);
     }
 }

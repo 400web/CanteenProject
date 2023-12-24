@@ -39,7 +39,7 @@
         console.log("socket已关闭");
     }
     var replyInfo = null;
-    var parentInfo =  null;
+    var parentInfo = null;
     document.addEventListener('DOMContentLoaded', function () {
         // 在这里获取元素的值并存储在 replyInfo 对象中
         const parentMessageId = document.getElementById('parentMessageId');
@@ -51,7 +51,6 @@
                 replyName: parentMessageName.textContent,
                 parentId: parentMessageId.textContent
             };
-            console.log(parentInfo);
         }
     });
 
@@ -71,9 +70,9 @@
         commentContent.placeholder = "回复" + replyName;
     }
 
-    function deselect(){
+    function deselect() {
         const commentContent = document.getElementById('comment-content');
-        replyInfo=null;
+        replyInfo = null;
         commentContent.placeholder = "请输入";
     }
 
@@ -149,8 +148,8 @@
                 }
                 console.log('评论已提交');
                 replyInfo = null;
-                username.innerHTML="";
-                commentContent.innerHTML="";
+                username.innerHTML = "";
+                commentContent.innerHTML = "";
                 commentContent.placeholder = "请输入";
                 return response.json();
             })
@@ -211,8 +210,6 @@
     <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
     <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
 </div>
-
-<!-- 引入Bootstrap的JavaScript文件，以便使用Bootstrap的交互功能 -->
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

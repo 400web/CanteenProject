@@ -1,5 +1,6 @@
 package com.cp.mapper;
 
+import com.cp.domain.Dish;
 import com.cp.domain.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,6 +16,7 @@ public interface UserMapper {
     List<User> selectByIds(List<String> ids);
 
     User selectByPhoneNumber(@Param("phoneNumber") String phoneNumber);
+    List<User> selectDishesDynamic(Map<String, Object> map);
 
     User selectByUsername(@Param("username") String username);
 
