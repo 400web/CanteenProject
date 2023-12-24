@@ -63,7 +63,11 @@ public class SdFirstPageServlet extends HttpServlet {
         String introduction = request.getParameter("canteenDescriptionInput");
         String openingTime = request.getParameter("canteenOpeningInput");
         String closingTime = request.getParameter("canteenClosingInput");
-        Canteen canteen = new Canteen(null, name, "css/"+fileName, location, introduction, openingTime, closingTime, null, 0D );
+        String image = null;
+        if(fileName != null && !fileName.isEmpty()){
+            image = "css/"+fileName;
+        }
+        Canteen canteen = new Canteen(null, name, image, location, introduction, openingTime, closingTime, null, 0D );
         if(canteenService.addCanteen(canteen)){
             doGet(request, response);
         }

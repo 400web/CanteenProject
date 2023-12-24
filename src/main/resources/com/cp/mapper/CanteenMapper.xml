@@ -59,6 +59,6 @@
 
 
     <delete id="deleteCanteen" parameterType="String">
-        DELETE FROM canteen WHERE id = #{canteenId}
+        DELETE FROM canteen WHERE id = #{id}
     </delete>
 </mapper>

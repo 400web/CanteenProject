@@ -72,7 +72,7 @@
                 <a class="nav-link" href="#community">社区</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="account-management.jsp">账号管理</a>
+                <a class="nav-link" href="AccountManagementServlet">账号管理</a>
             </li>
         </ul>
     </div>
