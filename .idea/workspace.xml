@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/account-management.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
     </list>
@@ -25,9 +25,9 @@
       <list>
         <option value="HTML File" />
         <option value="Jsp File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Servlet" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -113,6 +113,9 @@
       <method v="2" />
     </configuration>
     <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="home.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/home.jsp">
       <method v="2" />
     </configuration>
     <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
@@ -210,6 +213,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.home.jsp" />
       <item itemvalue="JavaScript Debug.login.jsp" />
       <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       <item itemvalue="JavaScript Debug.account-management.jsp" />
@@ -219,6 +223,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.account-management.jsp" />
+        <item itemvalue="JavaScript Debug.home.jsp" />
         <item itemvalue="JavaScript Debug.login.jsp" />
         <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
         <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
@@ -253,6 +258,7 @@
       <workItem from="1703262557220" duration="3502000" />
       <workItem from="1703318159777" duration="6932000" />
       <workItem from="1703325109753" duration="25301000" />
+      <workItem from="1703403569358" duration="11744000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -398,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703352590114</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703403595010</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1703403595010</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
