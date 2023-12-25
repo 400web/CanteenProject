@@ -20,6 +20,7 @@ public class changeCanteenServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 从请求中获取食堂信息
         String canteenName = request.getParameter("name");
+        String canteenActivity = request.getParameter("activity");
         String canteenDescription = request.getParameter("description");
         String openingTime = request.getParameter("openingTime");
         String closingTime = request.getParameter("closingTime");
@@ -27,6 +28,7 @@ public class changeCanteenServlet extends HttpServlet {
         // 创建食堂对象并设置属性
         Canteen canteen = new Canteen();
         canteen.setName(canteenName);
+        canteen.setActivity(canteenActivity);
         canteen.setIntroduction(canteenDescription);
         canteen.setOpeningTime(openingTime);
         canteen.setClosingTime(closingTime);
