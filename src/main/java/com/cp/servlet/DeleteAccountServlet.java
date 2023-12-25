@@ -30,7 +30,6 @@ public class DeleteAccountServlet extends HttpServlet {
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
         String userId = jsonObject.get("userId").getAsString();
-        System.out.println(userId);
         UserService userService = new UserServiceImpl();
         userService.deleteUserAccount(userId);
     }
