@@ -140,7 +140,7 @@
                     <!-- 使用 JSTL 遍历 userMap 输出表格内容 -->
                     <c:forEach var="entry" items="${requestScope.userMap}">
                         <c:set var="user" value="${entry.value}" />
-                        <tr>
+                        <tr id="allUser_${user.id}">
                             <!-- 显示用户信息，包括其他列 -->
                             <td id="username_${user.id}">${user.username}</td>
                             <td id="password_${user.id}">*******</td> <!-- 这里用*代替密码 -->
@@ -150,7 +150,7 @@
                                 <div class="btn-group">
                                     <!-- 编辑按钮，点击时弹出模态框 -->
                                     <button class="btn btn-info btn-sm btn-margin" data-toggle="modal" data-target="#editModal${user.id}" onclick="fillEditModal('${user.id}')">编辑</button>
-                                    <button class="btn btn-danger btn-sm">删除</button>
+                                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('${user.id}')">删除</button>
                                 </div>
                             </td>
                         </tr>
@@ -203,6 +203,22 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                                         <button type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel">确认要删除该用户吗？</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
                                     </div>
                                 </div>
                             </div>
@@ -459,6 +475,38 @@
         });
     });
 
+</script>
+<script>
+    // 确认删除按钮点击事件处理函数
+    function confirmDelete(userId) {
+        $('#confirmDeleteModal').modal('show'); // 弹出确认删除的模态框
+
+        // 当确认删除按钮点击时，将用户 ID 发送到 Servlet 进行处理
+        document.getElementById('confirmDeleteBtn').onclick = function() {
+            document.getElementById('allUser_'+userId).style.display = 'none';
+            let data = {
+                userId : userId
+            };
+            let xhr = new XMLHttpRequest();
+            let url = 'DeleteAccountServlet'; // 替换为您的 Servlet 地址
+
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Data sent successfully!');
+                        // 可以在此处编写成功后的逻辑
+                    } else {
+                        console.error('Error occurred while sending data!');
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(data));
+            $('#confirmDeleteModal').modal('hide');
+        };
+    }
 </script>
 </body>
 </html>

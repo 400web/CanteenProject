@@ -36,6 +36,9 @@ public class UpdateAccountServlet extends HttpServlet {
         String password = jsonObject.get("editedPassword").getAsString();
         String phoneNumber = jsonObject.get("editedPhone").getAsString();
         String role = jsonObject.get("editedRole").getAsString();
+        if(password.equals("*******") || password.isEmpty()){
+            password = null;
+        }
         User user = new User(userId, username, password, phoneNumber,role);
         System.out.println("userId"+userId);
         System.out.println("username:"+username);

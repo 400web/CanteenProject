@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteAccountServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/UpdateAccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/UpdateAccountServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
     </list>
@@ -108,7 +108,7 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
+  <component name="RunManager" selected="JavaScript Debug.account-management.jsp">
     <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
       <method v="2" />
     </configuration>
@@ -259,7 +259,7 @@
       <workItem from="1703318159777" duration="6932000" />
       <workItem from="1703325109753" duration="25301000" />
       <workItem from="1703403569358" duration="13557000" />
-      <workItem from="1703492916647" duration="22172000" />
+      <workItem from="1703492916647" duration="24738000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -453,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703521824549</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703523924406</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1703523924406</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
