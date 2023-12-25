@@ -12,9 +12,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/community.css">
     <title>评论页面</title>
 </head>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 <script>
     const socket = new WebSocket('ws://' + window.location.host + '/canteenproject_war_exploded' + '/updatesCommunity');
     socket.onopen = function () {
@@ -54,8 +58,8 @@
         }
     });
 
-    function toggleReplies(button) {
-        const replies = button.nextElementSibling;
+    function toggleReplies(id) {
+        const replies = document.getElementById('replies-' + id);
         replies.classList.toggle('hidden');
     }
 
@@ -148,8 +152,8 @@
                 }
                 console.log('评论已提交');
                 replyInfo = null;
-                username.innerHTML = "";
-                commentContent.innerHTML = "";
+                username.textContent = "";
+                commentContent.textContent = "";
                 commentContent.placeholder = "请输入";
                 return response.json();
             })
@@ -164,52 +168,75 @@
     }
 </script>
 <body>
-<div id="comments-section">
-    <p id="parentMessageId" style="display: none">${parentMessage.id}</p>
-    <h1 id="parentMessageContent" class="fw-bold">${parentMessage.content}</h1>
-    <h2 id="parentMessageName" class="text-primary">${parentMessage.name}</h2>
-    <h2 class="text-muted">发布时间: ${parentMessage.publishTime}</h2>
-    <c:forEach var="message" items="${replyList}">
-        <div class="comment">
-            <div class="comment-header d-flex justify-content-between">
-                <span class="user-name fw-bold">${message.name}</span>
-                <span class="comment-time text-muted">发表于: ${message.publishTime}</span>
-            </div>
-            <div class="comment-content">
-                    ${message.content}
-                <a href="javascript:void(0)" class="text-decoration-none"
-                   onclick="reply(${message.id},${message.name},${message.parentId})">回复</a>
-                <button class="btn btn-primary reply-button" onclick="toggleReplies(this)">
-                    显示回复(${message.comments})
-                </button>
-                <div class="replies hidden" id="replies-${message.id}">
-                    <c:forEach var="cm" items="${message.replyList}">
-                        <div class="reply">
-                            <span class="user-name fw-bold">${cm.name} -> ${cm.replyName}</span>
-                            <span class="comment-time text-muted">回复于: ${cm.publishTime}</span>
-                            <div class="reply-content">${cm.content}</div>
-                            <a href="javascript:void(0)" class="text-decoration-none"
-                               onclick="reply(${cm.id},${cm.name},${cm.parentId})">回复</a>
+<div class="page-wrapper pt-4 pb-4">
+    <div class="container-sm">
+        <div id="comments-section">
+            <p id="parentMessageId" style="display: none">${parentMessage.id}</p>
+            <h1 id="parentMessageContent" class="fw-bold">${parentMessage.content}</h1>
+            <h2 id="parentMessageName" class="text-primary">${parentMessage.name}</h2>
+            <h2 class="text-muted">发布时间: ${parentMessage.publishTime}</h2>
+            <c:forEach var="message" items="${replyList}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <h5 class="card-title fw-bold">${message.name}</h5>
+                            </div>
+                            <div class="col-auto">
+                                <h6 class="card-subtitle mb-2 text-muted">${message.publishTime}</h6>
+                            </div>
                         </div>
-                    </c:forEach>
+                        <p class="card-text">${message.content}</p>
+                        <div class="row justify-content-between mt-3">
+                            <div class="col-auto">
+                                <a href="javascript:void(0)" class="text-decoration-none"
+                                   onclick="reply(${message.id},${message.name},${message.parentId})">回复</a>
+                                <button class="btn btn-primary reply-button" onclick="toggleReplies(${message.id})">
+                                    显示回复(${message.comments})
+                                </button>
+                            </div>
+                            <div class="row">
+                                <div class="replies col-12 hidden" id="replies-${message.id}">
+                                    <!-- 这里是回复内容 -->
+                                    <c:forEach var="cm" items="${message.replyList}">
+                                        <div class="card bg-secondary text-white mb-2">
+                                            <div class="card-body">
+                                                <div class="row justify-content-between">
+                                                    <div class="col">
+                                                        <h5 class="card-title fw-bold">${cm.name} -> ${cm.replyName}</h5>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <h6 class="card-subtitle mb-2 text-muted">回复于: ${cm.publishTime}</h6>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text">${cm.content}</p>
+                                                <a href="javascript:void(0)" class="text-decoration-none"
+                                                   onclick="reply(${cm.id},${cm.name},${cm.parentId})">回复</a>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
-</div>
 
-<div id="comment-form">
-    <h3 class="text-primary">发表评论</h3>
-    <p id="replyId" style="display: none;">${parentMessage.id}</p>
-    <p id="replyName" style="display: none">${parentMessage.name}</p>
-    <p id="parentId" style="display: none">${parentMessage.id}</p>
-    <label for="username" class="form-label">用户名：</label>
-    <input type="text" id="username" name="username" class="form-control" required>
-    <label for="comment-content" class="form-label">评论内容：</label>
-    <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
-    <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
-    <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
+        <div id="comment-form">
+            <h3 class="text-primary">发表评论</h3>
+            <p id="replyId" style="display: none;">${parentMessage.id}</p>
+            <p id="replyName" style="display: none">${parentMessage.name}</p>
+            <p id="parentId" style="display: none">${parentMessage.id}</p>
+            <label for="username" class="form-label">用户名：</label>
+            <input type="text" id="username" name="username" class="form-control" required>
+            <label for="comment-content" class="form-label">评论内容：</label>
+            <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
+            <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
+            <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
+        </div>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </div>
 </div>
-<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
