@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dfydn92
@@ -18,7 +19,7 @@
 </head>
 <body>
 <!-- 导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)"  >
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)">
     <a class="navbar-brand" href="#">USST食堂系统首页</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
@@ -26,7 +27,8 @@
                 <a class="nav-link" href="#" onclick="switchContent('content1');">首页</a>
             </li>
             <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     食堂
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -55,7 +57,7 @@
 
 
 <!-- 分隔线与标题 -->
-<div class="container" >
+<div class="container">
     <div class="section-divider" style="color: red">
         <div class="section-title" style="color: #960404; font-size: 24px;">活动公告！</div>
     </div>
@@ -84,7 +86,8 @@
 
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
@@ -129,97 +132,14 @@
     }</script>
 
 
-
-<script>
-    const topics = [
-        <c:forEach var="topic" items="${topics}" varStatus="status">
-        {
-            name: '<c:out value="${topic.name}"/>',
-            url: '<c:out value="${topic.url}"/>'
-        }<c:if test="${!status.last}">,</c:if>
-        </c:forEach>
-    ];
-
-    const topicList = document.querySelector('.community-hot-topics ul');
-    let topicHeat = 90; // 起始热度值
-    const topicDecrement = 15; // 每个话题之间的热度递减量
-
-    topics.slice(0,5).forEach(topic => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-            <a href="${topic.url}" class="topic">${topic.name}</a>
-            <span class="heat-bar" style="width: ${topicHeat}%;"></span>
-        `;
-        topicList.appendChild(listItem);
-
-        topicHeat -= topicDecrement; // 更新热度值
-    });
-</script>
-
-
-
-<script>
-    const canteens = [
-        <c:forEach var="canteen" items="${canteens}" varStatus="status">
-        {
-            name: '<c:out value="${canteen.name}"/>',
-            url: '<c:out value="${canteen.url}"/>'
-        }<c:if test="${!status.last}">,</c:if>
-        </c:forEach>
-    ];
-
-    const canteenList = document.querySelector('.canteen-rankings ul');
-    let canteenRank = 90; // 起始排名值
-    const canteenDecrement = 15; // 每个食堂之间的排名递减量
-
-    canteens.slice(0,5).forEach(canteen => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-            <a href="${canteen.url}" class="topic">${canteen.name}</a>
-            <span class="heat-bar" style="width: ${canteenRank}%;"></span>
-        `;
-        canteenList.appendChild(listItem);
-
-        canteenRank -= canteenDecrement; // 更新排名值
-    });
-</script>
-
-
-<script>
-    const dishes = [
-        {<c:forEach var="dish" items="${dishesFromBackend}" varStatus="status">
-        {
-            name: '<c:out value="${dish.name}"/>',
-            url: '<c:out value="${dish.url}"/>'
-        }<c:if test="${!status.last}">,</c:if>
-        </c:forEach>
-    ];
-
-    const dishList = document.querySelector('.dish-rankings ul');
-
-    let startingPopularity = 90; // 起始热度值
-    const decrement = 15; // 每个菜品之间的热度递减量
-
-    dishesFromBackend.slice(0, 5).forEach(dishName => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `
-        <a href="${dish.url}" class="topic">${dish.name}</a>
-        <span class="heat-bar" style="width: ${startingPopularity}%;"></span>
-        `;
-        dishList.appendChild(listItem);
-
-        startingPopularity -= decrement; // 更新热度值
-    });
-</script>
-
 <script>
     const lowPriceDishes = [
         <c:forEach var="dish" items="${dishes}" varStatus="status">
         {
-            id : '',
+            id: '',
             name: '<c:out value="${dish.name}"/>',
-            promotionPrice: '<c:out value="${dish.promotionPrice}"/>'
-        }<c:if test="${!status.last}">,</c:if>
+            promotionPrice: '<c:out value="${dish.price}"/>'
+        }<c:if test="${!status.last}">, </c:if>
         </c:forEach>
     ];
 
@@ -230,8 +150,8 @@
         listItem.style.display = 'flex';
         listItem.style.justifyContent = 'space-between';
         listItem.innerHTML = `
-            <span>${dish.name}</span>
-            <span>${dish.promotionPrice}</span>
+            <span>` + dish.name + `</span>
+            <span>` + dish.promotionPrice + `</span>
         `;
         lowPriceDishList.appendChild(listItem);
     });
@@ -244,7 +164,7 @@
         {
             name: '<c:out value="${survey.name}"/>',
             url: '<c:out value="${survey.url}"/>'
-        }<c:if test="${!status.last}">,</c:if>
+        }<c:if test="${!status.last}">, </c:if>
         </c:forEach>
     ];
 
@@ -252,38 +172,38 @@
 
     surveys.forEach(survey => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="${survey.url}">${survey.name}</a>`;
+        listItem.innerHTML = `<a href="` + survey.url + `">` + survey.name + `</a>`;
         surveyList.appendChild(listItem);
     });
 </script>
 
 <div class="container1">
-    <div class="container" >
+    <div class="container">
         <div class="section-divider" style="color: red">
             <div class="section-title" style="color: #960404; font-size: 24px;">USST热搜榜</div>
         </div>
     </div>
-        <!-- 社区热门话题的内容 -->
-        <div class="community-hot-topics">
-            <h2 style="color: #8f2525">社区热门话题</h2>
-            <div class="section-divider" style="color: #e57419"></div>
-            <ul>
-<%--ABC是示例效果，真实数据从script里面找传来--%>
-                <li>
-                    <span class="topic">话题 A</span>
-                    <span class="heat-bar" style="width: 50%;"></span>
-                </li>
-                <li>
-                    <span class="topic">话题 B</span>
-                    <span class="heat-bar" style="width: 40%;"></span>
-                </li>
-                <li>
-                    <span class="topic">话题 C</span>
-                    <span class="heat-bar" style="width: 30%;"></span>
-                </li>
-                <!-- 更多话题 -->
-            </ul>
-        </div>
+    <!-- 社区热门话题的内容 -->
+    <div class="community-hot-topics">
+        <h2 style="color: #8f2525">社区热门话题</h2>
+        <div class="section-divider" style="color: #e57419"></div>
+        <ul id="topicList">
+            <%--ABC是示例效果，真实数据从script里面找传来--%>
+            <li>
+                <span class="topic">话题 A</span>
+                <span class="heat-bar" style="width: 50%;"></span>
+            </li>
+            <li>
+                <span class="topic">话题 B</span>
+                <span class="heat-bar" style="width: 40%;"></span>
+            </li>
+            <li>
+                <span class="topic">话题 C</span>
+                <span class="heat-bar" style="width: 30%;"></span>
+            </li>
+            <!-- 更多话题 -->
+        </ul>
+    </div>
 
     <div class="canteen-rankings">
         <h2 style="color: #8f2525">食堂排名</h2>
@@ -328,74 +248,74 @@
 </div>
 
 <div class="outer-container">
-<div class="container3">
-    <div class="container" >
-        <div class="section-divider" style="color: red">
-            <div class="section-title1" style="color: #960404; font-size: 24px;">特价促销榜</div>
-            <!-- 动态生成的菜品列表将放在这里 -->
-            <ul class="dish-list"></ul>
+    <div class="container3">
+        <div class="container">
+            <div class="section-divider" style="color: red">
+                <div class="section-title1" style="color: #960404; font-size: 24px;">特价促销榜</div>
+                <!-- 动态生成的菜品列表将放在这里 -->
+                <ul class="dish-list"></ul>
+            </div>
         </div>
-    </div>
 
-</div>
-<div class="container3">
-    <div class="container" >
-        <div class="section-divider" style="color: red">
-            <div class="section-title1" style="color: #960404; font-size: 24px;">最新投票调查</div>
-            <!-- 动态生成的问卷列表将放在这里 -->
-            <ul class="survey-list"></ul>
+    </div>
+    <div class="container3">
+        <div class="container">
+            <div class="section-divider" style="color: red">
+                <div class="section-title1" style="color: #960404; font-size: 24px;">最新投票调查</div>
+                <!-- 动态生成的问卷列表将放在这里 -->
+                <ul class="survey-list"></ul>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </div>
 
 <div class="container2">
-    <div class="container" >
+    <div class="container">
         <div class="section-divider1" style="color: red">
             <div class="section-title1" style="color: #960404; font-size: 24px;">菜品推荐榜</div>
         </div>
     </div>
 
-<section id="menu">
-    <div id="scrollable-menu" class="menu-container">
-        <div class="menu-item" >
-            <c:forEach var="dish" items="${dishList}">
-                <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt=""></a>
-                <div class="menu-item-details">
-                    <h3>菜名：${dish.name}</h3>
-                    <p>菜系: ${dish.cuisine}</p>
-                    <p>价格: ${dish.price}</p>
-                </div>
-            </c:forEach>>
-        </div>
+    <section id="menu">
+        <div id="scrollable-menu" class="menu-container">
+            <div class="menu-item">
+                <c:forEach var="dish" items="${dishList}">
+                    <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt=""></a>
+                    <div class="menu-item-details">
+                        <h3>菜名：${dish.name}</h3>
+                        <p>菜系: ${dish.cuisine}</p>
+                        <p>价格: ${dish.price}</p>
+                    </div>
+                </c:forEach>>
+            </div>
 
-        <div class="menu-item">
-            <img src="css/food1.jpeg" alt="菜品图片">
-            <div class="menu-item-details">
-                <h3>菜名：红烧肉</h3>
-                <p>菜系: 川菜</p>
-                <p>价格: 30元</p>
+            <div class="menu-item">
+                <img src="css/food1.jpeg" alt="菜品图片">
+                <div class="menu-item-details">
+                    <h3>菜名：红烧肉</h3>
+                    <p>菜系: 川菜</p>
+                    <p>价格: 30元</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="css/food1.jpeg" alt="菜品图片">
+                <div class="menu-item-details">
+                    <h3>菜名：宫保鸡丁</h3>
+                    <p>菜系: 川菜</p>
+                    <p>价格: 35元</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="css/food1.jpeg" alt="菜品图片">
+                <div class="menu-item-details">
+                    <h3>菜名：宫保鸡丁</h3>
+                    <p>菜系: 川菜</p>
+                    <p>价格: 35元</p>
+                </div>
             </div>
         </div>
-        <div class="menu-item">
-            <img src="css/food1.jpeg" alt="菜品图片">
-            <div class="menu-item-details">
-                <h3>菜名：宫保鸡丁</h3>
-                <p>菜系: 川菜</p>
-                <p>价格: 35元</p>
-            </div>
-        </div>
-        <div class="menu-item">
-            <img src="css/food1.jpeg" alt="菜品图片">
-            <div class="menu-item-details">
-                <h3>菜名：宫保鸡丁</h3>
-                <p>菜系: 川菜</p>
-                <p>价格: 35元</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 </div>
 
 <!-- 分页栏 -->
@@ -412,8 +332,83 @@
         </li>
     </ul>
 </nav>
+<script>
+    const dishes = [
+        <c:forEach var="dish" items="${dishes}" varStatus="status">
+        {
+            name: '<c:out value="${dish.name}"/>',
+            id: '<c:out value="${dish.id}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
+    const dishList = document.querySelector('.dish-rankings ul');
+    console.log(dishList);
+    dishList.innerHTML = "";
+    let startingPopularity = 90; // 起始热度值
+    const decrement = 15; // 每个菜品之间的热度递减量
+    dishes.slice(0, 5).forEach(dishName => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+        <a href="` + dishName.id + `" class="topic">` + dishName.name + `</a>
+        <span class="heat-bar" style="width: ` + startingPopularity + `;"></span>
+        `;
+        dishList.appendChild(listItem);
 
+        startingPopularity -= decrement; // 更新热度值
+    });
+</script>
+<script>
+    const topics = [
+        <c:forEach var="topic" items="${topics}" varStatus="status">
+        {
+            name: '<c:out value="${topic.title}"/>',
+            id: '<c:out value="${topic.id}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
+    let topicList = document.getElementById("topicList");
+    // 接下来的操作
+    console.log(topicList);
+    topicList.innerHTML = "";
+    let topicHeat = 90; // 起始热度值
+    const topicDecrement = 15; // 每个话题之间的热度递减量
 
+    topics.slice(0, 5).forEach(topic => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <a href="replyCommentServlet?id=` + topic.id + `" class="topic">` + topic.name + `</a>
+            <span class="heat-bar" style="width: ` + topicHeat + `;"></span>
+        `;
+        topicList.appendChild(listItem);
+
+        topicHeat -= topicDecrement; // 更新热度值
+    });
+</script>
+<script>
+    const canteens = [
+        <c:forEach var="canteen" items="${canteens}" varStatus="status">
+        {
+            name: '<c:out value="${canteen.name}"/>',
+            id: '<c:out value="${canteen.id}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
+    const canteenList = document.querySelector('.canteen-rankings ul');
+    canteenList.innerHTML = "";
+    let canteenRank = 90; // 起始排名值
+    const canteenDecrement = 15; // 每个食堂之间的排名递减量
+
+    canteens.slice(0, 5).forEach(canteen => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <a href="` + canteen.id + `" class="topic">` + canteen.name + `</a>
+            <span class="heat-bar" style="width: ` + canteenRank + `;"></span>
+        `;
+        canteenList.appendChild(listItem);
+
+        canteenRank -= canteenDecrement; // 更新排名值
+    });
+</script>
 
 <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>

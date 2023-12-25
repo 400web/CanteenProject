@@ -35,12 +35,17 @@ public class CanteenAdminServiceImpl implements CanteenAdminService {
     }
 
     @Override
-    public boolean addCanteenAdminRelation(String adminId, String canteenId) {
-        return false;
+    public boolean addCanteenAdmin(CanteenAdmin canteenAdmin) {
+        return canteenAdminMapper.addCanteenAdmin(canteenAdmin);
     }
 
     @Override
-    public boolean deleteCanteenAdminRelation(String adminId, String canteenId) {
-        return false;
+    public boolean deleteCanteenAdmin(String id) {
+        return canteenAdminMapper.deleteCanteenAdmin(id);
+    }
+
+    @Override
+    public boolean updateCanteenAdmin(CanteenAdmin canteenAdmin) {
+        return canteenAdminMapper.updateCanteenAdmin(canteenAdmin);
     }
 }

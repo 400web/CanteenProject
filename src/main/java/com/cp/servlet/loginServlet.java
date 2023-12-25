@@ -37,10 +37,8 @@ public class loginServlet extends HttpServlet {
         }
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        if (user.getRole().equals("用户")) {
-            CanteenService canteenService = new CanteenServiceImpl();
-            request.setAttribute("canteenList", canteenService.getList());
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+        if (user.getRole().equals("普通用户")) {
+            response.sendRedirect("homeServlet");
             return;
         }
         if(user.getRole().equals("系统管理员")){
