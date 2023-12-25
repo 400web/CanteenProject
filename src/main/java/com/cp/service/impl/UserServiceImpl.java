@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteUserAccount(String id) {
-        return false;
+        return userMapper.deleteUser(id);
     }
 
     @Override

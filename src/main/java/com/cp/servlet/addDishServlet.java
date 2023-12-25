@@ -66,7 +66,7 @@ public class addDishServlet extends HttpServlet {
         CanteenAdminService canteenAdminService = new CanteenAdminServiceImpl();
         Canteen canteen =  canteenAdminService.getCanteenByAdminId(user.getId());
         // 创建菜品对象并保存
-        Dish dish = new Dish(null,canteen.getId(),dishName, canteen.getName(), imagePath, dishDescription, dishPrice, dishCuisine,0,0);
+        Dish dish = new Dish(null,canteen.getId(),dishName, canteen.getName(), imagePath, dishDescription, dishPrice, dishCuisine,0,0,"不推荐");
          DishService dishService = new DishServiceImpl();
          dishService.addDish(dish);
 
