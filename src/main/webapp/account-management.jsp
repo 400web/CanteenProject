@@ -12,6 +12,8 @@
     <title>账号管理</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/account-management.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -167,7 +169,7 @@
                                         <!-- 用户信息表单 -->
                                         <div class="modal-body">
                                             <!-- 用户信息表单 -->
-                                            <input type="hidden" id="editUserId">
+                                            <input type="hidden" id="editUserId_${user.id}" value="${user.id}" >
                                             <div class="form-group">
                                                 <label for="editUsername_${user.id}">用户名</label>
                                                 <input type="text" class="form-control" id="editUsername_${user.id}" readonly>
@@ -189,10 +191,10 @@
                                             </div>
                                             <!-- 如果是食堂管理员，则显示管理的食堂 -->
                                             <div class="form-group" id="editCanteenSection_${user.id}" style="display: none;">
-                                                <label for="CanteenSection_${user.id}">管理的食堂:${canteenAdminMap.get(user.id)}</label>
+                                                <label for="CanteenSection_${user.id}">管理的食堂:</label>
                                                 <select class="form-control" id="CanteenSection_${user.id}">
                                                     <c:forEach var="canteens" items="${requestScope.canteens}">
-                                                        <option value="${canteens.name}">${canteens.name}</option>
+                                                        <option value="${canteens.id}">${canteens.name}</option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
@@ -227,17 +229,17 @@
             <div class="modal-body">
                 <!-- 用户名输入框 -->
                 <div class="form-group">
-                    <label for="username">用户名</label>
+                    <label for="addUsername">用户名</label>
                     <input type="text" class="form-control" id="addUsername">
                 </div>
                 <!-- 密码输入框 -->
                 <div class="form-group">
-                    <label for="password">密码</label>
+                    <label for="addPassword">密码</label>
                     <input type="password" class="form-control" id="addPassword">
                 </div>
                 <!-- 手机号输入框 -->
                 <div class="form-group">
-                    <label for="phone">手机号</label>
+                    <label for="addPhone">手机号</label>
                     <input type="text" class="form-control" id="addPhone">
                 </div>
                 <!-- 身份选择框 -->
@@ -253,22 +255,19 @@
                     <label for="canteen">管理的食堂</label>
                     <select class="form-control" id="canteen">
                         <c:forEach var="canteens" items="${requestScope.canteens}">
-                            <option value="${canteens.name}">${canteens.name}</option>
+                            <option value="${canteens.id}">${canteens.name}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-primary" id="saveButton">保存</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- 引入Bootstrap的JavaScript库和jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     // JavaScript 代码来处理点击切换
     $(document).ready(function() {
@@ -346,10 +345,14 @@
         modalPhoneNumber.value = editPhoneNumber;
         modalRole.value = editRole;
         // 添加事件监听器
+        if(editRole === "食堂管理员"){
+            modalCanteenSection.style.display = 'block';
+        } else {
+            modalCanteenSection.style.display = 'none';
+        }
         modalRole.addEventListener('change', function() {
             // 获取当前所选身份
             let selectedIdentity = modalRole.value;
-
             // 如果选择了食堂管理员，则显示食堂选择框，否则隐藏
             if (selectedIdentity === '食堂管理员') {
                 modalCanteenSection.style.display = 'block';
@@ -357,7 +360,6 @@
                 modalCanteenSection.style.display = 'none';
             }
         });
-
         // 将表单字段设置为可编辑状态
         document.getElementById('editUsername_' + userId).readOnly = false;
         document.getElementById('editPassword_' + userId).readOnly = false;
@@ -384,13 +386,104 @@
         formData.append('canteen', canteen); // 如果需要食堂信息的话
 
         // 使用 AJAX 发送表单数据到 Servlet
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('POST', 'YourServletURL', true);
         xhr.onload = function () {
             // 处理响应，如果需要的话
         };
         xhr.send(formData);
     }
+</script>
+<script>
+    document.getElementById('saveButton').addEventListener('click', function() {
+        let username = document.getElementById('addUsername').value;
+        let password = document.getElementById('addPassword').value;
+        let phone = document.getElementById('addPhone').value;
+        let identity = document.getElementById('identity').value;
+        let canteenId = document.getElementById('canteen').value;
+
+        let userData = {
+            username: username,
+            password: password,
+            phone: phone,
+            identity: identity,
+            canteenId: canteenId
+        };
+
+        let xhr = new XMLHttpRequest();
+        let url = 'AddAccountServlet'; // 替换为您的 Servlet 地址
+
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log('Data sent successfully!');
+                    // 可以在此处编写成功后的逻辑
+                } else {
+                    console.error('Error occurred while sending data!');
+                }
+            }
+        };
+
+        xhr.send(JSON.stringify(userData));
+    });
+</script>
+<script>
+    // 获取所有模态框中的保存按钮
+    let saveButtons = document.querySelectorAll('[id^="editModal"] .btn-primary');
+
+    // 为每个保存按钮添加点击事件监听器
+    saveButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // 获取当前保存按钮所在模态框的用户ID
+            let modalId = this.closest('.modal').id; // 获取最近的模态框的ID
+            let userId = modalId.replace('editModal', ''); // 从模态框ID中提取用户ID
+
+            // 使用提取的用户ID构建表单元素ID，并获取表单数据
+            let editedUsername = document.getElementById('editUsername_'+userId).value;
+            let editedPassword = document.getElementById('editPassword_'+userId).value;
+            let editedPhone = document.getElementById('editPhone_'+userId).value;
+            let editedRole = document.getElementById('editRole_'+userId).value;
+            let editedCanteen = document.getElementById('CanteenSection_'+userId).value;
+
+            document.getElementById('username_'+userId).textContent = editedUsername;
+            document.getElementById('phoneNumber_'+userId).textContent = editedPhone;
+            document.getElementById('role_'+userId).textContent = editedRole
+
+            // 创建包含用户编辑数据的对象
+            let editedUserData = {
+                userId: userId,
+                editedUsername: editedUsername,
+                editedPassword: editedPassword,
+                editedPhone: editedPhone,
+                editedRole: editedRole,
+                editedCanteenId: editedCanteen
+            };
+
+            let xhr = new XMLHttpRequest();
+            let url = 'UpdateAccountServlet'; // 替换为您的 Servlet 地址
+
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Data sent successfully!');
+                        // 可以在此处编写成功后的逻辑
+                    } else {
+                        console.error('Error occurred while sending data!');
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(editedUserData));
+            // 关闭模态框
+            $('#editModal'+userId).modal('hide');
+        });
+    });
+
 </script>
 </body>
 </html>

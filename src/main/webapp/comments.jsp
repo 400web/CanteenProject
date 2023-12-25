@@ -82,6 +82,15 @@
             });
     }
 </script>
+<style>
+    h1 {
+        margin: 0;
+        text-align: center;
+        font-size: 3em;
+        font-family: 'Georgia', serif; /* Example of a specific font */
+        /*color: #ff0000; !* Orange color *!*/
+    }
+</style>
 <body>
 <div>
     <h1>

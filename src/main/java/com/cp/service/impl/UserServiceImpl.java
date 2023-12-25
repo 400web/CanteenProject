@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         if (userMapper.selectByPhoneNumber(user.getPhoneNumber()) != null) {
             return 2;
         }
-        userMapper.addUser(user);
+        addUser(user);
         return 0;
     }
 
@@ -54,15 +54,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(User user) {
-        if (!userMapper.addUser(user)) return false;
-        ordinaryUserMapper.addOrdinaryUser(new OrdinaryUser(user.getId(), 0, 0, 0, 1));
-        return true;
+        if(userMapper.addUser(user)){
+            return ordinaryUserMapper.addOrdinaryUser(new OrdinaryUser(user.getId(), 0, 0, 0, 1));
+        }
+        return false;
     }
 
     @Override
     public boolean updateUserRole(User user, String canteenId) {
-        if (user.getRole().equals("食堂管理员")) {
-            canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId,null));
+        if (user.getRole().equals("食堂管理员") && canteenAdminMapper.selectCanteenByAdminId(user.getId()) != null) {
+            canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId, null));
         }
         if (user.getRole().equals("普通用户")) {
             canteenAdminMapper.deleteCanteenAdmin(user.getId());

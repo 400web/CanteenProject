@@ -9,6 +9,7 @@
         <result property="evaluatorId" column="evaluator_id" />
         <result property="name" column="name" />
         <result property="time" column="time" />
+        <result property="timestamp" column="timestamp"/>
         <result property="comment" column="comment" />
         <result property="canteenId" column="canteen_id" />
         <result property="evaluationScore" column="evaluation_score" />
@@ -16,32 +17,33 @@
     </resultMap>
 
     <select id="selectById" resultMap="canteenReviewResultMap" parameterType="String">
-        SELECT id, evaluator_id, name, time, comment, canteen_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE id = #{id}
     </select>
 
     <select id="selectByCanteenId" resultMap="canteenReviewResultMap" parameterType="String">
-        SELECT id, evaluator_id, name, time, comment, canteen_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE canteen_id = #{canteenId}
     </select>
 
     <select id="selectListById" resultMap="canteenReviewResultMap" parameterType="String">
-        SELECT id, evaluator_id, name, time, comment, canteen_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE evaluator_id = #{evaluatorId} AND canteen_id = #{canteenId}
+        ORDER BY id DESC
     </select>
 
     <select id="selectListByName" resultMap="canteenReviewResultMap">
-        SELECT id, evaluator_id, name, time, comment, canteen_id, evaluation_score, weight
+        SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE name = #{name}
     </select>
 
     <insert id="addCanteenReview" parameterType="CanteenReview">
-        INSERT INTO canteen_review (id, evaluator_id, name, time, comment, canteen_id, evaluation_score, weight)
-        VALUES (#{id}, #{evaluatorId}, #{name}, #{time}, #{comment}, #{canteenId}, #{evaluationScore}, #{weight})
+        INSERT INTO canteen_review (evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight)
+        VALUES (#{evaluatorId}, #{name}, #{time}, #{comment}, #{canteenId}, #{evaluationScore}, #{weight})
     </insert>
 
     <update id="updateCanteenReview" parameterType="CanteenReview">
@@ -50,6 +52,7 @@
             <if test="evaluatorId != null">evaluator_id = #{evaluatorId},</if>
             <if test="name != null">name = #{name},</if>
             <if test="time != null">time = #{time},</if>
+            <if test="timestamp != null">timestamp = #{timestamp}</if>
             <if test="comment != null">comment = #{comment},</if>
             <if test="canteenId != null">canteen_id = #{canteenId},</if>
             <if test="evaluationScore != null">evaluation_score = #{evaluationScore},</if>

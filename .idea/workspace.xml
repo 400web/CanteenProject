@@ -10,10 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/account-management.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/UpdateAccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/UpdateAccountServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +24,8 @@
         <option value="HTML File" />
         <option value="Jsp File" />
         <option value="JavaScript File" />
-        <option value="Servlet" />
         <option value="CSS File" />
+        <option value="Servlet" />
       </list>
     </option>
   </component>
@@ -108,7 +106,7 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.account-management.jsp">
+  <component name="RunManager" selected="JavaScript Debug.login.jsp">
     <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
       <method v="2" />
     </configuration>
@@ -222,10 +220,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.account-management.jsp" />
-        <item itemvalue="JavaScript Debug.home.jsp" />
         <item itemvalue="JavaScript Debug.login.jsp" />
+        <item itemvalue="JavaScript Debug.account-management.jsp" />
         <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
+        <item itemvalue="JavaScript Debug.home.jsp" />
         <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       </list>
     </recent_temporary>
@@ -258,7 +256,8 @@
       <workItem from="1703262557220" duration="3502000" />
       <workItem from="1703318159777" duration="6932000" />
       <workItem from="1703325109753" duration="25301000" />
-      <workItem from="1703403569358" duration="11744000" />
+      <workItem from="1703403569358" duration="13557000" />
+      <workItem from="1703492916647" duration="14817000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -412,7 +411,31 @@
       <option name="project" value="LOCAL" />
       <updated>1703403595010</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703436761496</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1703436761496</updated>
+    </task>
+    <task id="LOCAL-00021" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703510522891</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1703510522892</updated>
+    </task>
+    <task id="LOCAL-00022" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703514993276</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1703514993276</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
