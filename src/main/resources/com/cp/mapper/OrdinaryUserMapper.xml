@@ -6,7 +6,7 @@
 <mapper namespace="com.cp.mapper.OrdinaryUserMapper">
 
     <resultMap id="ordinaryUserResultMap" type="OrdinaryUser">
-        <id property="id" column="user_id"/>
+        <id property="id" column="id"/>
         <result property="loginTimes" column="login_times"/>
         <result property="evaluationTimes" column="evaluation_times"/>
         <result property="communityInteractionTimes" column="community_interaction_times"/>
@@ -26,7 +26,7 @@
 
     <insert id="addOrdinaryUser" parameterType="OrdinaryUser">
         INSERT INTO ordinary_user (id, login_times, evaluation_times, community_interaction_times, level)
-        VALUES (#{userId}, #{loginTimes}, #{evaluationTimes}, #{communityInteractionTimes}, #{level})
+        VALUES (#{id}, #{loginTimes}, #{evaluationTimes}, #{communityInteractionTimes}, #{level})
     </insert>
 
     <update id="updateOrdinaryUser" parameterType="OrdinaryUser">
@@ -38,7 +38,7 @@
             </if>
             <if test="level != null">level = #{level}</if>
         </set>
-        WHERE id = #{userId}
+        WHERE id = #{id}
     </update>
 
 

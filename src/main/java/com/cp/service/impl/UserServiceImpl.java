@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         if (userMapper.selectByPhoneNumber(user.getPhoneNumber()) != null) {
             return 2;
         }
-        userMapper.addUser(user);
+        addUser(user);
         return 0;
     }
 
