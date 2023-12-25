@@ -396,13 +396,13 @@
 </script>
 <script>
     document.getElementById('saveButton').addEventListener('click', function() {
-        var username = document.getElementById('addUsername').value;
-        var password = document.getElementById('addPassword').value;
-        var phone = document.getElementById('addPhone').value;
-        var identity = document.getElementById('identity').value;
-        var canteenId = document.getElementById('canteen').value;
+        let username = document.getElementById('addUsername').value;
+        let password = document.getElementById('addPassword').value;
+        let phone = document.getElementById('addPhone').value;
+        let identity = document.getElementById('identity').value;
+        let canteenId = document.getElementById('canteen').value;
 
-        var userData = {
+        let userData = {
             username: username,
             password: password,
             phone: phone,
@@ -414,7 +414,7 @@
         let url = 'AddAccountServlet'; // 替换为您的 Servlet 地址
 
         xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -459,7 +459,7 @@
                 editedPassword: editedPassword,
                 editedPhone: editedPhone,
                 editedRole: editedRole,
-                editedCanteen: editedCanteen
+                editedCanteenId: editedCanteen
             };
 
             let xhr = new XMLHttpRequest();
