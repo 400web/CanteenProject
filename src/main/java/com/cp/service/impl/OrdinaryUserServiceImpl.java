@@ -26,6 +26,34 @@ public class OrdinaryUserServiceImpl implements OrdinaryUserService {
 
     @Override
     public boolean updateOrdinaryUser(OrdinaryUser user) {
+
         return ordinaryUserMapper.updateOrdinaryUser(user);
+    }
+
+    @Override
+    public boolean updateLevel(String useId, int action) {
+        OrdinaryUser user= getOrdinaryUserById(useId);
+        int logins = user.getLoginTimes();
+        int comments = user.getEvaluationTimes();
+        int interactions = user.getCommunityInteractionTimes();
+        int level = user.getLevel();
+        if (action == 1) {
+            logins++;
+            user.setLoginTimes(logins);
+        }
+        if (action == 2) {
+            comments++;
+            user.setEvaluationTimes(comments);
+        }
+        if (action == 3) {
+            interactions++;
+            user.setCommunityInteractionTimes(interactions);
+        }
+        double totalActivity = logins * 1.0 + comments * 1.5 + interactions * 2.0;
+        double relativeActivity = totalActivity / level;
+        if (relativeActivity > level * 10) {
+            user.setLevel(level + 1);
+        }
+        return updateOrdinaryUser(user);
     }
 }
