@@ -171,6 +171,7 @@
             </ul>
         </div>
 
+
         <!-- 右侧内容 -->
         <div class="col-md-11 content-column">
             <!-- 食堂部分 -->
@@ -247,9 +248,11 @@
                         var newOpeningTime = document.getElementById('newOpeningTime').value;
                         var newClosingTime = document.getElementById('newClosingTime').value;
 
+                        console.log(newCanteenName);
+                        // document.getElementById('newCanteenName').value = dishId;
                         // 创建AJAX请求发送数据到服务器
                         var xhr = new XMLHttpRequest();
-                        xhr.open("POST", "/updateCanteen", true); // 修改为您的服务器端接口
+                        xhr.open("POST", "changeCanteenServlet", true); // 修改为您的服务器端接口
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                         xhr.onreadystatechange = function() {
@@ -302,28 +305,12 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <tbody id="dishList">
+                    <tbody id="dishes">
                     <!-- 动态添加的菜品列表 -->
                     <jsp:useBean id="dishes" scope="request" type="java.util.List"/>
-<%--                    <c:forEach var="dish" items="${dishes}">--%>
-<%--                        <script>console.log('菜品ID:', dish.id);</script>--%>
-<%--                        <tr>--%>
-<%--                            <td>${dish.name}</td>--%>
-<%--                            <td><img src="${dish.image}" alt="菜品图片" class="dish-image"/></td>--%>
-<%--                            <td>${dish.introduction}</td>--%>
-<%--                            <td>${dish.price}</td>--%>
-<%--                            <td>${dish.cuisine}</td>--%>
-<%--                            <td>--%>
-<%--                                <div class="btn-group">--%>
-<%--                                    <button class="btn btn-info btn-sm btn-margin" data-id="${dish.id}" data-toggle="modal" data-target="#editDishModal" onclick="editDish(this)">编辑</button>--%>
 
-<%--&lt;%&ndash;                                    <button id="editDishModal"  class="btn btn-info btn-sm btn-margin" data-id="${dish.id}" onclick="editDish(this)">编辑</button>&ndash;%&gt;--%>
-<%--                                    <button class="btn btn-danger btn-sm" data-id="${dish.id}" onclick="deleteDish(this)">删除</button>--%>
-<%--                                </div>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                    </c:forEach>--%>
                     <c:forEach var="dish" items="${dishes}">
+                        <script>console.log('菜品ID:', ${dish.id});</script>--%>
                         <tr id="dishRow_${dish.id}">
                             <td id="dishName_${dish.id}">${dish.name}</td>
                             <td id="dishImageCell_${dish.id}"><img src="${dish.image}" alt="菜品图片" class="dish-image" id="dishImage_${dish.id}"/></td>
@@ -332,87 +319,148 @@
                             <td id="dishCuisine_${dish.id}">${dish.cuisine}</td>
                             <td id="dishActions_${dish.id}">
                                 <div class="btn-group">
-                                    <button class="btn btn-info btn-sm btn-margin editDishButton" data-id="${dish.id}" data-toggle="modal" data-target="#editDishModal" onclick="editDish(this)" id="editButton_${dish.id}">编辑</button>
-                                    <button class="btn btn-danger btn-sm deleteDishButton" data-id="${dish.id}" onclick="deleteDish(this)" id="deleteButton_${dish.id}">删除</button>
+                                    <button class="btn btn-info btn-sm btn-margin editDishButton" data-id="${dish.id}" data-toggle="modal" data-target="#editDishModal_${dish.id}" onclick="editDish(this)" id="editButton_${dish.id}">编辑</button>
+                                    <button class="btn btn-danger btn-sm deleteDishButton" data-id="${dish.id}"  id="deleteButton_${dish.id}">删除</button>
                                 </div>
                             </td>
                         </tr>
+
+
+                        <!-- 编辑菜品的模态框 -->
+                        <div class="modal fade" id="editDishModal_${dish.id}" tabindex="-1" role="dialog" aria-labelledby="editDishModalLabel_${dish.id}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editDishModalTitle_${dish.id}">编辑菜品信息</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="editDishCloseButton_${dish.id}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="editDishForm_${dish.id}">
+                                            <input type="hidden" id="editDishId_${dish.id}">
+                                            <div class="form-group">
+                                                <label for="editDishName_${dish.id}">菜品名称</label>
+                                                <input type="text" class="form-control" id="editDishName_${dish.id}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editDishDescription_${dish.id}">简介</label>
+                                                <input type="text" class="form-control" id="editDishDescription_${dish.id}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editDishPrice_${dish.id}">价格</label>
+                                                <input type="number" class="form-control" id="editDishPrice_${dish.id}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editDishCuisine_${dish.id}">菜系</label>
+                                                <input type="text" class="form-control" id="editDishCuisine_${dish.id}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="editDishCancelButton_${dish.id}">关闭</button>
+                                        <button type="button" class="btn btn-primary saveDishChangesButton" data-id="${dish.id}" id="editDishSaveButton_${dish.id}">保存更改</button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </c:forEach>
                     </tbody>
                 </table>
 
-                <!-- 添加菜品按钮 -->
-                <button class="btn btn-success" id="addDishButton">添加菜品</button>
+
+                <!-- 触发添加菜品模态框的按钮 -->
+                <button class="btn btn-success" data-toggle="modal" data-target="#addDishModal">添加菜品</button>
+                <!-- 添加菜品的模态框 -->
+
             </section>
-            <!-- 编辑菜品的模态框 -->
-            <!-- 编辑菜品的模态框 -->
-            <div class="modal fade" id="editDishModal_${dish.id}" tabindex="-1" role="dialog" aria-labelledby="editDishModalLabel_${dish.id}" aria-hidden="true">
+
+            <!-- 添加菜品的模态框 -->
+            <div class="modal fade" id="addDishModal" tabindex="-1" role="dialog" aria-labelledby="addDishModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editDishModalTitle_${dish.id}">编辑菜品信息</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="editDishCloseButton_${dish.id}">
+                            <h5 class="modal-title" id="addDishModalLabel">添加菜品</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form id="editDishForm_${dish.id}">
-                                <input type="hidden" id="editDishId_${dish.id}">
                                 <div class="form-group">
-                                    <label for="editDishName_${dish.id}">菜品名称</label>
-                                    <input type="text" class="form-control" id="editDishName_${dish.id}">
+                                    <label for="addDishName">菜品名称</label>
+                                    <input type="text" class="form-control" id="addDishName" name="name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="editDishDescription_${dish.id}">简介</label>
-                                    <input type="text" class="form-control" id="editDishDescription_${dish.id}">
+                                    <label for="dishImageInput">菜品图片</label>
+                                    <input type="file" class="form-control-file" id="dishImageInput" name="image">
                                 </div>
                                 <div class="form-group">
-                                    <label for="editDishPrice_${dish.id}">价格</label>
-                                    <input type="number" class="form-control" id="editDishPrice_${dish.id}">
+                                    <label for="addDishDescription">简介</label>
+                                    <input type="text" class="form-control" id="addDishDescription" name="description">
                                 </div>
                                 <div class="form-group">
-                                    <label for="editDishCuisine_${dish.id}">菜系</label>
-                                    <input type="text" class="form-control" id="editDishCuisine_${dish.id}">
+                                    <label for="addDishPrice">价格</label>
+                                    <input type="number" class="form-control" id="addDishPrice" name="price">
                                 </div>
-                            </form>
+                                <div class="form-group">
+                                    <label for="addDishCuisine">菜系</label>
+                                    <input type="text" class="form-control" id="addDishCuisine" name="cuisine">
+                                </div>
+
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="editDishCancelButton_${dish.id}">关闭</button>
-                            <button type="button" class="btn btn-primary" id="editDishSaveButton_${dish.id}">保存更改</button>
+                            <form id="addDishForm" action="addDishServlet" method="post" enctype="multipart/form-data">
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-success" id="addDishSaveButton">保存添加</button>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
+<!-- 引入Bootstrap的JavaScript库和jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript 代码来处理点击切换
+    $(document).ready(function() {
+        $('.account-link').click(function() {
+            var target = $(this).attr('href');
+            $('.account-section').removeClass('active');
+            $(target).addClass('active');
+        });
+    });
+</script>
 
 <script>
     function editDish(button) {
         var dishId = button.getAttribute('data-id'); // 获取菜品ID
-
+        console.log(dishId);
 
         // 获取行中的数据
         var row = document.getElementById('dishRow_' + dishId);
         var dishName = document.getElementById('dishName_' + dishId).textContent;
-        var dishImage = document.getElementById('dishImage_' + dishId).src;
+        var dishImage = document.getElementById('dishImageCell_' + dishId).src;
         var dishIntroduction = document.getElementById('dishIntroduction_' + dishId).textContent;
         var dishPrice = document.getElementById('dishPrice_' + dishId).textContent;
         var dishCuisine = document.getElementById('dishCuisine_' + dishId).textContent;
 
-        // 输出菜品信息到控制台
-        console.log('菜品ID:', dishId);
-        console.log('菜品名称:', dishName);
-        console.log('菜品图片URL:', dishImage);
-        console.log('菜品简介:', dishIntroduction);
-        console.log('菜品价格:', dishPrice);
-        console.log('菜品菜系:', dishCuisine);
+
 
 // 填充编辑模态框的表单字段
-        document.getElementById('editDishId').value = dishId;
-        document.getElementById('editDishName').value = dishName;
+        document.getElementById('editDishId_' + dishId).value = dishId;
+        document.getElementById('editDishName_' + dishId).value = dishName;
         // document.getElementById('editDishImage').value = dishImage; // 如果需要编辑图片URL
-        document.getElementById('editDishDescription').value = dishIntroduction;
-        document.getElementById('editDishPrice').value = dishPrice;
-        document.getElementById('editDishCuisine').value = dishCuisine;
+        document.getElementById('editDishDescription_' + dishId).value = dishIntroduction;
+        document.getElementById('editDishPrice_' + dishId).value = dishPrice;
+        document.getElementById('editDishCuisine_' + dishId).value = dishCuisine;
         // 显示模态框
 
         $('#editDishModal_' + dishId).modal('show');
@@ -427,18 +475,25 @@
                 var dishPrice = document.getElementById('editDishPrice_' + dishId).value;
                 var dishCuisine = document.getElementById('editDishCuisine_' + dishId).value;
 
+                // 输出菜品信息到控制台
+                console.log('菜品ID:', dishId);
+                console.log('菜品名称:', dishName);
+                console.log('菜品简介:', dishDescription);
+                console.log('菜品价格:', dishPrice);
+                console.log('菜品菜系:', dishCuisine);
                 // 创建AJAX请求发送数据到服务器
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "/updateDish", true);
+                xhr.open("POST", "changeDishServlet", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         // 请求成功后的处理
                         // 更新页面上的菜品信息
-                        var rows = document.querySelectorAll('#dishList tr');
+                        var rows = document.querySelectorAll('#dishes tr');
                         rows.forEach(function(row) {
                             if (row.querySelector('.editDishButton').getAttribute('data-id') === dishId) {
+                                console.log('菜品ID1111:', dishId);
                                 row.cells[0].textContent = dishName;
                                 row.cells[2].textContent = dishDescription;
                                 row.cells[3].textContent = dishPrice;
@@ -462,16 +517,18 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.deleteDishButton').forEach(function(deleteButton) {
-                deleteButton.addEventListener('click', function() {
-                    var dishId = this.getAttribute('data-id');
 
+
+            document.getElementById('dishes').addEventListener('click', function(event) {
+                // 检查被点击的元素是否为删除按钮
+                if (event.target.classList.contains('deleteDishButton')) {
+                    var dishId = event.target.getAttribute('data-id');
+                    console.log("saxasxas"+dishId);
                     // 弹出确认框，确认是否要删除
                     if (confirm('确定要删除这个菜品吗？')) {
                         // 创建AJAX请求发送删除操作到服务器
                         var xhr = new XMLHttpRequest();
-                        xhr.open("POST", "/deleteDish", true); // 修改为您的服务器端接口
+                        xhr.open("POST", "deleteDishServlet", true); // 修改为您的服务器端接口
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                         xhr.onreadystatechange = function() {
@@ -485,134 +542,13 @@
                         var data = "id=" + encodeURIComponent(dishId);
                         xhr.send(data);
                     }
-                });
+                }
             });
-        });
+
+
 
     });
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     document.getElementById('saveDishChanges').addEventListener('click', function() {
-    //         // 获取编辑表单中的菜品信息
-    //         var dishId = document.getElementById('editDishId').value;
-    //         var dishName = document.getElementById('editDishName').value;
-    //         var dishDescription = document.getElementById('editDishDescription').value;
-    //         var dishPrice = document.getElementById('editDishPrice').value;
-    //         var dishCuisine = document.getElementById('editDishCuisine').value;
-    //
-    //         // 创建AJAX请求发送数据到服务器
-    //         var xhr = new XMLHttpRequest();
-    //         xhr.open("POST", "/updateDish", true);
-    //         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    //
-    //         xhr.onreadystatechange = function() {
-    //             if (xhr.readyState == 4 && xhr.status == 200) {
-    //                 // 请求成功后的处理
-    //                 // 更新页面上的菜品信息
-    //                 var rows = document.querySelectorAll('#dishList tr');
-    //                 rows.forEach(function(row) {
-    //                     if (row.querySelector('.editDishButton').getAttribute('data-id') === dishId) {
-    //                         row.cells[0].textContent = dishName;
-    //                         row.cells[2].textContent = dishDescription;
-    //                         row.cells[3].textContent = dishPrice;
-    //                         row.cells[4].textContent = dishCuisine;
-    //                     }
-    //                 });
-    //
-    //                 // 关闭模态框
-    //                 $('#editDishModal').modal('hide');
-    //             }
-    //         };
 
-    //         var data = "id=" + encodeURIComponent(dishId) +
-    //             "&name=" + encodeURIComponent(dishName) +
-    //             "&description=" + encodeURIComponent(dishDescription) +
-    //             "&price=" + encodeURIComponent(dishPrice) +
-    //             "&cuisine=" + encodeURIComponent(dishCuisine);
-    //
-    //         xhr.send(data);
-    //     });
-    // });
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var deleteButtons = document.querySelectorAll('.deleteDishButton');
-    //     deleteButtons.forEach(function(button) {
-    //         button.addEventListener('click', function() {
-    //             var dishId = this.getAttribute('data-id');
-    //
-    //             if (confirm('确定要删除这个菜品吗？')) {
-    //                 // 创建AJAX请求发送删除操作到服务器
-    //                 var xhr = new XMLHttpRequest();
-    //                 xhr.open("POST", "/deleteDish", true); // 修改为您的服务器端接口
-    //                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    //
-    //                 xhr.onreadystatechange = function() {
-    //                     if (xhr.readyState == 4 && xhr.status == 200) {
-    //                         // 请求成功后的处理
-    //                         // 例如：从表格中移除删除的菜品行
-    //                         button.closest('tr').remove();
-    //                     }
-    //                 };
-    //
-    //                 var data = "id=" + encodeURIComponent(dishId);
-    //                 xhr.send(data);
-    //             }
-    //         });
-    //     });
-    // });
-
-</script>
-
-
-
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<!-- 引入Bootstrap的JavaScript库和jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    // JavaScript 代码来处理点击切换
-    $(document).ready(function() {
-        $('.account-link').click(function() {
-            var target = $(this).attr('href');
-            $('.account-section').removeClass('active');
-            $(target).addClass('active');
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // 监听修改按钮点击事件
-        document.getElementById('modifyBtn').addEventListener('click', function() {
-            // 获取当前账号信息并填充到模态框中
-            let username = document.getElementById('username').textContent;
-            let phone = document.getElementById('phone').textContent;
-
-            document.getElementById('newUsername').value = username;
-            document.getElementById('newPhone').value = phone;
-        });
-
-        // 监听保存更改按钮点击事件
-        document.getElementById('saveChanges').addEventListener('click', function() {
-            // 获取修改后的信息并更新到页面中
-            let newUsername = document.getElementById('newUsername').value;
-            let newPassword = document.getElementById('newPassword').value;
-            let newPhone = document.getElementById('newPhone').value;
-
-            document.getElementById('username').textContent = newUsername;
-            document.getElementById('password').textContent = newPassword ? '********' : '';
-            document.getElementById('phone').textContent = newPhone;
-
-            // 关闭模态框
-            $('#modifyModal').modal('hide');
-        });
-    });
 </script>
 </body>
 </html>

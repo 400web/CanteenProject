@@ -14,8 +14,11 @@
     <title>学生页面</title>
     <link rel="stylesheet" href=css/homePage.css>
     <link rel="stylesheet" href=css/home.css>
+    <!-- 先引入jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- 引入 Bootstrap 样式表 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- 导航栏 -->
@@ -123,6 +126,12 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<script>$('.carousel').carousel({
+    interval: 2000 // 这里指定自动切换的时间间隔
+});
+</script>
+
+
 
 
 <script>
