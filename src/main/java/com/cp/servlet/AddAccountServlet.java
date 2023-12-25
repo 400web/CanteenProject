@@ -64,13 +64,19 @@ public class AddAccountServlet extends HttpServlet {
                 CanteenAdmin canteenAdmin = new CanteenAdmin(user.getId(), canteenId, null);
                 CanteenAdminService canteenAdminService = new CanteenAdminServiceImpl();
                 if(canteenAdminService.addCanteenAdmin(canteenAdmin)){
-                    response.sendRedirect("AccountManagementServlet");
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write("{\"redirect\": \"AccountManagementServlet\"}");
+                    response.getWriter().flush();
                 }
             }
             if(user.getRole().equals("普通用户")){
-                response.sendRedirect("AccountManagementServlet");
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"redirect\": \"AccountManagementServlet\"}");
+                response.getWriter().flush();
                 /*System.out.println("user:"+ user.getId());
-                OrdinaryUser ordinaryUser = new OrdinaryUser(user.getId(), 0, 0, 0, 0);
+                OrdinaryUser ordinaryUser = new OrdinaryUser(user.getId(), 0, 0, 0, 1);
                 OrdinaryUserService ordinaryUserService = new OrdinaryUserServiceImpl();
                 if(ordinaryUserService.addOrdinaryUser(ordinaryUser)){
                 }*/

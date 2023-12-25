@@ -13,32 +13,33 @@
         <result property="cuisine" column="cuisine" />
         <result property="score" column="score" />
         <result property="weight" column="weight" />
+        <result property="recommend" column="recommend"/>
     </resultMap>
     <select id="selectById" parameterType="string" resultMap="dishResultMap">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE id = #{dishId}
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish WHERE id = #{dishId}
     </select>
 
     <select id="selectListByCanteenId" parameterType="string" resultMap="dishResultMap">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE canteen_id = #{canteenId}
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish WHERE canteen_id = #{canteenId}
     </select>
 
     <select id="selectListByCuisine" parameterType="string" resultMap="dishResultMap">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE cuisine = #{cuisine}
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish WHERE cuisine = #{cuisine}
     </select>
 
     <select id="selectListByPrice" parameterType="map" resultMap="dishResultMap">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish WHERE price BETWEEN #{minPrice} AND #{maxPrice}
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish WHERE price BETWEEN #{minPrice} AND #{maxPrice}
     </select>
 
     <select id="selectList" resultMap="dishResultMap">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish
     </select>
     <select id="selectListByPage" resultMap="dishResultMap">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish
     </select>
 
     <select id="selectDishesDynamic" resultMap="dishResultMap" parameterType="map">
-        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight FROM dish
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend FROM dish
         <where>
             <if test="dishName != null">
                 AND name LIKE CONCAT('%', #{dishName}, '%')
@@ -60,10 +61,15 @@
             </if>
         </where>
     </select>
+    <select id="selectListByRecommend" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend
+        FROM dish
+        WHERE recommend = #{recommend}
+    </select>
 
     <insert id="addDish" parameterType="dish">
-        INSERT INTO dish (canteen_id, name, image, introduction, price, cuisine, score, weight)
-        VALUES (#{canteenId}, #{name}, #{image}, #{introduction}, #{price}, #{cuisine}, #{score}, #{weight})
+        INSERT INTO dish (id, canteen_id, name, image, introduction, price, cuisine, score, weight, recommend)
+        VALUES (#{canteenId}, #{name}, #{image}, #{introduction}, #{price}, #{cuisine}, #{score}, #{weight}, #{recommend})
     </insert>
 
     <update id="updateDish" parameterType="Dish">
@@ -76,6 +82,7 @@
             <if test="cuisine != null">cuisine = #{cuisine},</if>
             <if test="score != null">score = #{score},</if>
             <if test="weight != null">weight = #{weight},</if>
+            <if test="recommend != null">recommend = #{recommend}</if>
         </set>
         WHERE id = #{id}
     </update>

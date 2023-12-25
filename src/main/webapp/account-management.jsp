@@ -140,7 +140,7 @@
                     <!-- 使用 JSTL 遍历 userMap 输出表格内容 -->
                     <c:forEach var="entry" items="${requestScope.userMap}">
                         <c:set var="user" value="${entry.value}" />
-                        <tr>
+                        <tr id="allUser_${user.id}">
                             <!-- 显示用户信息，包括其他列 -->
                             <td id="username_${user.id}">${user.username}</td>
                             <td id="password_${user.id}">*******</td> <!-- 这里用*代替密码 -->
@@ -150,7 +150,7 @@
                                 <div class="btn-group">
                                     <!-- 编辑按钮，点击时弹出模态框 -->
                                     <button class="btn btn-info btn-sm btn-margin" data-toggle="modal" data-target="#editModal${user.id}" onclick="fillEditModal('${user.id}')">编辑</button>
-                                    <button class="btn btn-danger btn-sm">删除</button>
+                                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('${user.id}')">删除</button>
                                 </div>
                             </td>
                         </tr>
@@ -176,7 +176,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="editPassword_${user.id}">密码</label>
-                                                <input type="password" class="form-control" id="editPassword_${user.id}" readonly>
+                                                <input type="password" class="form-control" id="editPassword_${user.id}" value="${user.password}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="editPhone_${user.id}">手机号</label>
@@ -203,6 +203,22 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                                         <button type="button" class="btn btn-primary">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel">确认要删除该用户吗？</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
                                     </div>
                                 </div>
                             </div>
@@ -334,14 +350,12 @@
 
         // 获取模态框中的表单元素
         let modalUsername = document.getElementById('editUsername_' + userId);
-        let modalPassword = document.getElementById('editPassword_' + userId);
         let modalPhoneNumber = document.getElementById('editPhone_' + userId);
         let modalRole = document.getElementById('editRole_' + userId);
         let modalCanteenSection = document.getElementById('editCanteenSection_' + userId);
 
         // 填充模态框中的表单元素值
         modalUsername.value = editUsername;
-        modalPassword.value = '*******'; // 这里用*代替密码
         modalPhoneNumber.value = editPhoneNumber;
         modalRole.value = editRole;
         // 添加事件监听器
@@ -369,32 +383,6 @@
     }
 </script>
 <script>
-    function saveUserData(userId) {
-        let username = document.getElementById('username' + userId).value;
-        let password = document.getElementById('password' + userId).value;
-        let phone = document.getElementById('phone' + userId).value;
-        let role = document.getElementById('role' + userId).value;
-        let canteen = document.getElementById('canteen' + userId).value; // 如果需要食堂信息的话
-
-        // 构建表单数据对象
-        let formData = new FormData();
-        formData.append('userId', userId);
-        formData.append('username', username);
-        formData.append('password', password);
-        formData.append('phone', phone);
-        formData.append('role', role);
-        formData.append('canteen', canteen); // 如果需要食堂信息的话
-
-        // 使用 AJAX 发送表单数据到 Servlet
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'YourServletURL', true);
-        xhr.onload = function () {
-            // 处理响应，如果需要的话
-        };
-        xhr.send(formData);
-    }
-</script>
-<script>
     document.getElementById('saveButton').addEventListener('click', function() {
         let username = document.getElementById('addUsername').value;
         let password = document.getElementById('addPassword').value;
@@ -419,8 +407,11 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    console.log('Data sent successfully!');
-                    // 可以在此处编写成功后的逻辑
+                    let responseJson = JSON.parse(xhr.responseText);
+                    console.log(responseJson);
+                    if (responseJson.redirect) {
+                        window.location.href = responseJson.redirect;
+                    }
                 } else {
                     console.error('Error occurred while sending data!');
                 }
@@ -484,6 +475,38 @@
         });
     });
 
+</script>
+<script>
+    // 确认删除按钮点击事件处理函数
+    function confirmDelete(userId) {
+        $('#confirmDeleteModal').modal('show'); // 弹出确认删除的模态框
+
+        // 当确认删除按钮点击时，将用户 ID 发送到 Servlet 进行处理
+        document.getElementById('confirmDeleteBtn').onclick = function() {
+            document.getElementById('allUser_'+userId).style.display = 'none';
+            let data = {
+                userId : userId
+            };
+            let xhr = new XMLHttpRequest();
+            let url = 'DeleteAccountServlet'; // 替换为您的 Servlet 地址
+
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Data sent successfully!');
+                        // 可以在此处编写成功后的逻辑
+                    } else {
+                        console.error('Error occurred while sending data!');
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(data));
+            $('#confirmDeleteModal').modal('hide');
+        };
+    }
 </script>
 </body>
 </html>

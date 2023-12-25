@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class DishServiceImpl implements DishService {
-    DishMapper dishMapper= MybatisUtils.getMapper(DishMapper.class);
+    DishMapper dishMapper = MybatisUtils.getMapper(DishMapper.class);
+
     @Override
     public Dish getDishById(String dishId) {
         return dishMapper.selectById(dishId);
@@ -28,7 +29,7 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<Dish> getDishByPrice(String minPrice, String maxPrice) {
-        return dishMapper.selectListByPrice(minPrice,maxPrice);
+        return dishMapper.selectListByPrice(minPrice, maxPrice);
     }
 
     @Override
@@ -38,10 +39,15 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<Dish> getListByPage(int currPage, int pageSize) {
-        Map<String,Object> data=new HashMap<>();
-        data.put("currPage",currPage);
-        data.put("pageSize",pageSize);
+        Map<String, Object> data = new HashMap<>();
+        data.put("currPage", currPage);
+        data.put("pageSize", pageSize);
         return dishMapper.selectListByPage(data);
+    }
+
+    @Override
+    public List<Dish> getListByRecommend(String recommend) {
+        return dishMapper.selectListByRecommend(recommend);
     }
 
     @Override
