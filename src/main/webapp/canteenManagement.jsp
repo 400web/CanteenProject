@@ -186,6 +186,10 @@
                             <td><span id="canteenName">${canteen.name}</span></td>
                         </tr>
                         <tr>
+                            <th scope="row">活动</th>
+                            <td><span id="canteenActivity">${canteen.activity}</span></td>
+                        </tr>
+                        <tr>
                             <th scope="row">简介</th>
                             <td><span id="canteenDescription">${canteen.introduction}</span></td>
                         </tr>
@@ -217,6 +221,10 @@
                                     <input type="text" class="form-control" id="newCanteenName">
                                 </div>
                                 <div class="form-group">
+                                    <label for="newCanteenActivity">活动</label>
+                                    <input type="text" class="form-control" id="newCanteenActivity">
+                                </div>
+                                <div class="form-group">
                                     <label for="newCanteenDescription">新简介</label>
                                     <input type="text" class="form-control" id="newCanteenDescription">
                                 </div>
@@ -244,6 +252,7 @@
                     document.getElementById('saveCanteenChanges').addEventListener('click', function() {
                         // 获取修改后的食堂信息
                         var newCanteenName = document.getElementById('newCanteenName').value;
+                        var newCanteenActivity = document.getElementById('newCanteenActivity').value;
                         var newCanteenDescription = document.getElementById('newCanteenDescription').value;
                         var newOpeningTime = document.getElementById('newOpeningTime').value;
                         var newClosingTime = document.getElementById('newClosingTime').value;
@@ -261,6 +270,7 @@
                                 // 此处应根据您的需求进行调整，例如更新页面上的食堂信息
                                 document.getElementById('canteenName').textContent = newCanteenName;
                                 document.getElementById('canteenDescription').textContent = newCanteenDescription;
+                                document.getElementById('canteenActivity').textContent = newCanteenActivity;
                                 document.getElementById('canteenHours').textContent = newOpeningTime + ' - ' + newClosingTime;
 
                                 // 关闭模态框
@@ -269,6 +279,7 @@
                         };
 
                         var data = "name=" + encodeURIComponent(newCanteenName) +
+                            "&activity=" + encodeURIComponent(newCanteenActivity) +
                             "&description=" + encodeURIComponent(newCanteenDescription) +
                             "&openingTime=" + encodeURIComponent(newOpeningTime) +
                             "&closingTime=" + encodeURIComponent(newClosingTime);
@@ -302,6 +313,7 @@
                         <th>简介</th>
                         <th>价格</th>
                         <th>菜系</th>
+                        <th>是否推荐</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -317,6 +329,7 @@
                             <td id="dishIntroduction_${dish.id}">${dish.introduction}</td>
                             <td id="dishPrice_${dish.id}">${dish.price}</td>
                             <td id="dishCuisine_${dish.id}">${dish.cuisine}</td>
+                            <td id="dishRecommended_${dish.id}">${dish.recommend ? '推荐' : '不推荐'}</td>
                             <td id="dishActions_${dish.id}">
                                 <div class="btn-group">
                                     <button class="btn btn-info btn-sm btn-margin editDishButton" data-id="${dish.id}" data-toggle="modal" data-target="#editDishModal_${dish.id}" onclick="editDish(this)" id="editButton_${dish.id}">编辑</button>
@@ -355,6 +368,14 @@
                                                 <label for="editDishCuisine_${dish.id}">菜系</label>
                                                 <input type="text" class="form-control" id="editDishCuisine_${dish.id}">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="editDishRecommended_${dish.id}">是否推荐</label>
+                                                <select class="form-control" id="editDishRecommended_${dish.id}">
+                                                    <option value="推荐">推荐</option>
+                                                    <option value="不推荐">不推荐</option>
+                                                </select>
+                                            </div>
+
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -408,6 +429,13 @@
                                     <label for="addDishCuisine">菜系</label>
                                     <input type="text" class="form-control" id="addDishCuisine" name="cuisine">
                                 </div>
+                            <div class="form-group">
+                                <label for="addDishRecommended">是否推荐</label>
+                                <select class="form-control" id="addDishRecommended" name="recommend">
+                                    <option value="推荐">推荐</option>
+                                    <option value="不推荐">不推荐</option>
+                                </select>
+                            </div>
 
                         </div>
                         <div class="modal-footer">
@@ -451,7 +479,7 @@
         var dishIntroduction = document.getElementById('dishIntroduction_' + dishId).textContent;
         var dishPrice = document.getElementById('dishPrice_' + dishId).textContent;
         var dishCuisine = document.getElementById('dishCuisine_' + dishId).textContent;
-
+        var dishRecommended = document.getElementById('dishRecommended_' + dishId).textContent;
 
 
 // 填充编辑模态框的表单字段
@@ -461,6 +489,7 @@
         document.getElementById('editDishDescription_' + dishId).value = dishIntroduction;
         document.getElementById('editDishPrice_' + dishId).value = dishPrice;
         document.getElementById('editDishCuisine_' + dishId).value = dishCuisine;
+        document.getElementById('editDishRecommended_' + dishId).value = dishRecommended ;
         // 显示模态框
 
         $('#editDishModal_' + dishId).modal('show');
@@ -474,7 +503,7 @@
                 var dishDescription = document.getElementById('editDishDescription_' + dishId).value;
                 var dishPrice = document.getElementById('editDishPrice_' + dishId).value;
                 var dishCuisine = document.getElementById('editDishCuisine_' + dishId).value;
-
+                var dishRecommended = document.getElementById('editDishRecommended_' + dishId).value;
                 // 输出菜品信息到控制台
                 console.log('菜品ID:', dishId);
                 console.log('菜品名称:', dishName);
@@ -498,6 +527,7 @@
                                 row.cells[2].textContent = dishDescription;
                                 row.cells[3].textContent = dishPrice;
                                 row.cells[4].textContent = dishCuisine;
+                                row.cells[5].textContent = dishRecommended ? '推荐' : '不推荐';
                             }
                         });
 
@@ -510,8 +540,8 @@
                     "&name=" + encodeURIComponent(dishName) +
                     "&description=" + encodeURIComponent(dishDescription) +
                     "&price=" + encodeURIComponent(dishPrice) +
-                    "&cuisine=" + encodeURIComponent(dishCuisine);
-
+                    "&cuisine=" + encodeURIComponent(dishCuisine)+
+                "&recommend=" + encodeURIComponent(dishRecommended);
                 xhr.send(data);
 
             });

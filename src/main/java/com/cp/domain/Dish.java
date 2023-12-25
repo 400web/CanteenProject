@@ -21,6 +21,7 @@ public class Dish implements Comparable<Dish> {
     private String cuisine; // 菜系
     private double score; // 评价分值
     private int weight; // 评价权重
+    private String recommend;
 
     @Override
     public int compareTo(Dish o) {
