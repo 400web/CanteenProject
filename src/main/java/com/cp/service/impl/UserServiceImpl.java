@@ -62,13 +62,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUserRole(User user, String canteenId) {
-        if (user.getRole().equals("食堂管理员") && canteenAdminMapper.selectCanteenByAdminId(user.getId()) != null) {
+        if (user.getRole().equals("食堂管理员") && canteenAdminMapper.selectCanteenByAdminId(user.getId()) == null) {
             canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId, null));
         }
         if (user.getRole().equals("普通用户")) {
             canteenAdminMapper.deleteCanteenAdmin(user.getId());
         }
-        return userMapper.updateUser(user);
+        return updateUser(user);
     }
 
     @Override

@@ -47,7 +47,8 @@ public class UpdateAccountServlet extends HttpServlet {
             userService.updateUserRole(user, null);
         }
         if(role.equals("食堂管理员")){
-            String canteenId = jsonObject.get("canteenId").getAsString();
+            String canteenId = jsonObject.get("editedCanteenId").getAsString();
+            System.out.println("canteenId:"+canteenId);
             userService.updateUserRole(user, canteenId);
         }
     }

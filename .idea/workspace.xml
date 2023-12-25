@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AddAccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AddAccountServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/UpdateAccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/UpdateAccountServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
     </list>
@@ -108,7 +108,7 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.sdFirstPage.jsp">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
     <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
       <method v="2" />
     </configuration>
@@ -222,8 +222,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
         <item itemvalue="JavaScript Debug.account-management.jsp" />
+        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
         <item itemvalue="JavaScript Debug.login.jsp" />
         <item itemvalue="JavaScript Debug.home.jsp" />
         <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
@@ -259,7 +259,7 @@
       <workItem from="1703318159777" duration="6932000" />
       <workItem from="1703325109753" duration="25301000" />
       <workItem from="1703403569358" duration="13557000" />
-      <workItem from="1703492916647" duration="19725000" />
+      <workItem from="1703492916647" duration="22172000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -445,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703516481907</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703521824549</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1703521824549</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

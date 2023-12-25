@@ -176,7 +176,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="editPassword_${user.id}">密码</label>
-                                                <input type="password" class="form-control" id="editPassword_${user.id}" readonly>
+                                                <input type="password" class="form-control" id="editPassword_${user.id}" value="${user.password}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="editPhone_${user.id}">手机号</label>
@@ -334,14 +334,12 @@
 
         // 获取模态框中的表单元素
         let modalUsername = document.getElementById('editUsername_' + userId);
-        let modalPassword = document.getElementById('editPassword_' + userId);
         let modalPhoneNumber = document.getElementById('editPhone_' + userId);
         let modalRole = document.getElementById('editRole_' + userId);
         let modalCanteenSection = document.getElementById('editCanteenSection_' + userId);
 
         // 填充模态框中的表单元素值
         modalUsername.value = editUsername;
-        modalPassword.value = '*******'; // 这里用*代替密码
         modalPhoneNumber.value = editPhoneNumber;
         modalRole.value = editRole;
         // 添加事件监听器
@@ -366,32 +364,6 @@
         document.getElementById('editPhone_' + userId).readOnly = false;
         document.getElementById('editRole_' + userId).readOnly = false;
         document.getElementById('editCanteen_' + userId).readOnly = false; // 如果需要食堂信息的话
-    }
-</script>
-<script>
-    function saveUserData(userId) {
-        let username = document.getElementById('username' + userId).value;
-        let password = document.getElementById('password' + userId).value;
-        let phone = document.getElementById('phone' + userId).value;
-        let role = document.getElementById('role' + userId).value;
-        let canteen = document.getElementById('canteen' + userId).value; // 如果需要食堂信息的话
-
-        // 构建表单数据对象
-        let formData = new FormData();
-        formData.append('userId', userId);
-        formData.append('username', username);
-        formData.append('password', password);
-        formData.append('phone', phone);
-        formData.append('role', role);
-        formData.append('canteen', canteen); // 如果需要食堂信息的话
-
-        // 使用 AJAX 发送表单数据到 Servlet
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'YourServletURL', true);
-        xhr.onload = function () {
-            // 处理响应，如果需要的话
-        };
-        xhr.send(formData);
     }
 </script>
 <script>
