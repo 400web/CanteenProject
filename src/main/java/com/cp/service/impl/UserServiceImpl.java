@@ -54,9 +54,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(User user) {
-        if (!userMapper.addUser(user)) return false;
-        ordinaryUserMapper.addOrdinaryUser(new OrdinaryUser(user.getId(), 0, 0, 0, 1));
-        return true;
+        if(userMapper.addUser(user)){
+            return ordinaryUserMapper.addOrdinaryUser(new OrdinaryUser(user.getId(), 0, 0, 0, 1));
+        }
+        return false;
     }
 
     @Override
