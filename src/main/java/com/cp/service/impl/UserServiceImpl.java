@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(User user) {
-        if(userMapper.addUser(user)){
+        if (userMapper.addUser(user)) {
             return ordinaryUserMapper.addOrdinaryUser(new OrdinaryUser(user.getId(), 0, 0, 0, 1));
         }
         return false;
@@ -62,13 +62,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUserRole(User user, String canteenId) {
-        if (user.getRole().equals("食堂管理员") && canteenAdminMapper.selectCanteenByAdminId(user.getId()) != null) {
-            canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId, null));
+        if (user.getRole().equals("食堂管理员")) {
+            if(canteenAdminMapper.selectCanteenByAdminId(user.getId()) == null) {
+                canteenAdminMapper.addCanteenAdmin(new CanteenAdmin(user.getId(), canteenId, null));
+            }else canteenAdminMapper.updateCanteenAdmin(new CanteenAdmin(user.getId(), canteenId, null));
         }
-        if (user.getRole().equals("普通用户")) {
+        if (user.getRole().equals("普通用户") && canteenAdminMapper.selectCanteenByAdminId(user.getId()) != null) {
             canteenAdminMapper.deleteCanteenAdmin(user.getId());
         }
-        return userMapper.updateUser(user);
+        return updateUser(user);
     }
 
     @Override
