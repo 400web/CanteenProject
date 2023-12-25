@@ -18,7 +18,6 @@ public class UpdateAccountServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         StringBuilder sb = new StringBuilder();
         BufferedReader reader = request.getReader();
         String line;
