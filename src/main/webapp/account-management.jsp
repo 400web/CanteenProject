@@ -419,8 +419,11 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    console.log('Data sent successfully!');
-                    // 可以在此处编写成功后的逻辑
+                    let responseJson = JSON.parse(xhr.responseText);
+                    console.log(responseJson);
+                    if (responseJson.redirect) {
+                        window.location.href = responseJson.redirect;
+                    }
                 } else {
                     console.error('Error occurred while sending data!');
                 }

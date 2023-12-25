@@ -1,5 +1,8 @@
 package com.cp.servlet;
 
+import com.cp.domain.User;
+import com.cp.service.UserService;
+import com.cp.service.impl.UserServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -33,5 +36,19 @@ public class UpdateAccountServlet extends HttpServlet {
         String password = jsonObject.get("editedPassword").getAsString();
         String phoneNumber = jsonObject.get("editedPhone").getAsString();
         String role = jsonObject.get("editedRole").getAsString();
+        User user = new User(userId, username, password, phoneNumber,role);
+        System.out.println("userId"+userId);
+        System.out.println("username:"+username);
+        System.out.println("password:"+password);
+        System.out.println("phoneNumber:"+phoneNumber);
+        System.out.println("role:"+user.getRole());
+        UserService userService = new UserServiceImpl();
+        if(role.equals("普通用户")){
+            userService.updateUserRole(user, null);
+        }
+        if(role.equals("食堂管理员")){
+            String canteenId = jsonObject.get("canteenId").getAsString();
+            userService.updateUserRole(user, canteenId);
+        }
     }
 }
