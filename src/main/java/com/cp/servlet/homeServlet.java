@@ -30,7 +30,7 @@ public class homeServlet extends HttpServlet {
         List<Canteen> canteens = canteenService.getList();
         List<Dish> dishes = dishService.getList();
         communityMessages.sort(CommunityMessageComparators.getHotComparator());
-        Collections.sort(canteens);
+    //    Collections.sort(canteens);
         Collections.sort(dishes);
         List<CommunityMessage> firstFiveMessages;
         List<Canteen> firstFiveCanteens;
