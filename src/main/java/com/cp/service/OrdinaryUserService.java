@@ -26,4 +26,5 @@ public interface OrdinaryUserService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteOrdinaryUser(String userId);
+    boolean updateOrdinaryUser(OrdinaryUser user);
 }
