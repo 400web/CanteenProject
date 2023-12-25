@@ -25,9 +25,8 @@ public class PostSearchServlet extends HttpServlet {
         CommunityMessageService cms = new CommunityMessageServiceImpl();
         String name = request.getParameter("username");
         String postContent = request.getParameter("postContent");
-        System.out.println(name);
         System.out.println(postContent);
-        List<CommunityMessage> list = cms.getCommunityMessagesDynamic(name, postContent);
+        List<CommunityMessage> list = cms.getCommunityMessagesDynamic(name, postContent, postContent);
         String jsonResponse = gson.toJson(list);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

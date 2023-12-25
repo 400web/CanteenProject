@@ -13,4 +13,5 @@ import lombok.*;
 public class CanteenAdmin {
     private String id;
     private String canteenId;
+    private String canteenName;
 }

@@ -19,6 +19,6 @@ public class Canteen {
     private String openingTime;// 食堂开门时间
     private String closingTime;// 食堂关门时间
     private String activity;//食堂活动公告
-    private int rating;// 食堂等级分
+    private Double rating;// 食堂等级分
 }
 

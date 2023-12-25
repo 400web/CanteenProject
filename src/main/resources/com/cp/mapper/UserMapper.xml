@@ -3,31 +3,89 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cp.mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.cp.domain.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="role" column="role"/>
+    </resultMap>
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
-        insert into user(username,password,phone_number,role) values (#{username},#{password},#{phoneNumber},#{role});
+        insert into user(username, password, phone_number, role)
+        values (#{username}, #{password}, #{phoneNumber}, #{role});
     </insert>
     <update id="updateUser">
-        update user set username=#{username} ,phone_number=#{phoneNumber},password=#{password},role=#{role} where id=#{id}
+        UPDATE user
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="role != null">role = #{role},</if>
+        </set>
+        WHERE id = #{id}
     </update>
     <delete id="deleteUser">
-        delete from user where id = #{id}
+        delete
+        from user
+        where id = #{id}
     </delete>
-    <select id="login" resultType="user">
-        select * from user where phone_number = #{phoneNumber} and password = #{password}
+    <select id="login" resultMap="userResultMap">
+        SELECT id, username, password, phone_number, role
+        FROM user
+        WHERE phone_number = #{phoneNumber}
+          AND password = #{password}
     </select>
-    <select id="selectById" resultType="user">
-        select * from user where id = #{id}
+
+    <select id="selectById" resultMap="userResultMap">
+        SELECT id, username, password, phone_number, role
+        FROM user
+        WHERE id = #{id}
     </select>
-    <select id="selectByPhoneNumber" resultType="user">
-        select * from user where phone_number = #{phoneNumber}
+
+    <select id="selectByIds" resultType="com.cp.domain.User">
+        SELECT id, username, password, phone_number, role
+        FROM user
+        <where>
+            <if test="list != null and list.size() > 0">
+                AND id in
+                <foreach collection="list" item="id" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
     </select>
-    <select id="selectByUsername" resultType="user">
-        select * from user where username = #{username}
+
+    <select id="selectByPhoneNumber" resultMap="userResultMap">
+        SELECT id, username, password, phone_number, role
+        FROM user
+        WHERE phone_number = #{phoneNumber}
     </select>
-    <select id="selectList" resultType="user">
-        select * from user
+
+    <select id="selectByUsername" resultMap="userResultMap">
+        SELECT id, username, password, phone_number, role
+        FROM user
+        WHERE username = #{username}
     </select>
-    <select id="selectListByPage" resultType="user">
-        select * from user
+
+    <select id="selectList" resultMap="userResultMap">
+        SELECT id, username, password, phone_number, role
+        FROM user
+    </select>
+
+    <select id="selectListByPage" resultMap="userResultMap">
+        SELECT id, username, password, phone_number, role
+        FROM user
+    </select>
+    <select id="selectDishesDynamic" resultMap="userResultMap">
+        SELECT  id, username, password, phone_number, role
+        FROM user
+        <where>
+            <if test="name != null">
+                AND username LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="name = null">
+                AND 1=1
+            </if>
+        </where>
     </select>
 </mapper>

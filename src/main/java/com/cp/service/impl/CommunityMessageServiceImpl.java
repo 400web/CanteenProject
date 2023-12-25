@@ -33,10 +33,13 @@ public class CommunityMessageServiceImpl implements CommunityMessageService {
     }
 
     @Override
-    public List<CommunityMessage> getCommunityMessagesDynamic(String name, String content) {
+    public List<CommunityMessage> getCommunityMessagesDynamic(String name, String title, String content) {
         Map<String, Object> paramMap = new HashMap<>();
         if (name != null && !name.isEmpty()) {
             paramMap.put("name", name);
+        }
+        if (title != null && !title.isEmpty()) {
+            paramMap.put("title", title);
         }
         if (content != null && !content.isEmpty()) {
             paramMap.put("content", content);

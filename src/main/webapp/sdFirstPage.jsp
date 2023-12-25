@@ -53,6 +53,7 @@
             left: 48%;
             transform: translate(-50%, -50%);
         }
+
     </style>
 </head>
 <body>
@@ -62,7 +63,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="sdFirstPage.jsp">首页</a>
+                <a class="nav-link" href="SdFirstPageServlet">首页</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#complaints">投诉信息</a>
@@ -71,7 +72,7 @@
                 <a class="nav-link" href="#community">社区</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="account-management.jsp">账号管理</a>
+                <a class="nav-link" href="AccountManagementServlet">账号管理</a>
             </li>
         </ul>
     </div>
@@ -104,42 +105,17 @@
 <!-- 食堂信息基本管理 -->
 <section class="container">
     <div class="row justify-content-center">
-        <div class="col-md-3 canteen-card">
-            <a class="nav-link" href="canteenDetail.jsp?id=1">
-                <img src="canteen1.jpg" alt="食堂1">
-                <h4>食堂名称1</h4>
-            </a>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <a class="nav-link" href="canteen_detail.jsp?id=2">
-                <img src="canteen2.jpg" alt="食堂2">
-                <h4>食堂名称2</h4>
-            </a>
-        </div>
-        <div  class="col-md-3 canteen-card">
-            <a class="nav-link" href="canteen_detail.jsp?id=3">
-                <img src="canteen3.jpg" alt="食堂3">
-                <h4>食堂名称3</h4>
-            </a>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <a class="nav-link" href="canteen_detail.jsp?id=4">
-                <img src="canteen4.jpg" alt="食堂4">
-                <h4>食堂名称4</h4>
-            </a>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <a class="nav-link" href="canteen_detail.jsp?id=5">
-                <img src="canteen5.jpg" alt="食堂5">
-                <h4>食堂名称5</h4>
-            </a>
-        </div>
-        <div class="col-md-3 canteen-card">
-            <a class="nav-link" href="canteen_detail.jsp?id=6">
-                <img src="canteen6.jpg" alt="食堂6">
-                <h4>食堂名称6</h4>
-            </a>
-        </div>
+        <c:forEach var="canteen" items="${requestScope.canteens}" varStatus="loop">
+            <div class="col-md-3 canteen-card">
+                <a class="nav-link" href="CanteenDetailServlet?id=${canteen.id}">
+                    <img src="${canteen.image}" alt="${canteen.id}">
+                    <h4>${canteen.name}</h4>
+                </a>
+            </div>
+            <c:if test="${loop.index % 3 == 2}">
+                <div class="row"></div>
+            </c:if>
+        </c:forEach>
         <!-- 添加按钮 -->
         <div class="col-md-3 canteen-card add-card">
             <button class="btn add-button" id="addCanteenBtn" data-toggle="modal" data-target="#addCanteenModal">
@@ -162,32 +138,36 @@
             </div>
             <div class="modal-body">
                 <!-- 编辑食堂信息的表单 -->
-                <form id="addCanteenForm">
+                <form id="addCanteenForm" action="SdFirstPageServlet" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="canteenImageInput">食堂图片</label>
-                        <input type="file" class="form-control-file" id="canteenImageInput">
+                        <input type="file" class="form-control-file" id="canteenImageInput" name="canteenImageInput">
                     </div>
                     <div class="form-group">
                         <label for="canteenNameInput">食堂名称</label>
-                        <input type="text" class="form-control" id="canteenNameInput">
+                        <input type="text" class="form-control" id="canteenNameInput" name="canteenNameInput">
                     </div>
                     <div class="form-group">
                         <label for="canteenLocationInput">食堂位置</label>
-                        <input type="text" class="form-control" id="canteenLocationInput">
+                        <input type="text" class="form-control" id="canteenLocationInput" name="canteenLocationInput">
                     </div>
                     <div class="form-group">
                         <label for="canteenDescriptionInput">食堂简介</label>
-                        <textarea class="form-control" id="canteenDescriptionInput" rows="3"></textarea>
+                        <textarea class="form-control" id="canteenDescriptionInput" name="canteenDescriptionInput" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="canteenOpeningHoursInput">营业时间</label>
-                        <input type="text" class="form-control" id="canteenOpeningHoursInput">
+                        <label for="canteenOpeningInput">开门时间</label>
+                        <input type="text" class="form-control" id="canteenOpeningInput" name="canteenOpeningInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="canteenClosingInput">关门时间</label>
+                        <input type="text" class="form-control" id="canteenClosingInput" name="canteenClosingInput">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary" id="saveCanteenChanges">保存更改</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="saveCanteenChanges">保存更改</button>
             </div>
         </div>
     </div>
@@ -195,3 +175,4 @@
 </body>
 </html>
 
+i

@@ -7,9 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface CanteenAdminMapper{
-    CanteenAdmin selectById(@Param("id") String id);
-    List<Canteen> selectListByCanteenId(@Param("canteenId") String canteenId);
-    List<Canteen> selectList();
+    CanteenAdmin selectCanteenByAdminId(@Param("id") String id);
+    List<CanteenAdmin> selectListByCanteenId(@Param("canteenId") String canteenId);
+    List<String> selectUserIdsByCanteenId(@Param("canteenId") String canteenId);
+    List<CanteenAdmin> selectList();
     boolean addCanteenAdmin(CanteenAdmin admin);
     boolean updateCanteenAdmin(CanteenAdmin admin);
     boolean deleteCanteenAdmin(@Param("id") String id);

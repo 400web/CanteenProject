@@ -36,13 +36,13 @@ public class loginServlet extends HttpServlet {
             return;
         }
         HttpSession session = request.getSession();
-        session.setAttribute("User", user);
-        if (user.getRole().equals("管理员")) {
-            CanteenService canteenService = new CanteenServiceImpl();
-            request.setAttribute("canteenList", canteenService.getList());
-            request.getRequestDispatcher("SdFirstPageServlet").forward(request, response);
+        session.setAttribute("user", user);
+        if (user.getRole().equals("普通用户")) {
+            response.sendRedirect("homeServlet");
             return;
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        if(user.getRole().equals("系统管理员")){
+            response.sendRedirect("SdFirstPageServlet");
+        }
     }
 }

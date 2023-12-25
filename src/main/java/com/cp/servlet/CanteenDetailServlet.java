@@ -9,19 +9,21 @@ import jakarta.servlet.annotation.*;
 
 import java.io.*;
 import java.nio.file.Paths;
-import java.util.List;
 
-@WebServlet(name = "SdFirstPageServlet", value = "/SdFirstPageServlet")
+@WebServlet(name = "CanteenDetailServlet", value = "/CanteenDetailServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10,    // 10MB
         maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class SdFirstPageServlet extends HttpServlet {
+public class CanteenDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         CanteenService canteenService = new CanteenServiceImpl();
-        List<Canteen> canteens = canteenService.getList();
-        request.setAttribute("canteens", canteens);
-        request.getRequestDispatcher("sdFirstPage.jsp").forward(request, response);
+        String id = request.getParameter("id");
+        session.setAttribute("id", id);
+        Canteen canteen = canteenService.getCanteenById(id);
+        request.setAttribute("canteen", canteen);
+        request.getRequestDispatcher("canteenDetail.jsp").forward(request, response);
     }
 
     @Override
@@ -29,7 +31,7 @@ public class SdFirstPageServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String uploadPath = getServletContext().getRealPath("/css"); // 修改为您的项目路径下的 image 文件夹路径
         // 获取上传文件的部分
-        Part filePart = request.getPart("canteenImageInput");
+        Part filePart = request.getPart("newCanteenImage");
         // 获取上传文件的文件名
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         // 检查上传路径是否存在，如果不存在则创建目录
@@ -54,22 +56,32 @@ public class SdFirstPageServlet extends HttpServlet {
             // 关闭输入输出流
             filePart.delete(); // 删除临时文件
         }
-
         // 文件已保存到指定文件夹
         // 可以在此处添加代码来处理保存成功后的逻辑
-        CanteenService canteenService = new CanteenServiceImpl();
-        String name = request.getParameter("canteenNameInput");
-        String location = request.getParameter("canteenLocationInput");
-        String introduction = request.getParameter("canteenDescriptionInput");
-        String openingTime = request.getParameter("canteenOpeningInput");
-        String closingTime = request.getParameter("canteenClosingInput");
-        String image = null;
+        HttpSession session = request.getSession();
+        String id = (String) session.getAttribute("id");
+        String name = request.getParameter("newNameInput");
+        String location = request.getParameter("newLocationInput");
+        String introduction = request.getParameter("newDescriptionInput");
+        String openingHours = request.getParameter("newOpeningHoursInput");
+        String[] openingHoursParts = openingHours.split("-");
+        String openingTime = openingHoursParts[0];
+        String closingTime = openingHoursParts[1];
+        Canteen canteen = new Canteen();
+        canteen.setId(id);
+        canteen.setName(name);
         if(fileName != null && !fileName.isEmpty()){
-            image = "css/"+fileName;
+            canteen.setImage("css/"+fileName);
         }
-        Canteen canteen = new Canteen(null, name, image, location, introduction, openingTime, closingTime, null, 0D );
-        if(canteenService.addCanteen(canteen)){
-            doGet(request, response);
+        canteen.setLocation(location);
+        canteen.setIntroduction(introduction);
+        canteen.setOpeningTime(openingTime);
+        canteen.setClosingTime(closingTime);
+        CanteenService canteenService =new CanteenServiceImpl();
+        if(canteenService.updateCanteen(canteen)){
+            Canteen newCanteen = canteenService.getCanteenById(id);
+            request.setAttribute("canteen", newCanteen);
+            request.getRequestDispatcher("canteenDetail.jsp").forward(request, response);
         }
     }
 }

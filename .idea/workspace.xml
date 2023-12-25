@@ -9,15 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="更新CSS">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/account-management.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CommunityMessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CommunityMessageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/CommunityMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/CommunityMessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CommunityMessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CommunityMessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/replyCommentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/replyCommentServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CommunityMessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CommunityMessageMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/community.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/community.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/AccountManagementServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +23,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Servlet" />
         <option value="HTML File" />
         <option value="Jsp File" />
-        <option value="servlet" />
+        <option value="JavaScript File" />
+        <option value="Servlet" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -42,6 +38,20 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;wanwubujijiayi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="be1e4195-5d4f-4ef8-abba-3e2bfc15f29f" />
+        <option name="url" value="git@github.com:400web/CanteenProject.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/cp/Application.java" root0="SKIP_HIGHLIGHTING" />
@@ -58,7 +68,7 @@
 }</component>
   <component name="ProjectId" id="2ZLNK9CFcgBeD57RdJX8Y6xv9jb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -71,16 +81,22 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IntelliJ IDEA/project/CanteenProject/src/main/webapp/WEB-INF&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/canteenproject&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -89,24 +105,27 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\11930\Desktop\CanteenProject2\src\main\webapp\WEB-INF\lib" />
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.cp" />
-    </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
-    <configuration name="canteenSearch.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/canteenproject_war_exploded/canteenSearch.jsp">
+  <component name="RunManager" selected="JavaScript Debug.account-management.jsp">
+    <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="dishSearch.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/canteenproject_war_exploded/dishSearch.jsp">
+    <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="test2.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/canteenproject_war_exploded/test2.html">
+    <configuration name="home.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/home.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="Tomcat 10.1.13" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="sdFirstPage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/sdFirstPage.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="Tomcat 10.1.13" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="canteenproject:war exploded">
           <settings>
@@ -115,7 +134,8 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="19dbec72-72b8-46b9-b8b0-55043bdd8426" />
+        <option name="BASE_DIRECTORY_NAME" value="1c67e32a-692f-4aaf-9475-756bd8948e9f" />
+        <option name="HTTP_PORT" value="8084" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -123,7 +143,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="64256" />
+        <option name="DEBUG_PORT" value="58246" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -192,58 +212,21 @@
         </option>
       </method>
     </configuration>
-    <configuration name="index.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/index.jsp" />
-      <deployment>
-        <artifact name="canteenproject:war exploded">
-          <settings>
-            <option name="CONTEXT_PATH" value="/canteenproject_war_exploded" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="e6dccc17-c0eb-4ef7-b2e9-44ce70636fc3" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="canteenproject:war exploded" />
-        </option>
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.canteenSearch.jsp" />
-      <item itemvalue="JavaScript Debug.dishSearch.jsp" />
-      <item itemvalue="JavaScript Debug.test2.html" />
+      <item itemvalue="JavaScript Debug.home.jsp" />
+      <item itemvalue="JavaScript Debug.login.jsp" />
+      <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
+      <item itemvalue="JavaScript Debug.account-management.jsp" />
+      <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.13" />
-      <item itemvalue="Tomcat Server.index.jsp" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.test2.html" />
-        <item itemvalue="JavaScript Debug.canteenSearch.jsp" />
-        <item itemvalue="JavaScript Debug.dishSearch.jsp" />
-        <item itemvalue="Tomcat Server.index.jsp" />
+        <item itemvalue="JavaScript Debug.account-management.jsp" />
+        <item itemvalue="JavaScript Debug.home.jsp" />
+        <item itemvalue="JavaScript Debug.login.jsp" />
+        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
+        <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -266,26 +249,16 @@
       <workItem from="1702208744996" duration="48000" />
       <workItem from="1702208857644" duration="3580000" />
       <workItem from="1702287601559" duration="1227000" />
-      <workItem from="1702393790663" duration="8271000" />
-      <workItem from="1702471675739" duration="7710000" />
-      <workItem from="1702533415714" duration="484000" />
-      <workItem from="1702561346125" duration="2441000" />
-      <workItem from="1702564539117" duration="2391000" />
-      <workItem from="1702568928158" duration="4795000" />
-      <workItem from="1702606289791" duration="2638000" />
-      <workItem from="1702609043543" duration="133000" />
-      <workItem from="1702610239963" duration="1263000" />
-      <workItem from="1702612528563" duration="3410000" />
-      <workItem from="1702617628031" duration="15000" />
-      <workItem from="1702725486278" duration="1384000" />
-      <workItem from="1702727394757" duration="2809000" />
-      <workItem from="1702730237569" duration="10132000" />
-      <workItem from="1702824873955" duration="6016000" />
-      <workItem from="1702887997292" duration="2561000" />
-      <workItem from="1703222427631" duration="5458000" />
-      <workItem from="1703228689672" duration="30000" />
-      <workItem from="1703243743057" duration="20748000" />
-      <workItem from="1703310597781" duration="8489000" />
+      <workItem from="1702393790663" duration="8032000" />
+      <workItem from="1702975633382" duration="10295000" />
+      <workItem from="1703141187618" duration="22000" />
+      <workItem from="1703141715025" duration="32000" />
+      <workItem from="1703141850963" duration="43000" />
+      <workItem from="1703223212433" duration="19328000" />
+      <workItem from="1703262557220" duration="3502000" />
+      <workItem from="1703318159777" duration="6932000" />
+      <workItem from="1703325109753" duration="25301000" />
+      <workItem from="1703403569358" duration="11744000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -359,159 +332,87 @@
       <option name="project" value="LOCAL" />
       <updated>1702396492639</updated>
     </task>
-    <task id="LOCAL-00010" summary="食堂管理员界面">
+    <task id="LOCAL-00010" summary="食堂管理员账号管理">
       <option name="closed" value="true" />
-      <created>1702402678491</created>
+      <created>1703001375943</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1702402678491</updated>
+      <updated>1703001375944</updated>
     </task>
-    <task id="LOCAL-00011" summary="食堂界面">
+    <task id="LOCAL-00011" summary="食堂管理员账号管理">
       <option name="closed" value="true" />
-      <created>1702568476625</created>
+      <created>1703001411008</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1702568476625</updated>
+      <updated>1703001411008</updated>
     </task>
-    <task id="LOCAL-00012" summary="食堂界面">
+    <task id="LOCAL-00012" summary="食堂管理员">
       <option name="closed" value="true" />
-      <created>1702572540661</created>
+      <created>1703001818422</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1702572540661</updated>
+      <updated>1703001818422</updated>
     </task>
-    <task id="LOCAL-00013" summary="食堂界面">
+    <task id="LOCAL-00013" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702608788457</created>
+      <created>1703262655190</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1702608788457</updated>
+      <updated>1703262655190</updated>
     </task>
-    <task id="LOCAL-00014" summary="食堂界面">
+    <task id="LOCAL-00014" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702608833491</created>
+      <created>1703262660993</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1702608833491</updated>
+      <updated>1703262660993</updated>
     </task>
-    <task id="LOCAL-00015" summary="食堂">
+    <task id="LOCAL-00015" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702613335073</created>
+      <created>1703264142627</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1702613335073</updated>
+      <updated>1703264142627</updated>
     </task>
-    <task id="LOCAL-00016" summary="食堂">
+    <task id="LOCAL-00016" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702740145762</created>
+      <created>1703341112030</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1702740145763</updated>
+      <updated>1703341112030</updated>
     </task>
-    <task id="LOCAL-00017" summary="食堂">
+    <task id="LOCAL-00017" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702824964611</created>
+      <created>1703341139802</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1702824964611</updated>
+      <updated>1703341139802</updated>
     </task>
-    <task id="LOCAL-00018" summary="食堂">
+    <task id="LOCAL-00018" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702828982353</created>
+      <created>1703352590114</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1702828982353</updated>
+      <updated>1703352590114</updated>
     </task>
-    <task id="LOCAL-00019" summary="食堂">
+    <task id="LOCAL-00019" summary="系统管理员">
       <option name="closed" value="true" />
-      <created>1702830770227</created>
+      <created>1703403595010</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1702830770227</updated>
+      <updated>1703403595010</updated>
     </task>
-    <task id="LOCAL-00020" summary="食堂">
-      <option name="closed" value="true" />
-      <created>1702831995409</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1702831995409</updated>
-    </task>
-    <task id="LOCAL-00021" summary="更新食堂评论和菜品评论属性并且修改mapper">
-      <option name="closed" value="true" />
-      <created>1703224866266</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1703224866266</updated>
-    </task>
-    <task id="LOCAL-00022" summary="更新社区评论属性并且修改mapper">
-      <option name="closed" value="true" />
-      <created>1703225267510</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1703225267510</updated>
-    </task>
-    <task id="LOCAL-00023" summary="更新食堂和菜品属性并且修改mapper">
-      <option name="closed" value="true" />
-      <created>1703257243275</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1703257243275</updated>
-    </task>
-    <task id="LOCAL-00024" summary="配置文件">
-      <option name="closed" value="true" />
-      <created>1703257381068</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1703257381068</updated>
-    </task>
-    <task id="LOCAL-00025" summary="菜品检索页面和功能实现">
-      <option name="closed" value="true" />
-      <created>1703259209746</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1703259209747</updated>
-    </task>
-    <task id="LOCAL-00026" summary="食堂检索页面和功能实现">
-      <option name="closed" value="true" />
-      <created>1703261472377</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1703261472377</updated>
-    </task>
-    <task id="LOCAL-00027" summary="gson依赖，websocket依赖">
-      <option name="closed" value="true" />
-      <created>1703263854678</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1703263854678</updated>
-    </task>
-    <task id="LOCAL-00028" summary="更新CSS">
-      <option name="closed" value="true" />
-      <created>1703265382006</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1703265382006</updated>
-    </task>
-    <option name="localTasksCounter" value="29" />
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,16 +432,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="登录界面" />
     <MESSAGE value="食堂管理员界面" />
-    <MESSAGE value="食堂界面" />
-    <MESSAGE value="食堂" />
-    <MESSAGE value="更新食堂评论和菜品评论属性并且修改mapper" />
-    <MESSAGE value="更新社区评论属性并且修改mapper" />
-    <MESSAGE value="更新食堂和菜品属性并且修改mapper" />
-    <MESSAGE value="配置文件" />
-    <MESSAGE value="菜品检索页面和功能实现" />
-    <MESSAGE value="食堂检索页面和功能实现" />
-    <MESSAGE value="gson依赖，websocket依赖" />
-    <MESSAGE value="更新CSS" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新CSS" />
+    <MESSAGE value="食堂管理员账号管理" />
+    <MESSAGE value="食堂管理员" />
+    <MESSAGE value="系统管理员" />
+    <option name="LAST_COMMIT_MESSAGE" value="系统管理员" />
   </component>
 </project>

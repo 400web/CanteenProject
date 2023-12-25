@@ -5,9 +5,9 @@
 <mapper namespace="com.cp.mapper.QuestionMapper">
 
     <resultMap id="questionResultMap" type="Question">
-        <id property="id" column="id" />
-        <result property="surveyId" column="survey_id" />
-        <result property="questionContent" column="question_content" />
+        <id property="id" column="id"/>
+        <result property="surveyId" column="survey_id"/>
+        <result property="questionContent" column="question_content"/>
     </resultMap>
 
     <select id="selectById" resultMap="questionResultMap" parameterType="String">
@@ -34,13 +34,16 @@
 
     <update id="updateQuestion" parameterType="Question">
         UPDATE question
-        SET survey_id = #{surveyId},
-        question_content = #{questionContent}
+        SET
+        <if test="surveyId != null">survey_id = #{surveyId},</if>
+        <if test="questionContent != null">question_content = #{questionContent}</if>
         WHERE id = #{id}
     </update>
 
+
     <delete id="deleteQuestion" parameterType="String">
-        DELETE FROM question
+        DELETE
+        FROM question
         WHERE id = #{id}
     </delete>
 

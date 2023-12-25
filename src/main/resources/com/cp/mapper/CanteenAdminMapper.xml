@@ -7,9 +7,10 @@
     <resultMap id="canteenAdminResultMap" type="CanteenAdmin">
         <id property="id" column="user_id" />
         <result property="canteenId" column="canteen_id" />
+        <result property="canteenName" column="canteenName" />
     </resultMap>
 
-    <select id="selectById" resultMap="canteenAdminResultMap" parameterType="String">
+    <select id="selectCanteenByAdminId" resultMap="canteenAdminResultMap" parameterType="String">
         SELECT id, canteen_id
         FROM canteen_admin
         WHERE id = #{id}
@@ -21,9 +22,16 @@
         WHERE canteen_id = #{canteenId}
     </select>
 
-    <select id="selectList" resultMap="canteenAdminResultMap">
-        SELECT id, canteen_id
+    <select id="selectUserIdsByCanteenId" resultType="java.lang.String">
+        SELECT id
         FROM canteen_admin
+        WHERE canteen_id = #{canteenId}
+    </select>
+
+    <select id="selectList" resultMap="canteenAdminResultMap">
+        SELECT canteen_admin.id, canteen_admin.canteen_id, canteen.name AS canteenName
+        FROM canteen_admin
+        INNER JOIN canteen ON canteen_admin.canteen_id = canteen.id
     </select>
 
     <insert id="addCanteenAdmin" parameterType="CanteenAdmin">
@@ -41,5 +49,4 @@
         DELETE FROM canteen_admin
         WHERE id = #{id}
     </select>
-
 </mapper>
