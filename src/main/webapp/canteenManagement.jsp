@@ -132,7 +132,12 @@
             height: 100px; /* 定义固定高度 */
             object-fit: cover; /* 确保图片保持其宽高比 */
         }
-
+        .status-processed {
+            color: green;
+        }
+        .status-unprocessed {
+            color: red;
+        }
     </style>
 </head>
 
@@ -167,7 +172,7 @@
             <ul class="account-nav">
                 <li><a href="#canteenMessage" class="account-link">食堂信息维护</a></li>
                 <li><a href="#foods" class="account-link">菜品管理</a></li>
-                <li><a href="#comments" class="account-link">评价处理</a></li>
+                <li><a href="#complaints" class="account-link">投诉处理</a></li>
             </ul>
         </div>
 
@@ -452,6 +457,123 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 投诉处理部分 -->
+            <section id="complaints" class="account-section">
+                <h2 class="mb-4">投诉处理</h2>
+
+                <!-- 投诉列表表格 -->
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>投诉人姓名</th>
+                        <th>投诉时间</th>
+                        <th>投诉内容</th>
+                        <th>投诉反馈</th>
+<%--                        <th>回复信息</th>--%>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="complaintList">
+                    <!-- 动态添加的投诉列表 -->
+                    <jsp:useBean id="complaints" scope="request" type="java.util.List"/>
+
+                    <c:forEach var="complaint" items="${complaints}">
+                        <tr id="complaintRow_${complaint.id}">
+                            <td id="complainantName_${complaint.id}">${complaint.name}</td>
+                            <td id="complaintTime_${complaint.id}">${complaint.complainTime}</td>
+                            <td id="complaintContent_${complaint.id}">${complaint.complaintInfo}</td>
+<%--                            <td id="complaintFeedback_${complaint.id}">${complaint.feedback ? '已处理' : '未处理'}</td>--%>
+                            <td id="complaintFeedback_${complaint.id}" class="${complaint.feedback == '已处理' ? 'status-processed' : 'status-unprocessed'}">
+                                    ${complaint.feedback ? '已处理' : '未处理'}
+                            </td>
+<%--                            <td id="responseInfo_${complaint.id}">${complaint.responseInfo}</td>--%>
+                            <td>
+                                <button class="btn btn-primary btn-sm respondToComplaintButton" data-id="${complaint.id}" data-toggle="modal" data-target="#respondToComplaintModal_${complaint.id}">回复</button>
+                            </td>
+                        </tr>
+                        <tr id="responseRow_${complaint.id}" style="display: none;">
+                            <td colspan="5">
+                                <strong>回复内容:</strong>
+                                <span id="responseInfo_${complaint.id}">${complaint.responseInfo}</span>
+                            </td>
+                         </tr>
+
+                        <!-- 回复投诉的模态框 -->
+                        <div class="modal fade" id="respondToComplaintModal_${complaint.id}" tabindex="-1" role="dialog" aria-labelledby="respondToComplaintModalLabel_${complaint.id}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">回复投诉</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- 显示投诉内容 -->
+                                        <div class="form-group">
+                                            <label>投诉内容</label>
+                                            <textarea class="form-control" readonly>${complaint.complaintInfo}</textarea>
+                                        </div>
+                                        <form id="respondToComplaintForm_${complaint.id}">
+                                            <div class="form-group">
+                                                <label for="responseText_${complaint.id}">回复内容</label>
+                                                <textarea class="form-control" id="responseText_${complaint.id}" rows="3"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary" onclick="submitComplaintResponse(${complaint.id})">提交回复</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </section>
+
+            <script>
+                // 提交投诉回复
+                function submitComplaintResponse(complaintId) {
+                    var responseText = document.getElementById('responseText_' + complaintId).value;
+
+                    // 创建AJAX请求发送数据到服务器
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "replyComplaintServlet", true); // 修改为您的服务器端接口
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            // 请求成功后的处理
+                            // 确保回复行可见
+                            var responseRow = document.getElementById('responseRow_' + complaintId);
+                            responseRow.style.display = 'table-row';
+                            // 更新页面上的投诉信息
+                            document.getElementById('complaintFeedback_' + complaintId).textContent = '已处理';
+                            document.getElementById('responseInfo_' + complaintId).textContent = responseText;
+
+
+
+                            // 清空回复文本框并关闭模态框
+                            document.getElementById('responseText_' + complaintId).value = '';
+                            $('#respondToComplaintModal_' + complaintId).modal('hide');
+                        }
+                    };
+
+                    var data = "id=" + encodeURIComponent(complaintId) +
+                        "&response=" + encodeURIComponent(responseText);
+                    xhr.send(data);
+                }
+
+
+            </script>
+
+
+
+
+
         </div>
     </div>
 </div>
