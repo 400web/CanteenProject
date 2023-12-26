@@ -487,7 +487,7 @@
                             <td id="complaintFeedback_${complaint.id}" class="${complaint.feedback == '已处理' ? 'status-processed' : 'status-unprocessed'}">
                                     ${complaint.feedback ? '已处理' : '未处理'}
                             </td>
-<%--                            <td id="responseInfo_${complaint.id}">${complaint.responseInfo}</td>--%>
+
                             <td>
                                 <button class="btn btn-primary btn-sm respondToComplaintButton" data-id="${complaint.id}" data-toggle="modal" data-target="#respondToComplaintModal_${complaint.id}">回复</button>
                             </td>

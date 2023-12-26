@@ -26,8 +26,8 @@ public class replyComplaintServlet extends HttpServlet {
         if(responseText!=null&&!responseText.isEmpty()){
             complaint.setFeedback("已处理");
             System.out.println(complaintId);
-//        ComplaintService complaintService = new ComplaintServiceImpl();
-//        complaintService.updateComplaint(complaint);
+        ComplaintService complaintService = new ComplaintServiceImpl();
+        complaintService.updateComplaint(complaint);
         }
 
 
