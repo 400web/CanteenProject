@@ -34,6 +34,6 @@ public interface BehaviorAnalysisService {
      * @param commentId 点赞的评论ID
      * @return 是否已对评论进行点赞
      */
-    Long detectRepetitiveRatings(String userId, String commentId);
+    Long detectLikeStatus(String userId, String commentId);
     boolean deleteLike(String userId,String commentId);
 }

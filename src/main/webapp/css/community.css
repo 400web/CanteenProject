@@ -37,6 +37,26 @@ comments-section {
 .replies {
     margin-top: 10px;
 }
+.reply {
+    /* 添加一些样式，使回复内容显示在一行内，并按照你期望的样式排列 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 根据需要调整样式，添加边框或者其他视觉效果 */
+    border-bottom: 1px solid #ccc; /* 添加底部边框 */
+    padding: 5px 0; /* 调整内边距 */
+}
+
+.reply-content {
+    /* 限制回复内容的宽度并允许文字换行 */
+    flex: 1;
+    word-wrap: break-word;
+}
+
+.reply-actions {
+    /* 调整回复操作（回复链接）的样式 */
+    margin-left: 10px; /* 调整左边距 */
+}
 
 .hidden {
     display: none;

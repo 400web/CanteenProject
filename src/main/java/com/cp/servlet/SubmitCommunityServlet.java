@@ -1,7 +1,10 @@
 package com.cp.servlet;
 
 import com.cp.domain.CommunityMessage;
+import com.cp.domain.User;
+import com.cp.service.BehaviorAnalysisService;
 import com.cp.service.CommunityMessageService;
+import com.cp.service.impl.BehaviorAnalysisServiceImpl;
 import com.cp.service.impl.CommunityMessageServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -18,7 +21,16 @@ import java.text.SimpleDateFormat;
 public class SubmitCommunityServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        String id = request.getParameter("id");
+        BehaviorAnalysisService behaviorAnalysisService = new BehaviorAnalysisServiceImpl();
+        //User user = (User) request.getSession().getAttribute("user");
+        if (action.equals("点赞")) {
+            behaviorAnalysisService.recordLike("4", id);
+        }
+        if (action.equals("取消点赞")) {
+            behaviorAnalysisService.deleteLike("4", id);
+        }
     }
 
     @Override
@@ -48,7 +60,7 @@ public class SubmitCommunityServlet extends HttpServlet {
         long time = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = sdf.format(time);
-        CommunityMessage message = new CommunityMessage(null, "12", username, formattedDate, time, null, commentContent, 0, 0, 100, replyId, parentId, null, null);
+        CommunityMessage message = new CommunityMessage(null, "12", username, formattedDate, time, null, commentContent, 0, 0, 100, replyId, parentId, null, null, false);
         cms.addCommunityMessage(message);
         if (!replyId.equals(parentId)) {
             CommunityMessage parentMessage = cms.getCommunityMessageById(parentId);

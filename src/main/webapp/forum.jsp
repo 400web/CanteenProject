@@ -232,19 +232,19 @@
             <div class="col-md-6 mb-3">
                 <div class="card bg-light border rounded">
                     <a href="replyCommentServlet?id=${message.id}" class="text-decoration-none">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <h5 class="card-title fw-bold">${message.title}</h5>
-                                        <p class="card-text fw-bold">${message.name}</p>
-                                        <p class="card-text">${fn:length(message.content) > 30 ? fn:substring(message.content, 0, 30) : message.content}</p>
-                                    </div>
-                                    <div class="col-4 text-end">
-                                        <p class="card-text">${message.publishTime}</p>
-                                        <p class="card-text">点赞: ${message.likes} | 评论: ${message.comments}</p>
-                                    </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h5 class="card-title fw-bold">${message.title}</h5>
+                                    <p class="card-text fw-bold">${message.name}</p>
+                                    <p class="card-text">${fn:length(message.content) > 30 ? fn:substring(message.content, 0, 30) : message.content}</p>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <p class="card-text">${message.publishTime}</p>
+                                    <p class="card-text">点赞: ${message.likes} | 评论: ${message.comments}</p>
                                 </div>
                             </div>
+                        </div>
                     </a>
                 </div>
             </div>

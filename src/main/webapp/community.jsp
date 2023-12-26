@@ -12,9 +12,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/community.css">
+    <script src="lottie/lottie.min.js"></script>
     <title>评论页面</title>
 </head>
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .heart-container {
+        width: 60px; /* 设置心形图标容器的宽度 */
+        height: 60px; /* 设置心形图标容器的高度 */
+        cursor: pointer; /* 设置鼠标样式为手型 */
+        display: inline-block; /* 将容器设置为行内块元素 */
+        vertical-align: middle; /* 垂直对齐方式为中间 */
+    }
+
+    .reply-button {
+        margin-right: 10px; /* 调整显示回复按钮的右边距 */
+    }
+</style>
 <script>
     const socket = new WebSocket('ws://' + window.location.host + '/canteenproject_war_exploded' + '/updatesCommunity');
     socket.onopen = function () {
@@ -24,14 +41,15 @@
         console.log("socket连接错误");
     }
     socket.onmessage = function (ev) {
-        console.log(ev.data);
         const message = JSON.parse(ev.data);
-        console.log(message);
+        console.log("回复ID");
+        console.log(message.replyMessageId);
+        console.log("父ID")
         console.log(parentInfo.replyId);
         if (message.replyMessageId === parentInfo.replyId) {
             addReplyToFirstComment(message);
-        } else {
-            console.log(true);
+        }
+        if(message.replyMessageId !== parentInfo.replyId){
             addReplyToComment(message);
         }
     }
@@ -39,23 +57,54 @@
         console.log("socket已关闭");
     }
     var replyInfo = null;
-    var parentInfo = null;
-    document.addEventListener('DOMContentLoaded', function () {
-        // 在这里获取元素的值并存储在 replyInfo 对象中
-        const parentMessageId = document.getElementById('parentMessageId');
-        const parentMessageName = document.getElementById('parentMessageName');
-        // 确保元素存在后才将值赋给 replyInfo
-        if (parentMessageId && parentMessageName) {
-            parentInfo = {
-                replyId: parentMessageId.textContent,
-                replyName: parentMessageName.textContent,
-                parentId: parentMessageId.textContent
-            };
+    var parentInfo = {
+        replyId:`${parentMessage.id}`,
+        replyName:`${parentMessage.name}`,
+        parentId:`${parentMessage.id}`
+    }
+    console.log(parentInfo);
+
+    function addAnimationHeart(heartContainer,commentContainer){
+        const initialLikedState = commentContainer.dataset.initialLikedState; // 获取评论的初始点赞状态
+        let isLiked = (initialLikedState === 'true');
+        let animationHeart = bodymovin.loadAnimation({
+            container: heartContainer,
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: "animations/heart.json"
+        });
+        if (isLiked) {
+            animationHeart.goToAndPlay(30, true); // 播放动画至结束
+        } else {
+            animationHeart.goToAndStop(0, true)// 停止动画在第一帧
         }
+        heartContainer.addEventListener('click', function () {
+            const id = heartContainer.getAttribute('value');
+            console.log(id);
+            if (!isLiked) {
+                animationHeart.goToAndPlay();
+                isLiked = true;
+                like("点赞", id);
+            } else {
+                animationHeart.goToAndStop(0); // 停止动画在第一帧
+                isLiked = false;
+                like("取消点赞", id);
+            }
+        });
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        // 获取所有的评论组件
+        const commentContainers = document.querySelectorAll('.card');
+        console.log(commentContainers);
+        commentContainers.forEach(function (commentContainer) {
+            const heartContainer = commentContainer.querySelector('.heart-container');
+            addAnimationHeart(heartContainer,commentContainer);
+        });
     });
 
-    function toggleReplies(button) {
-        const replies = button.nextElementSibling;
+    function toggleReplies(id) {
+        const replies = document.getElementById('replies-' + id);
         replies.classList.toggle('hidden');
     }
 
@@ -70,57 +119,128 @@
         commentContent.placeholder = "回复" + replyName;
     }
 
-    function deselect() {
-        const commentContent = document.getElementById('comment-content');
-        replyInfo = null;
-        commentContent.placeholder = "请输入";
+    function like(action, id) {
+        fetch(`SubmitCommunityServlet?action=` + action + `&id=` + id, {
+            method: "GET",
+            headers: {
+                "Content-Type": "text/plain"
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络错误');
+                }
+            })
+            .catch(error => {
+                console.error('发生错误:', error);
+            });
+
     }
 
     function addReplyToFirstComment(message) {
-        // 获取评论区容器
         const commentsSection = document.getElementById('comments-section');
-
-        // 创建新评论的外部容器元素
         const newCommentElement = document.createElement('div');
-        newCommentElement.classList.add('comment');
-
-        // 创建评论头部元素
-        const commentHeader = document.createElement('div');
-        commentHeader.classList.add('comment-header', 'd-flex', 'justify-content-between');
-        commentHeader.innerHTML = '<span class="user-name fw-bold">' + message.name + '</span>' +
-            '<span class="comment-time text-muted">发表于: ' + message.publishTime + '</span>';
-
-        // 创建评论内容元素
-        const commentContent = document.createElement('div');
-        commentContent.classList.add('comment-content');
-        commentContent.innerHTML = message.content +
-            '<a href="javascript:void(0)" class="text-decoration-none" onclick="reply(' + message.id + ', \'' + message.name + '\', ' + message.id + ')">回复</a>' +
-            '<button class="btn btn-primary reply-button" onclick="toggleReplies(this)">显示回复(' + message.comments + ')</button>' +
-            '<div class="replies hidden" id="replies-' + message.id + '"></div>';
-        console.log(message.id);
-        // 将评论头部和内容添加到新评论的容器中
-        newCommentElement.appendChild(commentHeader);
-        newCommentElement.appendChild(commentContent);
-
-        // 将新评论添加到评论区容器中
+        newCommentElement.classList.add('card', 'mb-4');
+        newCommentElement.dataset.initialLikedState = message.like;
+        const cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        const row1 = document.createElement('div');
+        row1.classList.add('row', 'justify-content-between');
+        const col1 = document.createElement('div');
+        col1.classList.add('col');
+        const nameElement = document.createElement('h5');
+        nameElement.classList.add('card-title', 'fw-bold');
+        nameElement.textContent = message.name;
+        const col2 = document.createElement('div');
+        col2.classList.add('col-auto');
+        const timeElement = document.createElement('h6');
+        timeElement.classList.add('card-subtitle', 'mb-2', 'text-muted');
+        timeElement.textContent = message.publishTime;
+        const contentElement = document.createElement('p');
+        contentElement.classList.add('card-text');
+        contentElement.textContent = message.content;
+        const row2 = document.createElement('div');
+        row2.classList.add('row', 'justify-content-between', 'mt-3', 'align-items-center');
+        const col3 = document.createElement('div');
+        col3.classList.add('col-auto');
+        const replyLink = document.createElement('a');
+        replyLink.classList.add('text-decoration-none');
+        replyLink.href = "javascript:void(0)";
+        replyLink.textContent = '回复';
+        replyLink.onclick = function() {
+            reply(message.id, message.name, message.parentId);
+        };
+        const replyButton = document.createElement('button');
+        replyButton.classList.add('btn', 'btn-primary', 'reply-button');
+        replyButton.textContent = `显示回复(`+message.comments+`)`;
+        replyButton.onclick = function() {
+            toggleReplies(message.id);
+        };
+        const col4 = document.createElement('div');
+        col4.classList.add('col-auto');
+        const heartContainer = document.createElement('div');
+        heartContainer.classList.add('heart-container');
+        heartContainer.value = message.id;
+        const repliesElement = document.createElement('div');
+        repliesElement.classList.add('replies', 'col-12', 'hidden');
+        repliesElement.id = `replies-`+message.id;
+        col1.appendChild(nameElement);
+        col2.appendChild(timeElement);
+        row1.appendChild(col1);
+        row1.appendChild(col2);
+        col3.appendChild(replyLink);
+        col3.appendChild(replyButton);
+        row2.appendChild(col3);
+        row2.appendChild(col4);
+        col4.appendChild(heartContainer);
+        cardBody.appendChild(row1);
+        cardBody.appendChild(contentElement);
+        cardBody.appendChild(row2);
+        newCommentElement.appendChild(cardBody);
+        addAnimationHeart(heartContainer,newCommentElement)
         commentsSection.appendChild(newCommentElement);
     }
 
     function addReplyToComment(message) {
-        const repliesContainer = document.getElementById(`replies-` + message.parentId);
-        console.log(message.parentId);
-        // 创建新的评论元素
+        const repliesContainer = document.getElementById(`replies-`+message.parentId);
+        console.log(repliesContainer);
         const newReplyElement = document.createElement('div');
-        newReplyElement.classList.add('reply');
-        newReplyElement.innerHTML = '\
-    <span class="user-name fw-bold">' + message.name + ' -> ' + message.replyName + '</span>\
-    <span class="comment-time text-muted">回复于：' + message.publishTime + '</span>\
-    <div class="reply-content">' + message.content + '</div>\
-    <a href="javascript:void(0)" class="text-decoration-none" onclick="reply(' + message.id + ',\'' + message.name + '\',' + message.parentId + ')">回复</a>\
-';
-        // 添加新评论至指定的二级评论区域
+        newReplyElement.classList.add('card', 'bg-secondary', 'text-white', 'mb-2');
+        newReplyElement.dataset.initialLikedState = message.like;
+        const cardBody = document.createElement('div');
+        cardBody.classList.add('card-body', 'd-flex', 'justify-content-between', 'align-items-center');
+        const contentWrapper = document.createElement('div');
+        const nameElement = document.createElement('h5');
+        nameElement.classList.add('card-title', 'fw-bold');
+        nameElement.textContent = message.name+` -> `+message.replyName;
+        const subtitleElement = document.createElement('h6');
+        subtitleElement.classList.add('card-subtitle', 'mb-2', 'text-muted');
+        subtitleElement.textContent = `回复于: `+message.publishTime;
+        const textElement = document.createElement('p');
+        textElement.classList.add('card-text');
+        textElement.textContent = message.content;
+        const replyLink = document.createElement('a');
+        replyLink.classList.add('text-decoration-none');
+        replyLink.href = "javascript:void(0)";
+        replyLink.textContent = '回复';
+        replyLink.onclick = function() {
+            reply(message.id, message.name, message.parentId);
+        };
+        const heartContainer = document.createElement('div');
+        heartContainer.classList.add('heart-container');
+        heartContainer.value = message.id;
+        contentWrapper.appendChild(nameElement);
+        contentWrapper.appendChild(subtitleElement);
+        contentWrapper.appendChild(textElement);
+        contentWrapper.appendChild(replyLink);
+        cardBody.appendChild(contentWrapper);
+        cardBody.appendChild(heartContainer);
+        newReplyElement.appendChild(cardBody);
+        addAnimationHeart(heartContainer,newReplyElement);
         repliesContainer.appendChild(newReplyElement);
     }
+
+
 
     function submit() {
         const username = document.getElementById('username');
@@ -133,7 +253,7 @@
             replyName: replyInfo ? replyInfo.replyName : parentInfo.replyName,
             parentId: replyInfo ? replyInfo.parentId : parentInfo.replyId
         };
-        console.log(data);
+        console.log("发送请求的数据():",data)
 
         fetch('SubmitCommunityServlet', {
             method: 'POST',
@@ -148,8 +268,8 @@
                 }
                 console.log('评论已提交');
                 replyInfo = null;
-                username.innerHTML = "";
-                commentContent.innerHTML = "";
+                username.textContent = "";
+                commentContent.textContent = "";
                 commentContent.placeholder = "请输入";
                 return response.json();
             })
@@ -164,52 +284,78 @@
     }
 </script>
 <body>
-<div id="comments-section">
-    <p id="parentMessageId" style="display: none">${parentMessage.id}</p>
-    <h1 id="parentMessageContent" class="fw-bold">${parentMessage.content}</h1>
-    <h2 id="parentMessageName" class="text-primary">${parentMessage.name}</h2>
-    <h2 class="text-muted">发布时间: ${parentMessage.publishTime}</h2>
-    <c:forEach var="message" items="${replyList}">
-        <div class="comment">
-            <div class="comment-header d-flex justify-content-between">
-                <span class="user-name fw-bold">${message.name}</span>
-                <span class="comment-time text-muted">发表于: ${message.publishTime}</span>
-            </div>
-            <div class="comment-content">
-                    ${message.content}
-                <a href="javascript:void(0)" class="text-decoration-none"
-                   onclick="reply(${message.id},${message.name},${message.parentId})">回复</a>
-                <button class="btn btn-primary reply-button" onclick="toggleReplies(this)">
-                    显示回复(${message.comments})
-                </button>
-                <div class="replies hidden" id="replies-${message.id}">
-                    <c:forEach var="cm" items="${message.replyList}">
-                        <div class="reply">
-                            <span class="user-name fw-bold">${cm.name} -> ${cm.replyName}</span>
-                            <span class="comment-time text-muted">回复于: ${cm.publishTime}</span>
-                            <div class="reply-content">${cm.content}</div>
-                            <a href="javascript:void(0)" class="text-decoration-none"
-                               onclick="reply(${cm.id},${cm.name},${cm.parentId})">回复</a>
+<div class="page-wrapper pt-4 pb-4">
+    <div class="container-sm">
+        <div id="comments-section">
+            <h1 class="fw-bold">${parentMessage.title}</h1>
+            <scan id="parentMessageContent" class="fw-bold">${parentMessage.content}</scan>
+            <h2 id="parentMessageName" class="text-primary">${parentMessage.name}</h2>
+            <h2 class="text-muted">发布时间: ${parentMessage.publishTime}</h2>
+            <c:forEach var="message" items="${replyList}">
+                <div class="card mb-4" data-initial-liked-state="${message.like}">
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <h5 class="card-title fw-bold">${message.name}</h5>
+                            </div>
+                            <div class="col-auto">
+                                <h6 class="card-subtitle mb-2 text-muted">${message.publishTime}</h6>
+                            </div>
                         </div>
-                    </c:forEach>
+                        <p class="card-text">${message.content}</p>
+                        <div class="row justify-content-between mt-3 align-items-center">
+                            <div class="col-auto">
+                                <a href="javascript:void(0)" class="text-decoration-none"
+                                   onclick="reply(${message.id},${message.name},${message.id})">回复</a>
+                                <button class="btn btn-primary reply-button" onclick="toggleReplies(${message.id})">
+                                    显示回复(${message.comments})
+                                </button>
+                            </div>
+                            <div class="col-auto">
+                                <div class="heart-container" value="${message.id}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="replies col-12 hidden" id="replies-${message.id}">
+                                <!-- 子评论 -->
+                                <c:forEach var="cm" items="${message.replyList}">
+                                    <div class="card bg-secondary text-white mb-2 "
+                                         data-initial-liked-state="${cm.like}">
+                                        <div class="card-body d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5 class="card-title fw-bold">${cm.name} -> ${cm.replyName}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">回复于: ${cm.publishTime}</h6>
+                                                <p class="card-text">${cm.content}</p>
+                                                <a href="javascript:void(0)" class="text-decoration-none"
+                                                   onclick="reply(${cm.id},${cm.name},${cm.parentId})">回复</a>
+                                            </div>
+                                            <div>
+                                                <div class="heart-container" value="${cm.id}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
-</div>
 
-<div id="comment-form">
-    <h3 class="text-primary">发表评论</h3>
-    <p id="replyId" style="display: none;">${parentMessage.id}</p>
-    <p id="replyName" style="display: none">${parentMessage.name}</p>
-    <p id="parentId" style="display: none">${parentMessage.id}</p>
-    <label for="username" class="form-label">用户名：</label>
-    <input type="text" id="username" name="username" class="form-control" required>
-    <label for="comment-content" class="form-label">评论内容：</label>
-    <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
-    <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
-    <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
+        <div id="comment-form">
+            <h3 class="text-primary">发表评论</h3>
+            <p id="replyId" style="display: none;">${parentMessage.id}</p>
+            <p id="replyName" style="display: none">${parentMessage.name}</p>
+            <p id="parentId" style="display: none">${parentMessage.id}</p>
+            <label for="username" class="form-label">用户名：</label>
+            <input type="text" id="username" name="username" class="form-control" required>
+            <label for="comment-content" class="form-label">评论内容：</label>
+            <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
+            <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
+            <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
+        </div>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </div>
 </div>
-<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
