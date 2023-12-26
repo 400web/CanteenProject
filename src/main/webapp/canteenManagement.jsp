@@ -251,13 +251,14 @@
                     // 监听保存更改按钮点击事件
                     document.getElementById('saveCanteenChanges').addEventListener('click', function() {
                         // 获取修改后的食堂信息
+                        var newCanteenId = `${canteen.id}`;
                         var newCanteenName = document.getElementById('newCanteenName').value;
                         var newCanteenActivity = document.getElementById('newCanteenActivity').value;
                         var newCanteenDescription = document.getElementById('newCanteenDescription').value;
                         var newOpeningTime = document.getElementById('newOpeningTime').value;
                         var newClosingTime = document.getElementById('newClosingTime').value;
 
-                        console.log(newCanteenName);
+                        console.log(newCanteenId);
                         // document.getElementById('newCanteenName').value = dishId;
                         // 创建AJAX请求发送数据到服务器
                         var xhr = new XMLHttpRequest();
@@ -278,7 +279,9 @@
                             }
                         };
 
-                        var data = "name=" + encodeURIComponent(newCanteenName) +
+                        var data =
+                            "id="+encodeURIComponent(newCanteenId)+
+                            "&name=" + encodeURIComponent(newCanteenName) +
                             "&activity=" + encodeURIComponent(newCanteenActivity) +
                             "&description=" + encodeURIComponent(newCanteenDescription) +
                             "&openingTime=" + encodeURIComponent(newOpeningTime) +
