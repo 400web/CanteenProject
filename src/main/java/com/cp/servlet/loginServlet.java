@@ -1,13 +1,12 @@
 package com.cp.servlet;
 
+import com.cp.domain.Canteen;
 import com.cp.domain.OrdinaryUser;
 import com.cp.domain.User;
 import com.cp.service.CanteenService;
 import com.cp.service.OrdinaryUserService;
 import com.cp.service.UserService;
-import com.cp.service.impl.CanteenServiceImpl;
-import com.cp.service.impl.OrdinaryUserServiceImpl;
-import com.cp.service.impl.UserServiceImpl;
+import com.cp.service.impl.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -47,7 +46,10 @@ public class loginServlet extends HttpServlet {
         OrdinaryUserService ordinaryUserService = new OrdinaryUserServiceImpl();
         ordinaryUserService.updateLevel(user.getId(), 1);
         if (user.getRole().equals("食堂管理员")) {
-            response.sendRedirect("");
+            Canteen canteen=new CanteenAdminServiceImpl().getCanteenByAdminId(user.getId());
+            request.setAttribute("dishes",new DishServiceImpl().getDishesByCanteenId(canteen.getId()));
+            request.setAttribute("canteen",canteen);
+            request.getRequestDispatcher("canteenManagement.jsp").forward(request,response);
             return;
         }
         response.sendRedirect("homeServlet");

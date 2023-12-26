@@ -56,7 +56,7 @@ public class BehaviorAnalysisServiceImpl implements BehaviorAnalysisService {
     }
 
     @Override
-    public Long detectRepetitiveRatings(String userId, String commentId) {
+    public Long detectLikeStatus(String userId, String commentId) {
         return commentLikeMapper.selectLike(userId, commentId);
     }
 
