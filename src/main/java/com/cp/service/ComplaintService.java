@@ -16,10 +16,10 @@ public interface ComplaintService{
     /**
      * 获取某个食堂的所有投诉列表
      *
-     * @param canteenId 食堂ID
+     * @param canteenName 食堂name
      * @return 投诉列表，若不存在返回空列表
      */
-    List<Complaint> getComplaintsByCanteenId(String canteenId);
+    List<Complaint> getComplaintsByCanteenName(String canteenName);
     List<Complaint> getListByUserId(String userId);
 
     /**

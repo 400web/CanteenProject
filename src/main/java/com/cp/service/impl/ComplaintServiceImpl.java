@@ -15,13 +15,13 @@ public class ComplaintServiceImpl implements ComplaintService {
     }
 
     @Override
-    public List<Complaint> getComplaintsByCanteenId(String canteenId) {
-        return complaintMapper.selectByCanteenId(canteenId);
+    public List<Complaint> getComplaintsByCanteenName(String canteenName) {
+        return complaintMapper.selectByCanteenName(canteenName);
     }
 
     @Override
     public List<Complaint> getListByUserId(String userId) {
-        return null;
+        return complaintMapper.selectByComplainantId(userId);
     }
 
     @Override

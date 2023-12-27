@@ -43,7 +43,7 @@
 
     <insert id="addCanteenReview" parameterType="CanteenReview">
         INSERT INTO canteen_review (evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight)
-        VALUES (#{evaluatorId}, #{name}, #{time}, #{comment}, #{canteenId}, #{evaluationScore}, #{weight})
+        VALUES (#{evaluatorId}, #{name}, #{time}, #{timestamp}, #{comment}, #{canteenId}, #{evaluationScore}, #{weight})
     </insert>
 
     <update id="updateCanteenReview" parameterType="CanteenReview">

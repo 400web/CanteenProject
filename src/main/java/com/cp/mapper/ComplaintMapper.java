@@ -9,7 +9,7 @@ public interface ComplaintMapper{
     Complaint selectById(@Param("id") String id);
     List<Complaint> selectList();
     List<Complaint> selectByComplainantId(@Param("complainantId") String complainantId);
-    List<Complaint> selectByCanteenId(String canteenId);
+    List<Complaint> selectByCanteenName(@Param("canteenName") String canteenName);
     boolean addComplaint(Complaint complaint);
     boolean updateComplaint(Complaint complaint);
     boolean deleteComplaint(@Param("id") String id);

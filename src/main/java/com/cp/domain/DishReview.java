@@ -20,5 +20,4 @@ public class DishReview {
     private String comment;//菜品评价
     private double evaluationScore; // 评价分
     private double weight; // 权重
-
 }
