@@ -42,10 +42,6 @@
     }
     socket.onmessage = function (ev) {
         const message = JSON.parse(ev.data);
-        console.log("回复ID");
-        console.log(message.replyMessageId);
-        console.log("父ID")
-        console.log(parentInfo.replyId);
         if (message.replyMessageId === parentInfo.replyId) {
             addReplyToFirstComment(message);
         }
@@ -64,8 +60,7 @@
     }
     console.log(parentInfo);
 
-    function addAnimationHeart(heartContainer,commentContainer){
-        const initialLikedState = commentContainer.dataset.initialLikedState; // 获取评论的初始点赞状态
+    function addAnimationHeart(heartContainer,initialLikedState){
         let isLiked = (initialLikedState === 'true');
         let animationHeart = bodymovin.loadAnimation({
             container: heartContainer,
@@ -95,17 +90,25 @@
     }
     document.addEventListener("DOMContentLoaded", function () {
         // 获取所有的评论组件
+        const parent=document.getElementById("parent_heart");
+        addAnimationHeart(parent,`${parentMessage.like}`);
         const commentContainers = document.querySelectorAll('.card');
-        console.log(commentContainers);
         commentContainers.forEach(function (commentContainer) {
             const heartContainer = commentContainer.querySelector('.heart-container');
-            addAnimationHeart(heartContainer,commentContainer);
+            const initialLikedState = commentContainer.dataset.initialLikedState; // 获取评论的初始点赞状态
+            addAnimationHeart(heartContainer, initialLikedState);
         });
     });
 
     function toggleReplies(id) {
         const replies = document.getElementById('replies-' + id);
         replies.classList.toggle('hidden');
+    }
+
+    function deselect(){
+        const commentContent = document.getElementById('comment-content');
+        replyInfo = null;
+        commentContent.placeholder = "请输入评论内容";
     }
 
     function reply(replyId, replyName, parentId) {
@@ -116,7 +119,7 @@
             parentId: parentId
         };
         console.log(replyInfo);
-        commentContent.placeholder = "回复" + replyName;
+        commentContent.placeholder = "当前回复" + replyName;
     }
 
     function like(action, id) {
@@ -197,7 +200,8 @@
         cardBody.appendChild(contentElement);
         cardBody.appendChild(row2);
         newCommentElement.appendChild(cardBody);
-        addAnimationHeart(heartContainer,newCommentElement)
+        const initialLikedState = newCommentElement.dataset.initialLikedState; // 获取评论的初始点赞状态
+        addAnimationHeart(heartContainer,initialLikedState)
         commentsSection.appendChild(newCommentElement);
     }
 
@@ -236,7 +240,8 @@
         cardBody.appendChild(contentWrapper);
         cardBody.appendChild(heartContainer);
         newReplyElement.appendChild(cardBody);
-        addAnimationHeart(heartContainer,newReplyElement);
+        const initialLikedState = newReplyElement.dataset.initialLikedState; // 获取评论的初始点赞状态
+        addAnimationHeart(heartContainer,initialLikedState);
         repliesContainer.appendChild(newReplyElement);
     }
 
@@ -247,6 +252,7 @@
         const commentContent = document.getElementById('comment-content');
 
         const data = {
+            grandpaId:parentInfo.replyId,
             username: username.value,
             'comment-content': commentContent.value,
             replyId: replyInfo ? replyInfo.replyId : parentInfo.replyId,
@@ -268,9 +274,8 @@
                 }
                 console.log('评论已提交');
                 replyInfo = null;
-                username.textContent = "";
-                commentContent.textContent = "";
-                commentContent.placeholder = "请输入";
+                commentContent.value = '';
+                commentContent.placeholder = '请输入';
                 return response.json();
             })
             .then(data => {
@@ -289,8 +294,9 @@
         <div id="comments-section">
             <h1 class="fw-bold">${parentMessage.title}</h1>
             <scan id="parentMessageContent" class="fw-bold">${parentMessage.content}</scan>
-            <h2 id="parentMessageName" class="text-primary">${parentMessage.name}</h2>
+            <h2 id="parentMessageName" class="text-primary">用户:${parentMessage.name}</h2>
             <h2 class="text-muted">发布时间: ${parentMessage.publishTime}</h2>
+            <div class="heart-container" id="parent_heart" value="${parentMessage.id}"></div>
             <c:forEach var="message" items="${replyList}">
                 <div class="card mb-4" data-initial-liked-state="${message.like}">
                     <div class="card-body">
@@ -306,7 +312,7 @@
                         <div class="row justify-content-between mt-3 align-items-center">
                             <div class="col-auto">
                                 <a href="javascript:void(0)" class="text-decoration-none"
-                                   onclick="reply(${message.id},${message.name},${message.id})">回复</a>
+                                   onclick="reply(${message.id},'${message.name}',${message.id})">回复</a>
                                 <button class="btn btn-primary reply-button" onclick="toggleReplies(${message.id})">
                                     显示回复(${message.comments})
                                 </button>
@@ -341,12 +347,8 @@
                 </div>
             </c:forEach>
         </div>
-
         <div id="comment-form">
             <h3 class="text-primary">发表评论</h3>
-            <p id="replyId" style="display: none;">${parentMessage.id}</p>
-            <p id="replyName" style="display: none">${parentMessage.name}</p>
-            <p id="parentId" style="display: none">${parentMessage.id}</p>
             <label for="username" class="form-label">用户名：</label>
             <input type="text" id="username" name="username" class="form-control" required>
             <label for="comment-content" class="form-label">评论内容：</label>
@@ -354,7 +356,7 @@
             <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>
             <button id="deselect" class="btn btn-success" onclick="deselect()">取消选择回复</button>
         </div>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     </div>
 </div>
 </body>

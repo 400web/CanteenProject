@@ -14,7 +14,7 @@ import static java.lang.Math.exp;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class CommunityMessage{
+public class CommunityMessage {
     private String id;// 社区信息ID
     private String publisherId; // 发布人ID
     private String name;//发布人名字
@@ -34,9 +34,9 @@ public class CommunityMessage{
     public void hotCompute() {
         long time = System.currentTimeMillis() - publishTimestamp;
         double timeScore = exp((double) time / 86400000);
-        double likesScore = 2 * likes;
-        double commentsScore = 6 * comments;
+        double likesScore = 2 * likes + 1;
+        double commentsScore = 6 * comments + 1;
         this.hot = (likesScore + commentsScore) / timeScore;
     }
-    
+
 }

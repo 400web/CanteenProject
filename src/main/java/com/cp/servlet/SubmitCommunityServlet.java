@@ -24,12 +24,19 @@ public class SubmitCommunityServlet extends HttpServlet {
         String action = request.getParameter("action");
         String id = request.getParameter("id");
         BehaviorAnalysisService behaviorAnalysisService = new BehaviorAnalysisServiceImpl();
-        //User user = (User) request.getSession().getAttribute("user");
+        CommunityMessageService communityMessageService = new CommunityMessageServiceImpl();
+        User user = (User) request.getSession().getAttribute("user");
         if (action.equals("点赞")) {
-            behaviorAnalysisService.recordLike("4", id);
+            behaviorAnalysisService.recordLike(user.getId(), id);
+            CommunityMessage communityMessage =communityMessageService.getCommunityMessageById(id);
+            communityMessage.setLikes(communityMessage.getLikes()+1);
+            communityMessageService.updateCommunityMessage(communityMessage);
         }
         if (action.equals("取消点赞")) {
-            behaviorAnalysisService.deleteLike("4", id);
+            behaviorAnalysisService.deleteLike(user.getId(), id);
+            CommunityMessage communityMessage =communityMessageService.getCommunityMessageById(id);
+            communityMessage.setLikes(communityMessage.getLikes()-1);
+            communityMessageService.updateCommunityMessage(communityMessage);
         }
     }
 
@@ -50,9 +57,16 @@ public class SubmitCommunityServlet extends HttpServlet {
         Gson gson = new Gson();
         // 解析 JSON 数据
         JsonObject jsonObject = gson.fromJson(requestBody, JsonObject.class);
-
+        User user = (User) request.getSession().getAttribute("user");
+        String grandpaId = null;
+        String title = null;
         // 从 JSON 对象中获取相应的值
-        String username = jsonObject.get("username").getAsString();
+        if (jsonObject.has("grandpaId")) {
+            grandpaId = jsonObject.get("grandpaId").getAsString();
+        }
+        if (jsonObject.has("title")) {
+            title = jsonObject.get("title").getAsString();
+        }
         String commentContent = jsonObject.get("comment-content").getAsString();
         String replyId = jsonObject.get("replyId").getAsString();
         String replyName = jsonObject.get("replyName").getAsString();
@@ -60,12 +74,17 @@ public class SubmitCommunityServlet extends HttpServlet {
         long time = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = sdf.format(time);
-        CommunityMessage message = new CommunityMessage(null, "12", username, formattedDate, time, null, commentContent, 0, 0, 100, replyId, parentId, null, null, false);
+        CommunityMessage message = new CommunityMessage(null, user.getId(),user.getUsername() , formattedDate, time, title, commentContent, 0, 0, 100, replyId, parentId, null, null, false);
         cms.addCommunityMessage(message);
         if (!replyId.equals(parentId)) {
             CommunityMessage parentMessage = cms.getCommunityMessageById(parentId);
             parentMessage.setComments(parentMessage.getComments() + 1);
             cms.updateCommunityMessage(parentMessage);
+        }
+        if (grandpaId != null && !replyId.equals(grandpaId)) {
+            CommunityMessage grandpaMessage = cms.getCommunityMessageById(grandpaId);
+            grandpaMessage.setComments(grandpaMessage.getComments() + 1);
+            cms.updateCommunityMessage(grandpaMessage);
         }
         CommunityMessage replyMessage = cms.getCommunityMessageById(replyId);
         replyMessage.setComments(replyMessage.getComments() + 1);

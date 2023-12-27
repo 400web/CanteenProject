@@ -20,6 +20,11 @@ public class ComplaintServiceImpl implements ComplaintService {
     }
 
     @Override
+    public List<Complaint> getListByUserId(String userId) {
+        return null;
+    }
+
+    @Override
     public boolean addComplaint(Complaint complaint) {
         return complaintMapper.addComplaint(complaint);
     }

@@ -1,6 +1,7 @@
 package com.cp.servlet;
 
 import com.cp.domain.CommunityMessage;
+import com.cp.domain.User;
 import com.cp.service.BehaviorAnalysisService;
 import com.cp.service.CommunityMessageService;
 import com.cp.service.impl.BehaviorAnalysisServiceImpl;
@@ -17,9 +18,11 @@ public class replyCommentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
+        User user=(User) request.getSession().getAttribute("user");
         CommunityMessageService communityMessageService = new CommunityMessageServiceImpl();
         BehaviorAnalysisService behaviorAnalysisService = new BehaviorAnalysisServiceImpl();
         CommunityMessage communityMessage = communityMessageService.getCommunityMessageById(id);
+        communityMessage.setLike(behaviorAnalysisService.detectLikeStatus(user.getId(), communityMessage.getId()) != null);
         List<CommunityMessage> replyList = communityMessageService.getListByReplyId(id);
         for (CommunityMessage c : replyList) {
             c.setReplyList(communityMessageService.getListByParentId(c.getId()));
@@ -29,11 +32,10 @@ public class replyCommentServlet extends HttpServlet {
                 } else {
                     cm.setReplyName(communityMessageService.getCommunityMessageById(cm.getReplyMessageId()).getName());
                 }
-                cm.setLike(behaviorAnalysisService.detectLikeStatus("4", cm.getId()) != null);
+                cm.setLike(behaviorAnalysisService.detectLikeStatus(user.getId(), cm.getId()) != null);
             }
-            c.setLike(behaviorAnalysisService.detectLikeStatus("4", c.getId()) != null);
+            c.setLike(behaviorAnalysisService.detectLikeStatus(user.getId(), c.getId()) != null);
         }
-        System.out.println(communityMessage);
         request.setAttribute("parentMessage", communityMessage);
         request.setAttribute("replyList", replyList);
         request.getRequestDispatcher("community.jsp").forward(request, response);
