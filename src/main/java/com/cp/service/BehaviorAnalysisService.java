@@ -36,4 +36,5 @@ public interface BehaviorAnalysisService {
      */
     Long detectLikeStatus(String userId, String commentId);
     boolean deleteLike(String userId,String commentId);
+
 }

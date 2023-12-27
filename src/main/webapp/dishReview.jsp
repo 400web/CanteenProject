@@ -23,13 +23,12 @@
     <title>菜品评价界面</title>
 </head>
 <script>
+    var score = null;
     function submit(dishId) {
-        const username = document.getElementById('username');
         const commentContent = document.getElementById('comment-content');
-
         const data = {
-            name: username.value,
             comment: commentContent.value,
+            evaluationScore:score,
             dishId: dishId
         };
 
@@ -69,7 +68,7 @@
             <p class="dish-name">菜名：${dish.name}</p>
             <p class="dish-info">菜系: ${dish.cuisine}</p>
             <p class="dish-info">价格: ${dish.price}</p>
-            <%--            <p class="dish-info">评分: ${dish.score}</p>--%>
+            <p class="dish-info">评分: ${dish.score}</p>
         </div>
     </div>
     <%--<div id="comments-section">--%>
@@ -84,8 +83,9 @@
         <c:forEach var="dishReview" items="${dishReviewList}">
             <div class="user-comment">
                 <a href="userCommentsListServlet"><h3 class="flex-container">${dishReview.name}</h3></a>
-                <p>发表于：${dishReview.time} ${dishReview.comment}</p>
-                <p class="comment-text" style="display: none">这是一条评论，得分：${dishReview.score}</p>
+                <p>发表于：${dishReview.time} </p>
+                <p>内容： ${dishReview.comment}</p>
+                <p class="comment-text" style="display: none">这是一条评论，得分：${dishReview.evaluationScore}</p>
                 <p class="comment-stars"></p>
 <%--                <p>${dishReview.score}</p>--%>
             </div>
@@ -117,7 +117,7 @@
     <%--    <input type="text" id="username" name="username" class="form-control" required>--%>
     <div class="add-comment">
         <%--    <label for="comment-content" class="form-label">评论内容：</label>--%>
-        <textarea class="comment-textarea" placeholder="输入你的评论"></textarea>
+        <textarea class="comment-textarea" id="comment-content" placeholder="输入你的评论"></textarea>
             <div id="star-rating" class="rating">
             <i class="fas fa-star" data-rating="1"></i>
             <i class="fas fa-star" data-rating="2"></i>

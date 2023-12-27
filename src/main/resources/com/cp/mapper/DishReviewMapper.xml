@@ -31,14 +31,12 @@
         SELECT id, evaluator_id, name, dish_id, time, timestamp, comment, evaluation_score, weight
         FROM dish_review
         WHERE dish_id = #{DishId}
-        ORDER BY timestamp DESC
     </select>
 
     <select id="selectByEvaluatorIdDishId" resultMap="dishReviewResultMap" parameterType="String">
         SELECT id, evaluator_id, name, dish_id, time, timestamp, comment, evaluation_score, weight
         FROM dish_review
         WHERE evaluator_id = #{evaluatorId} AND dish_id = #{dishId}
-        ORDER BY timestamp DESC
     </select>
 
     <select id="selectListByName" resultMap="dishReviewResultMap">
@@ -59,7 +57,7 @@
             <if test="name != null">name = #{name},</if>
             <if test="dishId != null">dish_id = #{dishId},</if>
             <if test="time != null">time = #{time},</if>
-            <if test="timestamp != null">timestamp = #{timestamp}</if>
+            <if test="timestamp != null">time = #{timestamp},</if>
             <if test="comment != null">comment = #{comment},</if>
             <if test="evaluationScore != null">evaluation_score = #{evaluationScore},</if>
             <if test="weight != null">weight = #{weight},</if>

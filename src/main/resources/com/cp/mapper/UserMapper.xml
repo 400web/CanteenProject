@@ -25,9 +25,9 @@
         WHERE id = #{id}
     </update>
     <delete id="deleteUser">
-        DELETE
-        FROM user
-        WHERE id = #{id}
+        delete
+        from user
+        where id = #{id}
     </delete>
     <select id="login" resultMap="userResultMap">
         SELECT id, username, password, phone_number, role

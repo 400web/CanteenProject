@@ -30,7 +30,7 @@ public class homeServlet extends HttpServlet {
         List<Canteen> canteens = canteenService.getList();
         List<Dish> dishes = dishService.getList();
         communityMessages.sort(CommunityMessageComparators.getHotComparator());
-    //    Collections.sort(canteens);
+        Collections.sort(canteens);
         Collections.sort(dishes);
         List<CommunityMessage> firstFiveMessages;
         List<Canteen> firstFiveCanteens;
@@ -53,6 +53,7 @@ public class homeServlet extends HttpServlet {
         System.out.println(firstFiveDishes);
         request.setAttribute("topics", firstFiveMessages);
         request.setAttribute("canteens", firstFiveCanteens);
+        request.setAttribute("allCanteen",canteens);
         request.setAttribute("dishes", firstFiveDishes);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

@@ -14,11 +14,8 @@
     <title>学生页面</title>
     <link rel="stylesheet" href=css/homePage.css>
     <link rel="stylesheet" href=css/home.css>
-    <!-- 先引入jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- 引入 Bootstrap 样式表 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- 导航栏 -->
@@ -34,11 +31,11 @@
                    aria-haspopup="true" aria-expanded="false">
                     食堂
                 </a>
+
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#canteen1" data-canteen="1">食堂1</a>
-                    <a class="dropdown-item" href="#canteen2" data-canteen="2">食堂2</a>
-                    <a class="dropdown-item" href="#canteen3" data-canteen="3">食堂3</a>
-                    <!-- 添加更多食堂选项 -->
+                    <c:forEach var="oneCanteen" items="${allCanteen}">
+                        <a class="dropdown-item" href="canteenServlet?id=${oneCanteen.id}">${oneCanteen.name}</a>
+                    </c:forEach>
                 </div>
 
             </li>
@@ -126,12 +123,6 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<script>$('.carousel').carousel({
-    interval: 2000 // 这里指定自动切换的时间间隔
-});
-</script>
-
-
 
 
 <script>
