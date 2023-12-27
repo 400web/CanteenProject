@@ -69,7 +69,7 @@
                 <a class="nav-link" href="#complaints">投诉信息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#community">社区</a>
+                <a class="nav-link" href="PostServlet">社区</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="AccountManagementServlet">账号管理</a>

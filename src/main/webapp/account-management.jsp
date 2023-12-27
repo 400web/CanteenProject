@@ -29,7 +29,7 @@
                 <a class="nav-link" href="#complaints">投诉信息</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#community">社区</a>
+                <a class="nav-link" href="PostServlet">社区</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="AccountManagementServlet">账号管理</a>
@@ -126,9 +126,9 @@
                 </div>
 
                 <!-- 用户列表表格 -->
-                <table class="table table-bordered table-hover table-striped">
+                <table class="table table-bordered table-hover table-striped" id="userTable">
                     <thead>
-                    <tr>
+                    <tr class="table-header">
                         <th>用户名</th>
                         <th>密码</th>
                         <th>手机号</th>
@@ -508,5 +508,42 @@
         };
     }
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const userTable = document.getElementById('userTable');
+
+        searchButton.addEventListener('click', function() {
+            performSearch();
+        });
+
+        searchInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchText = searchInput.value.trim().toLowerCase();
+            const rows = userTable.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                if (row.cells.length > 0) {
+                    const username = row.cells[0].textContent.toLowerCase();
+                    if (username.includes(searchText)) {
+                        row.style.display = ''; // 显示匹配的行
+                    } else {
+                        if (!row.classList.contains('table-header')) {
+                            row.style.display = 'none'; // 仅隐藏数据行，不隐藏表头
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
 </body>
 </html>
