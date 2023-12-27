@@ -84,8 +84,9 @@
         <c:forEach var="dishReview" items="${dishReviewList}">
             <div class="user-comment">
                 <a href="userCommentsListServlet"><h3 class="flex-container">${dishReview.name}</h3></a>
-                <p>发表于：${dishReview.time} ${dishReview.comment}</p>
-                <p class="comment-text" style="display: none">这是一条评论，得分：${dishReview.score}</p>
+                <p>发表于：${dishReview.time} </p>
+                <p>内容： ${dishReview.comment}</p>
+                <p class="comment-text" style="display: none">这是一条评论，得分：${dishReview.evaluationScore}</p>
                 <p class="comment-stars"></p>
 <%--                <p>${dishReview.score}</p>--%>
             </div>

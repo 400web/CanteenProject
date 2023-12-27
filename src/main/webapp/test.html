@@ -4,46 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<style>
-    #heart-container {
-        width: 50vw; /* 设置为屏幕宽度的一半 */
-        height: 50vh; /* 设置为屏幕高度的一半 */
-    }
-</style>
-<script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const heartContainer = document.getElementById("heart-container");
-
-        let animationHeart = bodymovin.loadAnimation({
-            container: heartContainer,
-            renderer: 'svg',
-            loop: false,
-            autoplay: false,
-            path: "animations/heart.json" // 指定点赞的 JSON 文件路径
-        });
-
-        let isLiked = false; // 设定初始状态为已点赞状态
-
-        if (!isLiked) {
-            animationHeart.goToAndPlay(30,true); // 播放动画至结束
-        } else {
-            animationHeart.goToAndStop(0,true); // 停止动画在第一帧
-        }
-
-        heartContainer.addEventListener('click', function () {
-            if (!isLiked) {
-                animationHeart.goToAndPlay();
-                isLiked = true;
-            } else {
-                animationHeart.goToAndStop(0); // 停止动画在第一帧
-                isLiked = false;
-            }
-        });
-    });
-</script>
 <body>
-<div id="heart-container"></div>
-<script src="lottie/lottie.min.js"></script>
+<form action="replyCommentServlet" method="post">
+    <label>
+        id:<input type="text" name="id">
+    </label>
+    <input type="submit" value="跳转">
+</form>
 </body>
 </html>

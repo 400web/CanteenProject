@@ -12,8 +12,6 @@
     <title>账号管理</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/account-management.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -140,7 +138,7 @@
                     <!-- 使用 JSTL 遍历 userMap 输出表格内容 -->
                     <c:forEach var="entry" items="${requestScope.userMap}">
                         <c:set var="user" value="${entry.value}" />
-                        <tr id="allUser_${user.id}">
+                        <tr>
                             <!-- 显示用户信息，包括其他列 -->
                             <td id="username_${user.id}">${user.username}</td>
                             <td id="password_${user.id}">*******</td> <!-- 这里用*代替密码 -->
@@ -150,7 +148,7 @@
                                 <div class="btn-group">
                                     <!-- 编辑按钮，点击时弹出模态框 -->
                                     <button class="btn btn-info btn-sm btn-margin" data-toggle="modal" data-target="#editModal${user.id}" onclick="fillEditModal('${user.id}')">编辑</button>
-                                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('${user.id}')">删除</button>
+                                    <button class="btn btn-danger btn-sm">删除</button>
                                 </div>
                             </td>
                         </tr>
@@ -169,14 +167,14 @@
                                         <!-- 用户信息表单 -->
                                         <div class="modal-body">
                                             <!-- 用户信息表单 -->
-                                            <input type="hidden" id="editUserId_${user.id}" value="${user.id}" >
+                                            <input type="hidden" id="editUserId">
                                             <div class="form-group">
                                                 <label for="editUsername_${user.id}">用户名</label>
                                                 <input type="text" class="form-control" id="editUsername_${user.id}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="editPassword_${user.id}">密码</label>
-                                                <input type="password" class="form-control" id="editPassword_${user.id}" value="${user.password}" readonly>
+                                                <input type="password" class="form-control" id="editPassword_${user.id}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="editPhone_${user.id}">手机号</label>
@@ -191,10 +189,10 @@
                                             </div>
                                             <!-- 如果是食堂管理员，则显示管理的食堂 -->
                                             <div class="form-group" id="editCanteenSection_${user.id}" style="display: none;">
-                                                <label for="CanteenSection_${user.id}">管理的食堂:</label>
+                                                <label for="CanteenSection_${user.id}">管理的食堂:${canteenAdminMap.get(user.id)}</label>
                                                 <select class="form-control" id="CanteenSection_${user.id}">
                                                     <c:forEach var="canteens" items="${requestScope.canteens}">
-                                                        <option value="${canteens.id}">${canteens.name}</option>
+                                                        <option value="${canteens.name}">${canteens.name}</option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
@@ -203,22 +201,6 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                                         <button type="button" class="btn btn-primary">保存</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmDeleteModalLabel">确认要删除该用户吗？</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
                                     </div>
                                 </div>
                             </div>
@@ -245,17 +227,17 @@
             <div class="modal-body">
                 <!-- 用户名输入框 -->
                 <div class="form-group">
-                    <label for="addUsername">用户名</label>
+                    <label for="username">用户名</label>
                     <input type="text" class="form-control" id="addUsername">
                 </div>
                 <!-- 密码输入框 -->
                 <div class="form-group">
-                    <label for="addPassword">密码</label>
+                    <label for="password">密码</label>
                     <input type="password" class="form-control" id="addPassword">
                 </div>
                 <!-- 手机号输入框 -->
                 <div class="form-group">
-                    <label for="addPhone">手机号</label>
+                    <label for="phone">手机号</label>
                     <input type="text" class="form-control" id="addPhone">
                 </div>
                 <!-- 身份选择框 -->
@@ -271,19 +253,22 @@
                     <label for="canteen">管理的食堂</label>
                     <select class="form-control" id="canteen">
                         <c:forEach var="canteens" items="${requestScope.canteens}">
-                            <option value="${canteens.id}">${canteens.name}</option>
+                            <option value="${canteens.name}">${canteens.name}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="saveButton">保存</button>
+                <button type="button" class="btn btn-primary">保存</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- 引入Bootstrap的JavaScript库和jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     // JavaScript 代码来处理点击切换
     $(document).ready(function() {
@@ -350,23 +335,21 @@
 
         // 获取模态框中的表单元素
         let modalUsername = document.getElementById('editUsername_' + userId);
+        let modalPassword = document.getElementById('editPassword_' + userId);
         let modalPhoneNumber = document.getElementById('editPhone_' + userId);
         let modalRole = document.getElementById('editRole_' + userId);
         let modalCanteenSection = document.getElementById('editCanteenSection_' + userId);
 
         // 填充模态框中的表单元素值
         modalUsername.value = editUsername;
+        modalPassword.value = '*******'; // 这里用*代替密码
         modalPhoneNumber.value = editPhoneNumber;
         modalRole.value = editRole;
         // 添加事件监听器
-        if(editRole === "食堂管理员"){
-            modalCanteenSection.style.display = 'block';
-        } else {
-            modalCanteenSection.style.display = 'none';
-        }
         modalRole.addEventListener('change', function() {
             // 获取当前所选身份
             let selectedIdentity = modalRole.value;
+
             // 如果选择了食堂管理员，则显示食堂选择框，否则隐藏
             if (selectedIdentity === '食堂管理员') {
                 modalCanteenSection.style.display = 'block';
@@ -374,6 +357,7 @@
                 modalCanteenSection.style.display = 'none';
             }
         });
+
         // 将表单字段设置为可编辑状态
         document.getElementById('editUsername_' + userId).readOnly = false;
         document.getElementById('editPassword_' + userId).readOnly = false;
@@ -383,129 +367,29 @@
     }
 </script>
 <script>
-    document.getElementById('saveButton').addEventListener('click', function() {
-        let username = document.getElementById('addUsername').value;
-        let password = document.getElementById('addPassword').value;
-        let phone = document.getElementById('addPhone').value;
-        let identity = document.getElementById('identity').value;
-        let canteenId = document.getElementById('canteen').value;
+    function saveUserData(userId) {
+        let username = document.getElementById('username' + userId).value;
+        let password = document.getElementById('password' + userId).value;
+        let phone = document.getElementById('phone' + userId).value;
+        let role = document.getElementById('role' + userId).value;
+        let canteen = document.getElementById('canteen' + userId).value; // 如果需要食堂信息的话
 
-        let userData = {
-            username: username,
-            password: password,
-            phone: phone,
-            identity: identity,
-            canteenId: canteenId
+        // 构建表单数据对象
+        let formData = new FormData();
+        formData.append('userId', userId);
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('phone', phone);
+        formData.append('role', role);
+        formData.append('canteen', canteen); // 如果需要食堂信息的话
+
+        // 使用 AJAX 发送表单数据到 Servlet
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'YourServletURL', true);
+        xhr.onload = function () {
+            // 处理响应，如果需要的话
         };
-
-        let xhr = new XMLHttpRequest();
-        let url = 'AddAccountServlet'; // 替换为您的 Servlet 地址
-
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    let responseJson = JSON.parse(xhr.responseText);
-                    console.log(responseJson);
-                    if (responseJson.redirect) {
-                        window.location.href = responseJson.redirect;
-                    }
-                } else {
-                    console.error('Error occurred while sending data!');
-                }
-            }
-        };
-
-        xhr.send(JSON.stringify(userData));
-    });
-</script>
-<script>
-    // 获取所有模态框中的保存按钮
-    let saveButtons = document.querySelectorAll('[id^="editModal"] .btn-primary');
-
-    // 为每个保存按钮添加点击事件监听器
-    saveButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            // 获取当前保存按钮所在模态框的用户ID
-            let modalId = this.closest('.modal').id; // 获取最近的模态框的ID
-            let userId = modalId.replace('editModal', ''); // 从模态框ID中提取用户ID
-
-            // 使用提取的用户ID构建表单元素ID，并获取表单数据
-            let editedUsername = document.getElementById('editUsername_'+userId).value;
-            let editedPassword = document.getElementById('editPassword_'+userId).value;
-            let editedPhone = document.getElementById('editPhone_'+userId).value;
-            let editedRole = document.getElementById('editRole_'+userId).value;
-            let editedCanteen = document.getElementById('CanteenSection_'+userId).value;
-
-            document.getElementById('username_'+userId).textContent = editedUsername;
-            document.getElementById('phoneNumber_'+userId).textContent = editedPhone;
-            document.getElementById('role_'+userId).textContent = editedRole
-
-            // 创建包含用户编辑数据的对象
-            let editedUserData = {
-                userId: userId,
-                editedUsername: editedUsername,
-                editedPassword: editedPassword,
-                editedPhone: editedPhone,
-                editedRole: editedRole,
-                editedCanteenId: editedCanteen
-            };
-
-            let xhr = new XMLHttpRequest();
-            let url = 'UpdateAccountServlet'; // 替换为您的 Servlet 地址
-
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        console.log('Data sent successfully!');
-                        // 可以在此处编写成功后的逻辑
-                    } else {
-                        console.error('Error occurred while sending data!');
-                    }
-                }
-            };
-            xhr.send(JSON.stringify(editedUserData));
-            // 关闭模态框
-            $('#editModal'+userId).modal('hide');
-        });
-    });
-
-</script>
-<script>
-    // 确认删除按钮点击事件处理函数
-    function confirmDelete(userId) {
-        $('#confirmDeleteModal').modal('show'); // 弹出确认删除的模态框
-
-        // 当确认删除按钮点击时，将用户 ID 发送到 Servlet 进行处理
-        document.getElementById('confirmDeleteBtn').onclick = function() {
-            document.getElementById('allUser_'+userId).style.display = 'none';
-            let data = {
-                userId : userId
-            };
-            let xhr = new XMLHttpRequest();
-            let url = 'DeleteAccountServlet'; // 替换为您的 Servlet 地址
-
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        console.log('Data sent successfully!');
-                        // 可以在此处编写成功后的逻辑
-                    } else {
-                        console.error('Error occurred while sending data!');
-                    }
-                }
-            };
-            xhr.send(JSON.stringify(data));
-            $('#confirmDeleteModal').modal('hide');
-        };
+        xhr.send(formData);
     }
 </script>
 </body>

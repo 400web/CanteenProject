@@ -65,7 +65,9 @@
         <c:forEach var="canteenReveiw" items="${canteenReviewList}">
             <div class="user-comment">
                 <a href="userCommentsListServlet?username=${canteenReveiw.name}"><h3>${canteenReveiw.name}</h3></a>
-                <p>发表于：${canteenReveiw.time} ${canteenReveiw.comment}</p>
+                <p>发表于：${canteenReveiw.time}</p>
+                <p>内容：${canteenReveiw.comment}</p>
+
                 <p class="comment-text" style="display: none">这是一条评论，得分：${canteenReveiw.score}</p>
                 <p class="comment-stars"></p>
             </div>

@@ -29,7 +29,6 @@ public class CommunityMessage {
     private String parentId;// 顶级评论ID
     private String replyName;
     private List<CommunityMessage> replyList;
-    private boolean isLike;
 
     public void hotCompute() {
         long time = System.currentTimeMillis() - publishTimestamp;
