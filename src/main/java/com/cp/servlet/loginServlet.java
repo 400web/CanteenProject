@@ -38,6 +38,7 @@ public class loginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         if (user.getRole().equals("普通用户")) {
+
             response.sendRedirect("homeServlet");
             return;
         }

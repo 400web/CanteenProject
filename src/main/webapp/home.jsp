@@ -31,11 +31,11 @@
                    aria-haspopup="true" aria-expanded="false">
                     食堂
                 </a>
+
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#canteen1" data-canteen="1">食堂1</a>
-                    <a class="dropdown-item" href="#canteen2" data-canteen="2">食堂2</a>
-                    <a class="dropdown-item" href="#canteen3" data-canteen="3">食堂3</a>
-                    <!-- 添加更多食堂选项 -->
+                    <c:forEach var="oneCanteen" items="${allCanteen}">
+                        <a class="dropdown-item" href="canteenServlet?id=${oneCanteen.id}">${oneCanteen.name}</a>
+                    </c:forEach>
                 </div>
 
             </li>

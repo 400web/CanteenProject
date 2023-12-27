@@ -15,6 +15,7 @@ public class CanteenReview {
     private String evaluatorId; // 评价人id
     private String name;
     private String time;
+    private long timestamp;
     private String comment;//食堂评价
     private String canteenId; // 食堂id
     private double evaluationScore; // 评价分值

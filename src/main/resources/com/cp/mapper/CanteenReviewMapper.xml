@@ -26,19 +26,21 @@
         SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE canteen_id = #{canteenId}
+        ORDER BY timestamp DESC
     </select>
 
     <select id="selectListById" resultMap="canteenReviewResultMap" parameterType="String">
         SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE evaluator_id = #{evaluatorId} AND canteen_id = #{canteenId}
-        ORDER BY id DESC
+        ORDER BY timestamp DESC
     </select>
 
     <select id="selectListByName" resultMap="canteenReviewResultMap">
         SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
         FROM canteen_review
         WHERE name = #{name}
+        ORDER BY timestamp DESC
     </select>
 
     <insert id="addCanteenReview" parameterType="CanteenReview">

@@ -16,6 +16,7 @@ public class DishReview {
     private String name;//评价人姓名
     private String dishId; // 菜品id
     private String time;
+    private long timestamp;
     private String comment;//菜品评价
     private double evaluationScore; // 评价分
     private double weight; // 权重

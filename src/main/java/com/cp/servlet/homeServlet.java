@@ -53,6 +53,7 @@ public class homeServlet extends HttpServlet {
         System.out.println(firstFiveDishes);
         request.setAttribute("topics", firstFiveMessages);
         request.setAttribute("canteens", firstFiveCanteens);
+        request.setAttribute("allCanteen",canteens);
         request.setAttribute("dishes", firstFiveDishes);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

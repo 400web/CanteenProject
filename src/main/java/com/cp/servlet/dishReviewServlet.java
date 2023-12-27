@@ -17,14 +17,26 @@ import java.util.List;
 public class dishReviewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String dishId=request.getParameter("id");
-        DishService dishService=new DishServiceImpl();
-        Dish dish=dishService.getDishById(dishId);
-        DishReviewService dishReviewService=new DishReviewServiceImpl();
-        List<DishReview> dishReviewList=dishReviewService.getReviewsByDishId(dishId);
-        request.setAttribute("dish",dish);
-        request.setAttribute("dishReviewList",dishReviewList);
-        request.getRequestDispatcher("dishReview.jsp").forward(request,response);
+        String dishId = request.getParameter("id");
+        DishService dishService = new DishServiceImpl();
+        Dish dish = dishService.getDishById(dishId);
+        DishReviewService dishReviewService = new DishReviewServiceImpl();
+        List<DishReview> dishReviewList = dishReviewService.getReviewsByDishId(dishId);
+        double allScore = 0;
+        int count = 0;
+        for (DishReview dishReview : dishReviewList) {
+            if (dishReview.getWeight() != 0) {
+                allScore += dishReview.getEvaluationScore();
+                count++;
+            }
+        }
+        if (count != 0){
+            double score = allScore/count;
+            dish.setScore(Math.floor(score * 10) / 10.0);
+        }
+            request.setAttribute("dish", dish);
+        request.setAttribute("dishReviewList", dishReviewList);
+        request.getRequestDispatcher("dishReview.jsp").forward(request, response);
     }
 
     @Override
