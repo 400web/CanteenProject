@@ -47,7 +47,6 @@ public class registerServlet extends HttpServlet {
             String msg = "手机号已被使用";
             request.setAttribute("msg", msg);
             request.getRequestDispatcher("register.jsp").forward(request, response);
-            return;
         }
 
     }

@@ -1,7 +1,10 @@
 package com.cp.servlet;
 
 import com.cp.domain.Canteen;
+import com.cp.domain.User;
+import com.cp.service.CanteenAdminService;
 import com.cp.service.CanteenService;
+import com.cp.service.impl.CanteenAdminServiceImpl;
 import com.cp.service.impl.CanteenServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -9,6 +12,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.*;
 import java.nio.file.Paths;
+import java.util.List;
 
 @WebServlet(name = "CanteenDetailServlet", value = "/CanteenDetailServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -19,10 +23,17 @@ public class CanteenDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         CanteenService canteenService = new CanteenServiceImpl();
+        CanteenAdminService canteenAdminService = new CanteenAdminServiceImpl();
         String id = request.getParameter("id");
         session.setAttribute("id", id);
         Canteen canteen = canteenService.getCanteenById(id);
+        List<User> canteenAdmin = canteenAdminService.getCanteenAdminByCanteenId(id);
+        for (User user : canteenAdmin) {
+            System.out.println(user.getUsername());
+
+        }
         request.setAttribute("canteen", canteen);
+        request.setAttribute("canteenAdmin", canteenAdmin);
         request.getRequestDispatcher("canteenDetail.jsp").forward(request, response);
     }
 

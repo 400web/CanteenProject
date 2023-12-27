@@ -10,11 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteForumServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/forum-sd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/javascript/account-management.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/PostServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/PostServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/registerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/registerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/forum.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/forum.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +30,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="Jsp File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="Servlet" />
       </list>
     </option>
@@ -106,23 +111,24 @@
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Web\canteenproject\src\main\webapp\javascript" />
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.forum.jsp">
+  <component name="RunManager" selected="JavaScript Debug.login.jsp">
     <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
+      <method v="2" />
+    </configuration>
+    <configuration name="forum-sd.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/forum-sd.jsp">
       <method v="2" />
     </configuration>
     <configuration name="forum.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/forum.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="home.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/home.jsp">
-      <method v="2" />
-    </configuration>
     <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
-      <method v="2" />
-    </configuration>
-    <configuration name="sdFirstPage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/sdFirstPage.jsp">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.13" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -214,20 +220,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.forum-sd.jsp" />
       <item itemvalue="JavaScript Debug.forum.jsp" />
-      <item itemvalue="JavaScript Debug.home.jsp" />
       <item itemvalue="JavaScript Debug.login.jsp" />
+      <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
       <item itemvalue="JavaScript Debug.account-management.jsp" />
-      <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.13" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.forum.jsp" />
-        <item itemvalue="JavaScript Debug.account-management.jsp" />
-        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
         <item itemvalue="JavaScript Debug.login.jsp" />
-        <item itemvalue="JavaScript Debug.home.jsp" />
+        <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
+        <item itemvalue="JavaScript Debug.forum-sd.jsp" />
+        <item itemvalue="JavaScript Debug.account-management.jsp" />
+        <item itemvalue="JavaScript Debug.forum.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +267,7 @@
       <workItem from="1703325109753" duration="25301000" />
       <workItem from="1703403569358" duration="13557000" />
       <workItem from="1703492916647" duration="28664000" />
-      <workItem from="1703684469361" duration="1030000" />
+      <workItem from="1703684469361" duration="10088000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -479,7 +485,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703527192566</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703685654347</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1703685654347</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -207,28 +207,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmDeleteModalLabel">确认要删除该用户吗？</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </c:forEach>
                     </tbody>
                 </table>
                 <!-- 添加用户按钮 -->
                 <button class="btn btn-success" id="addUserButton" data-toggle="modal" data-target="#addUserModal">添加用户</button>
             </section>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">确认要删除该用户吗？</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">确认删除</button>
+            </div>
         </div>
     </div>
 </div>
@@ -293,9 +293,7 @@
             $(target).addClass('active');
         });
     });
-</script>
 
-<script>
     document.addEventListener('DOMContentLoaded', function() {
         // 监听修改按钮点击事件
         document.getElementById('modifyBtn').addEventListener('click', function() {
@@ -322,8 +320,7 @@
             $('#modifyModal').modal('hide');
         });
     });
-</script>
-<script>
+
     // 获取身份选择框和食堂选择框
     let identitySelect = document.getElementById('identity');
     let canteenSelect = document.getElementById('canteenSelect');
@@ -340,8 +337,7 @@
             canteenSelect.style.display = 'none';
         }
     });
-</script>
-<script>
+
     function fillEditModal(userId) {
         // 获取表格中的信息
         let editUsername = document.getElementById('username_' + userId).textContent;
@@ -381,8 +377,7 @@
         document.getElementById('editRole_' + userId).readOnly = false;
         document.getElementById('editCanteen_' + userId).readOnly = false; // 如果需要食堂信息的话
     }
-</script>
-<script>
+
     document.getElementById('saveButton').addEventListener('click', function() {
         let username = document.getElementById('addUsername').value;
         let password = document.getElementById('addPassword').value;
@@ -420,8 +415,7 @@
 
         xhr.send(JSON.stringify(userData));
     });
-</script>
-<script>
+
     // 获取所有模态框中的保存按钮
     let saveButtons = document.querySelectorAll('[id^="editModal"] .btn-primary');
 
@@ -475,8 +469,6 @@
         });
     });
 
-</script>
-<script>
     // 确认删除按钮点击事件处理函数
     function confirmDelete(userId) {
         $('#confirmDeleteModal').modal('show'); // 弹出确认删除的模态框
@@ -507,8 +499,7 @@
             $('#confirmDeleteModal').modal('hide');
         };
     }
-</script>
-<script>
+
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
@@ -544,6 +535,5 @@
         }
     });
 </script>
-
 </body>
 </html>

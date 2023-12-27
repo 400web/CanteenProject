@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 86189
@@ -89,7 +90,11 @@
             </tr>
             <tr>
                 <th>管理员用户名</th>
-                <td id="adminUsernameCell">具体内容5</td>
+                <td id="adminUsernameCell">
+                    <c:forEach var="canteenAdmin" items="${requestScope.canteenAdmin}">
+                        ${canteenAdmin.username}
+                    </c:forEach>
+                </td>
             </tr>
             </tbody>
         </table>

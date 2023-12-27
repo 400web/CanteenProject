@@ -1,6 +1,7 @@
 package com.cp.servlet;
 
 import com.cp.domain.CommunityMessage;
+import com.cp.domain.User;
 import com.cp.service.CommunityMessageService;
 import com.cp.service.impl.CommunityMessageServiceImpl;
 import com.cp.utils.CommunityMessageComparators;
@@ -22,6 +23,8 @@ import java.util.List;
 public class PostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         CommunityMessageService cms = new CommunityMessageServiceImpl();
         List<CommunityMessage> list = cms.getListByReplyId("1");
         for (CommunityMessage cm:list) {
@@ -31,7 +34,12 @@ public class PostServlet extends HttpServlet {
         list.sort(CommunityMessageComparators.getHotComparator());
         request.setAttribute("communityMessages", list);
         request.setAttribute("jsonList",new Gson().toJson(list));
-        request.getRequestDispatcher("forum.jsp").forward(request, response);
+        System.out.println(user.getRole());
+        if (user.getRole().equals("系统管理员")){
+            request.getRequestDispatcher("forum-sd.jsp").forward(request, response);
+        }else {
+            request.getRequestDispatcher("forum.jsp").forward(request, response);
+        }
     }
 
     @Override

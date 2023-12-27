@@ -75,19 +75,13 @@ body {
     padding: 10px; /* 内边距 */
     margin-bottom: 20px; /* 底部外边距 */
 }
-.modal-header {
-    background-color: #0d6efd; /* 设置模态框头部背景颜色 */
-    color: white; /* 设置模态框头部文字颜色 */
-}
+ .modal-content {
+     width: 320px; /* 初始宽度 */
+     height: 160px; /* 宽高比例为5:8 */
+ }
+ .modal-footer {
+     display: flex;
+     justify-content: space-between;
+ }
 
-.modal-footer {
-    justify-content: space-between; /* 调整按钮位置 */
-}
 
-/* 设置模态框居中 */
-.modal-dialog {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
