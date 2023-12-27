@@ -42,12 +42,6 @@ public class SubmitDishReviewServlet extends HttpServlet {
         String formattedDate = sdf.format(time);
         dishReview.setTime(formattedDate);
         dishReviewService.addDishReview(dishReview);
-        String jsonResponse = gson.toJson(dishReview);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        // 将JSON格式的消息发送回客户端
-        PrintWriter out = response.getWriter();
-        out.print(jsonResponse);
-        out.flush();
+        response.sendRedirect("dishReviewServlet");
     }
 }

@@ -23,6 +23,7 @@ public class changeDishServlet extends HttpServlet {
         String dishDescription = request.getParameter("description");
         String dishPrice = request.getParameter("price");
         String dishCuisine = request.getParameter("cuisine");
+        String dishRecommed = request.getParameter("recommend");
 
         Dish dish = new Dish();
         dish.setId(dishId);
@@ -30,6 +31,7 @@ public class changeDishServlet extends HttpServlet {
         dish.setIntroduction(dishDescription);
         dish.setPrice(Double.parseDouble(dishPrice));
         dish.setCuisine(dishCuisine);
+        dish.setRecommend(dishRecommed);
 
         DishService dishService = new DishServiceImpl();
         dishService.updateDish(dish);

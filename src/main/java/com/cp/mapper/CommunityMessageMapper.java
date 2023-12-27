@@ -24,6 +24,7 @@ public interface CommunityMessageMapper {
     List<CommunityMessage> selectByParentId(@Param("parentId") String parentId);
 
     boolean addCommunityMessage(CommunityMessage communityMessage);
+    boolean updateHotValues(@Param("list") List<CommunityMessage> communityMessages);
 
     boolean updateCommunityMessage(CommunityMessage communityMessage);
 

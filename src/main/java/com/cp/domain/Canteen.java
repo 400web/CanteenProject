@@ -25,5 +25,6 @@ public class Canteen implements Comparable<Canteen> {
     public int compareTo(Canteen o) {
         return Double.compare(o.getRating(), this.rating);
     }
+
 }
 

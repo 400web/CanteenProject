@@ -29,13 +29,7 @@
         list = JSON.parse(document.getElementById('jsonList').textContent);
     });
 
-    function compare(action) {
-        if (action === 'hot') {
-            list.sort((a, b) => b.hot - a.hot);
-        }
-        if (action === 'time') {
-            list.sort((a, b) => b.publishTimestamp - a.publishTimestamp);
-        }
+    function addPosts(data) {
         const posts = document.getElementById("postList");
         posts.innerHTML = '';
         let nameReg;
@@ -48,7 +42,7 @@
         if (postKey) {
             postReg = new RegExp(postKey, 'gi');
         }
-        list.forEach(message => {
+        data.forEach(message => {
             let name = message.name;
             let content = message.content;
             let title = message.title;
@@ -105,6 +99,102 @@
         })
     }
 
+    function newPost() {
+        const postContent=document.getElementById("postContent");
+        const postTitle=document.getElementById("postTitle");
+        const data = {
+            username:"jjj",
+            title: postTitle.value,
+            'comment-content': postContent.value,
+            replyId: 1,
+            replyName: 1,
+            parentId: 1,
+        };
+        console.log("发送请求的数据():", data)
+
+        fetch('SubmitCommunityServlet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络错误');
+                }
+                console.log('贴子已提交');
+                postTitle.value = '';
+                postContent.value = '';
+                postTitle.placeholder = '最大输入20字';
+                postContent.placeholder = '请输入';
+                return response.json();
+            })
+            .then(message => {
+                // 在这里处理从服务器返回的数据
+                console.log('从服务器返回的数据:', message);
+                const posts = document.getElementById("postList");
+                let name = message.name;
+                let content = message.content;
+                let title = message.title;
+                const postDiv = document.createElement('div');
+                postDiv.classList.add('col-md-6', 'mb-3');
+                const cardDiv = document.createElement('div');
+                cardDiv.classList.add('card', 'bg-light', 'border', 'rounded');
+                const link = document.createElement('a');
+                link.href = 'replyCommentServlet?id=' + message.id;
+                link.classList.add('text-decoration-none');
+                const cardBodyDiv = document.createElement('div');
+                cardBodyDiv.classList.add('card-body');
+                const rowDiv = document.createElement('div');
+                rowDiv.classList.add('row');
+                const leftColDiv = document.createElement('div');
+                leftColDiv.classList.add('col-8');
+                const rightColDiv = document.createElement('div');
+                rightColDiv.classList.add('col-4', 'text-end');
+                const messageTitle = document.createElement('h5');
+                messageTitle.classList.add('card-title', 'fw-bold');
+                messageTitle.innerHTML = title;
+                const username = document.createElement('p');
+                username.classList.add('card-text', 'fw-bold');
+                username.innerHTML = name;
+                const contentPreview = document.createElement('p');
+                contentPreview.classList.add('card-text');
+                contentPreview.innerHTML = content.length > 30 ? content.substring(0, 30) : content;
+                const publishTime = document.createElement('p');
+                publishTime.classList.add('card-text');
+                publishTime.innerHTML = message.publishTime;
+                const likeAndComment = document.createElement('p');
+                likeAndComment.classList.add('card-text');
+                likeAndComment.innerHTML = '点赞: ' + message.likes + ' | 评论: ' + message.comments;
+                leftColDiv.appendChild(messageTitle);
+                leftColDiv.appendChild(username);
+                leftColDiv.appendChild(contentPreview);
+                rightColDiv.appendChild(publishTime);
+                rightColDiv.appendChild(likeAndComment);
+                rowDiv.appendChild(leftColDiv);
+                rowDiv.appendChild(rightColDiv);
+                cardBodyDiv.appendChild(rowDiv);
+                link.appendChild(cardBodyDiv);
+                cardDiv.appendChild(link);
+                postDiv.appendChild(cardDiv);
+                posts.appendChild(postDiv);
+            })
+            .catch(error => {
+                console.error('发生错误:', error);
+            });
+    }
+
+    function compare(action) {
+        if (action === 'hot') {
+            list.sort((a, b) => b.hot - a.hot);
+        }
+        if (action === 'time') {
+            list.sort((a, b) => b.publishTimestamp - a.publishTimestamp);
+        }
+        addPosts(list);
+    }
+
     function searchPosts() {
         const postContent = document.getElementById('postSearch').value.trim();
         const username = document.getElementById('nameSearch').value.trim();
@@ -121,75 +211,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                const posts = document.getElementById("postList");
-                posts.innerHTML = '';
-                let nameReg;
-                let postReg;
-                const nameKey = document.getElementById("nameSearch").value;
-                const postKey = document.getElementById("postSearch").value;
-                list = data;
-                if (nameKey) {
-                    nameReg = new RegExp(nameKey, 'gi');
-                }
-                if (postKey) {
-                    postReg = new RegExp(postKey, 'gi');
-                }
-                data.forEach(message => {
-                        let name = message.name;
-                        let content = message.content;
-                        let title = message.title;
-                        if (nameReg) {
-                            name = name.replace(nameReg, (nameKey) => '<em>' + nameKey + '</em>');
-                        }
-                        if (postReg) {
-                            content = content.replace(postReg, (postKey) => '<em>' + postKey + '</em>');
-                            title = title.replace(postReg, (postKey) => '<em>' + postKey + '</em>');
-                        }
-                        // 创建贴子元素
-                        const postDiv = document.createElement('div');
-                        postDiv.classList.add('col-md-6', 'mb-3');
-                        const cardDiv = document.createElement('div');
-                        cardDiv.classList.add('card', 'bg-light', 'border', 'rounded');
-                        const link = document.createElement('a');
-                        link.href = 'replyCommentServlet?id=' + message.id;
-                        link.classList.add('text-decoration-none');
-                        const cardBodyDiv = document.createElement('div');
-                        cardBodyDiv.classList.add('card-body');
-                        const rowDiv = document.createElement('div');
-                        rowDiv.classList.add('row');
-                        const leftColDiv = document.createElement('div');
-                        leftColDiv.classList.add('col-8');
-                        const rightColDiv = document.createElement('div');
-                        rightColDiv.classList.add('col-4', 'text-end');
-                        const messageTitle = document.createElement('h5');
-                        messageTitle.classList.add('card-title', 'fw-bold');
-                        messageTitle.innerHTML = title;
-                        const username = document.createElement('p');
-                        username.classList.add('card-text', 'fw-bold');
-                        username.innerHTML = name;
-                        const contentPreview = document.createElement('p');
-                        contentPreview.classList.add('card-text');
-                        contentPreview.innerHTML = content.length > 30 ? content.substring(0, 30) : content;
-                        const publishTime = document.createElement('p');
-                        publishTime.classList.add('card-text');
-                        publishTime.innerHTML = message.publishTime;
-                        const likeAndComment = document.createElement('p');
-                        likeAndComment.classList.add('card-text');
-                        likeAndComment.innerHTML = '点赞: ' + message.likes + ' | 评论: ' + message.comments;
-                        leftColDiv.appendChild(messageTitle);
-                        leftColDiv.appendChild(username);
-                        leftColDiv.appendChild(contentPreview);
-                        rightColDiv.appendChild(publishTime);
-                        rightColDiv.appendChild(likeAndComment);
-                        rowDiv.appendChild(leftColDiv);
-                        rowDiv.appendChild(rightColDiv);
-                        cardBodyDiv.appendChild(rowDiv);
-                        link.appendChild(cardBodyDiv);
-                        cardDiv.appendChild(link);
-                        postDiv.appendChild(cardDiv);
-                        posts.appendChild(postDiv);
-                    }
-                )
+                addPosts(data);
             })
             .catch(error => {
                 console.error('发生错误:', error);
@@ -250,8 +272,36 @@
             </div>
         </c:forEach>
     </div>
+    <div class="modal fade" id="publishPostModal" tabindex="-1" aria-labelledby="publishPostModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="publishPostModalLabel">发表新贴子</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="postTitle" class="form-label">标题</label>
+                        <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="最大输入20字" maxlength="20">
+                    </div>
+                    <div class="mb-3">
+                        <label for="postContent" class="form-label">内容</label>
+                        <textarea class="form-control" id="postContent" name="postContent" rows="4" placeholder="请输入"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="newPost()">发表</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#publishPostModal">
+                发表新贴子
+            </button>
+        </div>
+    </div>
 </div>
-
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -98,6 +98,15 @@
         WHERE id = #{id}
     </update>
 
+    <update id="updateHotValues" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";">
+            UPDATE community_message
+            SET hot = #{item.hot}
+            WHERE id = #{item.id}
+        </foreach>
+    </update>
+
+
 
     <delete id="deleteCommunityMessage" parameterType="String">
         DELETE FROM community_message

@@ -15,38 +15,9 @@
     <title>评论页面</title>
 </head>
 <script>
-    var score=null;
-    const socket = new WebSocket('ws://' + window.location.host + '/canteenproject_war_exploded' + '/updatesCanteenReview');
-    socket.onopen = function () {
-        console.log("socket连接成功");
-    }
-    socket.onerror = () => {
-        console.log("socket连接错误");
-    }
-    socket.onmessage = function (ev) {
-        console.log(ev.data);
-        const message = JSON.parse(ev.data);
-        console.log(message);
-        addReviewToComment(message);
-    }
-    socket.onclose = function () {
-        console.log("socket已关闭");
-    }
-
-    function addReviewToComment(message) {
-        const comment = document.getElementById('comment');
-        comment.classList.add("comment");
-        const commentHeader = document.createElement('div');
-        commentHeader.classList.add("comment-header");
-        commentHeader.innerHTML = '<span className="user-name">' + message.name + '</span>' +
-            '<span className="comment-time">' + message.comment + '</span>';
-        comment.appendChild(commentHeader);
-    }
-
     function submit(canteenId) {
         const username = document.getElementById('username');
         const commentContent = document.getElementById('comment-content');
-
         const data = {
             name: username.value,
             comment: commentContent.value,
@@ -66,16 +37,7 @@
                 if (!response.ok) {
                     throw new Error('网络错误');
                 }
-                console.log('评论已提交');
-                username.innerHTML = "";
-                commentContent.innerHTML = "";
-                commentContent.placeholder = "请输入";
                 return response.json();
-            })
-            .then(data => {
-                // 在这里处理从服务器返回的数据
-                console.log('从服务器返回的数据:', data);
-                socket.send(JSON.stringify(data));
             })
             .catch(error => {
                 console.error('发生错误:', error);

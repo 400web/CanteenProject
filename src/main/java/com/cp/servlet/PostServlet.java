@@ -24,6 +24,10 @@ public class PostServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CommunityMessageService cms = new CommunityMessageServiceImpl();
         List<CommunityMessage> list = cms.getListByReplyId("1");
+        for (CommunityMessage cm:list) {
+            cm.hotCompute();
+            cms.updateCommunityMessage(cm);
+        }
         list.sort(CommunityMessageComparators.getHotComparator());
         request.setAttribute("communityMessages", list);
         request.setAttribute("jsonList",new Gson().toJson(list));
