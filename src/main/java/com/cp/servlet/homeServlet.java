@@ -50,7 +50,6 @@ public class homeServlet extends HttpServlet {
         } else {
             firstFiveDishes = dishes;
         }
-        System.out.println(firstFiveDishes);
         request.setAttribute("topics", firstFiveMessages);
         request.setAttribute("canteens", firstFiveCanteens);
         request.setAttribute("allCanteen",canteens);

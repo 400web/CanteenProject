@@ -16,6 +16,7 @@
     <link rel="stylesheet" href=css/home.css>
     <!-- 引入 Bootstrap 样式表 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <!-- 导航栏 -->
@@ -409,8 +410,6 @@
         canteenRank -= canteenDecrement; // 更新排名值
     });
 </script>
-
-<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 
