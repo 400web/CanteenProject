@@ -33,14 +33,15 @@ public class dishReviewServlet extends HttpServlet {
         if (count != 0){
             double score = allScore/count;
             dish.setScore(Math.floor(score * 10) / 10.0);
+            dishService.updateDish(dish);
         }
-            request.setAttribute("dish", dish);
+        request.setAttribute("dish", dish);
         request.setAttribute("dishReviewList", dishReviewList);
         request.getRequestDispatcher("dishReview.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 }

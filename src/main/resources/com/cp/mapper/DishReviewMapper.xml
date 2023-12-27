@@ -31,12 +31,14 @@
         SELECT id, evaluator_id, name, dish_id, time, timestamp, comment, evaluation_score, weight
         FROM dish_review
         WHERE dish_id = #{DishId}
+        ORDER BY timestamp DESC
     </select>
 
     <select id="selectByEvaluatorIdDishId" resultMap="dishReviewResultMap" parameterType="String">
         SELECT id, evaluator_id, name, dish_id, time, timestamp, comment, evaluation_score, weight
         FROM dish_review
         WHERE evaluator_id = #{evaluatorId} AND dish_id = #{dishId}
+        ORDER BY timestamp DESC
     </select>
 
     <select id="selectListByName" resultMap="dishReviewResultMap">
