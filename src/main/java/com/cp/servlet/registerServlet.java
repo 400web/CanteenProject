@@ -29,7 +29,7 @@ public class registerServlet extends HttpServlet {
         String username = request.getParameter("username");
         String phoneNumber = request.getParameter("phoneNumber");
         String password = request.getParameter("password");
-        User user = new User(null, username, phoneNumber, password, null);
+        User user = new User(null, username, password, phoneNumber, "普通用户");
         int verify = userService.register(user);
 
         if (verify == 0) {

@@ -20,6 +20,7 @@ public interface ComplaintService{
      * @return 投诉列表，若不存在返回空列表
      */
     List<Complaint> getComplaintsByCanteenId(String canteenId);
+    List<Complaint> getListByUserId(String userId);
 
     /**
      * 向数据库中添加投诉信息
