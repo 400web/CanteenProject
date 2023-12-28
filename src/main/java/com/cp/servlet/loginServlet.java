@@ -38,19 +38,20 @@ public class loginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
-        if(user.getRole().equals("系统管理员")){
-            return;
-        }
         String contextPath = request.getContextPath();
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         session.setAttribute("contextPath",contextPath);
+        if(user.getRole().equals("系统管理员")){
+            response.sendRedirect("sdFirstPageServlet");
+            return;
+        }
         OrdinaryUserService ordinaryUserService=new OrdinaryUserServiceImpl();
         OrdinaryUser ordinaryUser=ordinaryUserService.getOrdinaryUserById(user.getId());
         ordinaryUserService.updateLevel(user.getId(),1);
         session.setAttribute("oUser",ordinaryUser);
         if(user.getRole().equals("食堂管理员")){
-            response.sendRedirect("SdFirstPageServlet");
+            response.sendRedirect("CanteenManagementServlet");
             return;
         }
         if (user.getRole().equals("普通用户")) {

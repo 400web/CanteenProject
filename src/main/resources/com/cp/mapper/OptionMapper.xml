@@ -36,9 +36,9 @@
     <update id="updateOption" parameterType="Option">
         UPDATE option
         <set>
-            <if test="questionId != null">question_id = #{questionId},</if>
-            <if test="optionContent != null">option_content = #{optionContent},</if>
-            <if test="selectionCount != null">selection_count = #{selectionCount},</if>
+            <if test="questionId != null and questionId != ''">question_id = #{questionId},</if>
+            <if test="optionContent != null and optionContent != ''">option_content = #{optionContent},</if>
+            <if test="selectionCount != null and selectionCount != ''">selection_count = #{selectionCount},</if>
         </set>
         WHERE id = #{id}
     </update>

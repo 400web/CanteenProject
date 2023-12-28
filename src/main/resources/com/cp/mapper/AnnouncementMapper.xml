@@ -36,10 +36,12 @@
     <update id="updateAnnouncement" parameterType="Announcement">
         UPDATE announcement
         <set>
-            <if test="publisherId != null">publisher_id = #{publisherId},</if>
-            <if test="title != null">title = #{title},</if>
-            <if test="publishTime != null">publish_time = #{publishTime},</if>
-            <if test="content != null">content = #{content},</if>
+            <trim suffixOverrides=",">
+                <if test="publisherId != null and publisherId != ''">publisher_id = #{publisherId},</if>
+                <if test="title != null and title != ''">title = #{title},</if>
+                <if test="publishTime != null and publishTime != ''">publish_time = #{publishTime},</if>
+                <if test="content != null and content != ''">content = #{content},</if>
+            </trim>
         </set>
         WHERE id = #{id}
     </update>

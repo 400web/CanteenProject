@@ -74,11 +74,11 @@
     <update id="updateDish" parameterType="Dish">
         UPDATE dish
         <set>
-            <if test="name != null">name = #{name},</if>
-            <if test="image != null">image = #{image},</if>
-            <if test="introduction != null">introduction = #{introduction},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="introduction != null and introduction != ''">introduction = #{introduction},</if>
             <if test="price != null">price = #{price},</if>
-            <if test="cuisine != null">cuisine = #{cuisine},</if>
+            <if test="cuisine != null and cuisine != ''">cuisine = #{cuisine},</if>
             <if test="score != null">score = #{score},</if>
             <if test="weight != null">weight = #{weight},</if>
         </set>

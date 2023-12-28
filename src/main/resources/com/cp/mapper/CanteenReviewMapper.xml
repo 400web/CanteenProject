@@ -51,14 +51,14 @@
     <update id="updateCanteenReview" parameterType="CanteenReview">
         UPDATE canteen_review
         <set>
-            <if test="evaluatorId != null">evaluator_id = #{evaluatorId},</if>
-            <if test="name != null">name = #{name},</if>
-            <if test="time != null">time = #{time},</if>
-            <if test="timestamp != null">timestamp = #{timestamp}</if>
-            <if test="comment != null">comment = #{comment},</if>
-            <if test="canteenId != null">canteen_id = #{canteenId},</if>
+            <if test="evaluatorId != null and evaluatorId != ''">evaluator_id = #{evaluatorId},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="time != null and time != ''">time = #{time},</if>
+            <if test="timestamp != null">timestamp = #{timestamp},</if>
+            <if test="comment != null and comment != ''">comment = #{comment},</if>
+            <if test="canteenId != null and canteenId != ''">canteen_id = #{canteenId},</if>
             <if test="evaluationScore != null">evaluation_score = #{evaluationScore},</if>
-            <if test="weight != null">weight = #{weight},</if>
+            <if test="weight != null and">weight = #{weight}</if>
         </set>
         WHERE id = #{id}
     </update>
