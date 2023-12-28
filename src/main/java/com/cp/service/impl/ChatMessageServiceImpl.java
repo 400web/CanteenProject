@@ -15,6 +15,11 @@ public class ChatMessageServiceImpl implements ChatMessageService {
     }
 
     @Override
+    public List<String> getUserIdBySenderId(String senderId) {
+        return chatMessageMapper.selectUserIdBySenderId(senderId);
+    }
+
+    @Override
     public boolean addChatMessage(ChatMessage message) {
         return chatMessageMapper.addChatMessage(message);
     }

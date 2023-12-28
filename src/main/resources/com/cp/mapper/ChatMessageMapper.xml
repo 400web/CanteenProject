@@ -23,12 +23,16 @@
         SELECT id, sender_id, receiver_id, send_time, timestamp, message_content
         FROM chat_message
     </select>
+    <select id="selectUserIdBySenderId" resultType="String">
+        SELECT receiver_id
+        FROM chat_message
+        WHERE sender_id = #{senderId}
+    </select>
 
     <select id="selectListById" resultMap="chatMessageResultMap" parameterType="map">
         SELECT id, sender_id, receiver_id, send_time, timestamp, message_content
         FROM chat_message
         WHERE sender_id = #{senderId} AND receiver_id = #{receiverId}
-        ORDER BY timestamp ASC
     </select>
 
     <insert id="addChatMessage" parameterType="ChatMessage">

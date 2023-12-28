@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Chat Room</title>
+    <title>${replyUser.username}</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .chat-box {
@@ -21,6 +21,13 @@
             margin-bottom: 10px;
             max-width: 70%; /* Adjust as needed */
             word-wrap: break-word;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+            background-image: linear-gradient(200deg,rgb(213,216,53),rgb(216,102,115));
         }
 
         .left-msg {
@@ -58,7 +65,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="mb-4">Online Chat Room: ${replyUser.username} </h1>
+    <h1 class="mb-4">在线聊天室: ${replyUser.username} </h1>
     <div id="chatMessages" class="mb-4">
         <c:forEach var="message" items="${history}">
             <div class="chat-box ${message.senderId eq user.id ? 'left-msg' : 'right-msg'}">
