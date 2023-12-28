@@ -60,6 +60,11 @@
             </if>
         </where>
     </select>
+    <select id="selectDishesByRecommend" resultMap="dishResultMap">
+        SELECT id, canteen_id, name, image, introduction, price, cuisine, score, weight
+        FROM dish
+        WHERE recommend = '推荐'
+    </select>
 
     <insert id="addDish" parameterType="dish">
         INSERT INTO dish (canteen_id, name, image, introduction, price, cuisine, score, weight)

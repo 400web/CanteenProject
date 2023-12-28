@@ -135,7 +135,7 @@
 
 <script>
     const lowPriceDishes = [
-        <c:forEach var="dish" items="${dishes}" varStatus="status">
+        <c:forEach var="dish" items="${lowDishes}" varStatus="status">
         {
             id: '',
             name: '<c:out value="${dish.name}"/>',
