@@ -29,8 +29,8 @@
     </select>
 
     <insert id="addAnnouncement" parameterType="Announcement">
-        INSERT INTO announcement (id, publisher_id, title, publish_time, content)
-        VALUES (#{id}, #{publisherId}, #{title}, #{publishTime}, #{content})
+        INSERT INTO announcement (publisher_id, title, publish_time, content)
+        VALUES (#{publisherId}, #{title}, #{publishTime}, #{content})
     </insert>
 
     <update id="updateAnnouncement" parameterType="Announcement">

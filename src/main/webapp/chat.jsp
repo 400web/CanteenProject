@@ -41,7 +41,7 @@
         }
     </style>
     <script>
-        const socket = new WebSocket('ws://' + window.location.host + '/canteenproject_war_exploded' + '/ChatMessageUpdate');
+        const socket = new WebSocket('ws://' + window.location.host + `${contextPath}` + '/ChatMessageUpdate');
         socket.onopen = function () {
             console.log("socket连接成功");
             socket.send(JSON.stringify({userId: `${user.id}`}))

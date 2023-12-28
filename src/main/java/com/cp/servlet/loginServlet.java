@@ -41,8 +41,10 @@ public class loginServlet extends HttpServlet {
         if(user.getRole().equals("系统管理员")){
             return;
         }
+        String contextPath = request.getContextPath();
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
+        session.setAttribute("contextPath",contextPath);
         OrdinaryUserService ordinaryUserService=new OrdinaryUserServiceImpl();
         OrdinaryUser ordinaryUser=ordinaryUserService.getOrdinaryUserById(user.getId());
         ordinaryUserService.updateLevel(user.getId(),1);
