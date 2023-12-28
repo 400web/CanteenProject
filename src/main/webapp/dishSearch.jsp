@@ -13,7 +13,9 @@
     <title>菜品检索</title>
     <!-- Bootstrap CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap-4.3.1.min.js"></script>
 </head>
 <style>
     em {
@@ -21,8 +23,64 @@
         font-style: normal;
         font-weight: bold;
     }
+    body{
+        height: 100vh;
+        background-image: linear-gradient(120deg, #84fab0, #8fd3f4);
+    }
 </style>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)">
+    <a class="navbar-brand" href="#">菜品检索</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <span class="badge bg-primary">Lv.${oUser.level} ${user.username}</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="homeServlet">首页</a>
+            </li>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    食堂
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <c:forEach var="oneCanteen" items="${navbarAllCanteen}">
+                        <a class="dropdown-item" href="canteenServlet?id=${oneCanteen.id}">${oneCanteen.name}</a>
+                    </c:forEach>
+                </div>
+
+            </li>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="naDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    社区
+                </a>
+                <div class="dropdown-menu" aria-labelledby="naDropdown">
+                    <a class="dropdown-item" href="PostServlet">论坛</a>
+                    <a class="dropdown-item" href="UserViewServlet">聊天室</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="nDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    检索
+                </a>
+                <div class="dropdown-menu" aria-labelledby="nDropdown">
+                    <a class="dropdown-item" href="CanteenSearchServlet">食堂检索</a>
+                    <a class="dropdown-item" href="DishSearchServlet">菜品检索</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="questionnaireServlet">问卷</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ViewUserDetailServlet">账号详情</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <script>
     function searchDishes() {
         const canteenId = document.getElementById('canteen').value;

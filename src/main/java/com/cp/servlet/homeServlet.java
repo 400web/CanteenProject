@@ -67,7 +67,7 @@ public class homeServlet extends HttpServlet {
         }
         request.setAttribute("topics", firstFiveMessages);
         request.setAttribute("canteens", firstFiveCanteens);
-        request.setAttribute("allCanteen",canteens);
+        request.getSession().setAttribute("navbarAllCanteen",canteens);
         request.setAttribute("dishes", firstFiveDishes);
         request.setAttribute("lowDishes",lastFiveDishes);
         System.out.println("促销"+lastFiveDishes);
