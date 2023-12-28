@@ -43,7 +43,7 @@ public class loginServlet extends HttpServlet {
         session.setAttribute("user", user);
         session.setAttribute("contextPath",contextPath);
         if(user.getRole().equals("系统管理员")){
-            response.sendRedirect("sdFirstPageServlet");
+            response.sendRedirect("SdFirstPageServlet");
             return;
         }
         OrdinaryUserService ordinaryUserService=new OrdinaryUserServiceImpl();

@@ -83,7 +83,7 @@
     <update id="updateCommunityMessage" parameterType="CommunityMessage">
         UPDATE community_message
         <set>
-            <if test="publisherId != null publisherId != ''">publisher_id = #{publisherId},</if>
+            <if test="publisherId != null and publisherId != ''">publisher_id = #{publisherId},</if>
             <if test="name != null and name != ''">name = #{name},</if>
             <if test="publishTime != null and publishTime != ''">publish_time = #{publishTime},</if>
             <if test="publishTimestamp != null">publish_timestamp = #{publishTimestamp},</if>
