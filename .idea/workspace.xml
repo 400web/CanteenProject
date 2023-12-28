@@ -10,16 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteForumServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/forum-sd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/javascript/account-management.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/CanteenDetailServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteForumServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteForumServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/PostServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/PostServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/registerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/registerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +81,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Web/canteenproject&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/Online-Bookstore-Sales-System&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -267,7 +261,11 @@
       <workItem from="1703325109753" duration="25301000" />
       <workItem from="1703403569358" duration="13557000" />
       <workItem from="1703492916647" duration="28664000" />
-      <workItem from="1703684469361" duration="10088000" />
+      <workItem from="1703684469361" duration="10771000" />
+      <workItem from="1703730523133" duration="72000" />
+      <workItem from="1703734324046" duration="27000" />
+      <workItem from="1703752438213" duration="119000" />
+      <workItem from="1703752825290" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -493,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703685654347</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703698928337</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1703698928337</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -32,7 +32,6 @@ public class DeleteForumServlet extends HttpServlet {
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
         String messageId = jsonObject.get("messageId").getAsString();
-        System.out.println(messageId);
         CommunityMessageService communityMessageService = new CommunityMessageServiceImpl();
         communityMessageService.deleteCommunityMessage(messageId);
     }

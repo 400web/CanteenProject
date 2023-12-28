@@ -28,10 +28,6 @@ public class CanteenDetailServlet extends HttpServlet {
         session.setAttribute("id", id);
         Canteen canteen = canteenService.getCanteenById(id);
         List<User> canteenAdmin = canteenAdminService.getCanteenAdminByCanteenId(id);
-        for (User user : canteenAdmin) {
-            System.out.println(user.getUsername());
-
-        }
         request.setAttribute("canteen", canteen);
         request.setAttribute("canteenAdmin", canteenAdmin);
         request.getRequestDispatcher("canteenDetail.jsp").forward(request, response);

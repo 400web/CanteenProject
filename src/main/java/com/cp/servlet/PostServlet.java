@@ -34,7 +34,6 @@ public class PostServlet extends HttpServlet {
         list.sort(CommunityMessageComparators.getHotComparator());
         request.setAttribute("communityMessages", list);
         request.setAttribute("jsonList",new Gson().toJson(list));
-        System.out.println(user.getRole());
         if (user.getRole().equals("系统管理员")){
             request.getRequestDispatcher("forum-sd.jsp").forward(request, response);
         }else {
