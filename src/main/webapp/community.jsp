@@ -248,12 +248,10 @@
 
 
     function submit() {
-        const username = document.getElementById('username');
         const commentContent = document.getElementById('comment-content');
 
         const data = {
             grandpaId:parentInfo.replyId,
-            username: username.value,
             'comment-content': commentContent.value,
             replyId: replyInfo ? replyInfo.replyId : parentInfo.replyId,
             replyName: replyInfo ? replyInfo.replyName : parentInfo.replyName,
@@ -349,8 +347,6 @@
         </div>
         <div id="comment-form">
             <h3 class="text-primary">发表评论</h3>
-            <label for="username" class="form-label">用户名：</label>
-            <input type="text" id="username" name="username" class="form-control" required>
             <label for="comment-content" class="form-label">评论内容：</label>
             <textarea id="comment-content" name="comment-content" class="form-control" required></textarea>
             <button id="submit-comment" class="btn btn-success" onclick="submit()">发表评论</button>

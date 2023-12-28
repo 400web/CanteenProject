@@ -48,8 +48,8 @@
     <h2>评论区</h2>
 <%--    <c:forEach var="review" items="${canteenReviewList}">--%>
     <div id="comment-section">
-        <div class="comment">${canteenReviewList[0].evaluatorId}:${canteenReviewList[0].id}</div>
-        <div class="comment">${canteenReviewList[1].evaluatorId}:${canteenReviewList[1].id}</div>
+        <div class="comment">${canteenReviewList[0].name}:${canteenReviewList[0].comment}</div>
+        <div class="comment">${canteenReviewList[1].name}:${canteenReviewList[1].comment}</div>
         <a href="canteenReviewServlet?canteenId=${canteen.id}">查看更多食堂评论</a>
     </div>
 </section>

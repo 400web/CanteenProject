@@ -13,14 +13,46 @@
 <head>
     <title>论题帖子</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        em {
+            color: #f40;
+            font-style: normal;
+            font-weight: bold;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+            background-image: linear-gradient(200deg,rgb(213,216,53),rgb(216,102,115));
+        }
+        .card{
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            animation: rotate-reverse 1.2s cubic-bezier(0.66,-0.47,0.33,1.5) forwards;
+        }
+        .card:hover{
+            animation: rotate 1.2s cubic-bezier(0.66,-0.47,0.33,1.5) forwards;
+        }
+        @keyframes rotate {
+            0%{
+                transform: rotateY(0);
+            }
+            100%{
+                transform: rotateY(360deg);
+            }
+        }
+        @keyframes rotate-reverse {
+            0%{
+                transform: rotateY(360deg);
+            }
+            100%{
+                transform: rotateY(0);
+            }
+        }
+    </style>
 </head>
-<style>
-    em {
-        color: #f40;
-        font-style: normal;
-        font-weight: bold;
-    }
-</style>
 <body>
 <script>
     let list = null;
@@ -103,7 +135,6 @@
         const postContent=document.getElementById("postContent");
         const postTitle=document.getElementById("postTitle");
         const data = {
-            username:"jjj",
             title: postTitle.value,
             'comment-content': postContent.value,
             replyId: 1,

@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(String id) {
+        return userMapper.selectById(id);
+    }
+
+    @Override
     public List<User> getList() {
         return userMapper.selectList();
     }
