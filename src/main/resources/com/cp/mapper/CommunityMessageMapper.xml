@@ -76,8 +76,8 @@
     </select>
 
     <insert id="addCommunityMessage" parameterType="CommunityMessage" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO community_message (id, publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id)
-        VALUES (#{id}, #{publisherId},#{name} ,#{publishTime},#{publishTimestamp} ,#{title},#{content}, #{likes}, #{comments},#{hot} ,#{replyMessageId},#{parentId})
+        INSERT INTO community_message (publisher_id, name, publish_time, publish_timestamp, title, content, likes, comments, hot,reply_message_id, parent_id)
+        VALUES (#{publisherId},#{name} ,#{publishTime},#{publishTimestamp} ,#{title},#{content}, #{likes}, #{comments},#{hot} ,#{replyMessageId},#{parentId})
     </insert>
 
     <update id="updateCommunityMessage" parameterType="CommunityMessage">

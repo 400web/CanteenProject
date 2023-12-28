@@ -41,6 +41,7 @@ public interface DishService{
     List<Dish> getList();
     List<Dish> getListByPage(int currPage, int pageSize);
     List<Dish> getDishesDynamic(String dishName,String canteenName,String cuisine,String minPrice, String maxPrice);
+    List<Dish> getDishesByRecommend();
     boolean addDish(Dish dish);
     boolean updateDish(Dish dish);
     boolean deleteDish(@Param("id") String id);

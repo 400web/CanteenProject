@@ -17,14 +17,14 @@ public class CanteenSearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CanteenService cs=new CanteenServiceImpl();
-        request.setAttribute("canteen",cs.getList());
+        request.setAttribute("canteenList",cs.getList());
         request.getRequestDispatcher("canteenSearch.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CanteenService cs=new CanteenServiceImpl();
-        String name=request.getParameter("name");
+        String name=request.getParameter("canteenName");
         List<Canteen> list=null;
         if(name==null||name.isEmpty()){
             list=cs.getList();

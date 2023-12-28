@@ -12,14 +12,22 @@
 <head>
     <link rel="stylesheet" href="css/comments.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-container h3 {
+            margin-right: 20px; /* 可以根据需要设置间距 */
+        }
+    </style>
     <title>评论页面</title>
 </head>
 <script>
+    var score = 0;
     function submit(canteenId) {
-        const username = document.getElementById('username');
         const commentContent = document.getElementById('comment-content');
         const data = {
-            name: username.value,
             comment: commentContent.value,
             canteenId: canteenId,
             evaluationScore:score
@@ -37,10 +45,11 @@
                 if (!response.ok) {
                     throw new Error('网络错误');
                 }
-                return response.json();
+                window.location.reload();
             })
             .catch(error => {
                 console.error('发生错误:', error);
+                window.location.reload();
             });
     }
 </script>
@@ -64,11 +73,10 @@
 
         <c:forEach var="canteenReveiw" items="${canteenReviewList}">
             <div class="user-comment">
-                <a href="userCommentsListServlet?username=${canteenReveiw.name}"><h3>${canteenReveiw.name}</h3></a>
+                <a href="userCommentsListServlet?username=${canteenReveiw.name}"><h3 class="flex-container">${canteenReveiw.name}</h3></a>
                 <p>发表于：${canteenReveiw.time}</p>
                 <p>内容：${canteenReveiw.comment}</p>
-
-                <p class="comment-text" style="display: none">这是一条评论，得分：${canteenReveiw.score}</p>
+                <p class="comment-text" style="display: none">这是一条评论，得分：${canteenReveiw.evaluationScore}</p>
                 <p class="comment-stars"></p>
             </div>
         </c:forEach>
@@ -76,7 +84,7 @@
     </div>
     <script>
         // 获取所有评论元素
-        const comments = document.querySelectorAll('.comment-section');
+        const comments = document.querySelectorAll('.user-comment');
 
         // 映射分数到星值的函数
         function mapScoreToStars(score) {
@@ -98,7 +106,7 @@
     <%--    <input type="text" id="username" name="username" class="form-control" required>--%>
     <div class="add-comment">
         <%--    <label for="comment-content" class="form-label">评论内容：</label>--%>
-        <textarea class="comment-textarea" placeholder="输入你的评论"></textarea>
+        <textarea class="comment-textarea" id="comment-content" placeholder="输入你的评论"></textarea>
             <div id="star-rating" class="rating">
                 <i class="fas fa-star" data-rating="1"></i>
                 <i class="fas fa-star" data-rating="2"></i>
@@ -107,7 +115,7 @@
                 <i class="fas fa-star" data-rating="5"></i>
             </div>
             <%--<p id="selected-rating">选择的分数: </p>--%>
-        <button class="comment-button" onclick="submit(${canteen.id})">发表评论</button>
+        <button class="comment-button" onclick="submit(${canteenId})">发表评论</button>
             <script>
                 const stars = document.querySelectorAll('.fa-star');
                 /*const ratingOutput = document.getElementById('selected-rating');*/

@@ -61,8 +61,8 @@
         <h2>用户${username}的所有社区评论</h2>
         <c:forEach var="communityReveiw" items="${communityMessageList}">
             <div class="user-comment">
-                <p>${communityReveiw.name}:${communityReveiw.comment}</p>
-                <p>发表于${communityReveiw.time}</p>
+                <p>${communityReveiw.name}:${communityReveiw.content}</p>
+                <p>发表于${communityReveiw.publishTime}</p>
             </div>
         </c:forEach>
     </div>

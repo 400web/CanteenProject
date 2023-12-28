@@ -42,6 +42,7 @@ public interface DishMapper{
     List<Dish> selectList();
     List<Dish> selectListByPage(Map<String,Object> data);
     List<Dish> selectDishesDynamic(Map<String, Object> map);
+    List<Dish> selectDishesByRecommend();
     boolean addDish(Dish dish);
     boolean updateDish(Dish dish);
     boolean deleteDish(@Param("id") String id);

@@ -13,24 +13,24 @@
 
     <select id="selectById" resultMap="optionResultMap" parameterType="String">
         SELECT id, question_id, option_content, selection_count
-        FROM option
+        FROM options
         WHERE id = #{id}
     </select>
 
     <select id="selectList" resultMap="optionResultMap">
         SELECT id, question_id, option_content, selection_count
-        FROM option
+        FROM options
     </select>
 
     <select id="selectByQuestionId" resultMap="optionResultMap" parameterType="String">
         SELECT id, question_id, option_content, selection_count
-        FROM option
+        FROM options
         WHERE question_id = #{questionId}
     </select>
 
     <insert id="addOption" parameterType="Option">
-        INSERT INTO option (id, question_id, option_content, selection_count)
-        VALUES (#{id}, #{questionId}, #{optionContent}, #{selectionCount})
+        INSERT INTO options (question_id, option_content, selection_count)
+        VALUES (#{questionId}, #{optionContent}, #{selectionCount})
     </insert>
 
     <update id="updateOption" parameterType="Option">
@@ -46,7 +46,7 @@
 
     <delete id="deleteOption" parameterType="String">
         DELETE
-        FROM option
+        FROM options
         WHERE id = #{id}
     </delete>
 

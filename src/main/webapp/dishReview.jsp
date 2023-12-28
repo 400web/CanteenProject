@@ -16,22 +16,22 @@
             display: flex;
         }
 
-         .flex-container h3 {
+        .flex-container h3 {
             margin-right: 20px; /* 可以根据需要设置间距 */
         }
     </style>
     <title>菜品评价界面</title>
 </head>
 <script>
-    var score = null;
+    var score = 0;
+
     function submit(dishId) {
         const commentContent = document.getElementById('comment-content');
         const data = {
             comment: commentContent.value,
-            evaluationScore:score,
+            evaluationScore: score,
             dishId: dishId
         };
-
         fetch('SubmitDishReviewServlet', {
             method: 'POST',
             headers: {
@@ -43,10 +43,11 @@
                 if (!response.ok) {
                     throw new Error('网络错误');
                 }
-                return response.json();
+                window.location.reload();
             })
             .catch(error => {
                 console.error('发生错误:', error);
+                window.location.reload();
             });
     }
 </script>
@@ -82,17 +83,17 @@
         <h3>用户评论</h3>
         <c:forEach var="dishReview" items="${dishReviewList}">
             <div class="user-comment">
-                <a href="userCommentsListServlet"><h3 class="flex-container">${dishReview.name}</h3></a>
+                <a href="userCommentsListServlet?username=${dishReview.name}"><h3 class="flex-container">${dishReview.name}</h3></a>
                 <p>发表于：${dishReview.time} </p>
                 <p>内容： ${dishReview.comment}</p>
                 <p class="comment-text" style="display: none">这是一条评论，得分：${dishReview.evaluationScore}</p>
                 <p class="comment-stars"></p>
-<%--                <p>${dishReview.score}</p>--%>
+                    <%--                <p>${dishReview.score}</p>--%>
             </div>
         </c:forEach>
         <script>
             // 获取所有评论元素
-            const comments = document.querySelectorAll('.comment-section');
+            const comments = document.querySelectorAll('.user-comment');
 
             // 映射分数到星值的函数
             function mapScoreToStars(score) {
@@ -118,22 +119,21 @@
     <div class="add-comment">
         <%--    <label for="comment-content" class="form-label">评论内容：</label>--%>
         <textarea class="comment-textarea" id="comment-content" placeholder="输入你的评论"></textarea>
-            <div id="star-rating" class="rating">
+        <div id="star-rating" class="rating">
             <i class="fas fa-star" data-rating="1"></i>
             <i class="fas fa-star" data-rating="2"></i>
             <i class="fas fa-star" data-rating="3"></i>
             <i class="fas fa-star" data-rating="4"></i>
             <i class="fas fa-star" data-rating="5"></i>
-            </div>
-<%--        <p id="selected-rating">选择的分数: </p>--%>
+        </div>
+        <%--        <p id="selected-rating">选择的分数: </p>--%>
         <button class="comment-button" onclick="submit(${dish.id})">发表评论</button>
         <script>
             const stars = document.querySelectorAll('.fa-star');
             // const ratingOutput = document.getElementById('selected-rating');
-
             stars.forEach((star, index) => {
                 star.addEventListener('click', () => {
-                     score = index + 1;
+                    score = index + 1;
                     // ratingOutput.textContent = '选择的分数: ' + score;
 
                     // 将点击的星星及之前的星星添加 'selected' 类，通过 CSS 控制样式

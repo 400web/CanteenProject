@@ -1,9 +1,12 @@
 package com.cp.servlet;
 
+import com.cp.domain.OrdinaryUser;
 import com.cp.domain.User;
 import com.cp.service.CanteenService;
+import com.cp.service.OrdinaryUserService;
 import com.cp.service.UserService;
 import com.cp.service.impl.CanteenServiceImpl;
+import com.cp.service.impl.OrdinaryUserServiceImpl;
 import com.cp.service.impl.UserServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -35,15 +38,21 @@ public class loginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
-        HttpSession session = request.getSession();
-        session.setAttribute("user", user);
-        if (user.getRole().equals("普通用户")) {
-
-            response.sendRedirect("homeServlet");
+        if(user.getRole().equals("系统管理员")){
             return;
         }
-        if(user.getRole().equals("系统管理员")){
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+        OrdinaryUserService ordinaryUserService=new OrdinaryUserServiceImpl();
+        OrdinaryUser ordinaryUser=ordinaryUserService.getOrdinaryUserById(user.getId());
+        ordinaryUserService.updateLevel(user.getId(),1);
+        session.setAttribute("oUser",ordinaryUser);
+        if(user.getRole().equals("食堂管理员")){
             response.sendRedirect("SdFirstPageServlet");
+            return;
+        }
+        if (user.getRole().equals("普通用户")) {
+            response.sendRedirect("homeServlet");
         }
     }
 }

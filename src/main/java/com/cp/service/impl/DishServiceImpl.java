@@ -67,6 +67,11 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+    public List<Dish> getDishesByRecommend() {
+        return dishMapper.selectDishesByRecommend();
+    }
+
+    @Override
     public boolean addDish(Dish dish) {
         return dishMapper.addDish(dish);
     }

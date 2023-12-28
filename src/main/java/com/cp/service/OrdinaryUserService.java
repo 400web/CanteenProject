@@ -2,7 +2,7 @@ package com.cp.service;
 
 import com.cp.domain.OrdinaryUser;
 
-public interface OrdinaryUserService{
+public interface OrdinaryUserService {
     /**
      * 获取普通用户信息
      *
@@ -26,4 +26,8 @@ public interface OrdinaryUserService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteOrdinaryUser(String userId);
+
+    boolean updateOrdinaryUser(OrdinaryUser user);
+
+    boolean updateLevel(String userId, int action);
 }

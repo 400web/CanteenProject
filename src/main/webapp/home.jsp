@@ -1,3 +1,4 @@
+<%@ page import="java.util.Map" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -16,6 +17,15 @@
     <link rel="stylesheet" href=css/home.css>
     <!-- 引入 Bootstrap 样式表 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap JS and Popper.js (for Bootstrap 4) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <!-- 导航栏 -->
@@ -23,6 +33,9 @@
     <a class="navbar-brand" href="#">USST食堂系统首页</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <span class="badge bg-primary">Lv.${oUser.level} ${user.username}</span>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="switchContent('content1');">首页</a>
             </li>
@@ -39,8 +52,25 @@
                 </div>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="PostServlet">社区</a>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="naDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    社区
+                </a>
+                <div class="dropdown-menu" aria-labelledby="naDropdown">
+                    <a class="dropdown-item" href="PostServlet">论坛</a>
+                    <a class="dropdown-item" href="UserViewServlet">聊天室</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="nDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    检索
+                </a>
+                <div class="dropdown-menu" aria-labelledby="nDropdown">
+                    <a class="dropdown-item" href="CanteenSearchServlet">食堂检索</a>
+                     <a class="dropdown-item" href="DishSearchServlet">菜品检索</a>
+                </div>
             </li>
             <%--            <li class="nav-item">--%>
             <%--                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>--%>
@@ -132,51 +162,6 @@
     }</script>
 
 
-<script>
-    const lowPriceDishes = [
-        <c:forEach var="dish" items="${dishes}" varStatus="status">
-        {
-            id: '',
-            name: '<c:out value="${dish.name}"/>',
-            promotionPrice: '<c:out value="${dish.price}"/>'
-        }<c:if test="${!status.last}">, </c:if>
-        </c:forEach>
-    ];
-
-    const lowPriceDishList = document.querySelector('.container3 .low-price-dish-list');
-
-    lowPriceDishes.forEach(dish => {
-        const listItem = document.createElement('li');
-        listItem.style.display = 'flex';
-        listItem.style.justifyContent = 'space-between';
-        listItem.innerHTML = `
-            <span>` + dish.name + `</span>
-            <span>` + dish.promotionPrice + `</span>
-        `;
-        lowPriceDishList.appendChild(listItem);
-    });
-</script>
-
-
-<script>
-    const surveys = [
-        <c:forEach var="survey" items="${surveys}" varStatus="status">
-        {
-            name: '<c:out value="${survey.name}"/>',
-            url: '<c:out value="${survey.url}"/>'
-        }<c:if test="${!status.last}">, </c:if>
-        </c:forEach>
-    ];
-
-    const surveyList = document.querySelector('.container3 .survey-list');
-
-    surveys.forEach(survey => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="` + survey.url + `">` + survey.name + `</a>`;
-        surveyList.appendChild(listItem);
-    });
-</script>
-
 <div class="container1">
     <div class="container">
         <div class="section-divider" style="color: red">
@@ -188,20 +173,7 @@
         <h2 style="color: #8f2525">社区热门话题</h2>
         <div class="section-divider" style="color: #e57419"></div>
         <ul id="topicList">
-            <%--ABC是示例效果，真实数据从script里面找传来--%>
-            <li>
-                <span class="topic">话题 A</span>
-                <span class="heat-bar" style="width: 50%;"></span>
-            </li>
-            <li>
-                <span class="topic">话题 B</span>
-                <span class="heat-bar" style="width: 40%;"></span>
-            </li>
-            <li>
-                <span class="topic">话题 C</span>
-                <span class="heat-bar" style="width: 30%;"></span>
-            </li>
-            <!-- 更多话题 -->
+
         </ul>
     </div>
 
@@ -209,19 +181,7 @@
         <h2 style="color: #8f2525">食堂排名</h2>
         <div class="section-divider" style="color: #e57419"></div>
         <ul>
-            <li>
-                <span class="topic">食堂A</span>
-                <span class="heat-bar" style="width: 80%;"></span>
-            </li>
-            <li>
-                <span class="topic">食堂B</span>
-                <span class="heat-bar" style="width: 70%;"></span>
-            </li>
-            <li>
-                <span class="topic">食堂C</span>
-                <span class="heat-bar" style="width: 60%;"></span>
-            </li>
-            <!-- 更多话题 -->
+
         </ul>
     </div>
 
@@ -230,18 +190,7 @@
         <h2 style="color: #8f2525">菜品排名</h2>
         <div class="section-divider" style="color: #e57419"></div>
         <ul>
-            <li>
-                <span class="topic">菜品A</span>
-                <span class="heat-bar" style="width: 80%;"></span>
-            </li>
-            <li>
-                <span class="topic">菜品B</span>
-                <span class="heat-bar" style="width: 70%;"></span>
-            </li>
-            <li>
-                <span class="topic">菜品C</span>
-                <span class="heat-bar" style="width: 60%;"></span>
-            </li>
+
             <!-- 更多话题 -->
         </ul>
     </div>
@@ -279,59 +228,62 @@
 
     <section id="menu">
         <div id="scrollable-menu" class="menu-container">
+            <c:forEach var="dish" items="${dishList}">
             <div class="menu-item">
-                <c:forEach var="dish" items="${dishList}">
                     <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt=""></a>
                     <div class="menu-item-details">
                         <h3>菜名：${dish.name}</h3>
                         <p>菜系: ${dish.cuisine}</p>
                         <p>价格: ${dish.price}</p>
                     </div>
-                </c:forEach>>
             </div>
-
-            <div class="menu-item">
-                <img src="css/food1.jpeg" alt="菜品图片">
-                <div class="menu-item-details">
-                    <h3>菜名：红烧肉</h3>
-                    <p>菜系: 川菜</p>
-                    <p>价格: 30元</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img src="css/food1.jpeg" alt="菜品图片">
-                <div class="menu-item-details">
-                    <h3>菜名：宫保鸡丁</h3>
-                    <p>菜系: 川菜</p>
-                    <p>价格: 35元</p>
-                </div>
-            </div>
-            <div class="menu-item">
-                <img src="css/food1.jpeg" alt="菜品图片">
-                <div class="menu-item-details">
-                    <h3>菜名：宫保鸡丁</h3>
-                    <p>菜系: 川菜</p>
-                    <p>价格: 35元</p>
-                </div>
-            </div>
+            </c:forEach>>
         </div>
     </section>
 </div>
 
-<!-- 分页栏 -->
-<nav aria-label="Page navigation example" class="col-md-12">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
+<script>
+    const lowPriceDishes = [
+        <c:forEach var="dish" items="${lowDishes}" varStatus="status">
+        {
+            id: '<c:out value="${dish.id}"/>',
+            name: '<c:out value="${dish.name}"/>',
+            promotionPrice: '<c:out value="${dish.price}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
+
+    const lowPriceDishList = document.querySelector('.container3 .dish-list');
+
+    lowPriceDishes.forEach(dish => {
+        const listItem = document.createElement('li');
+        listItem.style.display = 'flex';
+        listItem.style.justifyContent = 'space-between';
+        listItem.innerHTML = `
+            <span>` + dish.name + `</span>
+            <span>` + dish.promotionPrice + `</span>
+        `;
+        lowPriceDishList.appendChild(listItem);
+    });
+</script>
+<script>
+    const surveys = [
+        <c:forEach var="survey" items="${surveys}" varStatus="status">
+        {
+            name: '<c:out value="${survey.name}"/>',
+            url: '<c:out value="${survey.url}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
+
+    const surveyList = document.querySelector('.container3 .survey-list');
+
+    surveys.forEach(survey => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="` + survey.url + `">` + survey.name + `</a>`;
+        surveyList.appendChild(listItem);
+    });
+</script>
 <script>
     const dishes = [
         <c:forEach var="dish" items="${dishes}" varStatus="status">
@@ -409,8 +361,6 @@
         canteenRank -= canteenDecrement; // 更新排名值
     });
 </script>
-
-<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 

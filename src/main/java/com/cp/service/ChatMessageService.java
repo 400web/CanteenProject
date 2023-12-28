@@ -13,6 +13,7 @@ public interface ChatMessageService {
      * @return 两个用户之间的聊天记录列表，若不存在返回空列表
      */
     List<ChatMessage> getChatHistory(String senderId, String receiverId);
+    List<String> getUserIdBySenderId(String senderId);
 
     /**
      * 添加聊天信息到数据库

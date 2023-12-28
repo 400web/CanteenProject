@@ -22,14 +22,15 @@ public class userCommentsListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username=request.getParameter("username");
         DishReviewService dishReviewService=new DishReviewServiceImpl();
-        List<DishReview> dishReviewList=dishReviewService.getReviewListByName("username");
+        List<DishReview> dishReviewList=dishReviewService.getReviewListByName(username);
         CanteenReviewService canteenReviewService=new CanteenReviewServiceImpl();
-        List<CanteenReview> canteenReviewList=canteenReviewService.getReviewByName("username");
+        List<CanteenReview> canteenReviewList=canteenReviewService.getReviewByName(username);
         CommunityMessageService communityMessageService=new CommunityMessageServiceImpl();
-        List<CommunityMessage> communityMessageList=communityMessageService.getListByName("username");
+        List<CommunityMessage> communityMessageList=communityMessageService.getListByName(username);
         request.setAttribute("username",username);
         request.setAttribute("dishReviewList",dishReviewList);
         request.setAttribute("canteenReviewList",canteenReviewList);
+        System.out.println(canteenReviewList);
         request.setAttribute("communityMessageList",communityMessageList);
         request.getRequestDispatcher("userCommentsList.jsp").forward(request,response);
     }

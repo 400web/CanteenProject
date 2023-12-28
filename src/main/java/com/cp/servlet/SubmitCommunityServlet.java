@@ -1,11 +1,14 @@
 package com.cp.servlet;
 
 import com.cp.domain.CommunityMessage;
+import com.cp.domain.OrdinaryUser;
 import com.cp.domain.User;
 import com.cp.service.BehaviorAnalysisService;
 import com.cp.service.CommunityMessageService;
+import com.cp.service.OrdinaryUserService;
 import com.cp.service.impl.BehaviorAnalysisServiceImpl;
 import com.cp.service.impl.CommunityMessageServiceImpl;
+import com.cp.service.impl.OrdinaryUserServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import jakarta.servlet.*;
@@ -28,14 +31,14 @@ public class SubmitCommunityServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (action.equals("点赞")) {
             behaviorAnalysisService.recordLike(user.getId(), id);
-            CommunityMessage communityMessage =communityMessageService.getCommunityMessageById(id);
-            communityMessage.setLikes(communityMessage.getLikes()+1);
+            CommunityMessage communityMessage = communityMessageService.getCommunityMessageById(id);
+            communityMessage.setLikes(communityMessage.getLikes() + 1);
             communityMessageService.updateCommunityMessage(communityMessage);
         }
         if (action.equals("取消点赞")) {
             behaviorAnalysisService.deleteLike(user.getId(), id);
-            CommunityMessage communityMessage =communityMessageService.getCommunityMessageById(id);
-            communityMessage.setLikes(communityMessage.getLikes()-1);
+            CommunityMessage communityMessage = communityMessageService.getCommunityMessageById(id);
+            communityMessage.setLikes(communityMessage.getLikes() - 1);
             communityMessageService.updateCommunityMessage(communityMessage);
         }
     }
@@ -43,6 +46,7 @@ public class SubmitCommunityServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CommunityMessageService cms = new CommunityMessageServiceImpl();
+        OrdinaryUserService ordinaryUserService=new OrdinaryUserServiceImpl();
         // 从请求中获取JSON格式的数据
         BufferedReader reader = request.getReader();
         StringBuilder sb = new StringBuilder();
@@ -58,6 +62,7 @@ public class SubmitCommunityServlet extends HttpServlet {
         // 解析 JSON 数据
         JsonObject jsonObject = gson.fromJson(requestBody, JsonObject.class);
         User user = (User) request.getSession().getAttribute("user");
+        OrdinaryUser ordinaryUser = (OrdinaryUser) request.getSession().getAttribute("oUser");
         String grandpaId = null;
         String title = null;
         // 从 JSON 对象中获取相应的值
@@ -74,7 +79,8 @@ public class SubmitCommunityServlet extends HttpServlet {
         long time = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = sdf.format(time);
-        CommunityMessage message = new CommunityMessage(null, user.getId(),user.getUsername() , formattedDate, time, title, commentContent, 0, 0, 100, replyId, parentId, null, null, false);
+        ordinaryUserService.updateLevel(user.getId(),3);
+        CommunityMessage message = new CommunityMessage(null, user.getId(), user.getUsername(), formattedDate, time, title, commentContent, 0, 0, 100, replyId, parentId, null, null, false, ordinaryUser.getLevel());
         cms.addCommunityMessage(message);
         if (!replyId.equals(parentId)) {
             CommunityMessage parentMessage = cms.getCommunityMessageById(parentId);

@@ -13,6 +13,7 @@ body {
 .nav-link {
     color: #ffffff;
 }
+
 .carousel-item img {
     height: calc(100vh / 4); /* 占据屏幕的四分之一 */
     object-fit: cover;
@@ -248,11 +249,12 @@ body {
 }
 
 .menu-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 创建四列，每列大小相等 */
+    gap: 20px; /* 根据需要调整网格间隙 */
 }
 
 .menu-item {
-    flex: 0 0 23%; /* 设置每行最多三个菜品 */
     margin: 10px;
     background-color: #fff;
     border-radius: 5px;

@@ -28,8 +28,8 @@
     </select>
 
     <insert id="addQuestion" parameterType="Question">
-        INSERT INTO question (id, survey_id, question_content)
-        VALUES (#{id}, #{surveyId}, #{questionContent})
+        INSERT INTO question (survey_id, question_content)
+        VALUES (#{surveyId}, #{questionContent})
     </insert>
 
     <update id="updateQuestion" parameterType="Question">

@@ -9,29 +9,35 @@
         <result property="senderId" column="sender_id" />
         <result property="receiverId" column="receiver_id" />
         <result property="sendTime" column="send_time" />
+        <result property="timestamp" column="timestamp"/>
         <result property="messageContent" column="message_content" />
     </resultMap>
 
     <select id="selectById" resultMap="chatMessageResultMap" parameterType="String">
-        SELECT id, sender_id, receiver_id, send_time, message_content
+        SELECT id, sender_id, receiver_id, send_time, timestamp, message_content
         FROM chat_message
         WHERE id = #{id}
     </select>
 
     <select id="selectList" resultMap="chatMessageResultMap">
-        SELECT id, sender_id, receiver_id, send_time, message_content
+        SELECT id, sender_id, receiver_id, send_time, timestamp, message_content
         FROM chat_message
+    </select>
+    <select id="selectUserIdBySenderId" resultType="String">
+        SELECT receiver_id
+        FROM chat_message
+        WHERE sender_id = #{senderId}
     </select>
 
     <select id="selectListById" resultMap="chatMessageResultMap" parameterType="map">
-        SELECT id, sender_id, receiver_id, send_time, message_content
+        SELECT id, sender_id, receiver_id, send_time, timestamp, message_content
         FROM chat_message
         WHERE sender_id = #{senderId} AND receiver_id = #{receiverId}
     </select>
 
     <insert id="addChatMessage" parameterType="ChatMessage">
-        INSERT INTO chat_message (id, sender_id, receiver_id, send_time, message_content)
-        VALUES (#{id}, #{senderId}, #{receiverId}, #{sendTime}, #{messageContent})
+        INSERT INTO chat_message (sender_id, receiver_id, send_time, timestamp, message_content)
+        VALUES (#{senderId}, #{receiverId}, #{sendTime}, #{timestamp}, #{messageContent})
     </insert>
 
     <update id="updateChatMessage" parameterType="ChatMessage">
@@ -40,6 +46,7 @@
             <if test="senderId != null">sender_id = #{senderId},</if>
             <if test="receiverId != null">receiver_id = #{receiverId},</if>
             <if test="sendTime != null">send_time = #{sendTime},</if>
+            <if test="timestamp != null">timestamp = #{timestamp}</if>
             <if test="messageContent != null">message_content = #{messageContent},</if>
         </set>
         WHERE id = #{id}
