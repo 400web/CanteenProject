@@ -42,12 +42,12 @@
                 tableBody.innerHTML = '';
                 console.log(data);
                 let reg;
-                const key = document.getElementById("dishName").value;
+                const key = document.getElementById("canteenName").value;
                 if (key) {
                     reg = new RegExp(key, 'gi');
                 }
-                data.forEach(dish => {
-                    let name = dish.name;
+                data.forEach(canteen => {
+                    let name = canteen.name;
                     if (reg) {
                         name = name.replace(reg, (key) => '<em>' + key + '</em>');
                         console.log(key);
@@ -56,7 +56,7 @@
                     const row = document.createElement('tr');
                     let html = '';
                     html += '<td><img src="' + canteen.image + '" alt="' + canteen.name + '" style="width: 50px; height: 50px;"></td>';
-                    html += '<td>' + canteen.name + '</td>';
+                    html += '<td>' + name + '</td>';
                     html += '<td>' + canteen.location + '</td>';
                     html += '<td>' + canteen.openingTime + '</td>';
                     html += '<td>' + canteen.closingTime + '</td>';

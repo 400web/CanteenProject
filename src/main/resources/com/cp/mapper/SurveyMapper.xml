@@ -29,8 +29,8 @@
     </select>
 
     <insert id="addSurvey" parameterType="Survey">
-        INSERT INTO survey (id, survey_content, publisher_id, publish_time)
-        VALUES (#{id}, #{surveyContent}, #{publisherId}, #{publishTime})
+        INSERT INTO survey (survey_content, publisher_id, publish_time)
+        VALUES (#{surveyContent}, #{publisherId}, #{publishTime})
     </insert>
 
     <update id="updateSurvey" parameterType="Survey">

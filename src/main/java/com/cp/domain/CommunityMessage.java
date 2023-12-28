@@ -30,6 +30,7 @@ public class CommunityMessage {
     private String replyName;
     private List<CommunityMessage> replyList;
     private boolean isLike;
+    private int level;//发表人等级
 
     public void hotCompute() {
         long time = System.currentTimeMillis() - publishTimestamp;

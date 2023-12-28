@@ -5,7 +5,7 @@
 <mapper namespace="com.cp.mapper.CanteenAdminMapper">
 
     <resultMap id="canteenAdminResultMap" type="CanteenAdmin">
-        <id property="id" column="user_id" />
+        <id property="id" column="id" />
         <result property="canteenId" column="canteen_id" />
         <result property="canteenName" column="canteenName" />
     </resultMap>
@@ -36,13 +36,13 @@
 
     <insert id="addCanteenAdmin" parameterType="CanteenAdmin">
         INSERT INTO canteen_admin (id, canteen_id)
-        VALUES (#{userId}, #{canteenId})
+        VALUES (#{id}, #{canteenId})
     </insert>
 
     <update id="updateCanteenAdmin" parameterType="CanteenAdmin">
         UPDATE canteen_admin
         SET canteen_id = #{canteenId}
-        WHERE id = #{userId}
+        WHERE id = #{id}
     </update>
 
     <select id="deleteCanteenAdmin" resultType="boolean" parameterType="String">

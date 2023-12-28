@@ -70,7 +70,9 @@ public class homeServlet extends HttpServlet {
         request.setAttribute("allCanteen",canteens);
         request.setAttribute("dishes", firstFiveDishes);
         request.setAttribute("lowDishes",lastFiveDishes);
+        System.out.println("促销"+lastFiveDishes);
         request.setAttribute("dishList",recommendDishList);
+        System.out.println("推荐"+recommendDishList);
         request.setAttribute("surveys",firstFiveSurveys);
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }

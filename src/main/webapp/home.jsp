@@ -27,13 +27,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
-
 <body>
 <!-- 导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)">
     <a class="navbar-brand" href="#">USST食堂系统首页</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <span class="badge bg-primary">Lv.${oUser.level} ${user.username}</span>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="switchContent('content1');">首页</a>
             </li>
@@ -50,8 +52,25 @@
                 </div>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="PostServlet">社区</a>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="naDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    社区
+                </a>
+                <div class="dropdown-menu" aria-labelledby="naDropdown">
+                    <a class="dropdown-item" href="PostServlet">论坛</a>
+                    <a class="dropdown-item" href="UserViewServlet">聊天室</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
+                <a class="nav-link dropdown-toggle" href="#" id="nDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    检索
+                </a>
+                <div class="dropdown-menu" aria-labelledby="nDropdown">
+                    <a class="dropdown-item" href="CanteenSearchServlet">食堂检索</a>
+                     <a class="dropdown-item" href="DishSearchServlet">菜品检索</a>
+                </div>
             </li>
             <%--            <li class="nav-item">--%>
             <%--                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>--%>
@@ -143,51 +162,6 @@
     }</script>
 
 
-<script>
-    const lowPriceDishes = [
-        <c:forEach var="dish" items="${lowDishes}" varStatus="status">
-        {
-            id: '',
-            name: '<c:out value="${dish.name}"/>',
-            promotionPrice: '<c:out value="${dish.price}"/>'
-        }<c:if test="${!status.last}">, </c:if>
-        </c:forEach>
-    ];
-
-    const lowPriceDishList = document.querySelector('.container3 .low-price-dish-list');
-
-    lowPriceDishes.forEach(dish => {
-        const listItem = document.createElement('li');
-        listItem.style.display = 'flex';
-        listItem.style.justifyContent = 'space-between';
-        listItem.innerHTML = `
-            <span>` + dish.name + `</span>
-            <span>` + dish.promotionPrice + `</span>
-        `;
-        lowPriceDishList.appendChild(listItem);
-    });
-</script>
-
-
-<script>
-    const surveys = [
-        <c:forEach var="survey" items="${surveys}" varStatus="status">
-        {
-            name: '<c:out value="${survey.name}"/>',
-            url: '<c:out value="${survey.url}"/>'
-        }<c:if test="${!status.last}">, </c:if>
-        </c:forEach>
-    ];
-
-    const surveyList = document.querySelector('.container3 .survey-list');
-
-    surveys.forEach(survey => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="` + survey.url + `">` + survey.name + `</a>`;
-        surveyList.appendChild(listItem);
-    });
-</script>
-
 <div class="container1">
     <div class="container">
         <div class="section-divider" style="color: red">
@@ -254,22 +228,62 @@
 
     <section id="menu">
         <div id="scrollable-menu" class="menu-container">
+            <c:forEach var="dish" items="${dishList}">
             <div class="menu-item">
-                <c:forEach var="dish" items="${dishList}">
                     <a href="dishReviewServlet?id=${dish.id}"> <img src="${dish.image}" alt=""></a>
                     <div class="menu-item-details">
                         <h3>菜名：${dish.name}</h3>
                         <p>菜系: ${dish.cuisine}</p>
                         <p>价格: ${dish.price}</p>
                     </div>
-                </c:forEach>>
             </div>
-
+            </c:forEach>>
         </div>
     </section>
 </div>
 
+<script>
+    const lowPriceDishes = [
+        <c:forEach var="dish" items="${lowDishes}" varStatus="status">
+        {
+            id: '<c:out value="${dish.id}"/>',
+            name: '<c:out value="${dish.name}"/>',
+            promotionPrice: '<c:out value="${dish.price}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
 
+    const lowPriceDishList = document.querySelector('.container3 .dish-list');
+
+    lowPriceDishes.forEach(dish => {
+        const listItem = document.createElement('li');
+        listItem.style.display = 'flex';
+        listItem.style.justifyContent = 'space-between';
+        listItem.innerHTML = `
+            <span>` + dish.name + `</span>
+            <span>` + dish.promotionPrice + `</span>
+        `;
+        lowPriceDishList.appendChild(listItem);
+    });
+</script>
+<script>
+    const surveys = [
+        <c:forEach var="survey" items="${surveys}" varStatus="status">
+        {
+            name: '<c:out value="${survey.name}"/>',
+            url: '<c:out value="${survey.url}"/>'
+        }<c:if test="${!status.last}">, </c:if>
+        </c:forEach>
+    ];
+
+    const surveyList = document.querySelector('.container3 .survey-list');
+
+    surveys.forEach(survey => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="` + survey.url + `">` + survey.name + `</a>`;
+        surveyList.appendChild(listItem);
+    });
+</script>
 <script>
     const dishes = [
         <c:forEach var="dish" items="${dishes}" varStatus="status">
