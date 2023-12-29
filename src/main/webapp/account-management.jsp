@@ -26,7 +26,7 @@
                 <a class="nav-link" href="SdFirstPageServlet">首页</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#complaints">投诉信息</a>
+                <a class="nav-link" href="canteenReviewServlet">投诉信息</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="PostServlet">社区</a>

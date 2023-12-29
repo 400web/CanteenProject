@@ -43,6 +43,12 @@
         ORDER BY timestamp DESC
     </select>
 
+    <select id="selectList" resultMap="canteenReviewResultMap">
+        SELECT id, evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight
+        FROM canteen_review
+        ORDER BY timestamp DESC
+    </select>
+
     <insert id="addCanteenReview" parameterType="CanteenReview">
         INSERT INTO canteen_review (evaluator_id, name, time, timestamp , comment, canteen_id, evaluation_score, weight)
         VALUES (#{evaluatorId}, #{name}, #{time}, #{timestamp}, #{comment}, #{canteenId}, #{evaluationScore}, #{weight})

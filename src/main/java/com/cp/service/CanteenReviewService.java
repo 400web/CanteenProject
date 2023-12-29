@@ -29,6 +29,7 @@ public interface CanteenReviewService{
      */
     List<CanteenReview> getReviewByUserIdAndCanteenId(String userId, String canteenId);
     List<CanteenReview> getReviewByName(String name);
+    List<CanteenReview> getList();
 
     /**
      * 删除指定用户对食堂的评价

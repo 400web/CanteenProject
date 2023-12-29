@@ -10,8 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736a130f-8f35-45ba-8f1f-bece20ab1b5b" name="Changes" comment="系统管理员">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/DeleteCommitServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/comments-sd.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CanteenReviewMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/mapper/CanteenReviewMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/CanteenReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/CanteenReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CanteenReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/service/impl/CanteenReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cp/servlet/canteenReviewServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cp/servlet/canteenReviewServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CanteenReviewMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/cp/mapper/CanteenReviewMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account-management.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/canteenDetail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/comments.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/comments.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/canteenDetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sdFirstPage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +34,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Jsp File" />
         <option value="JavaScript File" />
+        <option value="Jsp File" />
         <option value="Servlet" />
       </list>
     </option>
@@ -72,31 +83,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Web/Online-Bookstore-Sales-System",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Web/canteenproject&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IntelliJ IDEA\project\CanteenProject\src\main\webapp\WEB-INF" />
@@ -108,19 +119,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
-    <configuration name="account-management.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/account-management.jsp">
+    <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="canteenDetail.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/canteenDetail.jsp">
+    <configuration name="comments-sd.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/comments-sd.jsp">
       <method v="2" />
     </configuration>
     <configuration name="forum-sd.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/forum-sd.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="forum.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/forum.jsp">
+    <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
       <method v="2" />
     </configuration>
-    <configuration name="login.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/login.jsp">
+    <configuration name="sdFirstPage.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8084/canteenproject_war_exploded/sdFirstPage.jsp">
       <method v="2" />
     </configuration>
     <configuration name="Tomcat 10.1.13" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.13" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
@@ -212,20 +223,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JavaScript Debug.comments-sd.jsp" />
+      <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
       <item itemvalue="JavaScript Debug.forum-sd.jsp" />
-      <item itemvalue="JavaScript Debug.forum.jsp" />
       <item itemvalue="JavaScript Debug.login.jsp" />
       <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
-      <item itemvalue="JavaScript Debug.account-management.jsp" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.13" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.login.jsp" />
+        <item itemvalue="JavaScript Debug.comments-sd.jsp" />
+        <item itemvalue="JavaScript Debug.sdFirstPage.jsp" />
         <item itemvalue="JavaScript Debug.canteenDetail.jsp" />
         <item itemvalue="JavaScript Debug.forum-sd.jsp" />
-        <item itemvalue="JavaScript Debug.account-management.jsp" />
-        <item itemvalue="JavaScript Debug.forum.jsp" />
       </list>
     </recent_temporary>
   </component>
@@ -269,6 +280,8 @@
       <workItem from="1703780471416" duration="927000" />
       <workItem from="1703785451177" duration="819000" />
       <workItem from="1703816416146" duration="16000" />
+      <workItem from="1703818193357" duration="789000" />
+      <workItem from="1703819301126" duration="3569000" />
     </task>
     <task id="LOCAL-00001" summary="登录界面">
       <option name="closed" value="true" />
@@ -510,7 +523,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703769073218</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="系统管理员">
+      <option name="closed" value="true" />
+      <created>1703818286222</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1703818286222</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -24,7 +24,7 @@
     <title>评论页面</title>
 </head>
 <script>
-    var score = 0;
+    let score = 0;
     function submit(canteenId) {
         const commentContent = document.getElementById('comment-content');
         const data = {

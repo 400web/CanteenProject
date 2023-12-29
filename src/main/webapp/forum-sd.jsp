@@ -254,8 +254,7 @@
             <div class="row mt-3">
                 <div class="col-md-12">
                     <!-- 超链接触发排序操作 -->
-                    <a href="#" id="timeCompare" onclick="compare('time')">时间排序</a> |
-                    <a href="#" id="hotCompare" onclick="compare('hot')">热度排序</a>
+
                 </div>
             </div>
         </div>

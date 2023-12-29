@@ -75,13 +75,6 @@ body {
     padding: 10px; /* 内边距 */
     margin-bottom: 20px; /* 底部外边距 */
 }
- .modal-content {
-     width: 320px; /* 初始宽度 */
-     height: 160px; /* 宽高比例为5:8 */
- }
- .modal-footer {
-     display: flex;
-     justify-content: space-between;
- }
+
 
 
