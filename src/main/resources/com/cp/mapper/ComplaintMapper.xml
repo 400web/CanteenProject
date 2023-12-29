@@ -38,8 +38,8 @@
     </select>
 
     <insert id="addComplaint" parameterType="Complaint">
-        INSERT INTO complaint (complainant_id, canteen_name, complain_time, complaint_info, feedback, response_info)
-        VALUES (#{complainantId}, #{canteenName}, #{complainTime}, #{complaintInfo}, #{feedback}, #{responseInfo})
+        INSERT INTO complaint (complainant_id, name, canteen_name, complain_time, complaint_info, feedback, response_info)
+        VALUES (#{complainantId}, #{name}, #{canteenName}, #{complainTime}, #{complaintInfo}, #{feedback}, #{responseInfo})
     </insert>
 
     <update id="updateComplaint" parameterType="Complaint">

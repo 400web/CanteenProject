@@ -31,6 +31,7 @@ public class CanteenManagementServlet extends HttpServlet {
         Canteen canteen=canteenAdminService.getCanteenByAdminId(user.getId());
         List<Dish> dishes=dishService.getDishesByCanteenId(canteen.getId());
         List<Complaint> complaints=complaintService.getComplaintsByCanteenName(canteen.getName());
+        System.out.println("tousu"+complaints);
         request.setAttribute("canteen",canteen);
         request.setAttribute("dishes",dishes);
         request.setAttribute("complaints",complaints);
