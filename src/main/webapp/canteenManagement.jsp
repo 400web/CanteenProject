@@ -416,8 +416,11 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <form id="addDishForm" action="addDishServlet" method="post" enctype="multipart/form-data">
+
                         <div class="modal-body">
-                                <div class="form-group">
+
+                                 <div class="form-group">
                                     <label for="addDishName">菜品名称</label>
                                     <input type="text" class="form-control" id="addDishName" name="name">
                                 </div>
@@ -437,22 +440,21 @@
                                     <label for="addDishCuisine">菜系</label>
                                     <input type="text" class="form-control" id="addDishCuisine" name="cuisine">
                                 </div>
-                            <div class="form-group">
+                                <div class="form-group">
                                 <label for="addDishRecommended">是否推荐</label>
                                 <select class="form-control" id="addDishRecommended" name="recommend">
                                     <option value="推荐">推荐</option>
                                     <option value="不推荐">不推荐</option>
                                 </select>
-                            </div>
-
+                               </div>
                         </div>
                         <div class="modal-footer">
-                            <form id="addDishForm" action="addDishServlet" method="post" enctype="multipart/form-data">
 
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                             <button type="submit" class="btn btn-success" id="addDishSaveButton">保存添加</button>
-                            </form>
                         </div>
+
+                        </form>
 
                     </div>
                 </div>
@@ -479,6 +481,9 @@
                     <jsp:useBean id="complaints" scope="request" type="java.util.List"/>
 
                     <c:forEach var="complaint" items="${complaints}">
+                        <script>
+                            console.log(${complaints})
+                        </script>
                         <tr id="complaintRow_${complaint.id}">
                             <td id="complainantName_${complaint.id}">${complaint.name}</td>
                             <td id="complaintTime_${complaint.id}">${complaint.complainTime}</td>

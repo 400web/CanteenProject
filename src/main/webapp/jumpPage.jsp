@@ -24,7 +24,7 @@
 
             // 当倒计时结束时，跳转到指定的URL
             if (count < 0) {
-                window.location = 'homePage.jsp'; // 替换为你的目标URL
+                window.location = 'home.jsp'; // 替换为你的目标URL
             }
         }
 
