@@ -17,10 +17,10 @@
     <update id="updateUser">
         UPDATE user
         <set>
-            <if test="username != null">username = #{username},</if>
-            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
-            <if test="password != null">password = #{password},</if>
-            <if test="role != null">role = #{role},</if>
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phone_number = #{phoneNumber},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="role != null and role != ''">role = #{role},</if>
         </set>
         WHERE id = #{id}
     </update>

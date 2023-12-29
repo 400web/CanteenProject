@@ -19,9 +19,9 @@
             <dataSource type="POOLED">
                 <!-- 数据库连接信息 -->
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/canteen?useSSL=false&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8"/>
-                <property name="username" value="root"/>
-                <property name="password" value="qw1234567"/>
+                <property name="url" value="jdbc:mysql://49.235.108.192:3306/canteen?useSSL=false&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8"/>
+                <property name="username" value="canteen"/>
+                <property name="password" value="N7RTMtxiRKEzy5pX"/>
             </dataSource>
         </environment>
     </environments>

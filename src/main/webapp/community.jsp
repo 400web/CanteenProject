@@ -41,7 +41,7 @@
     }
 </style>
 <script>
-    const socket = new WebSocket('ws://' + window.location.host + '/canteenproject_war_exploded' + '/updatesCommunity');
+    const socket = new WebSocket('ws://' + window.location.host + `${contextPath}` + '/updatesCommunity');
     socket.onopen = function () {
         console.log("socket连接成功");
     }

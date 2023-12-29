@@ -1,27 +1,41 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: dfydn92
-  Date: 2023/12/19
-  Time: 18:19
+  User: YXZ
+  Date: 2023/12/28
+  Time: 21:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>问卷列表</title>
-    <link rel="stylesheet" href="css/questionnaire.css">
-    <link rel="stylesheet" href=css/homePage.css>
-    <!-- 引入 Bootstrap 样式表 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账号详情</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap-4.3.1.min.js"></script>
-<body>
+    <style>
+        .container {
+            margin-top: 50px;
+        }
 
-<!-- 导航栏 -->
+        .card {
+            margin-bottom: 20px;
+        }
+        body{
+            height: 100vh;
+            background-image: linear-gradient(120deg, #ff6e7f, #bfe9ff);
+        }
+    </style>
+</head>
+
+<body>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, #fce4e4, #651616)">
-    <a class="navbar-brand" href="#">问卷列表</a>
+    <a class="navbar-brand" href="#">账号详情</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -75,31 +89,28 @@
         </ul>
     </div>
 </nav>
+<div class="container">
+    <h1 class="mb-4">账号详情</h1>
 
-
-<!-- 分隔线与标题 -->
-<div class="container" >
-    <div class="section-divider" style="color: red">
-        <div class="section-title" style="color: #051b11"> 调查问卷</div>
-    </div>
-</div>
-
-<div class="survey-list">
-
-    <c:forEach var="survey" items="${surveys}">
-    <div class="survey-item">
-        <div class="survey-content">
-                 <a href="viewSurveyServlet?id=${survey.id}">${survey.surveyContent}</a>
-        </div>
-        <div class="survey-publish-date">
-            发布时间：${survey.publishTime}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">基本信息</h5>
+            <p><strong>用户名: </strong>${user.username}</p>
+            <p><strong>手机号码: </strong>${user.phoneNumber}</p>
+            <p><strong>角色: </strong>${user.role}</p>
         </div>
     </div>
-    </c:forEach>
 
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">用户统计信息</h5>
+            <p><strong>登录次数: </strong>${oUser.loginTimes}</p>
+            <p><strong>评价次数: </strong>${oUser.evaluationTimes}</p>
+            <p><strong>社区交流次数: </strong>${oUser.communityInteractionTimes}</p>
+            <p><strong>用户等级: </strong>${oUser.level}</p>
+        </div>
+    </div>
 </div>
-
 </body>
 </html>
-
 

@@ -45,12 +45,12 @@
     <update id="updateComplaint" parameterType="Complaint">
         UPDATE complaint
         <set>
-            <if test="complainantId != null">complainant_id = #{complainantId},</if>
-            <if test="canteenName != null">canteen_name = #{canteenName},</if>
-            <if test="complainTime != null">complain_time = #{complainTime},</if>
-            <if test="complaintInfo != null">complaint_info = #{complaintInfo},</if>
-            <if test="feedback != null">feedback = #{feedback},</if>
-            <if test="responseInfo != null">response_info = #{responseInfo},</if>
+            <if test="complainantId != null and complainantId != ''">complainant_id = #{complainantId},</if>
+            <if test="canteenName != null and canteenName != ''">canteen_name = #{canteenName},</if>
+            <if test="complainTime != null and complainTime != ''">complain_time = #{complainTime},</if>
+            <if test="complaintInfo != null and complaintInfo != ''">complaint_info = #{complaintInfo},</if>
+            <if test="feedback != null and feedback != ''">feedback = #{feedback},</if>
+            <if test="responseInfo != null and responseInfo != ''">response_info = #{responseInfo},</if>
         </set>
         WHERE id = #{id}
     </update>

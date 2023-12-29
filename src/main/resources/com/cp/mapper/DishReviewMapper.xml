@@ -55,12 +55,12 @@
     <update id="updateDishReview" parameterType="DishReview">
         UPDATE dish_review
         <set>
-            <if test="evaluatorId != null">evaluator_id = #{evaluatorId},</if>
-            <if test="name != null">name = #{name},</if>
-            <if test="dishId != null">dish_id = #{dishId},</if>
-            <if test="time != null">time = #{time},</if>
-            <if test="timestamp != null">time = #{timestamp},</if>
-            <if test="comment != null">comment = #{comment},</if>
+            <if test="evaluatorId != null and evaluatorId != ''">evaluator_id = #{evaluatorId},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="dishId != null and dishId != ''">dish_id = #{dishId},</if>
+            <if test="time != null and time != ''">time = #{time},</if>
+            <if test="timestamp != null">timestamp = #{timestamp},</if>
+            <if test="comment != null and comment != ''">comment = #{comment},</if>
             <if test="evaluationScore != null">evaluation_score = #{evaluationScore},</if>
             <if test="weight != null">weight = #{weight},</if>
         </set>

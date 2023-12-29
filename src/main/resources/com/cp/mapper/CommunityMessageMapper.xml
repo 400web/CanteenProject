@@ -83,17 +83,17 @@
     <update id="updateCommunityMessage" parameterType="CommunityMessage">
         UPDATE community_message
         <set>
-            <if test="publisherId != null">publisher_id = #{publisherId},</if>
-            <if test="name != null">name = #{name},</if>
-            <if test="publishTime != null">publish_time = #{publishTime},</if>
+            <if test="publisherId != null and publisherId != ''">publisher_id = #{publisherId},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="publishTime != null and publishTime != ''">publish_time = #{publishTime},</if>
             <if test="publishTimestamp != null">publish_timestamp = #{publishTimestamp},</if>
-            <if test="title != null">title = #{title},</if>
-            <if test="content != null">content = #{content},</if>
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="content != null and content != ''">content = #{content},</if>
             <if test="likes != null">likes = #{likes},</if>
             <if test="comments != null">comments = #{comments},</if>
             <if test="hot != null">hot = #{hot},</if>
-            <if test="replyMessageId != null">reply_message_id = #{replyMessageId},</if>
-            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="replyMessageId != null and replyMessageId != ''">reply_message_id = #{replyMessageId},</if>
+            <if test="parentId != null and parentId != ''">parent_id = #{parentId},</if>
         </set>
         WHERE id = #{id}
     </update>

@@ -43,11 +43,11 @@
     <update id="updateChatMessage" parameterType="ChatMessage">
         UPDATE chat_message
         <set>
-            <if test="senderId != null">sender_id = #{senderId},</if>
-            <if test="receiverId != null">receiver_id = #{receiverId},</if>
-            <if test="sendTime != null">send_time = #{sendTime},</if>
-            <if test="timestamp != null">timestamp = #{timestamp}</if>
-            <if test="messageContent != null">message_content = #{messageContent},</if>
+            <if test="senderId != null and senderId != ''">sender_id = #{senderId},</if>
+            <if test="receiverId != null and receiverId != ''">receiver_id = #{receiverId},</if>
+            <if test="sendTime != null and sendTime != ''">send_time = #{sendTime},</if>
+            <if test="timestamp != null">timestamp = #{timestamp},</if>
+            <if test="messageContent != null and messageContent != ''">message_content = #{messageContent}</if>
         </set>
         WHERE id = #{id}
     </update>

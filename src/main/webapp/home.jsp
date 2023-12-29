@@ -19,13 +19,10 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- Bootstrap JS and Popper.js (for Bootstrap 4) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-4.3.1.min.css">
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap-4.3.1.min.js"></script>
 </head>
 <body>
 <!-- 导航栏 -->
@@ -37,7 +34,7 @@
                 <span class="badge bg-primary">Lv.${oUser.level} ${user.username}</span>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="switchContent('content1');">首页</a>
+                <a class="nav-link" href="homeServlet">首页</a>
             </li>
             <li class="nav-item dropdown"> <!-- 添加 dropdown 类 -->
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -46,7 +43,7 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <c:forEach var="oneCanteen" items="${allCanteen}">
+                    <c:forEach var="oneCanteen" items="${navbarAllCanteen}">
                         <a class="dropdown-item" href="canteenServlet?id=${oneCanteen.id}">${oneCanteen.name}</a>
                     </c:forEach>
                 </div>
@@ -72,14 +69,11 @@
                      <a class="dropdown-item" href="DishSearchServlet">菜品检索</a>
                 </div>
             </li>
-            <%--            <li class="nav-item">--%>
-            <%--                <a class="nav-link" href="#" onclick="switchContent('content2');">问卷</a>--%>
-            <%--            </li>--%>
             <li class="nav-item">
                 <a class="nav-link" href="questionnaireServlet">问卷</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#account-management">账号管理</a>
+                <a class="nav-link" href="ViewUserDetailServlet">账号详情</a>
             </li>
         </ul>
     </div>

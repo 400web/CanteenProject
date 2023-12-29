@@ -45,13 +45,13 @@
     <update id="updateCanteen" parameterType="Canteen">
         UPDATE canteen
         <set>
-            <if test="name != null">name = #{name},</if>
-            <if test="image != null">image = #{image},</if>
-            <if test="location != null">location = #{location},</if>
-            <if test="introduction != null">introduction = #{introduction},</if>
-            <if test="openingTime != null">opening_time = #{openingTime},</if>
-            <if test="closingTime != null">closing_time = #{closingTime},</if>
-            <if test="activity != null">activity = #{activity},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="location != null and location != ''">location = #{location},</if>
+            <if test="introduction != null and introduction != ''">introduction = #{introduction},</if>
+            <if test="openingTime != null and openingTime != ''">opening_time = #{openingTime},</if>
+            <if test="closingTime != null and closingTime != ''">closing_time = #{closingTime},</if>
+            <if test="activity != null and activity != ''">activity = #{activity},</if>
             <if test="rating != null">rating = #{rating},</if>
         </set>
         WHERE id = #{id}
