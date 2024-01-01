@@ -36,7 +36,7 @@ public class homeServlet extends HttpServlet {
         communityMessages.sort(CommunityMessageComparators.getHotComparator());
         Collections.sort(canteens);
         Collections.sort(dishes);
-        List<Survey> surveyList=surveyService.getAllSurveys();
+/*        List<Survey> surveyList=surveyService.getAllSurveys();*/
         List<Dish> recommendDishList = dishService.getDishesByRecommend();
         List<CommunityMessage> firstFiveMessages;
         List<Canteen> firstFiveCanteens;
@@ -60,11 +60,11 @@ public class homeServlet extends HttpServlet {
             firstFiveDishes = dishes;
             lastFiveDishes = dishes;
         }
-        if(surveyList.size()>=5){
+/*        if(surveyList.size()>=5){
             firstFiveSurveys=surveyList.subList(0,5);
         }else {
             firstFiveSurveys=surveyList;
-        }
+        }*/
         request.setAttribute("topics", firstFiveMessages);
         request.setAttribute("canteens", firstFiveCanteens);
         request.getSession().setAttribute("navbarAllCanteen",canteens);
@@ -73,7 +73,7 @@ public class homeServlet extends HttpServlet {
         System.out.println("促销"+lastFiveDishes);
         request.setAttribute("dishList",recommendDishList);
         System.out.println("推荐"+recommendDishList);
-        request.setAttribute("surveys",firstFiveSurveys);
+/*        request.setAttribute("surveys",firstFiveSurveys);*/
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

@@ -27,6 +27,8 @@ public interface UserService{
      * @return 登录成功User对象
      */
     User login(String phoneNumber, String password);
+    User getByUsername(String name);
+    User getUserByPhoneNumber(String phoneNumber);
 
     /**
      * 用户删除

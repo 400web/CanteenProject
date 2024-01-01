@@ -6,22 +6,23 @@ import com.cp.domain.Survey;
 import com.cp.mapper.OptionMapper;
 import com.cp.mapper.QuestionMapper;
 import com.cp.mapper.SurveyMapper;
+import com.cp.service.OptionService;
+import com.cp.service.QuestionService;
 import com.cp.service.SurveyService;
 import com.cp.utils.MybatisUtils;
 
 import java.util.List;
 
 public class SurveyServiceImpl implements SurveyService {
-    SurveyMapper surveyMapper = MybatisUtils.getMapper(SurveyMapper.class);
-    QuestionMapper questionMapper = MybatisUtils.getMapper(QuestionMapper.class);
-    OptionMapper optionMapper = MybatisUtils.getMapper(OptionMapper.class);
 
     @Override
     public Survey getSurveyById(String surveyId) {
-        Survey survey = surveyMapper.selectById(surveyId);
-        List<Question> questionList = questionMapper.selectBySurveyId(surveyId);
+        QuestionService questionService = new QuestionServiceImpl();
+        OptionService optionService = new OptionServiceImpl();
+        Survey survey = getSurvey(surveyId);
+        List<Question> questionList = questionService.getQuestionsBySurveyId(surveyId);
         for (Question question : questionList) {
-            List<Option> optionList = optionMapper.selectByQuestionId(question.getId());
+            List<Option> optionList = optionService.getOptionsByQuestionId(question.getId());
             question.setOptionList(optionList);
         }
         survey.setQuestionList(questionList);
@@ -29,22 +30,43 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
+    public Survey getSurvey(String surveyId) {
+        return MybatisUtils.execute(session -> {
+            SurveyMapper surveyMapper = session.getMapper(SurveyMapper.class);
+            return surveyMapper.selectById(surveyId);
+        });
+    }
+
+
+    @Override
     public List<Survey> getAllSurveys() {
-        return surveyMapper.selectList();
+        return MybatisUtils.execute(session -> {
+            SurveyMapper surveyMapper = session.getMapper(SurveyMapper.class);
+            return surveyMapper.selectList();
+        });
     }
 
     @Override
     public boolean addSurvey(Survey survey) {
-        return surveyMapper.addSurvey(survey);
+        return MybatisUtils.execute(session -> {
+            SurveyMapper surveyMapper = session.getMapper(SurveyMapper.class);
+            return surveyMapper.addSurvey(survey);
+        });
     }
 
     @Override
     public boolean updateSurvey(Survey survey) {
-        return surveyMapper.updateSurvey(survey);
+        return MybatisUtils.execute(session -> {
+            SurveyMapper surveyMapper = session.getMapper(SurveyMapper.class);
+            return surveyMapper.updateSurvey(survey);
+        });
     }
 
     @Override
     public boolean deleteSurvey(String surveyId) {
-        return surveyMapper.deleteSurvey(surveyId);
+        return MybatisUtils.execute(session -> {
+            SurveyMapper surveyMapper = session.getMapper(SurveyMapper.class);
+            return surveyMapper.deleteSurvey(surveyId);
+        });
     }
 }

@@ -1,12 +1,15 @@
 package com.cp.servlet;
 
 import com.cp.domain.OrdinaryUser;
+import com.cp.domain.Survey;
 import com.cp.domain.User;
 import com.cp.service.CanteenService;
 import com.cp.service.OrdinaryUserService;
+import com.cp.service.SurveyService;
 import com.cp.service.UserService;
 import com.cp.service.impl.CanteenServiceImpl;
 import com.cp.service.impl.OrdinaryUserServiceImpl;
+import com.cp.service.impl.SurveyServiceImpl;
 import com.cp.service.impl.UserServiceImpl;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -14,6 +17,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "loginServlet", value = "/loginServlet")
 public class loginServlet extends HttpServlet {

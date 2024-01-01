@@ -84,6 +84,9 @@
                 <a class="nav-link" href="questionnaireServlet">问卷</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="ComplaintViewServlet">投诉查看</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="ViewUserDetailServlet">账号详情</a>
             </li>
         </ul>

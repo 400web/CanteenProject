@@ -16,12 +16,17 @@
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
+            <dataSource type="UNPOOLED">
                 <!-- 数据库连接信息 -->
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://49.235.108.192:3306/canteen?useSSL=false&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8"/>
+                <property name="url" value="jdbc:mysql://rm-uf6403rn3w730p4sjjo.mysql.rds.aliyuncs.com:3306/canteen?useSSL=false&amp;autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8"/>
                 <property name="username" value="canteen"/>
-                <property name="password" value="N7RTMtxiRKEzy5pX"/>
+                <property name="password" value="@Ykjh2458746"/>
+<!--                <property name="poolMaximumActiveConnections" value="10"/>
+                <property name="poolMaximumIdleConnections" value="5"/>
+                <property name="poolMaximumCheckoutTime" value="20000"/>
+                <property name="poolTimeToWait" value="20000"/>
+                <property name="poolPingConnectionsNotUsedFor" value="36000"/>-->
             </dataSource>
         </environment>
     </environments>

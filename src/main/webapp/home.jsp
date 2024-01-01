@@ -17,7 +17,7 @@
     <link rel="stylesheet" href=css/home.css>
     <!-- 引入 Bootstrap 样式表 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <%--<script src="bootstrap/js/bootstrap.bundle.min.js"></script>--%>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap-4.3.1.min.css">
     <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
@@ -71,6 +71,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="questionnaireServlet">问卷</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ComplaintViewServlet">投诉查看</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="ViewUserDetailServlet">账号详情</a>
@@ -206,7 +209,9 @@
             <div class="section-divider" style="color: red">
                 <div class="section-title1" style="color: #960404; font-size: 24px;">最新投票调查</div>
                 <!-- 动态生成的问卷列表将放在这里 -->
-                <ul class="survey-list"></ul>
+                <ul class="survey-list">
+                    <li><a href="viewSurveyServlet?id=1">发广告广告</a></li>
+                </ul>
             </div>
         </div>
 
@@ -265,7 +270,7 @@
         <c:forEach var="survey" items="${surveys}" varStatus="status">
         {
             name: '<c:out value="${survey.name}"/>',
-            url: '<c:out value="${survey.url}"/>'
+            id: '<c:out value="${survey.id}"/>'
         }<c:if test="${!status.last}">, </c:if>
         </c:forEach>
     ];
@@ -274,7 +279,7 @@
 
     surveys.forEach(survey => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="` + survey.url + `">` + survey.name + `</a>`;
+        listItem.innerHTML = `<a href="viewSurveyServlet?id=` + survey.id + `">` + survey.name + `</a>`;
         surveyList.appendChild(listItem);
     });
 </script>
@@ -295,7 +300,7 @@
     dishes.slice(0, 5).forEach(dishName => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
-        <a href="` + dishName.id + `" class="topic">` + dishName.name + `</a>
+        <a href="dishReviewServlet?id=` + dishName.id + `" class="topic">` + dishName.name + `</a>
         <span class="heat-bar" style="width: ` + startingPopularity + `;"></span>
         `;
         dishList.appendChild(listItem);
@@ -347,7 +352,7 @@
     canteens.slice(0, 5).forEach(canteen => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
-            <a href="` + canteen.id + `" class="topic">` + canteen.name + `</a>
+            <a href="canteenServlet?id=` + canteen.id + `" class="topic">` + canteen.name + `</a>
             <span class="heat-bar" style="width: ` + canteenRank + `;"></span>
         `;
         canteenList.appendChild(listItem);

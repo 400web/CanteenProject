@@ -12,6 +12,7 @@ public interface SurveyService{
      * @return 问卷对象，若不存在返回null
      */
     Survey getSurveyById(String surveyId);
+    Survey getSurvey(String surveyId);
 
     /**
      * 获取所有问卷列表

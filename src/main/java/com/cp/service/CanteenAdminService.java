@@ -34,4 +34,9 @@ public interface CanteenAdminService{
      * @return 删除成功返回true，失败返回false
      */
     boolean deleteCanteenAdminRelation(String adminId, String canteenId);
+
+    boolean addCanteenAdmin(CanteenAdmin canteenAdmin);
+    boolean updateCanteenAdmin(CanteenAdmin canteenAdmin);
+
+    boolean deleteCanteenAdmin(String id);
 }

@@ -11,8 +11,8 @@
 <head>
     <title>食堂详情</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap-4.5.2.min.js"></script>
     <link href="css/canteenDetail.css" rel="stylesheet">
     <script src=javascript/canteenDetail.js></script>
 </head>

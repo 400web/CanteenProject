@@ -8,32 +8,52 @@ import com.cp.utils.MybatisUtils;
 import java.util.List;
 
 public class ComplaintServiceImpl implements ComplaintService {
-    ComplaintMapper complaintMapper= MybatisUtils.getMapper(ComplaintMapper.class);
+
     @Override
     public Complaint getComplaintById(String complaintId) {
-        return complaintMapper.selectById(complaintId);
+        return MybatisUtils.execute(session -> {
+            ComplaintMapper complaintMapper = session.getMapper(ComplaintMapper.class);
+            return complaintMapper.selectById(complaintId);
+        });
     }
 
     @Override
     public List<Complaint> getComplaintsByCanteenName(String canteenName) {
-        return complaintMapper.selectByCanteenName(canteenName);
+        return MybatisUtils.execute(session -> {
+            ComplaintMapper complaintMapper = session.getMapper(ComplaintMapper.class);
+            return complaintMapper.selectByCanteenName(canteenName);
+        });
     }
 
     @Override
     public List<Complaint> getListByUserId(String userId) {
-        return complaintMapper.selectByComplainantId(userId);
+        return MybatisUtils.execute(session -> {
+            ComplaintMapper complaintMapper = session.getMapper(ComplaintMapper.class);
+            return complaintMapper.selectByComplainantId(userId);
+        });
     }
 
     @Override
     public boolean addComplaint(Complaint complaint) {
-        return complaintMapper.addComplaint(complaint);
+        return MybatisUtils.execute(session -> {
+            ComplaintMapper complaintMapper = session.getMapper(ComplaintMapper.class);
+            return complaintMapper.addComplaint(complaint);
+        });
     }
 
     @Override
     public boolean updateComplaint(Complaint complaint) {
-        return complaintMapper.updateComplaint(complaint);
+        return MybatisUtils.execute(session -> {
+            ComplaintMapper complaintMapper = session.getMapper(ComplaintMapper.class);
+            return complaintMapper.updateComplaint(complaint);
+        });
     }
 
     @Override
-    public boolean deleteComplaint(String complaintId) {return complaintMapper.deleteComplaint(complaintId);}
+    public boolean deleteComplaint(String complaintId) {
+        return MybatisUtils.execute(session -> {
+            ComplaintMapper complaintMapper = session.getMapper(ComplaintMapper.class);
+            return complaintMapper.deleteComplaint(complaintId);
+        });
+    }
 }

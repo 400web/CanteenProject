@@ -27,7 +27,7 @@ public class MybatisUtils {
     private static SqlSession openSession(){
         SqlSession session = tl.get();
         if(session == null){
-            session = factory.openSession(true);
+            session = factory.openSession();
             tl.set(session);
         }
         return session;
@@ -58,5 +58,26 @@ public class MybatisUtils {
     public static <T extends Object> T getMapper(Class<T> clazz){
         SqlSession session = openSession();
         return session.getMapper(clazz);
+    }
+
+
+    public static <T> T execute(SqlSessionCallback<T> action) {
+        SqlSession session = openSession();
+        try {
+            T result = action.doInSession(session);
+            session.commit();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.rollback();
+            throw new RuntimeException("Failed to execute database operation", e);
+        } finally {
+            session.close();
+            tl.remove();
+        }
+    }
+
+    public interface SqlSessionCallback<T> {
+        T doInSession(SqlSession session);
     }
 }
